@@ -2,6 +2,7 @@
 $start = microtime(true);
 require_once __DIR__ . "/../include/modulecheck.php";
 require_once __DIR__ . "/../config/config.php";
+require_once __DIR__ . "/../include/adminlist.php";
 ?>
 <!DOCTYPE html>
 <html lang="pl">
