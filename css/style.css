@@ -1,0 +1,100 @@
+.fa {
+    margin-right: 5px;
+}
+
+.icon-smaller {
+    font-size: 0.7em;
+}
+
+a {
+    -webkit-transition: color 500ms ease-out;
+    -moz-transition: color 500ms ease-out;
+    -o-transition: color 500ms ease-out;
+    transition: color 500ms ease-out;
+}
+
+.news-header {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.news-author {
+    font-size: 0.7em;
+    text-align: right;
+}
+
+.pullright {
+    float: right
+}
+
+/* ****** */
+/* STATUS */
+/* ****** */
+
+.serverstatus p {
+    margin: 0px
+}
+
+.serverstatus a {
+    float: right
+}
+
+.serverstatus span {
+    float: right
+}
+
+/* ********* */
+/* ADMINLIST */
+/* ********* */
+
+.adminlist > .groupname ~ .groupname {
+    margin-top: 15px;
+}
+
+.adminlist .groupname {
+    text-align: center;
+    font-size: 1.2em;
+    border-bottom: 1px solid #677481;
+    margin-bottom: 5px;
+}
+
+.adminlist .label-primary {
+    background-color: #375a7f;
+}
+
+.adminlist p {
+    margin: 0px
+}
+
+.adminlist img {
+    margin-right: 3px
+}
+
+.adminlist .iconspacer {
+    margin-left: 19px
+}
+
+
+/* ****** */
+/* NAVBAR */
+/* ****** */
+
+body {
+    padding-top: 80px;
+}
+
+.navbar {
+    font-size: initial;
+}
+
+.navbar-brand {
+    padding: 0px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand > img {
+    height: 100%;
+    padding: 10px 5px 10px 15px;
+    width: auto;
+}
