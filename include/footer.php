@@ -4,10 +4,10 @@
         <!-- Footer -->
         <hr>
         <footer>
-            <p class="pull-left">&copy; <a href="http://wruczek.top">Wruczek</a> 2016</p>
+            <p class="pull-left">&copy; twojanazwa 2016</p>
             <div class="pull-right">
                 <ul class="list-inline">
-                    <li><a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.0.0 | MIT License</li>
+                    <li>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.1.0 | MIT License</li>
                 </ul>
             </div>
         </footer>
