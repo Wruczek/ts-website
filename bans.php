@@ -21,12 +21,17 @@ if (is_null($banlist)) {
     $cache->set('banlist', $banlist, 600);
 }
 
+$total = "";
+
+if(isset($banlist[0][0])) {
+    $total = " (" . $banlist[0][0] . " łącznie)";
+}
 
 ?>
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-ban" aria-hidden="true"></i> Lista banów</h3>
+        <h3 class="panel-title"><i class="fa fa-ban" aria-hidden="true"></i> Lista banów<?php echo $total; ?></h3>
     </div>
     <div class="panel-body">
 
@@ -47,7 +52,7 @@ if (is_null($banlist)) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php echo $banlist[0]; ?>
+                    <?php echo $banlist[0][1]; ?>
                 </tbody>
             </table>
         </div>
@@ -69,17 +74,23 @@ function getBanlist() {
         $bany = $tsAdmin->banList();
         
         $output = "";
+        $total = 0;
         
         foreach ($bany as $ban) {
             
             if(!isset($ban['lastnickname']))
                 continue;
             
+            $total++;
+            
             $lastnickname =     $ban['lastnickname']->toString();
             $reason =           $ban['reason'];
             $invokername =      $ban['invokername']->toString();
             $created =          date('d-m-Y H:i:s', $ban['created']);
             $duration =         $ban['duration'];
+            
+            if(empty($reason))
+                $reason = "<b>(brak powodu)</b>";
             
             if($duration == 0)
                 $expires = "Ban permanentny";
@@ -89,12 +100,12 @@ function getBanlist() {
             $output .= "<tr><td>$lastnickname</td><td>$reason</td><td>$invokername</td><td>$created</td><td>$expires</td></tr>";
         }
         
-        return $output;
+        return array($total, $output);
     } catch(TeamSpeak3_Exception $e) {
         if($e->getCode() == 1281) {
             return false;
         } else {
-            return '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd ' . $e->getCode() . ': ' . $e->getMessage() . '</p></div>';
+            return array(null, '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd ' . $e->getCode() . ': ' . $e->getMessage() . '</p></div>');
         }
     }
             
