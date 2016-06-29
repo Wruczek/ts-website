@@ -4,6 +4,7 @@
 Projekt - rozwijany przez jedną osobę - jest jeszcze we wczesnej fazie testów. Niedawno wypuszczona została pierwsza publiczna wersja, aktualnie chcę zapewnić działanie strony pod różnymi serwerami, w różnych kondycjach.
 
 #### Przydatne linki
+- [Demo strony](http://ts.wruczek.top/)
 - [Download najnowszej wersji](https://github.com/Wruczek/ts-website/archive/master.zip)
 - [Zgłaszanie błędów](https://github.com/Wruczek/ts-website/issues/new)
 - [Instrukcja instalacji TODO](https://github.com/Wruczek/ts-website/wiki)
