@@ -16,7 +16,7 @@ ErrorDocument 500 "<!DOCTYPE html><html lang=\"pl\"><head> <meta charset=\"utf-8
 
 <IfModule mod_rewrite.c>
 
-RewriteEngine On
+#RewriteEngine On
 
 # REDIRECTING FROM lol.com/page.php or lol.com/page.html to lol.com/page
 RewriteCond %{THE_REQUEST} \ /(.+)\.php
