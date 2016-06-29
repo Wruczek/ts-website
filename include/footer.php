@@ -4,10 +4,10 @@
         <!-- Footer -->
         <hr>
         <footer>
-            <p class="pull-left">&copy; twojanazwa 2016</p>
+            <p class="pull-left">&copy; <?php echo $config["general"]["title"]; ?> 2016</p>
             <div class="pull-right">
                 <ul class="list-inline">
-                    <li>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.1.1 | MIT License</li>
+                    <li>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.0 | MIT License</li>
                 </ul>
             </div>
         </footer>
@@ -35,6 +35,8 @@
     <?php } ?>
 
     <!-- Custom JS -->
+    <script>var apiurl = "api/status<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>";</script>
+
     <script src="js/script.js"></script>
     <script src="js/status.js"></script>
 </body>

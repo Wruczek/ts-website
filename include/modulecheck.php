@@ -1,5 +1,6 @@
 <?php
 
+/* Od wersji 1.2.0 sprawny htaccess nie jest już wymagany
 if (!isset($_SERVER['HTACCESS'])) {
     
     $title = 'Plik .htaccess nie jest włączony';
@@ -9,7 +10,9 @@ if (!isset($_SERVER['HTACCESS'])) {
     
     die(showError($title, $text));
 }
+*/
 
+/* Od wersji 1.2.0 mod_rewrite nie jest już wymagany
 if(!in_array('mod_rewrite', apache_get_modules())) {
     
     $title = 'Brak wymaganych rozszerzeń';
@@ -25,6 +28,7 @@ service apache2 reload</pre>
     
     die(showError($title, $text));
 }
+*/
 
 if(!file_exists(__DIR__ . "/../config/config.php")) {
     
@@ -80,7 +84,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.1.1 | MIT License
+            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.0 | MIT License
         </div>
     </div>
 

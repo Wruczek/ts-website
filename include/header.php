@@ -58,8 +58,8 @@ require_once __DIR__ . "/../include/adminlist.php";
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="viewer"><i class="fa fa-eye" aria-hidden="true"></i> Podgląd serwera</a></li>
-                    <li><a href="bans"><i class="fa fa-ban" aria-hidden="true"></i> Lista banów</a></li>
+                    <li><a href="viewer<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-eye" aria-hidden="true"></i> Podgląd serwera</a></li>
+                    <li><a href="bans<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-ban" aria-hidden="true"></i> Lista banów</a></li>
                     <!-- Nie mam na to czasu
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-television" aria-hidden="true"></i></i>Ranking <span class="caret"></span></a>
@@ -120,7 +120,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> Podgląd serwera</div>
                     <div class="panel-body">
-                        <a href="viewer" class="btn btn-primary btn-lg btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Zobacz &raquo;</a>
+                        <a href="viewer<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-eye" aria-hidden="true"></i> Zobacz &raquo;</a>
                     </div>
                 </div>
             </div>
