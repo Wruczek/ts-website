@@ -19,6 +19,9 @@ $config["general"]["newsDir"]       = "news";                                   
 $config["general"]["contactEmail"]  = "email@strona.pl";                            // Twój email kontaktowy
 
 
+$config["general"]["enablehta"]     = false; // Właczenie / wyłączenie dodatkowych usprawnień strony w htaccess (zalecane, 
+                                             // wymaga jednak aktualnej wersji Apache oraz włączenia htaccess oraz mod_rewrite)
+
 
 /********* Konfiguracja serwera TeamSpeak *********/
 
@@ -39,6 +42,8 @@ $config["navlinks"] = array(
     array("fa-comments", "Forum", "forum"),
     array("fa-shopping-cart", "Sklep", "sklep")
 );
+
+
 
 /************* Konfiguracja listy administratorow *************/
 

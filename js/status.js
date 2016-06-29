@@ -8,9 +8,9 @@ $(document).ready(function () {
 })
 
 function checkStatus() {
-
+    
     $.ajax({
-        url: "api/status",
+        url: apiurl,
         success: function (json) {
 
             json = json.tsstatus;
