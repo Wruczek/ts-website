@@ -18,7 +18,7 @@ $banlist = $cache->get('banlist');
 
 if (is_null($banlist)) {
     $banlist = array(getBanlist(), date('d-m-Y H:i:s'));
-    $cache->set('banlist', $banlist, 60);
+    $cache->set('banlist', $banlist, 600);
 }
 
 
@@ -76,7 +76,7 @@ function getBanlist() {
                 continue;
             
             $lastnickname =     $ban['lastnickname']->toString();
-            $reason =           $ban['reason']->toString();
+            $reason =           $ban['reason'];
             $invokername =      $ban['invokername']->toString();
             $created =          date('d-m-Y H:i:s', $ban['created']);
             $duration =         $ban['duration'];

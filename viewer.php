@@ -16,7 +16,7 @@ $tsviewer = $cache->get('tsviewer');
 
 if (is_null($tsviewer)) {
     $tsviewer = array(getViewer(), date('d-m-Y H:i:s'));
-    $cache->set('tsviewer', $tsviewer, 30);
+    $cache->set('tsviewer', $tsviewer, 300);
 }
 
 // print_r ($tsviewer);
