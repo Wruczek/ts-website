@@ -20,24 +20,51 @@ if (is_null($adminlist)) {
     $cache->set('adminlist', $adminlist, 30);
 }
 
+
 // FUNCTIONS
 
 function getAdminList() {
+    global $config;
+    
+    $admingroups = $config["adminlist"];
+    $localIcons = array(100, 200, 300, 400, 500, 600);
     
     try {
         $tsAdmin = TeamSpeak3::factory(getTeamspeakURI(). "#no_query_clients");
-        $serverGroupList = $tsAdmin->serverGroupList();
         
         $output = "";
         
-        foreach ($serverGroupList as $group) {
+        foreach ($admingroups as $group) {
             
-            if(!isAdminGroup($group->getId()))
+            if(!array_key_exists((string) $group, $tsAdmin->serverGroupList()))
                 continue;
             
-            $output .= "<p class=\"groupname\">$group</p>";
+            $group = $tsAdmin->serverGroupGetById($group);
             
-            foreach ($group->clientList() as $userInfo) {
+            $icon = '';
+            
+            if($group["iconid"]) {
+                if(!$group->iconIsLocal("iconid")) {
+                    $groupicon = getGroupIcon($tsAdmin, $group);
+
+                    if($groupicon) {
+                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" /> ';
+                    }
+                } elseif(in_array($group["iconid"], $localIcons)) {
+                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" /> ';
+                }
+            }
+            
+            $output .= "<p class=\"groupname\">$icon$group</p>";
+            
+            $clients = $group->clientList();
+            
+            if(empty($clients)) {
+                $output .= '<p class="text-center"><i>Ta grupa jest pusta</i></p>';
+                continue;
+            }
+            
+            foreach ($clients as $userInfo) {
                 $user = getClientByDbid($tsAdmin, $userInfo['cldbid']);
                 
                 if(!$user) {
@@ -45,7 +72,7 @@ function getAdminList() {
                     continue;
                 }
                 
-                $output .=  '<p>' . '<img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pullright">Away</span>' : '<span class="label label-success pullright">Online</span>') . '</p>';
+                $output .=  '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pullright">Away</span>' : '<span class="label label-success pullright">Online</span>') . '</p>';
             }
         }
         
@@ -56,16 +83,17 @@ function getAdminList() {
             
 }
 
-function isAdminGroup($groupid) {
-    global $config;
-    $admingroups = $config["adminlist"];
-    
-    return in_array($groupid, $admingroups);
-}
-
 function getClientByDbid($tsAdmin, $cldbid) {
     try {
         return $tsAdmin->clientGetByDbid($cldbid);
+    } catch(TeamSpeak3_Exception $e) {
+        return false;
+    }
+}
+
+function getGroupIcon($tsAdmin, $group) {
+    try {
+        return $group->iconDownload();
     } catch(TeamSpeak3_Exception $e) {
         return false;
     }

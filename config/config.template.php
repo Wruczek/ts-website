@@ -47,5 +47,5 @@ $config["navlinks"] = array(
 
 /************* Konfiguracja listy administratorow *************/
 
-// ID grup wyświetlanych na liście administracji
+// ID grup wyświetlanych na liście administracji. Kolejność grup decyduje o kolejności wyświetlania na stronie
 $config["adminlist"] = array(6, 17, 19);
