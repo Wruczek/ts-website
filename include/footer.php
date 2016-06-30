@@ -7,7 +7,7 @@
             <p class="pull-left">&copy; <?php echo $config["general"]["title"]; ?> 2016</p>
             <div class="pull-right">
                 <ul class="list-inline">
-                    <li>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.1 | MIT License</li>
+                    <li>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.2 | MIT License</li>
                 </ul>
             </div>
         </footer>
