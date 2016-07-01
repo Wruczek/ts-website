@@ -25,24 +25,24 @@ if (is_null($adminlist)) {
 
 function getAdminList() {
     global $config;
-    
+
     $admingroups = $config["adminlist"];
     $localIcons = array(100, 200, 300, 400, 500, 600);
-    
+
     try {
         $tsAdmin = TeamSpeak3::factory(getTeamspeakURI(). "#no_query_clients");
-        
+
         $output = "";
-        
+
         foreach ($admingroups as $group) {
-            
+
             if(!array_key_exists((string) $group, $tsAdmin->serverGroupList()))
                 continue;
-            
+
             $group = $tsAdmin->serverGroupGetById($group);
-            
+
             $icon = '';
-            
+
             if($group["iconid"]) {
                 if(!$group->iconIsLocal("iconid")) {
                     $groupicon = getGroupIcon($tsAdmin, $group);
@@ -54,33 +54,33 @@ function getAdminList() {
                     $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" /> ';
                 }
             }
-            
+
             $output .= "<p class=\"groupname\">$icon$group</p>";
-            
+
             $clients = $group->clientList();
-            
+
             if(empty($clients)) {
                 $output .= '<p class="text-center"><i>Ta grupa jest pusta</i></p>';
                 continue;
             }
-            
+
             foreach ($clients as $userInfo) {
                 $user = getClientByDbid($tsAdmin, $userInfo['cldbid']);
-                
+
                 if(!$user) {
                     $output .=  '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pullright">Offline</span></p>';
                     continue;
                 }
-                
+
                 $output .=  '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pullright">Away</span>' : '<span class="label label-success pullright">Online</span>') . '</p>';
             }
         }
-        
+
         return $output;
     } catch(TeamSpeak3_Exception $e) {
         return '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd ' . $e->getCode() . ': ' . $e->getMessage() . '</p></div>';
     }
-            
+
 }
 
 function getClientByDbid($tsAdmin, $cldbid) {

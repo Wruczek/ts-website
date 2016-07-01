@@ -2,21 +2,21 @@
 
 /* Od wersji 1.2.0 sprawny htaccess nie jest już wymagany
 if (!isset($_SERVER['HTACCESS'])) {
-    
+
     $title = 'Plik .htaccess nie jest włączony';
-    
+
     $text = '<p>Strona wymaga włączonej obsługi pliku <code>.htaccess</code>.</p>
             <p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-htaccess-file">Poradnik na temat właczania pliku htaccess</a></p>';
-    
+
     die(showError($title, $text));
 }
 */
 
 /* Od wersji 1.2.0 mod_rewrite nie jest już wymagany
 if(!in_array('mod_rewrite', apache_get_modules())) {
-    
+
     $title = 'Brak wymaganych rozszerzeń';
-    
+
     $text = '<p>Na swoim serwerze nie posiadasz modułu <code>rewrite</code> wymaganego do poprawnego działania tej strony.</p>
             <p>Posiadasz system Ubuntu? Świetnie! Uruchom poniższe komendy, by włączyć wymagany moduł:</p>
 <pre>sudo a2enmod rewrite
@@ -25,7 +25,7 @@ sudo service apache2 reload</pre>
 <pre>a2enmod rewrite
 service apache2 reload</pre>
             <p>Jeśli używasz hostingu i nie masz dostępu do konsoli, skontaktuj się z administratorem lub pomocą techniczną Twojego hostingu.</p>';
-    
+
     die(showError($title, $text));
 }
 */
@@ -41,19 +41,19 @@ function isPHPVersionSupported() {
 
 if (!isPHPVersionSupported()) {
     $title = 'Niewspierana wersja PHP';
-    
+
     $text = '<p>Posiadasz starą, niewspieraną wersję PHP.</p><p>Twoja wersja PHP: <b>' . phpversion() . '</b>, minimalna wymagana wersja PHP: <b>5.3.0</b>.</p><p>Zaktualizuj PHP i spróbuj ponownie.</p>';
-    
+
     die(showError($title, $text));
 }
 
 if(!file_exists(__DIR__ . "/../config/config.php")) {
-    
+
     $title = 'Brak pliku config.php';
-    
+
     $text = '<p>Przejdź do folderu <code>config</code> i zmień nazwę pliku z <code>config.template.php</code> na <code>config.php</code>.</p>
             <p>Skonfiguruj stronę według własnych potrzeb.</p>';
-    
+
     die(showError($title, $text));
 }
 
@@ -84,7 +84,7 @@ function showError($title, $text) { ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
     <style>
         body { margin-top: 70px }
     </style>

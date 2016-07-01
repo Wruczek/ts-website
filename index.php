@@ -29,16 +29,16 @@ else
 
 function showNews($path) {
     global $parsedown;
-    
+
     $files = array_diff(scandir($path), array('..', '.'));
     foreach ($files as $newsFile) {
 
         if(!endsWith($newsFile, ".md"))
             continue;
-        
+
         $file = readFileContent($path . "/" . $newsFile);
         $lines = explode("\n", $file);
-        
+
         $title = $lines[0];
         $author = $lines[1];
         $text = implode("\n", array_slice($lines, 3));

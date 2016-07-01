@@ -30,11 +30,11 @@ die ($serverstatus);
 function getResult() {
     try {
         $start = microtime(true);
-        
+
         $tsstatus = getTeamspeakServerStatus();
-        
+
         $stop = microtime(true);
-        
+
         return json_encode(array(
             "tsstatus" => $tsstatus,
             "generated" => date('d-m-Y H:i:s')
@@ -58,9 +58,9 @@ function exception_error_handler($errno, $errstr, $errfile, $errline ) {
 }
 
 function getTeamspeakServerStatus() {
-    
+
     $response = pingTeamspeakServerFromConfig();
-        
+
     if ($response) {
         return array(
             "success"           => $response["virtualserver_status"]->toString() == "online",

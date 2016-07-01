@@ -62,36 +62,36 @@ if (is_null($banlist)) {
 <?php
 
 function getBanlist() {
-    
+
     try {
         $tsAdmin = TeamSpeak3::factory(getTeamspeakURI(). "#no_query_clients");
-        
+
         $bany = $tsAdmin->banList();
-        
+
         $output = "";
-        
+
         foreach ($bany as $ban) {
-            
+
             if(!isset($ban['lastnickname']))
                 continue;
-            
+
             $lastnickname =     $ban['lastnickname']->toString();
             $reason =           $ban['reason'];
             $invokername =      $ban['invokername']->toString();
             $created =          date('d-m-Y H:i:s', $ban['created']);
             $duration =         $ban['duration'];
-            
+
             if(empty($reason))
                 $reason = "<b>(brak powodu)</b>";
-            
+
             if($duration == 0)
                 $expires = "Ban permanentny";
             else
                 $expires = date('d-m-Y H:i:s', $ban['created'] + $duration);
-            
+
             $output .= "<tr><td>$lastnickname</td><td>$reason</td><td>$invokername</td><td>$created</td><td>$expires</td></tr>";
         }
-        
+
         return $output;
     } catch(TeamSpeak3_Exception $e) {
         if($e->getCode() == 1281) {
@@ -100,7 +100,7 @@ function getBanlist() {
             return '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd ' . $e->getCode() . ': ' . $e->getMessage() . '</p></div>';
         }
     }
-            
+
 }
 
 
