@@ -8,13 +8,13 @@ $(document).ready(function () {
 })
 
 function checkStatus() {
-    
+
     $.ajax({
         url: apiurl,
         success: function (json) {
 
             json = json.tsstatus;
-            
+
             var result = "";
 
             if (json.success) {

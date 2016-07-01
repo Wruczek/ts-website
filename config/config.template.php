@@ -19,7 +19,7 @@ $config["general"]["newsDir"]       = "config/news";                            
 $config["general"]["contactEmail"]  = "email@strona.pl";                            // Twój email kontaktowy
 
 
-$config["general"]["enablehta"]     = false; // Właczenie / wyłączenie dodatkowych usprawnień strony w htaccess (zalecane, 
+$config["general"]["enablehta"]     = false; // Właczenie / wyłączenie dodatkowych usprawnień strony w htaccess (zalecane,
                                              // wymaga jednak aktualnej wersji Apache oraz włączenia htaccess oraz mod_rewrite)
 
 

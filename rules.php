@@ -10,7 +10,7 @@ if(!file_exists($path)) {
     echo '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd: plik z regulaminem nie został odnaleziony</div>';
 } else {
     $file = readFileContent($path);
-    
+
     if(!$file) {
         echo '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd: nie można odczytać pliku z regulaminem</div>';
     } else {

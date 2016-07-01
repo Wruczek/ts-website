@@ -30,7 +30,7 @@ require_once __DIR__ . "/../include/adminlist.php";
     <!-- DataTables for Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <?php } ?>
-    
+
     <!-- Custom CSS -->
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -42,7 +42,7 @@ require_once __DIR__ . "/../include/adminlist.php";
 </head>
 
 <body>
-    
+
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,7 +51,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                     <span class="sr-only">Nawigacja</span>
                     <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
                 </button>
-                
+
                 <a class="navbar-brand" href="."><img style="width: 64px;" src="img/icon/icon-64.png" alt="Logo strony"><?php echo $config["general"]["title"]; ?></a>
             </div>
 
@@ -73,15 +73,15 @@ require_once __DIR__ . "/../include/adminlist.php";
                     -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php foreach ($config["navlinks"] as $navlink) { 
+                    <?php foreach ($config["navlinks"] as $navlink) {
                         $icon = $navlink[0];
                         $text = $navlink[1];
                         $link = $navlink[2]; ?>
                     <li><a href="<?php echo $link; ?>"><i class="fa <?php echo $icon; ?>" aria-hidden="true"></i> <?php echo $text; ?></a></li>
                     <?php } ?>
-                    
+
                     <li data-toggle="tooltip" data-placement="bottom" title="Kontaktuj się z nami pod adresem <?php echo $config["general"]["contactEmail"]; ?>"><a href="mailto:<?php echo $config["general"]["contactEmail"]; ?>"><i class="fa fa-envelope" aria-hidden="true"></i>Kontakt</a></li>
-                    
+
                     <li data-toggle="tooltip" data-placement="bottom" title="Kliknij, by połączyć się z serwerem <?php echo $config['teamspeak']['displayip']; ?>"><a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><i class="fa fa-sign-in" aria-hidden="true"></i>Połącz z serwerem</a></li>
                 </ul>
             </div>
@@ -117,7 +117,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                         <?php echo $adminlist[0]; ?>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> Podgląd serwera</div>
                     <div class="panel-body">
@@ -125,5 +125,5 @@ require_once __DIR__ . "/../include/adminlist.php";
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md-9 col-md-pull-3">

@@ -1,4 +1,4 @@
-﻿Informacje na temat systemu newsów:
+Informacje na temat systemu newsów:
 
 Jeśli chcesz, możesz dodawać, zmieniać oraz usuwać newsy w domyślnym podfolderze news ulokowanym w folderze config. Folder ten jest do zmiany w pliku config.php
 Aktualnie newsy są tworzone przy użyciu Markdown mieszanego z HTMLem. Może potem dodam jakiś panel jak mi się zachcę Xd
