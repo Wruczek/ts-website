@@ -16,7 +16,12 @@ require_once __DIR__ . "/lib/parsedown/parsedown.php";
 
 $parsedown = new Parsedown();
 
-showNews(__DIR__ . "/" . $config["general"]["newsDir"]);
+$path = __DIR__ . "/" . $config["general"]["newsDir"];
+
+if(file_exists($path))
+    showNews($path);
+else
+    echo '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd: folder z newsami nie został odnaleziony.</p><p class="text-center">Sprawdź, czy lokalizacja ustawiona w pliku <code>config/config.php</code> jest poprawna.</p></div>';
 
 // *******
 // METHODS
