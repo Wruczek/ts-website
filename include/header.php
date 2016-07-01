@@ -60,6 +60,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                 <ul class="nav navbar-nav">
                     <li><a href="viewer<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-eye" aria-hidden="true"></i> Podgląd serwera</a></li>
                     <li><a href="bans<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-ban" aria-hidden="true"></i> Lista banów</a></li>
+                    <li><a href="rules<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-book" aria-hidden="true"></i> Regulamin</a></li>
                     <!-- Nie mam na to czasu
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-television" aria-hidden="true"></i></i>Ranking <span class="caret"></span></a>

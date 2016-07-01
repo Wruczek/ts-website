@@ -869,6 +869,9 @@ class Parsedown
                 'element' => array(
                     'name' => 'table',
                     'handler' => 'elements',
+                    'attributes' => array(
+                        'class' => 'table table-bordered table-hover table-responsive'
+                    ),
                 ),
             );
 
