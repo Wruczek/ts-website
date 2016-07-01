@@ -86,7 +86,12 @@ body {
 }
 
 .navbar {
-    font-size: initial;
+    font-size: 14px
+}
+
+.nav > li > a {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .navbar-brand {
@@ -97,6 +102,6 @@ body {
 
 .navbar-brand > img {
     height: 100%;
-    padding: 10px 5px 10px 15px;
+    padding: 5px 5px 5px 15px;
     width: auto;
 }
