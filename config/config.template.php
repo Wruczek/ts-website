@@ -15,7 +15,7 @@ $config["general"]["title"]         = "TwojTS.PL";                              
 $config["general"]["icon"]          = "img/icon/icon-32.png";                       // Ikona używana na pasku nawigacji
 $config["general"]["subtitle"]      = " - Najlepszy serwer Teamspeak!";             // Dodatkowy tekst dodawany do tytułu na pasku przeglądarki
 $config["general"]["desc"]          = "Polski serwer TeamSpeak! Zapraszamy :)";     // Opis strony - wyświetlany np. w wynikach wyszukiwarki Google
-$config["general"]["newsDir"]       = "news";                                       // Folder z newsami (relatywnie do głównego folderu)
+$config["general"]["newsDir"]       = "config/news";                                // Folder z newsami (relatywnie do głównego folderu)
 $config["general"]["contactEmail"]  = "email@strona.pl";                            // Twój email kontaktowy
 
 
