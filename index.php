@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__FILE__) . "/include/modulecheck.php";
 require_once __DIR__ . "/include/header.php";
 require_once __DIR__ . "/lib/parsedown/parsedown.php";
 ?>

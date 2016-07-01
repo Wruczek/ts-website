@@ -30,6 +30,23 @@ service apache2 reload</pre>
 }
 */
 
+function isPHPVersionSupported() {
+    if (!defined('PHP_VERSION_ID')) {
+        $version = explode('.', PHP_VERSION);
+        define('PHP_VERSION_ID', ($version[0] * 10000 + $version[1] * 100 + $version[2]));
+    }
+
+    return PHP_VERSION_ID >= 50300;
+}
+
+if (!isPHPVersionSupported()) {
+    $title = 'Niewspierana wersja PHP';
+    
+    $text = '<p>Posiadasz starą, niewspieraną wersję PHP.</p><p>Twoja wersja PHP: <b>' . phpversion() . '</b>, minimalna wymagana wersja PHP: <b>5.3.0</b>.</p><p>Zaktualizuj PHP i spróbuj ponownie.</p>';
+    
+    die(showError($title, $text));
+}
+
 if(!file_exists(__DIR__ . "/../config/config.php")) {
     
     $title = 'Brak pliku config.php';
@@ -84,7 +101,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.2 | MIT License
+            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.3 | MIT License
         </div>
     </div>
 
