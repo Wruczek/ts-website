@@ -49,7 +49,9 @@ require_once __DIR__ . "/../include/adminlist.php";
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Nawigacja</span>
-                    <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
 
                 <a class="navbar-brand" href="."><img style="width: 64px;" src="img/icon/icon-64.png" alt="Logo strony"><?php echo $config["general"]["title"]; ?></a>
