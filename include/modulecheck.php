@@ -95,7 +95,7 @@ function showError($title, $text) { ?>
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><img src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png" width="20px"> <?php echo $title; ?></h3>
+            <h3 class="panel-title"><img src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png" width="20px" alt="Błąd"> <?php echo $title; ?></h3>
         </div>
         <div class="panel-body">
             <?php echo $text; ?>
