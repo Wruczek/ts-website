@@ -49,3 +49,15 @@ $config["navlinks"] = array(
 
 // ID grup wyświetlanych na liście administracji. Kolejność grup decyduje o kolejności wyświetlania na stronie
 $config["adminlist"] = array(6, 17, 19);
+
+
+
+/************* Konfiguracja panelu "kontakt" *************/
+
+// Ustaw $config['contact'] = ''; by kompletnie wyłączyć wyświetlanie panelu
+$config['contact'] = '
+<li>TeamSpeak: <span class="pullright">kanał <a href="ts3server://ts.wruczek.top?channel=Kana%C5%82y%20publiczne%2FPogaduchy%2FPogaduchy%205">Pomoc</a></span></li>
+<li>Email: <span class="pullright"><a href="mailto:kontakt@email.com">konakt@email.com</a></span></li>
+<li>GaduGadu: <span class="pullright"><a href="gg:49568758">49568758 <img src="http://status.gadu-gadu.pl/users/status.asp?id=49568758&styl=1" alt="GG status"></a></span></li>
+<li>Steam: <span class="pullright"><a href="http://steamcommunity.com/id/wruczek">Wruczek</a></li>
+';
