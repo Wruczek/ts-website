@@ -12,6 +12,7 @@
 /************* Konfiguracja generalna strony *************/
 
 $config["general"]["title"]         = "TwojTS.PL";                                  // Tytuł strony - wyświetlany np. w menu i na pasku nawigacji
+$config["general"]["theme"]         = "superhero";                                  // Motyw strony - http://bootswatch.com/ (ALPHA)
 $config["general"]["icon"]          = "img/icon/icon-32.png";                       // Ikona używana na pasku nawigacji
 $config["general"]["subtitle"]      = " - Najlepszy serwer Teamspeak!";             // Dodatkowy tekst dodawany do tytułu na pasku przeglądarki
 $config["general"]["desc"]          = "Polski serwer TeamSpeak! Zapraszamy :)";     // Opis strony - wyświetlany np. w wynikach wyszukiwarki Google
