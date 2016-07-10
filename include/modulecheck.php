@@ -101,7 +101,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.3 | MIT License
+            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.3.1 | MIT License
         </div>
     </div>
 
