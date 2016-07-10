@@ -48,10 +48,10 @@ function getAdminList() {
                     $groupicon = getGroupIcon($tsAdmin, $group);
 
                     if($groupicon) {
-                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" /> ';
+                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" alt="Ikona grupy" /> ';
                     }
                 } elseif(in_array($group["iconid"], $localIcons)) {
-                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" /> ';
+                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" alt="Ikona grupy" /> ';
                 }
             }
 
@@ -72,7 +72,7 @@ function getAdminList() {
                     continue;
                 }
 
-                $output .=  '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pullright">Away</span>' : '<span class="label label-success pullright">Online</span>') . '</p>';
+                $output .=  '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="Status użytkownika">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pullright">Away</span>' : '<span class="label label-success pullright">Online</span>') . '</p>';
             }
         }
 
