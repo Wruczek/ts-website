@@ -82,8 +82,6 @@ require_once __DIR__ . "/../include/adminlist.php";
                     <li><a href="<?php echo $link; ?>"><i class="fa <?php echo $icon; ?>" aria-hidden="true"></i> <?php echo $text; ?></a></li>
                     <?php } ?>
 
-                    <li data-toggle="tooltip" data-placement="bottom" title="Kontaktuj się z nami pod adresem <?php echo $config["general"]["contactEmail"]; ?>"><a href="mailto:<?php echo $config["general"]["contactEmail"]; ?>"><i class="fa fa-envelope" aria-hidden="true"></i>Kontakt</a></li>
-
                     <li data-toggle="tooltip" data-placement="bottom" title="Kliknij, by połączyć się z serwerem <?php echo $config['teamspeak']['displayip']; ?>"><a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><i class="fa fa-sign-in" aria-hidden="true"></i>Połącz z serwerem</a></li>
                 </ul>
             </div>
@@ -119,6 +117,15 @@ require_once __DIR__ . "/../include/adminlist.php";
                         <?php echo $adminlist[0]; ?>
                     </div>
                 </div>
+
+                <?php if(!empty($config['contact'])) { ?>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i class="fa fa-envelope" aria-hidden="true"></i> Kontakt</div>
+                    <div class="panel-body">
+                        <?php echo $config['contact']; ?>
+                    </div>
+                </div>
+                <?php } ?>
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> Podgląd serwera</div>
