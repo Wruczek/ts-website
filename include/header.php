@@ -118,11 +118,11 @@ require_once __DIR__ . "/../include/adminlist.php";
                     </div>
                 </div>
 
-                <?php if(!empty($config['contact'])) { ?>
+                <?php if(!empty($config['contact']['text'])) { ?>
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-envelope" aria-hidden="true"></i> Kontakt</div>
+                    <div class="panel-heading"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $config['contact']['title']; ?></div>
                     <div class="panel-body">
-                        <?php echo $config['contact']; ?>
+                        <?php echo $config['contact']['text']; ?>
                     </div>
                 </div>
                 <?php } ?>
