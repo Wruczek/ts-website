@@ -17,8 +17,6 @@ $config["general"]["icon"]          = "img/icon/icon-32.png";                   
 $config["general"]["subtitle"]      = " - Najlepszy serwer Teamspeak!";             // Dodatkowy tekst dodawany do tytułu na pasku przeglądarki
 $config["general"]["desc"]          = "Polski serwer TeamSpeak! Zapraszamy :)";     // Opis strony - wyświetlany np. w wynikach wyszukiwarki Google
 $config["general"]["newsDir"]       = "config/news";                                // Folder z newsami (relatywnie do głównego folderu)
-$config["general"]["contactEmail"]  = "email@strona.pl";                            // Twój email kontaktowy
-
 
 $config["general"]["enablehta"]     = false; // Właczenie / wyłączenie dodatkowych usprawnień strony w htaccess (zalecane,
                                              // wymaga jednak aktualnej wersji Apache oraz włączenia htaccess oraz mod_rewrite)
