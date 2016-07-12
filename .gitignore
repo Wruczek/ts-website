@@ -1,5 +1,6 @@
 config/config.php
 prototypes/
+users.php
 
 # Created by https://www.gitignore.io/api/windows,osx,linux
 
