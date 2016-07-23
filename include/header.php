@@ -22,6 +22,7 @@ require_once __DIR__ . "/../include/adminlist.php";
 
     <!-- Bootswatch -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/<?php echo $config["general"]["theme"]; ?>/bootstrap.min.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">

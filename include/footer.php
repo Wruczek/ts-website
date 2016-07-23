@@ -1,18 +1,20 @@
             </div>
         </div>
+    </div>
+    <!-- /container -->
 
-        <!-- Footer -->
-        <hr>
-        <footer>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <hr>
             <p class="pull-left">&copy; <?php echo $config["general"]["title"]; ?> 2016</p>
             <div class="pull-right">
                 <ul class="list-inline">
-                    <li>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.3.2 | MIT License</li>
+                    <li><p><small>Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.4 | MIT License<br>CSS dzięki uprzejmości <a href="https://flamespersecond.de">NothingTV</a>, tło &copy; <a href="http://nabulsigraphix.wix.com/commissions">NabulsiGraphix</a></small></p></li>
                 </ul>
             </div>
-        </footer>
+        </div>
     </div>
-    <!-- /container -->
 
     <!-- ################ -->
     <!-- #  JAVASCRIPT  # -->
