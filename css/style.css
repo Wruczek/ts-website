@@ -49,7 +49,7 @@ a {
 /* ADMINLIST */
 /* ********* */
 
-.adminlist > .groupname ~ .groupname {
+.adminlist> .groupname~ .groupname {
     margin-top: 15px;
 }
 
@@ -89,7 +89,7 @@ body {
     font-size: 14px
 }
 
-.nav > li > a {
+.nav> li> a {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -100,8 +100,44 @@ body {
     align-items: center;
 }
 
-.navbar-brand > img {
+.navbar-brand> img {
     height: 100%;
     padding: 5px 5px 5px 15px;
     width: auto;
+}
+
+
+/* ****** */
+/* FOOTER */
+/* ****** */
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 12rem;
+    min-height: 100%;
+}
+
+@media (max-width: 380px) {
+    body {
+        padding-bottom: 15rem;
+    }
+}
+
+@media (max-width: 280px) {
+    body {
+        padding-bottom: 20rem;
+    }
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
 }
