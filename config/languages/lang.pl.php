@@ -100,5 +100,5 @@ $lang["banlist"]["table"]["expires"] = "Wygasa";
 /************* Rules - rules.php *************/
 
 $lang["rules"]["title"] = "Regulamin serwera";
-$lang["rules"]["filenotfound"] = "Error: plik <code>config/rules.md</code> nie został odnaleziony!";
-$lang["rules"]["readerror"] = "Error: nie można odczytać pliku <code>config/rules.md</code>!";
+$lang["rules"]["filenotfound"] = "Wystąpił błąd: plik <code>config/rules.md</code> nie został odnaleziony!";
+$lang["rules"]["readerror"] = "Wystąpił błąd: nie można odczytać pliku <code>config/rules.md</code>!";
