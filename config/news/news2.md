@@ -1,4 +1,4 @@
-Readme od jQuery - do testów systemu
+jQuery Readme - system test
 jQuery, 2016-06-24, 21:00
 
 [jQuery](https://jquery.com/) — New Wave JavaScript

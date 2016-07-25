@@ -1,5 +1,9 @@
 ### Regulamin serwera
 
+This is a dedicated file to keep your server rules. Its loaded and displayed on "rules.php" page. To change it, go to the <code>config</code> directory and edit file <code>rules.md</code>
+
+<br>
+
 Oto dedykowany plik na regulamin twojego Teamspeaka wyświetlany na podstronie "regulamin". Plik z regulaminem znajdziesz w folderze <code>config</code> pod nazwą <code>rules.md</code>. Edytuje się go podobnie jak newsy.
 
 <br>

@@ -7,17 +7,17 @@ $parsedown = new Parsedown();
 $path = __DIR__ . "/config/rules.md";
 
 if(!file_exists($path)) {
-    echo '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd: plik z regulaminem nie został odnaleziony</div>';
+    echo '<div class="alert alert-danger"><p class="text-center">' . translate($lang["rules"]["filenotfound"]) . '</div>';
 } else {
     $file = readFileContent($path);
 
     if(!$file) {
-        echo '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd: nie można odczytać pliku z regulaminem</div>';
+        echo '<div class="alert alert-danger"><p class="text-center">' . translate($lang["rules"]["readerror"]) . '</div>';
     } else {
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-book" aria-hidden="true"></i> Regulamin serwera</h3>
+        <h3 class="panel-title"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["rules"]["title"]); ?></h3>
     </div>
     <div class="panel-body">
         <?php echo $parsedown->text($file); ?>
