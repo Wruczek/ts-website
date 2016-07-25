@@ -26,24 +26,24 @@ if (is_null($banlist)) {
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-ban" aria-hidden="true"></i> Lista banów</h3>
+        <h3 class="panel-title"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["banlist"]["title"]); ?></h3>
     </div>
     <div class="panel-body">
 
         <?php if(empty($banlist[0])) { ?>
             <div class="alert alert-success">
-                <p class="text-center">BRAK ZBANOWANYCH UŻYTKOWNIKÓW</p>
+                <p class="text-center"><?php tl($lang["banlist"]["emptylist"]); ?></p>
             </div>
         <?php } else { ?>
         <div class="table-responsive">
             <table id="banlist" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Nick</th>
-                        <th>Powód</th>
-                        <th>Zbanowany przez</th>
-                        <th>Data zbanowania</th>
-                        <th>Wygasa</th>
+                        <th><?php tl($lang["banlist"]["table"]["nickname"]); ?></th>
+                        <th><?php tl($lang["banlist"]["table"]["reason"]); ?></th>
+                        <th><?php tl($lang["banlist"]["table"]["bannedby"]); ?></th>
+                        <th><?php tl($lang["banlist"]["table"]["bandate"]); ?></th>
+                        <th><?php tl($lang["banlist"]["table"]["expires"]); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,13 +55,14 @@ if (is_null($banlist)) {
 
     </div>
     <div class="panel-footer">
-        Stan na <?php echo $banlist[1]; ?><!-- <span style="float: right">Podgląd odświerza się co 60 sekund</span> -->
+        <?php tl($lang["banlist"]["lastupdate"], [$banlist[1]]); ?><!-- <span style="float: right">Podgląd odświerza się co 60 sekund</span> -->
     </div>
 </div>
 
 <?php
 
 function getBanlist() {
+    global $lang;
 
     try {
         $tsAdmin = TeamSpeak3::factory(getTeamspeakURI(). "#no_query_clients");
@@ -82,10 +83,10 @@ function getBanlist() {
             $duration =         $ban['duration'];
 
             if(empty($reason))
-                $reason = "<b>(brak powodu)</b>";
+                $reason = "<b>" . translate($lang["banlist"]["table"]["emptyreason"]) . "</b>";
 
             if($duration == 0)
-                $expires = "Ban permanentny";
+                $expires = translate($lang["banlist"]["table"]["permaban"]);
             else
                 $expires = date('d-m-Y H:i:s', $ban['created'] + $duration);
 
@@ -97,7 +98,7 @@ function getBanlist() {
         if($e->getCode() == 1281) {
             return '';
         } else {
-            return '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd ' . $e->getCode() . ': ' . $e->getMessage() . '</p></div>';
+            return '<div class="alert alert-danger"><p class="text-center">' . translate($lang["general"]["scripterror"], [$e->getCode(), $e->getMessage()]) . '</p></div>';
         }
     }
 

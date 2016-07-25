@@ -6,7 +6,7 @@ require_once __DIR__ . "/lib/parsedown/parsedown.php";
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title news-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Wiadomości</h3>
+        <h3 class="panel-title news-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <?php tl($lang["index"]["title"]); ?></h3>
     </div>
 </div>
 
@@ -21,7 +21,7 @@ $path = __DIR__ . "/" . $config["general"]["newsDir"];
 if(file_exists($path))
     showNews($path);
 else
-    echo '<div class="alert alert-danger"><p class="text-center">Wystąpił błąd: folder z newsami nie został odnaleziony.</p><p class="text-center">Sprawdź, czy lokalizacja ustawiona w pliku <code>config/config.php</code> jest poprawna.</p></div>';
+    echo '<div class="alert alert-danger"><p class="text-center">' . translate($lang["index"]["errortitle"]) . '</p><p class="text-center">' . translate($lang["index"]["errorsubtitle"]) . '</p></div>';
 
 // *******
 // METHODS

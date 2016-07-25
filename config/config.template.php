@@ -1,65 +1,65 @@
 <?php
 /*
-    Autor: Wruczek
-    Kontakt:
+    Author: Wruczek
+    Contact me:
         TeamSpeak: ts.wruczek.top
-        E-mail: wruczekk@gmail.com
-        Prześlij dotację: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ
+        Email: wruczekk@gmail.com
+        Donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ
 */
 
 
 
-/************* Konfiguracja generalna strony *************/
+/************* General configuration *************/
 
-$config["general"]["title"]         = "TwojTS.PL";                                  // Tytuł strony - wyświetlany np. w menu i na pasku nawigacji
-$config["general"]["theme"]         = "superhero";                                  // Motyw strony - http://bootswatch.com/ (ALPHA)
-$config["general"]["icon"]          = "img/icon/icon-32.png";                       // Ikona używana na pasku nawigacji
-$config["general"]["subtitle"]      = " - Najlepszy serwer Teamspeak!";             // Dodatkowy tekst dodawany do tytułu na pasku przeglądarki
-$config["general"]["desc"]          = "Polski serwer TeamSpeak! Zapraszamy :)";     // Opis strony - wyświetlany np. w wynikach wyszukiwarki Google
-$config["general"]["newsDir"]       = "config/news";                                // Folder z newsami (relatywnie do głównego folderu)
+$config["general"]["title"]         = "BestTS.NET";                                 // Website title - displayed in the menu
+$config["general"]["icon"]          = "img/icon/icon-32.png";                       // Website icon
+$config["general"]["subtitle"]      = " - Best TeamSpeak server!";                  // Website subtitle
+$config["general"]["desc"]          = "Polski serwer TeamSpeak! Zapraszamy :)";     // Website description - displayed in Google search engine
+$config["general"]["newsDir"]       = "config/news";                                // News folder (relative to project folder)
 
-$config["general"]["enablehta"]     = false; // Właczenie / wyłączenie dodatkowych usprawnień strony w htaccess (zalecane,
-                                             // wymaga jednak aktualnej wersji Apache oraz włączenia htaccess oraz mod_rewrite)
-
-
-/********* Konfiguracja serwera TeamSpeak *********/
-
-$config['teamspeak']['host']          = '127.0.0.1';          // Adres serwera TeamSpeak
-$config['teamspeak']['login']         = 'serveradmin';        // Login konta Query
-$config['teamspeak']['password']      = 'pa$$word';           // Hasło konta Query
-$config['teamspeak']['server_port']   = 9987;                 // Port serwera TeamSpeak
-$config['teamspeak']['query_port']    = 10011;                // Port Query
-$config['teamspeak']['displayip']     = 'ts.serwer.pl';       // IP wyświetlane na stronie i używane do połączeń
+$config["general"]["enablehta"]     = false; // Enable / Disable additional website features (recommended, but
+                                             // you need to have up-to-date version of Apache and install mod_rewrite)
+                                             // After setting to true, go into .htaccess file and uncomment 19 line
 
 
+/********* TeamSpeak configuration *********/
 
-/************* Dodatkowe linki na pasku nawigacji *************/
+$config['teamspeak']['host']          = '127.0.0.1';          // TeamSpeak host address
+$config['teamspeak']['login']         = 'serveradmin';        // Login
+$config['teamspeak']['password']      = 'pa$$word';           // Password
+$config['teamspeak']['server_port']   = 9987;                 // TeamSpeak server port
+$config['teamspeak']['query_port']    = 10011;                // Query port
+$config['teamspeak']['displayip']     = 'ts.server.net';       // IP shown to users and used for connections
+
+
+
+/************* Additional navigation links - you can link to your stuff *************/
 
 $config["navlinks"] = array(
-    // WZÓR: array("ikona", "tekst", "link") GDZIE ikona to nazwa ikony ze strony: http://fontawesome.io/icons/
-    array("fa-facebook-official", "Facebook", "https://facebook.com/najlepszytsXd"),
+    // TEMPLATE: array("icon", "displayed text", "link"), ICON is an icon name from: http://fontawesome.io/icons/
+    array("fa-facebook-official", "Facebook", "https://facebook.com/bestteamspeakXd"),
     array("fa-comments", "Forum", "forum"),
-    array("fa-shopping-cart", "Sklep", "sklep")
+    array("fa-shopping-cart", "Shop", "shop")
 );
 
 
 
-/************* Konfiguracja listy administratorow *************/
+/************* Adminlist configuration *************/
 
-// ID grup wyświetlanych na liście administracji. Kolejność grup decyduje o kolejności wyświetlania na stronie
+// ID of servergroups displayed as admins in Adminlist. Put it in the same way you want it to be displayed.
 $config["adminlist"] = array(6, 17, 19);
 
 
 
-/************* Konfiguracja panelu "kontakt" *************/
+/************* Contact panel configuration *************/
 
-// Ustaw $config['contact']['text'] = ''; by kompletnie wyłączyć wyświetlanie panelu
-$config['contact']['title'] = 'Kontakt z właścicielem';
+// Set $config['contact']['text'] = ''; to hide this panel
+$config['contact']['title'] = 'Contact the staff';
 $config['contact']['text'] = '
 <ul class="list-unstyled">
-<li>TeamSpeak: <span class="pullright">kanał <a href="ts3server://ts.wruczek.top?channel=Kana%C5%82y%20publiczne%2FPogaduchy%2FPogaduchy%205">Pomoc</a></span></li>
+<li>TeamSpeak: <span class="pullright">channel <a href="ts3server://ts.wruczek.top?channel=Kana%C5%82y%20publiczne%2FPogaduchy%2FPogaduchy%205">Pomoc</a></span></li>
 <li>Email: <span class="pullright"><a href="mailto:kontakt@email.com">konakt@email.com</a></span></li>
-<li>GaduGadu: <span class="pullright"><a href="gg:49568758">49568758 <img src="https://status.gadu-gadu.pl/users/status.asp?id=49568758&styl=1"></a></span></li>
+<li>GaduGadu: <span class="pullright"><a href="gg:123456789">123456789 <img src="https://status.gadu-gadu.pl/users/status.asp?id=49568758&styl=1"></a></span></li>
 <li>Steam: <span class="pullright"><a href="http://steamcommunity.com/id/wruczek">Wruczek</a></span></li>
 </ul>
 ';

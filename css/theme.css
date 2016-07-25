@@ -13,7 +13,7 @@ body {
 }
 
 .navbar-default {
-    background-color: #004449 !important;
+    background-color: #055157 !important;
 }
 
 .btn-dark {
@@ -197,7 +197,7 @@ fieldset[disabled] .btn-link:focus {
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
-    background-color: #004449
+    background-color: #083d48
 }
 
 .navbar-default .navbar-nav>.active>a,

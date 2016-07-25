@@ -40,19 +40,19 @@ function isPHPVersionSupported() {
 }
 
 if (!isPHPVersionSupported()) {
-    $title = 'Niewspierana wersja PHP';
+    $title = 'Unsupported PHP version';
 
-    $text = '<p>Posiadasz starą, niewspieraną wersję PHP.</p><p>Twoja wersja PHP: <b>' . phpversion() . '</b>, minimalna wymagana wersja PHP: <b>5.3.0</b>.</p><p>Zaktualizuj PHP i spróbuj ponownie.</p>';
+    $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.3.0</b>.</p><p>Please update your PHP installation and try again.</p>';
 
     die(showError($title, $text));
 }
 
 if(!file_exists(__DIR__ . "/../config/config.php")) {
 
-    $title = 'Brak pliku config.php';
+    $title = 'config.php does not exists';
 
-    $text = '<p>Przejdź do folderu <code>config</code> i zmień nazwę pliku z <code>config.template.php</code> na <code>config.php</code>.</p>
-            <p>Skonfiguruj stronę według własnych potrzeb.</p>';
+    $text = '<p>Please go into the directory <code>config</code> and rename <code>config.template.php</code> to <code>config.php</code>.</p>
+            <p>Edit the new file and tweak it to suite your needs.</p>';
 
     die(showError($title, $text));
 }
@@ -101,7 +101,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.2.4 | MIT License
+            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.0 | MIT License
         </div>
     </div>
 

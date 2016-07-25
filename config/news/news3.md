@@ -1,4 +1,4 @@
-Readme od Bootstrap - do testów systemu
+Bootstrap Readme - system test
 Bootstrap, 2016-06-24, 21:00
 
 # [Bootstrap](http://getbootstrap.com)

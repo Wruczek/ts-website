@@ -40,6 +40,10 @@ a {
     float: right
 }
 
+.serverstatus .fa {
+    margin: 0;
+}
+
 .serverstatus span {
     float: right
 }
