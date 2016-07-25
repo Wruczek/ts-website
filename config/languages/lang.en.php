@@ -1,6 +1,6 @@
 <?php
 /*
- * The english language for ts-website
+ * English language for ts-website
  * @copy Wruczek <wruczekk@gmail.com>
  */
 
