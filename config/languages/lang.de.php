@@ -1,7 +1,7 @@
 <?php
 /*
- * English language for ts-website
- * @copy Wruczek <wruczekk@gmail.com>
+ * German language for ts-website
+ * @copy NothingTV <contact@tactical-gaming.com>
  */
 
 $lang = array();
