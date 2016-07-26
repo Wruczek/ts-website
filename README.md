@@ -1,5 +1,7 @@
 # ts-website
 
+![Website screenshot](http://i.imgur.com/gKZezVc.png)
+
 **ts-website to projekt strony internetowej przeznaczonej pod serwery TeamSpeak 3.**<br>
 Projekt - rozwijany przez jedną osobę - jest jeszcze we wczesnej fazie testów. Niedawno wypuszczona została pierwsza publiczna wersja, aktualnie chcę zapewnić działanie strony pod różnymi serwerami, w różnych kondycjach.
 
