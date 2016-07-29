@@ -1,9 +1,9 @@
 .fa {
-    margin-right: 5px;
+    margin-right: 5px
 }
 
 .icon-smaller {
-    font-size: 0.7em;
+    font-size: 0.7em
 }
 
 a {
@@ -27,6 +27,10 @@ a {
     float: right
 }
 
+.pullright .fa {
+    margin-right: 0px
+}
+
 
 /* ****** */
 /* STATUS */
@@ -40,8 +44,12 @@ a {
     float: right
 }
 
-.serverstatus .fa {
-    margin: 0;
+.serverstatus .fa-signal {
+    margin-right: 3px
+}
+
+.serverstatus .fa-bolt {
+    margin-right: 11px
 }
 
 .serverstatus span {
@@ -86,7 +94,7 @@ a {
 /* ****** */
 
 body {
-    padding-top: 80px;
+    padding-top: 80px
 }
 
 .navbar {
@@ -116,7 +124,7 @@ body {
 /* ****** */
 
 html {
-    height: 100%;
+    height: 100%
 }
 
 body {
