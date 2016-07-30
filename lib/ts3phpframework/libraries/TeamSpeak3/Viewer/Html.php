@@ -168,7 +168,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
   {
     return "ts3_viewer " . $this->currObj->getClass(null);
   }
-  
+
   /**
    * Returns the ID of the current node which will be used as a summary element for
    * the container element.
@@ -414,7 +414,11 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
       {
         if(!isset($this->cacheIcon[$this->currObj["virtualserver_icon_id"]]))
         {
-          $download = $this->currObj->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("virtualserver_icon_id"));
+          try {
+            $download = $this->currObj->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("virtualserver_icon_id"));
+          } catch(TeamSpeak3_Exception $e) {
+            return;
+          }
 
           if($this->ftclient == "data:image")
           {
@@ -484,7 +488,11 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
       {
         if(!isset($this->cacheIcon[$this->currObj["channel_icon_id"]]))
         {
-          $download = $this->currObj->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("channel_icon_id"));
+          try {
+            $download = $this->currObj->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("channel_icon_id"));
+          } catch(TeamSpeak3_Exception $e) {
+            return;
+          }
 
           if($this->ftclient == "data:image")
           {
@@ -558,7 +566,11 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
       {
         if(!isset($this->cacheIcon[$group["iconid"]]))
         {
-          $download = $group->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $group->iconGetName("iconid"));
+          try {
+            $download = $group->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $group->iconGetName("iconid"));
+          } catch(TeamSpeak3_Exception $e) {
+            return;
+          }
 
           if($this->ftclient == "data:image")
           {
@@ -593,7 +605,11 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
       {
         if(!isset($this->cacheIcon[$this->currObj["client_icon_id"]]))
         {
-          $download = $this->currObj->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("client_icon_id"));
+          try {
+            $download = $this->currObj->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("client_icon_id"));
+          } catch(TeamSpeak3_Exception $e) {
+            return;
+          }
 
           if($this->ftclient == "data:image")
           {
