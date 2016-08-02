@@ -1,7 +1,7 @@
 <?php
 /*
- * English language for ts-website
- * @copy Wruczek <wruczekk@gmail.com>
+ * Dutch language for ts-website
+ * @copy MojoW <mojow@solidsn4ke.com>
  */
 
 $lang = array();
