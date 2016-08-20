@@ -72,7 +72,7 @@ $lang["index"]["showmore"] = "Read more";
 $lang["index"]["showless"] = "Show less";
 
 $lang["index"]["errortitle"] = "Error: news directory has not been found!";
-$lang["index"]["errorsubtitle"] = "Please make sure that directory location set in <code>config/config.php</code> is valid.";
+$lang["index"]["errorsubtitle"] = "Please make sure that directory location set in <b><code>config/config.php</code></b> is valid.";
 
 
 /************* Server viewer - viewer.php *************/
