@@ -36,13 +36,24 @@ function isPHPVersionSupported() {
         define('PHP_VERSION_ID', ($version[0] * 10000 + $version[1] * 100 + $version[2]));
     }
 
-    return PHP_VERSION_ID >= 50300;
+    return PHP_VERSION_ID >= 50400;
 }
 
 if (!isPHPVersionSupported()) {
     $title = 'Unsupported PHP version';
 
-    $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.3.0</b>.</p><p>Please update your PHP installation and try again.</p>';
+    $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.4.0</b>.</p><p>Please update your PHP installation and try again.</p>';
+
+    die(showError($title, $text));
+}
+
+if (!extension_loaded("mbstring")) {
+
+    $title = 'MBString extension is missing';
+
+    $text = '<p>Required PHP extension: <code>mbstring</code> has not been found on the server.</p>
+            <p>Follow <a href="http://askubuntu.com/a/772505">this instructions</a> if you are using Ubuntu 16.04 with PHP 7.0 (recommended). Otherwise, installation instructions can be found <a href="https://www.google.pl/?q=install+mbstring+(your+operating+system)">on Google</a> ;)</p>
+            <p>If you are using Web Hosting service, please contact the Hosting support for instruction on enabling mbstring.</p>';
 
     die(showError($title, $text));
 }
