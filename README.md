@@ -2,7 +2,7 @@
 
 ![Website screenshot](http://i.imgur.com/gKZezVc.png)
 
-**ts-website - free website for your TeamSpeak 3  server**<br>
+**ts-website - free website for your TeamSpeak 3 server**<br>
 
 #### Useful links
 - [Demo](https://ts.wruczek.top/)
@@ -19,7 +19,8 @@
 
 ### Requirements
 - Minimum
- - PHP 5.3.0 or newer
+ - PHP 5.4 or newer
+ - Installed and enabled ``mbstring`` extension
 - Recommended
  - Newest stable PHP version
  - Up-to-date Apache server
