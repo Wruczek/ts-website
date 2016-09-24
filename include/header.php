@@ -97,6 +97,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                             <li><a href="?lang=pl"><i class="famfamfam-flags pl" aria-hidden="true"></i> Polski</a></li>
                             <li><a href="?lang=de"><i class="famfamfam-flags de" aria-hidden="true"></i> Deutsch</a></li>
                             <li><a href="?lang=nl"><i class="famfamfam-flags nl" aria-hidden="true"></i> Nederlands</a></li>
+                            <li><a href="?lang=ru"><i class="famfamfam-flags ru" aria-hidden="true"></i> Русский</a></li>
                         </ul>
                     </li>
                 </ul>
