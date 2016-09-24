@@ -19,7 +19,7 @@ $lang["navbar"]["viewer"] = "Обзор сервера";
 $lang["navbar"]["bans"] = "Список забаненных";
 $lang["navbar"]["rules"] = "Правила сервера";
 
-$lang["navbar"]["connect"] = "Подключиться к серверу";
+$lang["navbar"]["connect"] = "Подключиться";
 $lang["navbar"]["connecttooltip"] = "Нажмите, чтобы подключиться к {0}";
 
 
