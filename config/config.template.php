@@ -57,7 +57,7 @@ $config["adminlist"] = array(6, 17, 19);
 $config['contact']['title'] = 'Contact the staff';
 $config['contact']['text'] = '
 <ul class="list-unstyled">
-<li>TeamSpeak: <span class="pullright">channel <a href="ts3server://ts.wruczek.top?channel=Kana%C5%82y%20publiczne%2FPogaduchy%2FPogaduchy%205">Pomoc</a></span></li>
+<li>TeamSpeak: <span class="pullright">channel <a href="ts3server://ts.wruczek.top?cid=30">TS-WEBSITE - Support</a></span></li>
 <li>Email: <span class="pullright"><a href="mailto:kontakt@email.com">konakt@email.com</a></span></li>
 <li>GaduGadu: <span class="pullright"><a href="gg:123456789">123456789 <img src="https://status.gadu-gadu.pl/users/status.asp?id=49568758&styl=1"></a></span></li>
 <li>Steam: <span class="pullright"><a href="http://steamcommunity.com/id/wruczek">Wruczek</a></span></li>

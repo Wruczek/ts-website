@@ -1,35 +1,5 @@
 <?php
 
-/* Od wersji 1.2.0 sprawny htaccess nie jest już wymagany
-if (!isset($_SERVER['HTACCESS'])) {
-
-    $title = 'Plik .htaccess nie jest włączony';
-
-    $text = '<p>Strona wymaga włączonej obsługi pliku <code>.htaccess</code>.</p>
-            <p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-htaccess-file">Poradnik na temat właczania pliku htaccess</a></p>';
-
-    die(showError($title, $text));
-}
-*/
-
-/* Od wersji 1.2.0 mod_rewrite nie jest już wymagany
-if(!in_array('mod_rewrite', apache_get_modules())) {
-
-    $title = 'Brak wymaganych rozszerzeń';
-
-    $text = '<p>Na swoim serwerze nie posiadasz modułu <code>rewrite</code> wymaganego do poprawnego działania tej strony.</p>
-            <p>Posiadasz system Ubuntu? Świetnie! Uruchom poniższe komendy, by włączyć wymagany moduł:</p>
-<pre>sudo a2enmod rewrite
-sudo service apache2 reload</pre>
-            <p>Używasz system Debian? Uruchom owe komendy pomijając przedrostek <code>sudo</code>:</p>
-<pre>a2enmod rewrite
-service apache2 reload</pre>
-            <p>Jeśli używasz hostingu i nie masz dostępu do konsoli, skontaktuj się z administratorem lub pomocą techniczną Twojego hostingu.</p>';
-
-    die(showError($title, $text));
-}
-*/
-
 function isPHPVersionSupported() {
     if (!defined('PHP_VERSION_ID')) {
         $version = explode('.', PHP_VERSION);
@@ -48,7 +18,6 @@ if (!isPHPVersionSupported()) {
 }
 
 if (!extension_loaded("mbstring")) {
-
     $title = 'MBString extension is missing';
 
     $text = '<p>Required PHP extension: <code>mbstring</code> has not been found on the server.</p>
@@ -58,8 +27,18 @@ if (!extension_loaded("mbstring")) {
     die(showError($title, $text));
 }
 
-if(!file_exists(__DIR__ . "/../config/config.php")) {
+try {
+    require_once __DIR__ . "/../lib/phpfastcache/autoload.php";
+     \phpFastCache\CacheManager::Files();
+} catch (\phpFastCache\Exceptions\phpFastCacheDriverException $e) {
+    $title = 'Directory is not writable';
 
+    $text = '<p>Please make sure that the whole website directory including subdirectories is fully writable.</p>';
+
+    die(showError($title, $text));
+}
+
+if(!file_exists(__DIR__ . "/../config/config.php")) {
     $title = 'config.php does not exists';
 
     $text = '<p>Please go into the directory <code>config</code> and rename <code>config.template.php</code> to <code>config.php</code>.</p>
