@@ -19,12 +19,12 @@
 
 ### Requirements
 - Minimum
- - PHP 5.4 or newer
+ - PHP 5.5 or newer
  - Installed and enabled ``mbstring`` extension
 - Recommended
  - Newest stable PHP version
  - Up-to-date Apache server
- - Enabled mod_rewrite (sudo a2enmod rewrite && service apache2 reload)
+ - Enabled mod_rewrite (``sudo a2enmod rewrite && service apache2 reload``)
  - Enabled support of htaccess
 
 <br><br>
