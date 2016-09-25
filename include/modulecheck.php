@@ -52,14 +52,13 @@ if(!file_exists(__DIR__ . "/../config/config.php")) {
 
 function showError($title, $text) { ?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Brak wymaganych rozszerzeń">
     <meta name="author" content="Wruczek">
 
     <title><?php echo $title; ?></title>
@@ -91,7 +90,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            Strona &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.1 | MIT License
+            &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.2 | MIT License
         </div>
     </div>
 
