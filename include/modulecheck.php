@@ -6,13 +6,13 @@ function isPHPVersionSupported() {
         define('PHP_VERSION_ID', ($version[0] * 10000 + $version[1] * 100 + $version[2]));
     }
 
-    return PHP_VERSION_ID >= 50400;
+    return PHP_VERSION_ID >= 50500;
 }
 
 if (!isPHPVersionSupported()) {
     $title = 'Unsupported PHP version';
 
-    $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.4.0</b>.</p><p>Please update your PHP installation and try again.</p>';
+    $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.5.0</b>.</p><p>Please update your PHP installation and try again.</p>';
 
     die(showError($title, $text));
 }
