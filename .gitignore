@@ -1,5 +1,6 @@
 config/config.php
 prototypes/
+admin/
 
 # PhpStorm
 .idea/
