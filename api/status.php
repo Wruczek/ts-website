@@ -6,6 +6,8 @@ set_error_handler("exception_error_handler", E_ALL);
 require_once __DIR__ . "/../include/tsutils.php";
 require_once __DIR__ . "/../lib/phpfastcache/autoload.php";
 
+date_default_timezone_set($config["general"]["timezone"]);
+
 use phpFastCache\Util;
 use phpFastCache\CacheManager;
 
@@ -48,8 +50,8 @@ function scriptFail($error) {
     die(json_encode(array(
         "success" => false,
         "id" => "script_error",
-        "message" => "There has been an error while retrieving the server status"
-        ,"error" => $error
+        "message" => "There has been an error while retrieving the server status",
+        "error" => $error
     )));
 }
 

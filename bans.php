@@ -55,7 +55,7 @@ if (is_null($banlist)) {
 
     </div>
     <div class="panel-footer">
-        <?php tl($lang["banlist"]["lastupdate"], [$banlist[1]]); ?><!-- <span style="float: right">Podgląd odświerza się co 60 sekund</span> -->
+        <?php tl($lang["banlist"]["lastupdate"], [$banlist[1]]); ?><!-- <span style="float: right">Podgląd odświeża się co 60 sekund</span> -->
     </div>
 </div>
 

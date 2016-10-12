@@ -42,7 +42,7 @@ function getViewer() {
         <?php echo $tsviewer[0]; ?>
     </div>
     <div class="panel-footer">
-        <?php tl($lang["viewer"]["lastupdate"], [$tsviewer[1]]); ?><!-- <span style="float: right">Podgląd odświerza się co 30 sekund</span> -->
+        <?php tl($lang["viewer"]["lastupdate"], [$tsviewer[1]]); ?><!-- <span style="float: right">Podgląd odświeża się co 30 sekund</span> -->
     </div>
 </div>
 
