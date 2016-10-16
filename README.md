@@ -8,7 +8,11 @@
 - [Demo](https://ts.wruczek.top/)
 - [Download](https://github.com/Wruczek/ts-website/archive/master.zip)
 - [Report Issues](https://github.com/Wruczek/ts-website/issues/new)
-- Contact the author: wruczekk@gmail.com (english or polish)
+- Contact the author: (english or polish)
+  - Telegram: @Wruczek
+  - Email: wruczekk@gmail.com
+
+**I am happy to take any programming-related requests, add additional features or modify the code to suit your needs** for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect. If you are interested or just want to chat about random geek stuff just message me :D
 
 #### Main Features
 - News page, dynamic server status, admin list with status, server viewer, ban list and rules page
