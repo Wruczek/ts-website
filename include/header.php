@@ -116,7 +116,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                     <div class="panel-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["title"]); ?></div>
                     <div class="panel-body">
                         <div class="serverstatus">
-                            <p><i class="fa fa-globe" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["address"]); ?>: <a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><?php echo $config['teamspeak']['displayip']; ?></a></p>
+                            <p><i class="fa fa-globe fa-fw" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["address"]); ?>: <a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><?php echo $config['teamspeak']['displayip']; ?></a></p>
                             <div id="serverstatus">
                                 <div class="text-center">
                                     <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
