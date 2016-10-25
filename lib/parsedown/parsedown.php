@@ -515,6 +515,16 @@ class Parsedown
                 ),
             );
 
+            if($name === 'ol') 
+            {
+                $listStart = stristr($matches[0], '.', true);
+                
+                if($listStart !== '1')
+                {
+                    $Block['element']['attributes'] = array('start' => $listStart);
+                }
+            }
+
             $Block['li'] = array(
                 'name' => 'li',
                 'handler' => 'li',
@@ -1170,6 +1180,7 @@ class Parsedown
                 'attributes' => array(
                     'src' => $Link['element']['attributes']['href'],
                     'alt' => $Link['element']['text'],
+                    'class' => 'img-responsive'
                 ),
             ),
         );
