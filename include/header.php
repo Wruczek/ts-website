@@ -26,7 +26,7 @@ require_once __DIR__ . "/../include/adminlist.php";
     <link href="css/theme.css" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <?php if(isset($bansPage)) { ?>
     <!-- DataTables for Bootstrap -->
