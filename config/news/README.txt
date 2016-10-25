@@ -1,1 +1,1 @@
-Visit your freshly installed the website to see instructions about news system
+Visit your freshly installed ts-website to see instructions about news system
