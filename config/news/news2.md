@@ -1,378 +1,884 @@
-jQuery Readme - system test
-jQuery, 2016-06-24, 21:00
+Markdown Syntax - example Markdown test file
+John Gruber, daringfireball.net
+
+Markdown: Syntax
+================
+
+*   [Overview](#overview)
+    *   [Philosophy](#philosophy)
+    *   [Inline HTML](#html)
+    *   [Automatic Escaping for Special Characters](#autoescape)
+*   [Block Elements](#block)
+    *   [Paragraphs and Line Breaks](#p)
+    *   [Headers](#header)
+    *   [Blockquotes](#blockquote)
+    *   [Lists](#list)
+    *   [Code Blocks](#precode)
+    *   [Horizontal Rules](#hr)
+*   [Span Elements](#span)
+    *   [Links](#link)
+    *   [Emphasis](#em)
+    *   [Code](#code)
+    *   [Images](#img)
+*   [Miscellaneous](#misc)
+    *   [Backslash Escapes](#backslash)
+    *   [Automatic Links](#autolink)
+
+* * *
+
+<h2 id="overview">Overview</h2>
+
+<h3 id="philosophy">Philosophy</h3>
+
+Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+
+Readability, however, is emphasized above all else. A Markdown-formatted
+document should be publishable as-is, as plain text, without looking
+like it's been marked up with tags or formatting instructions. While
+Markdown's syntax has been influenced by several existing text-to-HTML
+filters -- including [Setext] [1], [atx] [2], [Textile] [3], [reStructuredText] [4],
+[Grutatext] [5], and [EtText] [6] -- the single biggest source of
+inspiration for Markdown's syntax is the format of plain text email.
+
+  [1]: http://docutils.sourceforge.net/mirror/setext.html
+  [2]: http://www.aaronsw.com/2002/atx/
+  [3]: http://textism.com/tools/textile/
+  [4]: http://docutils.sourceforge.net/rst.html
+  [5]: http://www.triptico.com/software/grutatxt.html
+  [6]: http://ettext.taint.org/doc/
 
-[jQuery](https://jquery.com/) — New Wave JavaScript
-==================================================
+To this end, Markdown's syntax is comprised entirely of punctuation
+characters, which punctuation characters have been carefully chosen so
+as to look like what they mean. E.g., asterisks around a word actually
+look like \*emphasis\*. Markdown lists look like, well, lists. Even
+blockquotes look like quoted passages of text, assuming you've ever
+used email.
 
-Contribution Guides
---------------------------------------
 
-In the spirit of open source software development, jQuery always encourages community code contribution. To help you get started and before you jump into writing code, be sure to read these important contribution guidelines thoroughly:
 
-1. [Getting Involved](https://contribute.jquery.org/)
-2. [Core Style Guide](https://contribute.jquery.org/style-guide/js/)
-3. [Writing Code for jQuery Foundation Projects](https://contribute.jquery.org/code/)
+<h3 id="html">Inline HTML</h3>
 
+Markdown's syntax is intended for one purpose: to be used as a
+format for *writing* for the web.
 
-Environments in which to use jQuery
---------------------------------------
+Markdown is not a replacement for HTML, or even close to it. Its
+syntax is very small, corresponding only to a very small subset of
+HTML tags. The idea is *not* to create a syntax that makes it easier
+to insert HTML tags. In my opinion, HTML tags are already easy to
+insert. The idea for Markdown is to make it easy to read, write, and
+edit prose. HTML is a *publishing* format; Markdown is a *writing*
+format. Thus, Markdown's formatting syntax only addresses issues that
+can be conveyed in plain text.
 
-- [Browser support](https://jquery.com/browser-support/)
-- jQuery also supports Node, browser extensions, and other non-browser environments.
+For any markup that is not covered by Markdown's syntax, you simply
+use HTML itself. There's no need to preface it or delimit it to
+indicate that you're switching from Markdown to HTML; you just use
+the tags.
 
+The only restrictions are that block-level HTML elements -- e.g. `<div>`,
+`<table>`, `<pre>`, `<p>`, etc. -- must be separated from surrounding
+content by blank lines, and the start and end tags of the block should
+not be indented with tabs or spaces. Markdown is smart enough not
+to add extra (unwanted) `<p>` tags around HTML block-level tags.
 
-What you need to build your own jQuery
---------------------------------------
+For example, to add an HTML table to a Markdown article:
 
-In order to build jQuery, you need to have the latest Node.js/npm and git 1.7 or later. Earlier versions might work, but are not supported.
+    This is a regular paragraph.
 
-For Windows, you have to download and install [git](https://git-scm.com/downloads) and [Node.js](https://nodejs.org/en/download/).
+    <table>
+        <tr>
+            <td>Foo</td>
+        </tr>
+    </table>
 
-OS X users should install [Homebrew](http://brew.sh/). Once Homebrew is installed, run `brew install git` to install git,
-and `brew install node` to install Node.js.
+    This is another regular paragraph.
 
-Linux/BSD users should use their appropriate package managers to install git and Node.js, or build from source
-if you swing that way. Easy-peasy.
+Note that Markdown formatting syntax is not processed within block-level
+HTML tags. E.g., you can't use Markdown-style `*emphasis*` inside an
+HTML block.
 
+Span-level HTML tags -- e.g. `<span>`, `<cite>`, or `<del>` -- can be
+used anywhere in a Markdown paragraph, list item, or header. If you
+want, you can even use HTML tags instead of Markdown formatting; e.g. if
+you'd prefer to use HTML `<a>` or `<img>` tags instead of Markdown's
+link or image syntax, go right ahead.
 
-How to build your own jQuery
-----------------------------
+Unlike block-level HTML tags, Markdown syntax *is* processed within
+span-level tags.
 
-Clone a copy of the main jQuery git repo by running:
 
-```bash
-git clone git://github.com/jquery/jquery.git
-```
+<h3 id="autoescape">Automatic Escaping for Special Characters</h3>
 
-Enter the jquery directory and run the build script:
-```bash
-cd jquery && npm run build
-```
-The built version of jQuery will be put in the `dist/` subdirectory, along with the minified copy and associated map file.
+In HTML, there are two characters that demand special treatment: `<`
+and `&`. Left angle brackets are used to start tags; ampersands are
+used to denote HTML entities. If you want to use them as literal
+characters, you must escape them as entities, e.g. `&lt;`, and
+`&amp;`.
 
-If you want to create custom build or help with jQuery development, it would be better to install [grunt command line interface](https://github.com/gruntjs/grunt-cli) as a global package:
+Ampersands in particular are bedeviling for web writers. If you want to
+write about 'AT&T', you need to write '`AT&amp;T`'. You even need to
+escape ampersands within URLs. Thus, if you want to link to:
 
-```
-npm install -g grunt-cli
-```
-Make sure you have `grunt` installed by testing:
-```
-grunt -V
-```
+    http://images.google.com/images?num=30&q=larry+bird
 
-Now by running the `grunt` command, in the jquery directory, you can build a full version of jQuery, just like with an `npm run build` command:
-```
-grunt
-```
+you need to encode the URL as:
 
-There are many other tasks available for jQuery Core:
-```
-grunt -help
-```
+    http://images.google.com/images?num=30&amp;q=larry+bird
 
-### Modules
+in your anchor tag `href` attribute. Needless to say, this is easy to
+forget, and is probably the single most common source of HTML validation
+errors in otherwise well-marked-up web sites.
 
-Special builds can be created that exclude subsets of jQuery functionality.
-This allows for smaller custom builds when the builder is certain that those parts of jQuery are not being used.
-For example, an app that only used JSONP for `$.ajax()` and did not need to calculate offsets or positions of elements could exclude the offset and ajax/xhr modules.
+Markdown allows you to use these characters naturally, taking care of
+all the necessary escaping for you. If you use an ampersand as part of
+an HTML entity, it remains unchanged; otherwise it will be translated
+into `&amp;`.
 
-Any module may be excluded except for `core`, and `selector`. To exclude a module, pass its path relative to the `src` folder (without the `.js` extension).
+So, if you want to include a copyright symbol in your article, you can write:
 
-Some example modules that can be excluded are:
+    &copy;
 
-- **ajax**: All AJAX functionality: `$.ajax()`, `$.get()`, `$.post()`, `$.ajaxSetup()`, `.load()`, transports, and ajax event shorthands such as `.ajaxStart()`.
-- **ajax/xhr**: The XMLHTTPRequest AJAX transport only.
-- **ajax/script**: The `<script>` AJAX transport only; used to retrieve scripts.
-- **ajax/jsonp**: The JSONP AJAX transport only; depends on the ajax/script transport.
-- **css**: The `.css()` method. Also removes **all** modules depending on css (including **effects**, **dimensions**, and **offset**).
-- **css/showHide**:  Non-animated `.show()`, `.hide()` and `.toggle()`; can be excluded if you use classes or explicit `.css()` calls to set the `display` property. Also removes the **effects** module.
-- **deprecated**: Methods documented as deprecated but not yet removed.
-- **dimensions**: The `.width()` and `.height()` methods, including `inner-` and `outer-` variations.
-- **effects**: The `.animate()` method and its shorthands such as `.slideUp()` or `.hide("slow")`.
-- **event**: The `.on()` and `.off()` methods and all event functionality. Also removes `event/alias`.
-- **event/alias**: All event attaching/triggering shorthands like `.click()` or `.mouseover()`.
-- **event/focusin**: Cross-browser support for the focusin and focusout events.
-- **event/trigger**: The `.trigger()` and `.triggerHandler()` methods. Used by **alias** and **focusin** modules.
-- **offset**: The `.offset()`, `.position()`, `.offsetParent()`, `.scrollLeft()`, and `.scrollTop()` methods.
-- **wrap**: The `.wrap()`, `.wrapAll()`, `.wrapInner()`, and `.unwrap()` methods.
-- **core/ready**: Exclude the ready module if you place your scripts at the end of the body. Any ready callbacks bound with `jQuery()` will simply be called immediately. However, `jQuery(document).ready()` will not be a function and `.on("ready", ...)` or similar will not be triggered.
-- **deferred**: Exclude jQuery.Deferred. This also removes jQuery.Callbacks. *Note* that modules that depend on jQuery.Deferred(AJAX, effects, core/ready) will not be removed and will still expect jQuery.Deferred to be there. Include your own jQuery.Deferred implementation or exclude those modules as well (`grunt custom:-deferred,-ajax,-effects,-core/ready`).
-- **exports/global**: Exclude the attachment of global jQuery variables ($ and jQuery) to the window.
-- **exports/amd**: Exclude the AMD definition.
+and Markdown will leave it alone. But if you write:
 
-As a special case, you may also replace Sizzle by using a special flag `grunt custom:-sizzle`.
+    AT&T
 
-- **sizzle**: The Sizzle selector engine. When this module is excluded, it is replaced by a rudimentary selector engine based on the browser's `querySelectorAll` method that does not support jQuery selector extensions or enhanced semantics. See the [selector-native.js](https://github.com/jquery/jquery/blob/master/src/selector-native.js) file for details.
+Markdown will translate it to:
 
-*Note*: Excluding Sizzle will also exclude all jQuery selector extensions (such as `effects/animatedSelector` and `css/hiddenVisibleSelectors`).
+    AT&amp;T
 
-The build process shows a message for each dependent module it excludes or includes.
+Similarly, because Markdown supports [inline HTML](#html), if you use
+angle brackets as delimiters for HTML tags, Markdown will treat them as
+such. But if you write:
 
-##### AMD name
+    4 < 5
 
-As an option, you can set the module name for jQuery's AMD definition. By default, it is set to "jquery", which plays nicely with plugins and third-party libraries, but there may be cases where you'd like to change this. Simply set the `"amd"` option:
+Markdown will translate it to:
 
-```bash
-grunt custom --amd="custom-name"
-```
+    4 &lt; 5
 
-Or, to define anonymously, set the name to an empty string.
+However, inside Markdown code spans and blocks, angle brackets and
+ampersands are *always* encoded automatically. This makes it easy to use
+Markdown to write about HTML code. (As opposed to raw HTML, which is a
+terrible format for writing about HTML syntax, because every single `<`
+and `&` in your example code needs to be escaped.)
 
-```bash
-grunt custom --amd=""
-```
 
-#### Custom Build Examples
+* * *
 
-To create a custom build, first check out the version:
 
-```bash
-git pull; git checkout VERSION
-```
+<h2 id="block">Block Elements</h2>
 
-Where VERSION is the version you want to customize. Then, make sure all Node dependencies are installed:
 
-```bash
-npm install
-```
+<h3 id="p">Paragraphs and Line Breaks</h3>
 
-Create the custom build using the `grunt custom` option, listing the modules to be excluded.
+A paragraph is simply one or more consecutive lines of text, separated
+by one or more blank lines. (A blank line is any line that looks like a
+blank line -- a line containing nothing but spaces or tabs is considered
+blank.) Normal paragraphs should not be indented with spaces or tabs.
 
-Exclude all **ajax** functionality:
+The implication of the "one or more consecutive lines of text" rule is
+that Markdown supports "hard-wrapped" text paragraphs. This differs
+significantly from most other text-to-HTML formatters (including Movable
+Type's "Convert Line Breaks" option) which translate every line break
+character in a paragraph into a `<br />` tag.
 
-```bash
-grunt custom:-ajax
-```
+When you *do* want to insert a `<br />` break tag using Markdown, you
+end a line with two or more spaces, then type return.
 
-Excluding **css** removes modules depending on CSS: **effects**, **offset**, **dimensions**.
+Yes, this takes a tad more effort to create a `<br />`, but a simplistic
+"every line break is a `<br />`" rule wouldn't work for Markdown.
+Markdown's email-style [blockquoting][bq] and multi-paragraph [list items][l]
+work best -- and look better -- when you format them with hard breaks.
 
-```bash
-grunt custom:-css
-```
+  [bq]: #blockquote
+  [l]:  #list
 
-Exclude a bunch of modules:
 
-```bash
-grunt custom:-ajax,-css,-deprecated,-dimensions,-effects,-event/alias,-offset,-wrap
-```
 
-For questions or requests regarding custom builds, please start a thread on the [Developing jQuery Core](https://forum.jquery.com/developing-jquery-core) section of the forum. Due to the combinatorics and custom nature of these builds, they are not regularly tested in jQuery's unit test process. The non-Sizzle selector engine currently does not pass unit tests because it is missing too much essential functionality.
+<h3 id="header">Headers</h3>
 
-Running the Unit Tests
---------------------------------------
+Markdown supports two styles of headers, [Setext] [1] and [atx] [2].
 
-Make sure you have the necessary dependencies:
+Setext-style headers are "underlined" using equal signs (for first-level
+headers) and dashes (for second-level headers). For example:
 
-```bash
-npm install
-```
+    This is an H1
+    =============
 
-Start `grunt watch` or `npm start` to auto-build jQuery as you work:
+    This is an H2
+    -------------
 
-```bash
-grunt watch
-```
+Any number of underlining `=`'s or `-`'s will work.
 
+Atx-style headers use 1-6 hash characters at the start of the line,
+corresponding to header levels 1-6. For example:
 
-Run the unit tests with a local server that supports PHP. Ensure that you run the site from the root directory, not the "test" directory. No database is required. Pre-configured php local servers are available for Windows and Mac. Here are some options:
+    # This is an H1
 
-- Windows: [WAMP download](http://www.wampserver.com/en/)
-- Mac: [MAMP download](https://www.mamp.info/en/downloads/)
-- Linux: [Setting up LAMP](https://www.linux.com/learn/tutorials/288158-easy-lamp-server-installation)
-- [Mongoose (most platforms)](https://code.google.com/p/mongoose/)
+    ## This is an H2
 
+    ###### This is an H6
 
+Optionally, you may "close" atx-style headers. This is purely
+cosmetic -- you can use this if you think it looks better. The
+closing hashes don't even need to match the number of hashes
+used to open the header. (The number of opening hashes
+determines the header level.) :
 
+    # This is an H1 #
 
-Building to a different directory
----------------------------------
+    ## This is an H2 ##
 
-To copy the built jQuery files from `/dist` to another directory:
+    ### This is an H3 ######
 
-```bash
-grunt && grunt dist:/path/to/special/location/
-```
-With this example, the output files would be:
 
-```bash
-/path/to/special/location/jquery.js
-/path/to/special/location/jquery.min.js
-```
+<h3 id="blockquote">Blockquotes</h3>
 
-To add a permanent copy destination, create a file in `dist/` called ".destination.json". Inside the file, paste and customize the following:
+Markdown uses email-style `>` characters for blockquoting. If you're
+familiar with quoting passages of text in an email message, then you
+know how to create a blockquote in Markdown. It looks best if you hard
+wrap the text and put a `>` before every line:
 
-```json
+    > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+    > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+    > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+    > 
+    > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+    > id sem consectetuer libero luctus adipiscing.
 
-{
-  "/Absolute/path/to/other/destination": true
-}
-```
+Markdown allows you to be lazy and only put the `>` before the first
+line of a hard-wrapped paragraph:
 
-Additionally, both methods can be combined.
+    > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 
+    > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+    id sem consectetuer libero luctus adipiscing.
 
+Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by
+adding additional levels of `>`:
 
-Essential Git
--------------
+    > This is the first level of quoting.
+    >
+    > > This is nested blockquote.
+    >
+    > Back to the first level.
 
-As the source code is handled by the Git version control system, it's useful to know some features used.
+Blockquotes can contain other Markdown elements, including headers, lists,
+and code blocks:
 
-### Cleaning ###
+	> ## This is a header.
+	> 
+	> 1.   This is the first list item.
+	> 2.   This is the second list item.
+	> 
+	> Here's some example code:
+	> 
+	>     return shell_exec("echo $input | $markdown_script");
 
-If you want to purge your working directory back to the status of upstream, the following commands can be used (remember everything you've worked on is gone after these):
+Any decent text editor should make email-style quoting easy. For
+example, with BBEdit, you can make a selection and choose Increase
+Quote Level from the Text menu.
 
-```bash
-git reset --hard upstream/master
-git clean -fdx
-```
 
-### Rebasing ###
+<h3 id="list">Lists</h3>
 
-For feature/topic branches, you should always use the `--rebase` flag to `git pull`, or if you are usually handling many temporary "to be in a github pull request" branches, run the following to automate this:
+Markdown supports ordered (numbered) and unordered (bulleted) lists.
 
-```bash
-git config branch.autosetuprebase local
-```
-(see `man git-config` for more information)
+Unordered lists use asterisks, pluses, and hyphens -- interchangably
+-- as list markers:
 
-### Handling merge conflicts ###
+    *   Red
+    *   Green
+    *   Blue
 
-If you're getting merge conflicts when merging, instead of editing the conflicted files manually, you can use the feature
-`git mergetool`. Even though the default tool `xxdiff` looks awful/old, it's rather useful.
+is equivalent to:
 
-The following are some commands that can be used there:
+    +   Red
+    +   Green
+    +   Blue
 
-* `Ctrl + Alt + M` - automerge as much as possible
-* `b` - jump to next merge conflict
-* `s` - change the order of the conflicted lines
-* `u` - undo a merge
-* `left mouse button` - mark a block to be the winner
-* `middle mouse button` - mark a line to be the winner
-* `Ctrl + S` - save
-* `Ctrl + Q` - quit
+and:
 
-[QUnit](https://api.qunitjs.com) Reference
------------------
+    -   Red
+    -   Green
+    -   Blue
 
-### Test methods ###
+Ordered lists use numbers followed by periods:
 
-```js
-expect( numAssertions );
-stop();
-start();
-```
+    1.  Bird
+    2.  McHale
+    3.  Parish
 
+It's important to note that the actual numbers you use to mark the
+list have no effect on the HTML output Markdown produces. The HTML
+Markdown produces from the above list is:
 
-*Note*: QUnit's eventual addition of an argument to stop/start is ignored in this test suite so that start and stop can be passed as callbacks without worrying about their parameters.
+    <ol>
+    <li>Bird</li>
+    <li>McHale</li>
+    <li>Parish</li>
+    </ol>
 
-### Test assertions ###
+If you instead wrote the list in Markdown like this:
 
+    1.  Bird
+    1.  McHale
+    1.  Parish
 
-```js
-ok( value, [message] );
-equal( actual, expected, [message] );
-notEqual( actual, expected, [message] );
-deepEqual( actual, expected, [message] );
-notDeepEqual( actual, expected, [message] );
-strictEqual( actual, expected, [message] );
-notStrictEqual( actual, expected, [message] );
-throws( block, [expected], [message] );
-```
+or even:
 
+    3. Bird
+    1. McHale
+    8. Parish
 
-Test Suite Convenience Methods Reference (See [test/data/testinit.js](https://github.com/jquery/jquery/blob/master/test/data/testinit.js))
-------------------------------
+you'd get the exact same HTML output. The point is, if you want to,
+you can use ordinal numbers in your ordered Markdown lists, so that
+the numbers in your source match the numbers in your published HTML.
+But if you want to be lazy, you don't have to.
 
-### Returns an array of elements with the given IDs ###
+If you do use lazy list numbering, however, you should still start the
+list with the number 1. At some point in the future, Markdown may support
+starting ordered lists at an arbitrary number.
 
-```js
-q( ... );
-```
+List markers typically start at the left margin, but may be indented by
+up to three spaces. List markers must be followed by one or more spaces
+or a tab.
 
-Example:
+To make lists look nice, you can wrap items with hanging indents:
 
-```js
-q("main", "foo", "bar");
+    *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+        viverra nec, fringilla in, laoreet vitae, risus.
+    *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+        Suspendisse id sem consectetuer libero luctus adipiscing.
 
-=> [ div#main, span#foo, input#bar ]
-```
+But if you want to be lazy, you don't have to:
 
-### Asserts that a selection matches the given IDs ###
+    *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+    *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
 
-```js
-t( testName, selector, [ "array", "of", "ids" ] );
-```
+If list items are separated by blank lines, Markdown will wrap the
+items in `<p>` tags in the HTML output. For example, this input:
 
-Example:
+    *   Bird
+    *   Magic
 
-```js
-t("Check for something", "//[a]", ["foo", "bar"]);
-```
+will turn into:
 
+    <ul>
+    <li>Bird</li>
+    <li>Magic</li>
+    </ul>
 
+But this:
 
-### Fires a native DOM event without going through jQuery ###
+    *   Bird
 
-```js
-fireNative( node, eventType )
-```
+    *   Magic
 
-Example:
+will turn into:
 
-```js
-fireNative( jQuery("#elem")[0], "click" );
-```
+    <ul>
+    <li><p>Bird</p></li>
+    <li><p>Magic</p></li>
+    </ul>
 
-### Add random number to url to stop caching ###
+List items may consist of multiple paragraphs. Each subsequent
+paragraph in a list item must be indented by either 4 spaces
+or one tab:
 
-```js
-url( "some/url.php" );
-```
+    1.  This is a list item with two paragraphs. Lorem ipsum dolor
+        sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+        mi posuere lectus.
 
-Example:
+        Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+        vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+        sit amet velit.
 
-```js
-url("data/test.html");
+    2.  Suspendisse id sem consectetuer libero luctus adipiscing.
 
-=> "data/test.html?10538358428943"
+It looks nice if you indent every line of the subsequent
+paragraphs, but here again, Markdown will allow you to be
+lazy:
 
+    *   This is a list item with two paragraphs.
 
-url("data/test.php?foo=bar");
+        This is the second paragraph in the list item. You're
+    only required to indent the first line. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit.
 
-=> "data/test.php?foo=bar&10538358345554"
-```
+    *   Another item in the same list.
 
+To put a blockquote within a list item, the blockquote's `>`
+delimiters need to be indented:
 
-### Run tests in an iframe ###
+    *   A list item with a blockquote:
 
-Some tests may require a document other than the standard test fixture, and
-these can be run in a separate iframe. The actual test code and assertions
-remain in jQuery's main test files; only the minimal test fixture markup
-and setup code should be placed in the iframe file.
+        > This is a blockquote
+        > inside a list item.
 
-```js
-testIframe( testName, fileName,
-  function testCallback(
-      assert, jQuery, window, document,
-	  [ additional args ] ) {
-	...
-  } );
-```
+To put a code block within a list item, the code block needs
+to be indented *twice* -- 8 spaces or two tabs:
 
-This loads a page, constructing a url with fileName `"./data/" + fileName`.
-The iframed page determines when the callback occurs in the test by
-including the "/test/data/iframeTest.js" script and calling
-`startIframeTest( [ additional args ] )` when appropriate. Often this
-will be after either document ready or `window.onload` fires.
+    *   A list item with a code block:
 
-The `testCallback` receives the QUnit `assert` object created by `testIframe`
-for this test, followed by the global `jQuery`, `window`, and `document` from
-the iframe. If the iframe code passes any arguments to `startIframeTest`,
-they follow the `document` argument.
+            <code goes here>
 
 
-Questions?
-----------
+It's worth noting that it's possible to trigger an ordered list by
+accident, by writing something like this:
 
-If you have any questions, please feel free to ask on the
-[Developing jQuery Core forum](https://forum.jquery.com/developing-jquery-core) or in #jquery on irc.freenode.net.
+    1986. What a great season.
+
+In other words, a *number-period-space* sequence at the beginning of a
+line. To avoid this, you can backslash-escape the period:
+
+    1986\. What a great season.
+
+
+
+<h3 id="precode">Code Blocks</h3>
+
+Pre-formatted code blocks are used for writing about programming or
+markup source code. Rather than forming normal paragraphs, the lines
+of a code block are interpreted literally. Markdown wraps a code block
+in both `<pre>` and `<code>` tags.
+
+To produce a code block in Markdown, simply indent every line of the
+block by at least 4 spaces or 1 tab. For example, given this input:
+
+    This is a normal paragraph:
+
+        This is a code block.
+
+Markdown will generate:
+
+    <p>This is a normal paragraph:</p>
+
+    <pre><code>This is a code block.
+    </code></pre>
+
+One level of indentation -- 4 spaces or 1 tab -- is removed from each
+line of the code block. For example, this:
+
+    Here is an example of AppleScript:
+
+        tell application "Foo"
+            beep
+        end tell
+
+will turn into:
+
+    <p>Here is an example of AppleScript:</p>
+
+    <pre><code>tell application "Foo"
+        beep
+    end tell
+    </code></pre>
+
+A code block continues until it reaches a line that is not indented
+(or the end of the article).
+
+Within a code block, ampersands (`&`) and angle brackets (`<` and `>`)
+are automatically converted into HTML entities. This makes it very
+easy to include example HTML source code using Markdown -- just paste
+it and indent it, and Markdown will handle the hassle of encoding the
+ampersands and angle brackets. For example, this:
+
+        <div class="footer">
+            &copy; 2004 Foo Corporation
+        </div>
+
+will turn into:
+
+    <pre><code>&lt;div class="footer"&gt;
+        &amp;copy; 2004 Foo Corporation
+    &lt;/div&gt;
+    </code></pre>
+
+Regular Markdown syntax is not processed within code blocks. E.g.,
+asterisks are just literal asterisks within a code block. This means
+it's also easy to use Markdown to write about Markdown's own syntax.
+
+
+
+<h3 id="hr">Horizontal Rules</h3>
+
+You can produce a horizontal rule tag (`<hr />`) by placing three or
+more hyphens, asterisks, or underscores on a line by themselves. If you
+wish, you may use spaces between the hyphens or asterisks. Each of the
+following lines will produce a horizontal rule:
+
+    * * *
+
+    ***
+
+    *****
+
+    - - -
+
+    ---------------------------------------
+
+
+* * *
+
+<h2 id="span">Span Elements</h2>
+
+<h3 id="link">Links</h3>
+
+Markdown supports two style of links: *inline* and *reference*.
+
+In both styles, the link text is delimited by [square brackets].
+
+To create an inline link, use a set of regular parentheses immediately
+after the link text's closing square bracket. Inside the parentheses,
+put the URL where you want the link to point, along with an *optional*
+title for the link, surrounded in quotes. For example:
+
+    This is [an example](http://example.com/ "Title") inline link.
+
+    [This link](http://example.net/) has no title attribute.
+
+Will produce:
+
+    <p>This is <a href="http://example.com/" title="Title">
+    an example</a> inline link.</p>
+
+    <p><a href="http://example.net/">This link</a> has no
+    title attribute.</p>
+
+If you're referring to a local resource on the same server, you can
+use relative paths:
+
+    See my [About](/about/) page for details.   
+
+Reference-style links use a second set of square brackets, inside
+which you place a label of your choosing to identify the link:
+
+    This is [an example][id] reference-style link.
+
+You can optionally use a space to separate the sets of brackets:
+
+    This is [an example] [id] reference-style link.
+
+Then, anywhere in the document, you define your link label like this,
+on a line by itself:
+
+    [id]: http://example.com/  "Optional Title Here"
+
+That is:
+
+*   Square brackets containing the link identifier (optionally
+    indented from the left margin using up to three spaces);
+*   followed by a colon;
+*   followed by one or more spaces (or tabs);
+*   followed by the URL for the link;
+*   optionally followed by a title attribute for the link, enclosed
+    in double or single quotes, or enclosed in parentheses.
+
+The following three link definitions are equivalent:
+
+	[foo]: http://example.com/  "Optional Title Here"
+	[foo]: http://example.com/  'Optional Title Here'
+	[foo]: http://example.com/  (Optional Title Here)
+
+**Note:** There is a known bug in Markdown.pl 1.0.1 which prevents
+single quotes from being used to delimit link titles.
+
+The link URL may, optionally, be surrounded by angle brackets:
+
+    [id]: <http://example.com/>  "Optional Title Here"
+
+You can put the title attribute on the next line and use extra spaces
+or tabs for padding, which tends to look better with longer URLs:
+
+    [id]: http://example.com/longish/path/to/resource/here
+        "Optional Title Here"
+
+Link definitions are only used for creating links during Markdown
+processing, and are stripped from your document in the HTML output.
+
+Link definition names may consist of letters, numbers, spaces, and
+punctuation -- but they are *not* case sensitive. E.g. these two
+links:
+
+	[link text][a]
+	[link text][A]
+
+are equivalent.
+
+The *implicit link name* shortcut allows you to omit the name of the
+link, in which case the link text itself is used as the name.
+Just use an empty set of square brackets -- e.g., to link the word
+"Google" to the google.com web site, you could simply write:
+
+	[Google][]
+
+And then define the link:
+
+	[Google]: http://google.com/
+
+Because link names may contain spaces, this shortcut even works for
+multiple words in the link text:
+
+	Visit [Daring Fireball][] for more information.
+
+And then define the link:
+	
+	[Daring Fireball]: http://daringfireball.net/
+
+Link definitions can be placed anywhere in your Markdown document. I
+tend to put them immediately after each paragraph in which they're
+used, but if you want, you can put them all at the end of your
+document, sort of like footnotes.
+
+Here's an example of reference links in action:
+
+    I get 10 times more traffic from [Google] [1] than from
+    [Yahoo] [2] or [MSN] [3].
+
+      [1]: http://google.com/        "Google"
+      [2]: http://search.yahoo.com/  "Yahoo Search"
+      [3]: http://search.msn.com/    "MSN Search"
+
+Using the implicit link name shortcut, you could instead write:
+
+    I get 10 times more traffic from [Google][] than from
+    [Yahoo][] or [MSN][].
+
+      [google]: http://google.com/        "Google"
+      [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+      [msn]:    http://search.msn.com/    "MSN Search"
+
+Both of the above examples will produce the following HTML output:
+
+    <p>I get 10 times more traffic from <a href="http://google.com/"
+    title="Google">Google</a> than from
+    <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a>
+    or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+
+For comparison, here is the same paragraph written using
+Markdown's inline link style:
+
+    I get 10 times more traffic from [Google](http://google.com/ "Google")
+    than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
+    [MSN](http://search.msn.com/ "MSN Search").
+
+The point of reference-style links is not that they're easier to
+write. The point is that with reference-style links, your document
+source is vastly more readable. Compare the above examples: using
+reference-style links, the paragraph itself is only 81 characters
+long; with inline-style links, it's 176 characters; and as raw HTML,
+it's 234 characters. In the raw HTML, there's more markup than there
+is text.
+
+With Markdown's reference-style links, a source document much more
+closely resembles the final output, as rendered in a browser. By
+allowing you to move the markup-related metadata out of the paragraph,
+you can add links without interrupting the narrative flow of your
+prose.
+
+
+<h3 id="em">Emphasis</h3>
+
+Markdown treats asterisks (`*`) and underscores (`_`) as indicators of
+emphasis. Text wrapped with one `*` or `_` will be wrapped with an
+HTML `<em>` tag; double `*`'s or `_`'s will be wrapped with an HTML
+`<strong>` tag. E.g., this input:
+
+    *single asterisks*
+
+    _single underscores_
+
+    **double asterisks**
+
+    __double underscores__
+
+will produce:
+
+    <em>single asterisks</em>
+
+    <em>single underscores</em>
+
+    <strong>double asterisks</strong>
+
+    <strong>double underscores</strong>
+
+You can use whichever style you prefer; the lone restriction is that
+the same character must be used to open and close an emphasis span.
+
+Emphasis can be used in the middle of a word:
+
+    un*frigging*believable
+
+But if you surround an `*` or `_` with spaces, it'll be treated as a
+literal asterisk or underscore.
+
+To produce a literal asterisk or underscore at a position where it
+would otherwise be used as an emphasis delimiter, you can backslash
+escape it:
+
+    \*this text is surrounded by literal asterisks\*
+
+
+
+<h3 id="code">Code</h3>
+
+To indicate a span of code, wrap it with backtick quotes (`` ` ``).
+Unlike a pre-formatted code block, a code span indicates code within a
+normal paragraph. For example:
+
+    Use the `printf()` function.
+
+will produce:
+
+    <p>Use the <code>printf()</code> function.</p>
+
+To include a literal backtick character within a code span, you can use
+multiple backticks as the opening and closing delimiters:
+
+    ``There is a literal backtick (`) here.``
+
+which will produce this:
+
+    <p><code>There is a literal backtick (`) here.</code></p>
+
+The backtick delimiters surrounding a code span may include spaces --
+one after the opening, one before the closing. This allows you to place
+literal backtick characters at the beginning or end of a code span:
+
+	A single backtick in a code span: `` ` ``
+	
+	A backtick-delimited string in a code span: `` `foo` ``
+
+will produce:
+
+	<p>A single backtick in a code span: <code>`</code></p>
+	
+	<p>A backtick-delimited string in a code span: <code>`foo`</code></p>
+
+With a code span, ampersands and angle brackets are encoded as HTML
+entities automatically, which makes it easy to include example HTML
+tags. Markdown will turn this:
+
+    Please don't use any `<blink>` tags.
+
+into:
+
+    <p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>
+
+You can write this:
+
+    `&#8212;` is the decimal-encoded equivalent of `&mdash;`.
+
+to produce:
+
+    <p><code>&amp;#8212;</code> is the decimal-encoded
+    equivalent of <code>&amp;mdash;</code>.</p>
+
+
+
+<h3 id="img">Images</h3>
+
+Admittedly, it's fairly difficult to devise a "natural" syntax for
+placing images into a plain text document format.
+
+Markdown uses an image syntax that is intended to resemble the syntax
+for links, allowing for two styles: *inline* and *reference*.
+
+Inline image syntax looks like this:
+
+    ![Alt text](/path/to/img.jpg)
+
+    ![Alt text](/path/to/img.jpg "Optional title")
+
+That is:
+
+*   An exclamation mark: `!`;
+*   followed by a set of square brackets, containing the `alt`
+    attribute text for the image;
+*   followed by a set of parentheses, containing the URL or path to
+    the image, and an optional `title` attribute enclosed in double
+    or single quotes.
+
+Reference-style image syntax looks like this:
+
+    ![Alt text][id]
+
+Where "id" is the name of a defined image reference. Image references
+are defined using syntax identical to link references:
+
+    [id]: url/to/image  "Optional title attribute"
+
+As of this writing, Markdown has no syntax for specifying the
+dimensions of an image; if this is important to you, you can simply
+use regular HTML `<img>` tags.
+
+
+* * *
+
+
+<h2 id="misc">Miscellaneous</h2>
+
+<h3 id="autolink">Automatic Links</h3>
+
+Markdown supports a shortcut style for creating "automatic" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:
+
+    <http://example.com/>
+    
+Markdown will turn this into:
+
+    <a href="http://example.com/">http://example.com/</a>
+
+Automatic links for email addresses work similarly, except that
+Markdown will also perform a bit of randomized decimal and hex
+entity-encoding to help obscure your address from address-harvesting
+spambots. For example, Markdown will turn this:
+
+    <address@example.com>
+
+into something like this:
+
+    <a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
+    &#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
+    &#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
+    &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
+
+which will render in a browser as a clickable link to "address@example.com".
+
+(This sort of entity-encoding trick will indeed fool many, if not
+most, address-harvesting bots, but it definitely won't fool all of
+them. It's better than nothing, but an address published in this way
+will probably eventually start receiving spam.)
+
+
+
+<h3 id="backslash">Backslash Escapes</h3>
+
+Markdown allows you to use backslash escapes to generate literal
+characters which would otherwise have special meaning in Markdown's
+formatting syntax. For example, if you wanted to surround a word
+with literal asterisks (instead of an HTML `<em>` tag), you can use
+backslashes before the asterisks, like this:
+
+    \*literal asterisks\*
+
+Markdown provides backslash escapes for the following characters:
+
+    \   backslash
+    `   backtick
+    *   asterisk
+    _   underscore
+    {}  curly braces
+    []  square brackets
+    ()  parentheses
+    #   hash mark
+	+	plus sign
+	-	minus sign (hyphen)
+    .   dot
+    !   exclamation mark
