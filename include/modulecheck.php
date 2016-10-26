@@ -84,13 +84,13 @@ function showError($title, $text) { ?>
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><img src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png" width="20px" alt="Błąd"> <?php echo $title; ?></h3>
+            <h3 class="panel-title"><img src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png" width="20px" alt="Error"> <?php echo $title; ?></h3>
         </div>
         <div class="panel-body">
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.2 | MIT License
+            &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.3 | MIT License
         </div>
     </div>
 
