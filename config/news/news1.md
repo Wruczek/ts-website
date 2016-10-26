@@ -18,7 +18,7 @@ I can also recommend GitHub's ["Mastering Markdown"](https://guides.github.com/f
   - First line: News title
   - Second line: author and date
   - Third line: empty (seperator)
-  - The rest of the file is Markdown code
+  - The rest of the file is Markdown code and HTML
 
 
 
@@ -29,7 +29,7 @@ I can also recommend GitHub's ["Mastering Markdown"](https://guides.github.com/f
     
     Hello **world**!
     
-    I am the *news file*, you can save me in **config/news** folder with an **.md** extension to see my on the page!
+    I am the *news file*, you can save me in **config/news** folder with an **.md** extension to see me on the page!
 
 
 
