@@ -135,11 +135,18 @@ require_once __DIR__ . "/../include/adminlist.php";
                     </div>
                 </div>
 
-                <?php if(!empty($config['contact']['text'])) { ?>
+                <?php if(!empty($config['contact']['items'])) { ?>
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $config['contact']['title']; ?></div>
                     <div class="panel-body">
-                        <?php echo $config['contact']['text']; ?>
+                        <ul class="list-unstyled">
+                            <?php foreach ($config['contact']['items'] as $item) {
+                                $name = $item[0];
+                                $linkdesc = $item[1];
+                                $link = $item[2];
+                                echo '<li>' . $name . ' <span class="pullright"><a href="' . $link . '">' . $linkdesc . '</a></span></li>';
+                            } ?>
+                        </ul>
                     </div>
                 </div>
                 <?php } ?>

@@ -2,9 +2,13 @@
 /*
     Author: Wruczek
     Contact me:
-        TeamSpeak: ts.wruczek.top
+        Telegram: @Wruczek
         Email: wruczekk@gmail.com
         Donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ
+
+    I am happy to take any programming-related requests, help you with configuration, add additional features or modify the website code to suit your needs for a small donation :)
+    I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
+    If you are interested or just want to chat about random geek stuff just message me :D
 */
 
 
@@ -36,31 +40,37 @@ $config['teamspeak']['displayip']     = 'ts.server.net';       // IP shown to us
 
 /************* Additional navigation links - you can link to your stuff *************/
 
-$config["navlinks"] = array(
-    // TEMPLATE: array("icon", "displayed text", "link"), ICON is an icon name from: http://fontawesome.io/icons/
-    array("fa-facebook-official", "Facebook", "https://facebook.com/bestteamspeakXd"),
-    array("fa-comments", "Forum", "forum"),
-    array("fa-shopping-cart", "Shop", "shop")
-);
+// TEMPLATE: (ICON is an icon name from: http://fontawesome.io/icons/)
+// $config["navlinks"][] = ["icon", "displayed text", "link"];
+
+$config["navlinks"][] = ["fa-facebook-official", "Facebook", "https://facebook.com/Facebook"];
+$config["navlinks"][] = ["fa-twitter-square", "Twitter", "https://twitter.com/Twitter"];
+$config["navlinks"][] = ["fa-comments", "Forum", "forum"];
 
 
 
 /************* Adminlist configuration *************/
 
 // ID of servergroups displayed as admins in Adminlist. Put it in the same way you want it to be displayed.
-$config["adminlist"] = array(6, 17, 19);
+$config["adminlist"] = [6, 17, 19];
 
 
 
 /************* Contact panel configuration *************/
 
-// Set $config['contact']['text'] = ''; to hide this panel
 $config['contact']['title'] = 'Contact the staff';
-$config['contact']['text'] = '
-<ul class="list-unstyled">
-<li>TeamSpeak: <span class="pullright">channel <a href="ts3server://ts.wruczek.top?cid=30">Support</a></span></li>
-<li>Email: <span class="pullright"><a href="mailto:kontakt@email.com">konakt@email.com</a></span></li>
-<li>GaduGadu: <span class="pullright"><a href="gg:123456789">123456789 <img src="https://status.gadu-gadu.pl/users/status.asp?id=49568758&styl=1"></a></span></li>
-<li>Steam: <span class="pullright"><a href="http://steamcommunity.com/id/wruczek">Wruczek</a></span></li>
-</ul>
-';
+
+/*
+TIP: You can remove all items below to hide contact panel
+
+CONTACT PANEL SYNTAX:
+$config['contact']['items'][] = ["name", "link description", "link"];
+
+FOR EXAMPLE:
+$config['contact']['items'][] = ["Telegram", "@Wruczek", "https://telegram.me/Wruczek"];
+*/
+
+$config['contact']['items'][] = ["TeamSpeak", "Support channel", "ts3server://teamspeakip?cid=30"];
+$config['contact']['items'][] = ["Email", "contact@email.com", "mailto:contact@email.com"];
+$config['contact']['items'][] = ["Telegram", "@Telegram", "https://telegram.me/Telegram"];
+$config['contact']['items'][] = ["Twitter", "@Twitter", "https://twitter.com/Twitter"];
