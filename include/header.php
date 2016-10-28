@@ -4,6 +4,8 @@ require_once __DIR__ . "/../include/modulecheck.php";
 require_once __DIR__ . "/../config/config.php";
 require_once __DIR__ . "/../include/language.php";
 require_once __DIR__ . "/../include/adminlist.php";
+
+$htalink = $config["general"]["enablehta"] ? "" : ".php";
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -66,9 +68,9 @@ require_once __DIR__ . "/../include/adminlist.php";
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="viewer<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
-                    <li><a href="bans<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["navbar"]["bans"]); ?></a></li>
-                    <li><a href="rules<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["navbar"]["rules"]); ?></a></li>
+                    <li><a href="viewer<?php echo $htalink ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
+                    <li><a href="bans<?php echo $htalink ?>"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["navbar"]["bans"]); ?></a></li>
+                    <li><a href="rules<?php echo $htalink ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["navbar"]["rules"]); ?></a></li>
                     <!-- Nie mam na to czasu
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-television" aria-hidden="true"></i></i>Ranking <span class="caret"></span></a>
@@ -154,7 +156,7 @@ require_once __DIR__ . "/../include/adminlist.php";
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["title"]); ?></div>
                     <div class="panel-body">
-                        <a href="viewer<?php echo $config["general"]["enablehta"] ? "" : ".php" ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["takealook"]); ?></a>
+                        <a href="viewer<?php echo $htalink ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["takealook"]); ?></a>
                     </div>
                 </div>
             </div>

@@ -40,7 +40,7 @@
 
     <!-- Custom JS -->
     <script>
-        var apiurl = "api/status<?php echo $config["general"]["enablehta"] ? "" : ".php"; ?>";
+        var apiurl = "api/status<?php echo $htalink; ?>";
     </script>
 
     <script src="js/script.js"></script>
