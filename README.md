@@ -2,7 +2,9 @@
 
 [![Website screenshot](http://i.imgur.com/9UZV6NG.png)](http://imgur.com/a/RUSi2)
 
-[More screenshots](http://imgur.com/a/RUSi2)
+<p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
+
+<br>
 
 **ts-website - free website for your TeamSpeak 3 server**<br>
 
