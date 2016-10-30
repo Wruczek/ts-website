@@ -41,12 +41,12 @@ $lang["serverstatus"]["offline"] = "Не в сети";
 $lang["serverstatus"]["uptime"] = "Аптайм";
 $lang["serverstatus"]["version"] = "Версия";
 $lang["serverstatus"]["avgping"] = "Средний пинг";
-$lang["serverstatus"]["avgpl"] = "Средняя потеря пакетов";
+$lang["serverstatus"]["avgpl"] = "Ср. потеря пакетов";
 
 
 /************* Admin list *************/
 
-$lang["adminlist"]["title"] = "Команда сервера";
+$lang["adminlist"]["title"] = "Статус администрации";
 $lang["adminlist"]["emptygroup"] = "Эта группа пуста";
 $lang["adminlist"]["status"]["online"] = "В сети";
 $lang["adminlist"]["status"]["away"] = "Нет на месте";
