@@ -8,6 +8,8 @@ if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $langcode;
 
     setcookie('lang', $langcode, time() + (3600 * 24 * 60));
+
+    header("Location: {$_SERVER['PHP_SELF']}");
 } else if (isset($_SESSION['lang'])) {
     $langcode = $_SESSION['lang'];
 } else if (isset($_COOKIE['lang'])) {
