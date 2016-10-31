@@ -18,7 +18,7 @@ $parsedown = new Parsedown();
 
 $path = __DIR__ . "/" . $config["general"]["newsDir"];
 
-if(file_exists($path))
+if (file_exists($path))
     showNews($path);
 else
     echo '<div class="alert alert-danger"><p class="text-center">' . translate($lang["index"]["errortitle"]) . '</p><p class="text-center">' . translate($lang["index"]["errorsubtitle"]) . '</p></div>';
@@ -33,7 +33,7 @@ function showNews($path) {
     $files = array_diff(scandir($path), array('..', '.'));
     foreach ($files as $newsFile) {
 
-        if(!endsWith($newsFile, ".md"))
+        if (!endsWith($newsFile, ".md"))
             continue;
 
         $file = readFileContent($path . "/" . $newsFile);
@@ -60,8 +60,8 @@ function generateNewsBox($title, $author, $text) { ?>
 
 function readFileContent($file) {
     $fopen = @fopen($file, "r");
-    if(!$fopen) return false;
-    $text = fread($fopen,filesize($file));
+    if (!$fopen) return false;
+    $text = fread($fopen, filesize($file));
     fclose($fopen);
     return $text;
 }

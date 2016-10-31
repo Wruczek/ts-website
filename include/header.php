@@ -131,7 +131,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
 
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-shield" aria-hidden="true"></i> <?php tl($lang["adminlist"]["title"]); ?> <span class="pullright"><i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["adminlist"]["lastupdate"], [$adminlist[1]]); ?>"></i></span></div>
+                    <div class="panel-heading"><i class="fa fa-shield" aria-hidden="true"></i> <?php tl($lang["adminlist"]["title"]); ?> <span class="pull-right"><i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["adminlist"]["lastupdate"], [$adminlist[1]]); ?>"></i></span></div>
                     <div class="panel-body adminlist">
                         <?php echo $adminlist[0]; ?>
                     </div>
@@ -146,7 +146,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                                 $name = $item[0];
                                 $linkdesc = $item[1];
                                 $link = $item[2];
-                                echo '<li>' . $name . ' <span class="pullright"><a href="' . $link . '">' . $linkdesc . '</a></span></li>';
+                                echo '<li>' . $name . ' <span class="pull-right"><a href="' . $link . '">' . $linkdesc . '</a></span></li>';
                             } ?>
                         </ul>
                     </div>

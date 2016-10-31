@@ -29,7 +29,7 @@ if (!extension_loaded("mbstring")) {
 
 try {
     require_once __DIR__ . "/../lib/phpfastcache/autoload.php";
-     \phpFastCache\CacheManager::Files();
+    \phpFastCache\CacheManager::Files();
 } catch (\phpFastCache\Exceptions\phpFastCacheDriverException $e) {
     $title = 'Directory is not writable';
 
@@ -38,7 +38,7 @@ try {
     die(showError($title, $text));
 }
 
-if(!file_exists(__DIR__ . "/../config/config.php")) {
+if (!file_exists(__DIR__ . "/../config/config.php")) {
     $title = 'config.php does not exists';
 
     $text = '<p>Please go into the directory <code>config</code> and rename <code>config.template.php</code> to <code>config.php</code>.</p>

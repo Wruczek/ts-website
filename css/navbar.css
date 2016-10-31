@@ -30,7 +30,7 @@
 }
 
 @media (min-width: 768px) {
-    .navbar-nav> li> a {
+    .navbar-nav > li > a {
         padding-top: 14.5px;
         padding-bottom: 14.5px;
     }
@@ -61,6 +61,6 @@
     margin-bottom: 14.5px;
 }
 
-.navbar .dropdown-menu>li>a {
+.navbar .dropdown-menu > li > a {
     font-size: 14px;
 }

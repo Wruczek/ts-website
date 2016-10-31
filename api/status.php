@@ -55,7 +55,7 @@ function scriptFail($error) {
     )));
 }
 
-function exception_error_handler($errno, $errstr, $errfile, $errline ) {
+function exception_error_handler($errno, $errstr, $errfile, $errline) {
     scriptFail("[$errfile @ $errline] " . $errstr);
 }
 

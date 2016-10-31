@@ -23,11 +23,7 @@ a {
     text-align: right;
 }
 
-.pullright {
-    float: right !important;
-}
-
-.pullright .fa {
+.pull-right .fa {
     margin-right: 0px
 }
 
@@ -43,7 +39,6 @@ p, a {
     -webkit-hyphens: auto;
     hyphens: auto;
 }
-
 
 /* ****** */
 /* STATUS */
@@ -61,12 +56,11 @@ p, a {
     float: right
 }
 
-
 /* ********* */
 /* ADMINLIST */
 /* ********* */
 
-.adminlist> .groupname~ .groupname {
+.adminlist > .groupname ~ .groupname {
     margin-top: 15px;
 }
 
@@ -93,7 +87,6 @@ p, a {
     margin-left: 19px
 }
 
-
 /* ****** */
 /* NAVBAR */
 /* ****** */
@@ -106,7 +99,7 @@ body {
     font-size: 14px
 }
 
-.nav> li> a {
+.nav > li > a {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -117,12 +110,11 @@ body {
     align-items: center;
 }
 
-.navbar-brand> img {
+.navbar-brand > img {
     height: 100%;
     padding: 5px 5px 5px 15px;
     width: auto;
 }
-
 
 /* ****** */
 /* FOOTER */

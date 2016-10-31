@@ -29,7 +29,7 @@
     <!-- Readmore.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.0/readmore.min.js"></script>
 
-    <?php if(isset($bansPage)) { ?>
+    <?php if (isset($bansPage)) { ?>
     <script>var datatablesUrl = "<?php tl($lang["banlist"]["datatablesurl"]); ?>";</script>
 
     <!-- DataTables for Bootstrap -->

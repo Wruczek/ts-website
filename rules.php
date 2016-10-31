@@ -6,12 +6,12 @@ $parsedown = new Parsedown();
 
 $path = __DIR__ . "/config/rules.md";
 
-if(!file_exists($path)) {
+if (!file_exists($path)) {
     echo '<div class="alert alert-danger"><p class="text-center">' . translate($lang["rules"]["filenotfound"]) . '</div>';
 } else {
     $file = readFileContent($path);
 
-    if(!$file) {
+    if (!$file) {
         echo '<div class="alert alert-danger"><p class="text-center">' . translate($lang["rules"]["readerror"]) . '</div>';
     } else {
 ?>
@@ -32,8 +32,8 @@ if(!file_exists($path)) {
 
 function readFileContent($file) {
     $fopen = @fopen($file, "r");
-    if(!$fopen) return false;
-    $text = fread($fopen,filesize($file));
+    if (!$fopen) return false;
+    $text = fread($fopen, filesize($file));
     fclose($fopen);
     return $text;
 }

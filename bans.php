@@ -5,7 +5,6 @@ require_once __DIR__ . "/include/tsutils.php";
 require_once __DIR__ . "/lib/phpfastcache/autoload.php";
 
 
-
 use phpFastCache\Util;
 use phpFastCache\CacheManager;
 
@@ -20,8 +19,6 @@ if (is_null($banlist)) {
     $banlist = array(getBanlist(), date('d-m-Y H:i:s'));
     $cache->set('banlist', $banlist, 600);
 }
-
-
 ?>
 
 <div class="panel panel-default">
@@ -65,7 +62,7 @@ function getBanlist() {
     global $lang;
 
     try {
-        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI(). "#no_query_clients");
+        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI() . "#no_query_clients");
 
         $bany = $tsAdmin->banList();
 
@@ -73,7 +70,7 @@ function getBanlist() {
 
         foreach ($bany as $ban) {
 
-            if(!isset($ban['lastnickname']))
+            if (!isset($ban['lastnickname']))
                 continue;
 
             $lastnickname =     $ban['lastnickname']->toString();
@@ -82,10 +79,10 @@ function getBanlist() {
             $created =          date('d-m-Y H:i:s', $ban['created']);
             $duration =         $ban['duration'];
 
-            if(empty($reason))
+            if (empty($reason))
                 $reason = "<b>" . translate($lang["banlist"]["table"]["emptyreason"]) . "</b>";
 
-            if($duration == 0)
+            if ($duration == 0)
                 $expires = translate($lang["banlist"]["table"]["permaban"]);
             else
                 $expires = date('d-m-Y H:i:s', $ban['created'] + $duration);
@@ -94,8 +91,8 @@ function getBanlist() {
         }
 
         return $output;
-    } catch(TeamSpeak3_Exception $e) {
-        if($e->getCode() == 1281) {
+    } catch (TeamSpeak3_Exception $e) {
+        if ($e->getCode() == 1281) {
             return '';
         } else {
             return '<div class="alert alert-danger"><p class="text-center">' . translate($lang["general"]["scripterror"], [$e->getCode(), $e->getMessage()]) . '</p></div>';

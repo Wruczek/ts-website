@@ -14,13 +14,13 @@ if (isset($_GET['lang'])) {
     $langcode = $_SESSION['lang'];
 } else if (isset($_COOKIE['lang'])) {
     $langcode = $_COOKIE['lang'];
-} else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+} else if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $langcode = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 } else {
     $langcode = "en";
 }
 
-if(!file_exists(getLanguagePath($langcode)))
+if (!file_exists(getLanguagePath($langcode)))
     $langcode = "en";
 
 require_once getLanguagePath($langcode);
@@ -35,7 +35,7 @@ function tl($pattern, $args = null) {
 
 function translate($pattern, $args = null) {
 
-    if(!$args) {
+    if (!$args) {
         return $pattern;
     }
 

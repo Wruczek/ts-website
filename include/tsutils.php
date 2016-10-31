@@ -11,11 +11,11 @@ function pingTeamspeakServer($uri) {
     try {
         $tsAdmin = TeamSpeak3::factory($uri);
 
-        if(!$tsAdmin->getProperty("virtualserver_status"))
+        if (!$tsAdmin->getProperty("virtualserver_status"))
             throw new Exception("Server is offline");
 
         return $tsAdmin->getInfo();
-    } catch(TeamSpeak3_Exception $e) {
+    } catch (TeamSpeak3_Exception $e) {
         return false;
     }
 

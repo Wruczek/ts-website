@@ -3,7 +3,6 @@ require_once __DIR__ . "/tsutils.php";
 require_once __DIR__ . "/../lib/phpfastcache/autoload.php";
 
 
-
 use phpFastCache\Util;
 use phpFastCache\CacheManager;
 
@@ -30,27 +29,27 @@ function getAdminList() {
     $localIcons = array(100, 200, 300, 400, 500, 600);
 
     try {
-        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI(). "#no_query_clients");
+        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI() . "#no_query_clients");
 
         $output = "";
 
         foreach ($admingroups as $group) {
 
-            if(!array_key_exists((string) $group, $tsAdmin->serverGroupList()))
+            if (!array_key_exists((string)$group, $tsAdmin->serverGroupList()))
                 continue;
 
             $group = $tsAdmin->serverGroupGetById($group);
 
             $icon = '';
 
-            if($group["iconid"]) {
-                if(!$group->iconIsLocal("iconid")) {
+            if ($group["iconid"]) {
+                if (!$group->iconIsLocal("iconid")) {
                     $groupicon = getGroupIcon($tsAdmin, $group);
 
-                    if($groupicon) {
+                    if ($groupicon) {
                         $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" alt="Ikona grupy" /> ';
                     }
-                } elseif(in_array($group["iconid"], $localIcons)) {
+                } elseif (in_array($group["iconid"], $localIcons)) {
                     $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" alt="Ikona grupy" /> ';
                 }
             }
@@ -59,7 +58,7 @@ function getAdminList() {
 
             $clients = $group->clientList();
 
-            if(empty($clients)) {
+            if (empty($clients)) {
                 $output .= '<p class="text-center"><i>' . translate($lang["adminlist"]["emptygroup"]) . '</i></p>';
                 continue;
             }
@@ -67,17 +66,17 @@ function getAdminList() {
             foreach ($clients as $userInfo) {
                 $user = getClientByDbid($tsAdmin, $userInfo['cldbid']);
 
-                if(!$user) {
-                    $output .=  '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pullright">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
+                if (!$user) {
+                    $output .= '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pull-right">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
                     continue;
                 }
 
-                $output .=  '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="Status użytkownika">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pullright">' . translate($lang["adminlist"]["status"]["away"]) . '</span>' : '<span class="label label-success pullright">' . translate($lang["adminlist"]["status"]["online"]) . '</span>') . '</p>';
+                $output .= '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="Status użytkownika">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pull-right">' . translate($lang["adminlist"]["status"]["away"]) . '</span>' : '<span class="label label-success pull-right">' . translate($lang["adminlist"]["status"]["online"]) . '</span>') . '</p>';
             }
         }
 
         return $output;
-    } catch(TeamSpeak3_Exception $e) {
+    } catch (TeamSpeak3_Exception $e) {
         return '<div class="alert alert-danger"><p class="text-center">' . translate($lang["general"]["scripterror"], [$e->getCode(), $e->getMessage()]) . '</p></div>';
     }
 
@@ -86,7 +85,7 @@ function getAdminList() {
 function getClientByDbid($tsAdmin, $cldbid) {
     try {
         return $tsAdmin->clientGetByDbid($cldbid);
-    } catch(TeamSpeak3_Exception $e) {
+    } catch (TeamSpeak3_Exception $e) {
         return false;
     }
 }
@@ -94,7 +93,7 @@ function getClientByDbid($tsAdmin, $cldbid) {
 function getGroupIcon($tsAdmin, $group) {
     try {
         return $group->iconDownload();
-    } catch(TeamSpeak3_Exception $e) {
+    } catch (TeamSpeak3_Exception $e) {
         return false;
     }
 }
