@@ -10,7 +10,16 @@
             <p class="pull-left">&copy; <?php tl($config["general"]["title"]); ?> 2016</p>
             <div class="pull-right">
                 <ul class="list-inline">
-                    <li><p><small><?php tl($lang["footer"]["website"]); ?> &copy; <a href="http://wruczek.top">Wruczek</a> 2016 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.3 | MIT License<br><?php tl($lang["footer"]["css"]); ?> <a href="https://flamespersecond.de">NothingTV</a>, <?php tl($lang["footer"]["background"]); ?> &copy; <a href="http://nabulsigraphix.wix.com/commissions">NabulsiGraphix</a></small></p></li>
+                    <li> <!-- Please respect the amount of work we've put for free into this project and leave the authors in the footer. Thank you. -->
+                        <p>
+                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.3 &mdash; &copy; <a href="http://wruczek.top">Wruczek</a> 2016
+                        </p>
+
+                        <p>
+                            <?php tl($lang["footer"]["css"]); ?> <a href="https://flamespersecond.de">NothingTV</a>, <?php tl($lang["footer"]["background"]); ?> &copy;
+                            <a href="https://twitter.com/MrSanman98">NabulsiGraphix</a>
+                        </p>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -25,8 +25,7 @@ $lang["navbar"]["connecttooltip"] = "Click to connect to {0}";
 
 /************* Footer *************/
 
-$lang["footer"]["website"] = "Website";
-$lang["footer"]["css"] = "CSS thanks to courtesy of";
+$lang["footer"]["css"] = "CSS by";
 $lang["footer"]["background"] = "background";
 
 

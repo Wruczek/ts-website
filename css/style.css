@@ -150,3 +150,9 @@ body {
     left: 0;
     padding: 1rem;
 }
+
+.footer .pull-right p {
+    margin: 0 0 0 0;
+    font-size: 80%;
+    text-align: right;
+}
