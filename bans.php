@@ -110,7 +110,7 @@ function getBanlist() {
 }
 
 function censorIP($ip) {
-    return preg_replace("/(\d+\.\d+\.)\d+\.\d+/", "$1*.*", $ip);
+    return preg_replace("/(\d+\.\d+\.)\d+\.\d+/", "$1***.***", $ip);
 }
 
 require_once __DIR__ . "/include/footer.php";
