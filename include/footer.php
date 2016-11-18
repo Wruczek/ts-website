@@ -12,7 +12,7 @@
                 <ul class="list-inline">
                     <li> <!-- Please respect the amount of work we've put for free into this project and leave the authors in the footer. Thank you. -->
                         <p>
-                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.3 &mdash; &copy; <a href="http://wruczek.top">Wruczek</a> 2016
+                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.4 &mdash; &copy; <a href="http://wruczek.top">Wruczek</a> 2016
                         </p>
 
                         <p>

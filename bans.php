@@ -64,20 +64,28 @@ function getBanlist() {
     try {
         $tsAdmin = TeamSpeak3::factory(getTeamspeakURI() . "#no_query_clients");
 
-        $bany = $tsAdmin->banList();
+        $bans = $tsAdmin->banList();
 
         $output = "";
 
-        foreach ($bany as $ban) {
+        foreach ($bans as $ban) {
 
-            if (!isset($ban['lastnickname']))
-                continue;
+            $user = null;
 
-            $lastnickname =     $ban['lastnickname']->toString();
-            $reason =           $ban['reason'];
-            $invokername =      $ban['invokername']->toString();
-            $created =          date('d-m-Y H:i:s', $ban['created']);
-            $duration =         $ban['duration'];
+            if (!empty($ban['ip']))
+                $user = censorIP($ban['ip']->toString());
+
+            if (!empty($ban['lastnickname']))
+                $user = $ban['lastnickname']->toString();
+
+            if (empty($user))
+                $user = "<i>Unknown</i>";
+
+
+            $reason = $ban['reason'];
+            $invokername = $ban['invokername']->toString();
+            $created = date('d-m-Y H:i:s', $ban['created']);
+            $duration = $ban['duration'];
 
             if (empty($reason))
                 $reason = "<b>" . translate($lang["banlist"]["table"]["emptyreason"]) . "</b>";
@@ -87,7 +95,7 @@ function getBanlist() {
             else
                 $expires = date('d-m-Y H:i:s', $ban['created'] + $duration);
 
-            $output .= "<tr><td>$lastnickname</td><td>$reason</td><td>$invokername</td><td>$created</td><td>$expires</td></tr>";
+            $output .= "<tr><td>$user</td><td>$reason</td><td>$invokername</td><td>$created</td><td>$expires</td></tr>";
         }
 
         return $output;
@@ -101,6 +109,9 @@ function getBanlist() {
 
 }
 
+function censorIP($ip) {
+    return preg_replace("/(\d+\.\d+\.)\d+\.\d+/", "$1*.*", $ip);
+}
 
 require_once __DIR__ . "/include/footer.php";
 ?>
