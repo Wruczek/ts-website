@@ -63,16 +63,22 @@ function getAdminList() {
                 continue;
             }
 
+            $onlineClients = [];
+            $offlineClients = [];
+
             foreach ($clients as $userInfo) {
                 $user = getClientByDbid($tsAdmin, $userInfo['cldbid']);
 
                 if (!$user) {
-                    $output .= '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pull-right">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
+                    $offlineClients[] = '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pull-right">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
                     continue;
                 }
 
-                $output .= '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="Status użytkownika">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pull-right">' . translate($lang["adminlist"]["status"]["away"]) . '</span>' : '<span class="label label-success pull-right">' . translate($lang["adminlist"]["status"]["online"]) . '</span>') . '</p>';
+                $onlineClients[] = '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="User status">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pull-right">' . translate($lang["adminlist"]["status"]["away"]) . '</span>' : '<span class="label label-success pull-right">' . translate($lang["adminlist"]["status"]["online"]) . '</span>') . '</p>';
             }
+
+            foreach (array_merge($onlineClients, $offlineClients) as $str)
+                $output .= $str;
         }
 
         return $output;
