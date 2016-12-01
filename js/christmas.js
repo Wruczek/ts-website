@@ -18,7 +18,7 @@ if (new Date().getMonth() === 11) {
     // Wait for the snowfall script and jQuery to load
     window.addEventListener('load', function () {
         $(document).snowfall({
-            flakeCount: 500,
+            flakeCount: ($(document).width() > 992 ? 500 : 100),
             flakeIndex: -1,
             minSize: 4,
             maxSize: 5,
