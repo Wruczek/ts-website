@@ -41,6 +41,10 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <?php if(!empty($config["general"]["christmasmode"])) { ?>
+    <script src="js/christmas.js"></script>
+    <?php } ?>
+
     <script src="api/i18n.php"></script>
 
     <!--[if IE]>

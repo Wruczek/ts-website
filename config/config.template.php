@@ -21,6 +21,7 @@ $config["general"]["subtitle"]      = " - Best TeamSpeak server!";              
 $config["general"]["desc"]          = "Polski serwer TeamSpeak! Zapraszamy :)";     // Website description - displayed in Google search engine
 $config["general"]["newsDir"]       = "config/news";                                // News folder (relative to project folder)
 $config["general"]["timezone"]      = "Europe/Warsaw";                              // Your timezone - http://php.net/manual/en/timezones.php
+$config["general"]["christmasmode"] = true;                                         // Set to false to permanently disable christmas mode activated in December
 
 $config["general"]["enablehta"]     = false; // Enable / Disable additional website features (recommended, but
                                              // you need to have up-to-date version of Apache and install mod_rewrite)
