@@ -1,6 +1,6 @@
 # ts-website
 
-[![Website screenshot](http://i.imgur.com/9UZV6NG.png)](http://imgur.com/a/RUSi2)
+[![Website screenshot](http://i.imgur.com/R0lPz6b.png)](http://imgur.com/a/RUSi2)
 
 <p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
 
@@ -17,6 +17,12 @@
   - Email: wruczekk@gmail.com
 
 **I am happy to take any programming-related requests, add additional features or modify the code to suit your needs** for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect. If you are interested or just want to chat about random geek stuff just message me :D
+
+#### Christmas update
+[Christmas update](http://i.imgur.com/R0lPz6b.png) introduced on the 01 December 2016 adds a new theme, background and snow effect.
+Website checks the user's date on the device and enables the effects throughout the whole December.
+
+If you want to enable this feature, make sure you have ``$config["general"]["christmasmode"]`` set to ``true`` in your config file. Set it to ``false`` will disable this theme forever for everyone.
 
 #### Main Features
 - News page, dynamic server status, admin list with status, server viewer, ban list and rules page
