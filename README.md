@@ -9,7 +9,7 @@
 **ts-website - free website for your TeamSpeak 3 server**<br>
 
 #### Useful links
-- [Demo](https://ts.wruczek.top/)
+- [Demo](https://ts.wruczek.tech/)
 - [Download](https://github.com/Wruczek/ts-website/archive/master.zip)
 - [Report Issues](https://github.com/Wruczek/ts-website/issues/new)
 - Contact the author: (english or polish)
