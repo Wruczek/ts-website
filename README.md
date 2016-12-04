@@ -85,7 +85,7 @@ Recommended nginx configuration:
 
 Recommended Apache configuration:
  - Up-to-date Apache server
- - Enabled mod_rewrite (``sudo a2enmod rewrite && service apache2 reload``)
+ - Enabled mod_rewrite (``sudo a2enmod rewrite && sudo service apache2 restart``)
  - Enabled support of htaccess
  - ``enablehta`` in config.php set to ``true``
 
