@@ -1,4 +1,8 @@
-# ts-website
+<p align="center">
+<b>Need help? <a href="https://telegram.me/tswebsite">Join our telegram group</a></b> for news, announcements, help and general chat about ts-website.
+</p>
+
+<br>
 
 [![Website screenshot](http://i.imgur.com/R0lPz6b.png)](http://imgur.com/a/RUSi2)
 
@@ -6,23 +10,17 @@
 
 <br>
 
-**ts-website - free website for your TeamSpeak 3 server**<br>
+**ts-website** - free website for your TeamSpeak 3 server<br>
 
 #### Useful links
 - [Demo](https://ts.wruczek.tech/)
 - [Download](https://github.com/Wruczek/ts-website/archive/master.zip)
 - [Report Issues](https://github.com/Wruczek/ts-website/issues/new)
-- Contact the author: (english or polish)
-  - Telegram: [@Wruczek](https://telegram.me/Wruczek)
-  - Email: wruczekk@gmail.com
+- **[ts-website Telegram group](https://telegram.me/tswebsite) - help, announcements, and general chat**
 
-**I am happy to take any programming-related requests, add additional features or modify the code to suit your needs** for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect. If you are interested or just want to chat about random geek stuff just message me :D
+**I am happy to take any programming-related requests, add additional features or modify the code to suit your needs** for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
 
-#### Christmas update
-[Christmas update](http://i.imgur.com/R0lPz6b.png) introduced on the 01 December 2016 adds a new theme, background and snow effect.
-Website checks the user's date on the device and enables the effects throughout the whole December.
-
-If you want to enable this feature, make sure you have ``$config["general"]["christmasmode"]`` set to ``true`` in your config file. Set it to ``false`` will disable this theme forever for everyone.
+For business enquiries only: **wruczekk** at **gmail.com**, for anything else please join Telegram chat.
 
 #### Main Features
 - News page, dynamic server status, admin list with status, server viewer, ban list and rules page
@@ -31,6 +29,12 @@ If you want to enable this feature, make sure you have ``$config["general"]["chr
 - Modern and responsive design
 - Caching [WIP]
 - Free, Open source, under MIT license
+
+#### Christmas update
+[Christmas update](http://i.imgur.com/R0lPz6b.png) introduced on the 01 December 2016 adds a new theme, background and snow effect.
+Website checks the user's date on the device and enables the effects throughout the whole December.
+
+If you want to enable this feature, make sure you have ``$config["general"]["christmasmode"]`` set to ``true`` in your config file. Set it to ``false`` will disable this theme forever for everyone.
 
 ### Requirements
 PHP Installation:

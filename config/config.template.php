@@ -1,14 +1,14 @@
 <?php
 /*
     Author: Wruczek
-    Contact me:
-        Telegram: @Wruczek
-        Email: wruczekk@gmail.com
-        Donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ
+    Donate: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ
 
-    I am happy to take any programming-related requests, help you with configuration, add additional features or modify the website code to suit your needs for a small donation :)
+    I am happy to take any programming-related requests, add additional features or modify the code to suit your needs for a small donation :)
     I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
-    If you are interested or just want to chat about random geek stuff just message me :D
+    For business enquiries only: wruczekk at gmail.com, for anything else please join Telegram chat.
+
+
+    Need help? Join our telegram group for news, announcements, help and general chat about ts-website: https://telegram.me/tswebsite
 */
 
 
