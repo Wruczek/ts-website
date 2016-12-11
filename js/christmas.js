@@ -20,12 +20,12 @@ if (new Date().getMonth() === 11) {
         document.getElementById('background-artist').innerHTML = '<a href="http://www.publicdomainpictures.net/view-image.php?image=28562&picture=christmas-bulbs-red-background">Debi Geroux - Public Domain</a>';
 
         if(getCookie('snoweffect') === 'false') {
-            document.getElementsByTagName('body')[0].innerHTML += '<a class="disableSnowLink" href="#" onclick="enableSnowEffect()">Enable snow effect</a>';
+            document.getElementById('website-copyright').innerHTML += ' &mdash; <a class="disableSnowLink" href="#" onclick="enableSnowEffect()">Enable snow effect</a>';
             return;
         }
 
         // Add a link to disable the effect
-        document.getElementsByTagName('body')[0].innerHTML += '<a class="disableSnowLink" href="#" onclick="disableSnowEffect()">Disable snow effect</a>';
+        document.getElementById('website-copyright').innerHTML += ' &mdash; <a class="disableSnowLink" href="#" onclick="disableSnowEffect()">Disable snow effect</a>';
 
         // Add the snow effect
         snowFall.snow(document.body, {

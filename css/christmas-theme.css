@@ -9,11 +9,6 @@ body {
     background-image: url(../img/christmas-bg.jpg);
 }
 
-.disableSnowLink {
-    position: fixed;
-    bottom: 0;
-}
-
 .panel {
     background-color: #410b13;
 }

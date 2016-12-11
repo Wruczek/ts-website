@@ -7,12 +7,12 @@
     <div class="footer">
         <div class="container">
             <hr>
-            <p class="pull-left">&copy; <?php tl($config["general"]["title"]); ?> 2016</p>
+            <p class="pull-left" id="website-copyright">&copy; <?php tl($config["general"]["title"]); ?> 2016</p>
             <div class="pull-right">
                 <ul class="list-inline">
                     <li> <!-- Please respect the amount of work we've put for free into this project and leave the authors in the footer. Thank you. -->
                         <p>
-                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.5 &mdash; &copy; <a href="https://wruczek.tech">Wruczek</a> 2016
+                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.6 &mdash; &copy; <a href="https://wruczek.tech">Wruczek</a> 2016
                         </p>
 
                         <p>
