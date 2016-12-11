@@ -24,13 +24,12 @@ a {
 }
 
 .pull-right .fa {
-    margin-right: 0px
+    margin-right: 0
 }
 
 p, a {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    word-break: break-all;
 }
 
 /* ****** */
@@ -38,7 +37,7 @@ p, a {
 /* ****** */
 
 .serverstatus p {
-    margin: 0px
+    margin: 0
 }
 
 .serverstatus a {
@@ -69,7 +68,7 @@ p, a {
 }
 
 .adminlist p {
-    margin: 0px
+    margin: 0
 }
 
 .adminlist img {
@@ -98,7 +97,7 @@ body {
 }
 
 .navbar-brand {
-    padding: 0px 10px 0px 0px;
+    padding: 0 10px 0 0;
     display: flex;
     align-items: center;
 }
