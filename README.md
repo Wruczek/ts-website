@@ -18,6 +18,8 @@
 - [Report Issues](https://github.com/Wruczek/ts-website/issues/new)
 - **[ts-website Telegram group](https://telegram.me/tswebsite) - help, announcements, and general chat**
 
+<br>
+
 **I am happy to take any programming-related requests, add additional features or modify the code to suit your needs** for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
 
 For business enquiries only: **wruczekk** at **gmail.com**, for anything else please join Telegram chat.
