@@ -84,8 +84,10 @@ function getBanlist() {
 
             $reason = $ban['reason'];
             $invokername = $ban['invokername']->toString();
-            $created = date('d-m-Y H:i:s', $ban['created']);
             $duration = $ban['duration'];
+            $createdepoch = $ban['created'];
+            $expiresepoch = $ban['created'] + $duration;
+            $created = date('d-m-Y H:i:s', $createdepoch);
 
             if (empty($reason))
                 $reason = "<b>" . translate($lang["banlist"]["table"]["emptyreason"]) . "</b>";
@@ -93,9 +95,9 @@ function getBanlist() {
             if ($duration == 0)
                 $expires = translate($lang["banlist"]["table"]["permaban"]);
             else
-                $expires = date('d-m-Y H:i:s', $ban['created'] + $duration);
+                $expires = date('d-m-Y H:i:s', $expiresepoch);
 
-            $output .= "<tr><td>$user</td><td>$reason</td><td>$invokername</td><td>$created</td><td>$expires</td></tr>";
+            $output .= "<tr><td>$user</td><td>$reason</td><td>$invokername</td><td data-order=\"$createdepoch\">$created</td><td data-order=\"$expiresepoch\">$expires</td></tr>";
         }
 
         return $output;

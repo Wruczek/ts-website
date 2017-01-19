@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#banlist').dataTable({
-        "order": [],
+        "order": [[3, "desc"]],
         "language": {
             "url": datatablesUrl
         }
