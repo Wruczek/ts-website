@@ -4,7 +4,7 @@
 
 <br>
 
-[![Website screenshot](http://i.imgur.com/R0lPz6b.png)](http://imgur.com/a/RUSi2)
+[![Website screenshot](http://i.imgur.com/9UZV6NG.png)](http://imgur.com/a/RUSi2)
 
 <p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
 
