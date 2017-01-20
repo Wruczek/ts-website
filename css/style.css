@@ -36,7 +36,7 @@ p, a {
 /* STATUS */
 /* ****** */
 
-.serverstatus p {
+.serverstatus p, .serverstatus .label .fa {
     margin: 0
 }
 
