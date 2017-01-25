@@ -17,12 +17,12 @@ if (!isPHPVersionSupported()) {
     die(showError($title, $text));
 }
 
-if (!extension_loaded("mbstring")) {
-    $title = 'MBString extension is missing';
+if (!function_exists("utf8_encode")) {
+    $title = 'Required function "utf8_encode" is missing';
 
     $text = '<p>Required PHP extension: <code>mbstring</code> has not been found on the server.</p>
-            <p>Follow <a href="http://askubuntu.com/a/772505">this instructions</a> if you are using Ubuntu 16.04 with PHP 7.0 (recommended). Otherwise, installation instructions can be found <a href="https://www.google.pl/?q=install+mbstring+(your+operating+system)">on Google</a> ;)</p>
-            <p>If you are using Web Hosting service, please contact the Hosting support for instruction on enabling mbstring.</p>';
+            <p>For PHP 7.0 (recommended), install this package: <code>sudo apt-get install php-xml php7.0-xml</code> and <u>restart apache</u>. Otherwise, installation instructions can be found <a href="https://www.google.com/?q=Call%20to%20undefined%20function%20utf8_encode()">on Google</a> ;)</p>
+            <p>If you are using Web Hosting service, please contact the Hosting support for instruction on enabling needed packages.</p>';
 
     die(showError($title, $text));
 }
