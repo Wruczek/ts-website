@@ -29,7 +29,7 @@ function getAdminList() {
     $localIcons = array(100, 200, 300, 400, 500, 600);
 
     try {
-        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI() . "#no_query_clients");
+        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI());
 
         $output = "";
 
@@ -68,6 +68,8 @@ function getAdminList() {
 
             foreach ($clients as $userInfo) {
                 $user = getClientByDbid($tsAdmin, $userInfo['cldbid']);
+
+                if($user["client_type"]) continue;
 
                 if (!$user) {
                     $offlineClients[] = '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pull-right">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
