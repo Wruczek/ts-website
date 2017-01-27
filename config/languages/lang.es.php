@@ -25,8 +25,8 @@ $lang["navbar"]["connecttooltip"] = "Click para conectar a {0}";
 
 /************* Footer *************/
 
-$lang["footer"]["css"] = "CSS by";
-$lang["footer"]["background"] = "background";
+$lang["footer"]["css"] = "CSS por";
+$lang["footer"]["background"] = "fondo";
 
 
 /************* Server status *************/
@@ -70,8 +70,8 @@ $lang["index"]["title"] = "Noticias";
 $lang["index"]["showmore"] = "Leer más";
 $lang["index"]["showless"] = "Mostar menos";
 
-$lang["index"]["errortitle"] = "Error: news directory has not been found!";
-$lang["index"]["errorsubtitle"] = "Please make sure that directory location set in <b><code>config/config.php</code></b> is valid.";
+$lang["index"]["errortitle"] = "Error: El directorio de noticias no fue encontrado";
+$lang["index"]["errorsubtitle"] = "Por favor asegurate que el directorio que está en <b><code>config/config.php</code></b> es válido.";
 
 
 /************* Server viewer - viewer.php *************/
@@ -99,5 +99,5 @@ $lang["banlist"]["table"]["expires"] = "Expiración";
 /************* Rules - rules.php *************/
 
 $lang["rules"]["title"] = "Reglas del servidor";
-$lang["rules"]["filenotfound"] = "Error: file <code>config/rules.md</code> has not been found!";
-$lang["rules"]["readerror"] = "Error: cannot access the file <code>config/rules.md</code>!";
+$lang["rules"]["filenotfound"] = "Error: archivo <code>config/rules.md</code> no ha sido encontrado";
+$lang["rules"]["readerror"] = "Error: no se puede acceder al archivo <code>config/rules.md</code>";
