@@ -38,6 +38,8 @@ Website checks the user's date on the device and enables the effects throughout 
 
 If you want to enable this feature, make sure you have ``$config["general"]["christmasmode"]`` set to ``true`` in your config file. Set it to ``false`` will disable this theme forever for everyone.
 
+**If you plan on using a custom query account (i.e. generated in your TeamSpeak client), please make a new identity for it to ensure that the adminlist works correctly**
+
 ### Requirements
 PHP Installation:
 - PHP 5.5 or newer (although latest PHP version is highly recommended!)
@@ -96,6 +98,11 @@ Recommended Apache configuration:
  - ``enablehta`` in config.php set to ``true``
 
 **If you experience any problems, make sure that directory ``/var/www`` is writeable.**
+
+### Inspiring ts-websites <i><small>(that we love)</small></i>
+
+- http://www.leagueofyorkshire.co.uk/rules
+
 
 <br><br>
 <p align="center">
