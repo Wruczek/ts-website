@@ -446,8 +446,6 @@ class TeamSpeak3_Node_Channel extends TeamSpeak3_Node_Abstract
   public function delete($force = FALSE)
   {
     $this->getParent()->channelDelete($this->getId(), $force);
-
-    unset($this);
   }
 
   /**

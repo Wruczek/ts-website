@@ -285,7 +285,7 @@ class TeamSpeak3_Node_Client extends TeamSpeak3_Node_Abstract
    */
   public function avatarDownload()
   {
-    if($this["client_flag_avatar"] == 0) return;
+    if($this["client_flag_avatar"] == NULL) return;
 
     $download = $this->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->avatarGetName());
     $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== FALSE ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);

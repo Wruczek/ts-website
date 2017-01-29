@@ -14,7 +14,8 @@ if (!isPHPVersionSupported()) {
 
     $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.5.0</b>.</p><p>Please update your PHP installation and try again.</p>';
 
-    die(showError($title, $text));
+    showError($title, $text);
+    die();
 }
 
 if (!function_exists("utf8_encode")) {
@@ -24,18 +25,15 @@ if (!function_exists("utf8_encode")) {
             <p>For PHP 7.0 (recommended), install this package: <code>sudo apt-get install php-xml php7.0-xml</code> and <u>restart apache</u>. Otherwise, installation instructions can be found <a href="https://www.google.com/?q=Call%20to%20undefined%20function%20utf8_encode()">on Google</a> ;)</p>
             <p>If you are using Web Hosting service, please contact the Hosting support for instruction on enabling needed packages.</p>';
 
-    die(showError($title, $text));
+    showError($title, $text);
+    die();
 }
 
-try {
-    require_once __DIR__ . "/../lib/phpfastcache/autoload.php";
-    \phpFastCache\CacheManager::Files();
-} catch (\phpFastCache\Exceptions\phpFastCacheDriverException $e) {
-    $title = 'Directory is not writable';
-
-    $text = '<p>Please make sure that the whole website directory including subdirectories is fully writable.</p>';
-
-    die(showError($title, $text));
+if(!is_writable(__DIR__ . '/../cache')) {
+    $title = 'Cache directory is not writable';
+    $text = '<p>Please make sure that the <code>cache</code> directory is fully writable.</p>';
+    showError($title, $text);
+    die();
 }
 
 if (!file_exists(__DIR__ . "/../config/config.php")) {
@@ -44,7 +42,8 @@ if (!file_exists(__DIR__ . "/../config/config.php")) {
     $text = '<p>Please go into the directory <code>config</code> and rename <code>config.template.php</code> to <code>config.php</code>.</p>
             <p>Edit the new file and tweak it to suite your needs.</p>';
 
-    die(showError($title, $text));
+    showError($title, $text);
+    die();
 }
 
 
@@ -90,7 +89,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            &copy; <a href="https://wruczek.tech">Wruczek</a> 2016 - 2017 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.3.7 | MIT License
+            &copy; <a href="https://wruczek.tech">Wruczek</a> 2016 - 2017 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.4.0 | MIT License
         </div>
     </div>
 

@@ -4,26 +4,17 @@ header('Content-Type: application/json');
 set_error_handler("exception_error_handler", E_ALL);
 
 require_once __DIR__ . "/../include/tsutils.php";
-require_once __DIR__ . "/../lib/phpfastcache/autoload.php";
+require_once __DIR__ . "/../include/cacheutils.class.php";
 
 date_default_timezone_set($config["general"]["timezone"]);
 
-use phpFastCache\Util;
-use phpFastCache\CacheManager;
+$cacheutils = new CacheUtils('serverstatus');
 
-Util\Languages::setEncoding("UTF-8");
-$cache = CacheManager::Files();
-
-$serverstatus = $cache->get('serverstatus');
-
-// $cache->clean();
-
-if (is_null($serverstatus)) {
-    $serverstatus = getResult();
-    $cache->set('serverstatus', $serverstatus, 10);
+if($cacheutils->isExpired()) {
+    $cacheutils->setValue(getResult(), 10);
 }
 
-die ($serverstatus);
+die ($cacheutils->getValue());
 
 // *********
 //  METHODS

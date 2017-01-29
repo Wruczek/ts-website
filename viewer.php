@@ -1,23 +1,15 @@
 <?php
 require_once __DIR__ . "/include/header.php";
 require_once __DIR__ . "/include/tsutils.php";
-require_once __DIR__ . "/lib/phpfastcache/autoload.php";
+require_once __DIR__ . "/include/cacheutils.class.php";
 
+$cacheutils = new CacheUtils('tsviewer');
 
-use phpFastCache\Util;
-use phpFastCache\CacheManager;
-
-Util\Languages::setEncoding("UTF-8");
-$cache = CacheManager::Files();
-
-$tsviewer = $cache->get('tsviewer');
-
-// $cache->clean();
-
-if (is_null($tsviewer)) {
-    $tsviewer = array(getViewer(), date('d-m-Y H:i:s'));
-    $cache->set('tsviewer', $tsviewer, 300);
+if($cacheutils->isExpired()) {
+    $cacheutils->setValue([getViewer(), date('d-m-Y H:i:s')], 300);
 }
+
+$tsviewer = $cacheutils->getValue();
 
 // print_r ($tsviewer);
 

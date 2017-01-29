@@ -168,7 +168,7 @@ class TeamSpeak3_Viewer_Html implements TeamSpeak3_Viewer_Interface
   {
     return "ts3_viewer " . $this->currObj->getClass(null);
   }
-
+  
   /**
    * Returns the ID of the current node which will be used as a summary element for
    * the container element.

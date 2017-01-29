@@ -501,7 +501,9 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
    */
   public function channelFileInfo($cid, $cpw = "", $name = "/")
   {
-    return array_pop($this->execute("ftgetfileinfo", array("cid" => $cid, "cpw" => $cpw, "name" => $name))->toArray());
+    $info = $this->execute("ftgetfileinfo", array("cid" => $cid, "cpw" => $cpw, "name" => $name))->toArray();
+    
+    return array_pop($info);
   }
 
   /**
@@ -2268,8 +2270,6 @@ class TeamSpeak3_Node_Server extends TeamSpeak3_Node_Abstract
   public function delete()
   {
     $this->getParent()->serverDelete($this->getId());
-
-    unset($this);
   }
 
   /**

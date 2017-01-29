@@ -74,8 +74,6 @@ class TeamSpeak3_Node_Channelgroup extends TeamSpeak3_Node_Abstract
   public function delete($force = FALSE)
   {
     $this->getParent()->channelGroupDelete($this->getId(), $force);
-
-    unset($this);
   }
 
   /**

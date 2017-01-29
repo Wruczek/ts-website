@@ -186,7 +186,7 @@ abstract class TeamSpeak3_Transport_Abstract
    */
   public function setAdapter(TeamSpeak3_Adapter_Abstract $adapter)
   {
-    $this->adapter = $adapter;
+    $this->adapter = get_class($adapter);
   }
 
   /**
@@ -208,7 +208,7 @@ abstract class TeamSpeak3_Transport_Abstract
   {
     if($this->adapter instanceof TeamSpeak3_Adapter_Abstract)
     {
-      $string = TeamSpeak3_Helper_String::factory(get_class($this->adapter));
+      $string = TeamSpeak3_Helper_String::factory($this->adapter);
 
       return $string->substr($string->findLast("_"))->replace(array("_", " "), "")->toString();
     }

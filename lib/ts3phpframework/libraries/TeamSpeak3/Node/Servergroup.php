@@ -74,8 +74,6 @@ class TeamSpeak3_Node_Servergroup extends TeamSpeak3_Node_Abstract
   public function delete($force = FALSE)
   {
     $this->getParent()->serverGroupDelete($this->getId(), $force);
-
-    unset($this);
   }
 
   /**

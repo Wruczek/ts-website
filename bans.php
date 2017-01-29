@@ -2,23 +2,15 @@
 $bansPage = true;
 require_once __DIR__ . "/include/header.php";
 require_once __DIR__ . "/include/tsutils.php";
-require_once __DIR__ . "/lib/phpfastcache/autoload.php";
+require_once __DIR__ . "/include/cacheutils.class.php";
 
+$cacheutils = new CacheUtils('banlist');
 
-use phpFastCache\Util;
-use phpFastCache\CacheManager;
-
-Util\Languages::setEncoding("UTF-8");
-$cache = CacheManager::Files();
-
-$banlist = $cache->get('banlist');
-
-// $cache->clean();
-
-if (is_null($banlist)) {
-    $banlist = array(getBanlist(), date('d-m-Y H:i:s'));
-    $cache->set('banlist', $banlist, 600);
+if($cacheutils->isExpired()) {
+    $cacheutils->setValue([getBanlist(), date('d-m-Y H:i:s')], 300);
 }
+
+$banlist = $cacheutils->getValue();
 ?>
 
 <div class="panel panel-default">
