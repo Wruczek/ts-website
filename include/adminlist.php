@@ -20,7 +20,7 @@ function getAdminList() {
     $localIcons = array(100, 200, 300, 400, 500, 600);
 
     try {
-        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI());
+        $tsAdmin = getTeamspeakConnection();
 
         $output = "";
 

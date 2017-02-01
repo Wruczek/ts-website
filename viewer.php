@@ -17,8 +17,9 @@ function getViewer() {
     global $lang;
 
     try {
-        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI() . "#no_query_clients");
-        return $tsAdmin->getViewer(new TeamSpeak3_Viewer_Html("lib/ts3phpframework/images/viewer/", "lib/ts3phpframework/images/flags/", "data:image"));
+        $tsAdmin = getTeamspeakConnection("#no_query_clients");
+        $base = "lib/ts3phpframework/images";
+        return $tsAdmin->getViewer(new TeamSpeak3_Viewer_Html("$base/viewer/", "$base/flags/", "data:image"));
     } catch (TeamSpeak3_Exception $e) {
         return '<div class="alert alert-danger"><p class="text-center">' . translate($lang["general"]["scripterror"], [$e->getCode(), $e->getMessage()]) . '</p></div>';
     }

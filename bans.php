@@ -54,7 +54,7 @@ function getBanlist() {
     global $lang;
 
     try {
-        $tsAdmin = TeamSpeak3::factory(getTeamspeakURI() . "#no_query_clients");
+        $tsAdmin = getTeamspeakConnection("#no_query_clients");
 
         $bans = $tsAdmin->banList();
 
