@@ -14,97 +14,25 @@
 
 #### Useful links
 - [Demo](https://ts.wruczek.tech/)
-- [Download](https://github.com/Wruczek/ts-website/archive/master.zip)
-- [Report Issues](https://github.com/Wruczek/ts-website/issues/new)
+- [Installation instructions](https://github.com/Wruczek/ts-website/wiki/Website-Installation)
+- [Wiki](https://github.com/Wruczek/ts-website/wiki)
+- [Report Issues / Suggestions](https://github.com/Wruczek/ts-website/issues/new)
 - **[ts-website Telegram group](https://telegram.me/tswebsite) - help, announcements, and general chat**
-
-<br>
-
-**I am happy to take any programming-related requests, add additional features or modify the code to suit your needs** for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
-
-For business enquiries only: **wruczekk** at **gmail.com**, for anything else please join Telegram chat.
 
 #### Main Features
 - News page, dynamic server status, admin list with status, server viewer, ban list and rules page
 - Multiple languages with auto-detection for default language
 - PHP 7.0, Apache 2 and nginx support
 - Modern and responsive design
-- Caching [WIP]
-- Free, Open source, under MIT license
+- Caching
+- Free and Open source, under MIT license
 
-#### Christmas update
-[Christmas update](http://i.imgur.com/R0lPz6b.png) introduced on the 01 December 2016 adds a new theme, background and snow effect.
-Website checks the user's date on the device and enables the effects throughout the whole December.
+### Other stuff
+I am happy to take any programming-related requests, add additional features or modify the code to suit your needs for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
 
-If you want to enable this feature, make sure you have ``$config["general"]["christmasmode"]`` set to ``true`` in your config file. Set it to ``false`` will disable this theme forever for everyone.
-
-**If you plan on using a custom query account (i.e. generated in your TeamSpeak client), please make a new identity for it to ensure that the adminlist works correctly**
-
-### Requirements
-PHP Installation:
-- PHP 5.5 or newer (although latest PHP version is highly recommended!)
-- Installed and enabled ``mbstring`` extension
-
-Recommended nginx configuration:
- - Up-to-date nginx server
- - ``enablehta`` in config.php set to ``true``
- - nginx config set to the following: (**Remember that you need to adjust this config to suit your server!**)
- ````
- server {
- 	listen 80 default_server;
- 	listen [::]:80 default_server;
- 
- 	root /var/www/html;
- 
- 	# Add index.php to the list if you are using PHP
- 	index index.php index.html index.htm;
- 
- 	server_name _;
- 
- 	location / {
- 		# First attempt to serve request as file, then
- 		# as directory, then fall back to displaying a 404.
- 		try_files $uri $uri/ $uri.html $uri.php$is_args$query_string;
- 	}
- 
- 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
- 	
- 	location ~ \.php$ {
- 		include snippets/fastcgi-php.conf;
- 	
- 		# With php7.0-cgi alone:
- 		#fastcgi_pass 127.0.0.1:9000;
- 		# With php7.0-fpm:
- 		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
- 	}
- 
- 	 #deny access to .htaccess files, if Apache's document root
- 	 #concurs with nginx's one
- 	location ~ /\.ht {
- 		deny all;
- 	}
- 
- 	#error pages - REMEBER TO CHANGE THE PATH!
- 	error_page 403 /path_to_ts-website_please_change_me/errorpages/403.html;
- 	error_page 404 /path_to_ts-website_please_change_me/errorpages/404.html;
- 	error_page 500 502 503 504 /path_to_ts-website_please_change_me/errorpages/500.html;
- }
- ````
-
-Recommended Apache configuration:
- - Up-to-date Apache server
- - Enabled mod_rewrite (``sudo a2enmod rewrite && sudo service apache2 restart``)
- - Enabled support of htaccess
- - ``enablehta`` in config.php set to ``true``
-
-**If you experience any problems, make sure that directory ``/var/www`` is writeable.**
-
-### Inspiring ts-websites <i><small>(that we love)</small></i>
-
-- http://www.leagueofyorkshire.co.uk/rules
-
+For business enquiries only: **wruczekk** at **gmail.com**, for anything else please join our [Telegram group](https://t.me/ts-website).
 
 <br><br>
 <p align="center">
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ" target="_blank"><img src="https://i.imgur.com/s1u7rju.png?1"></a>
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ" target="_blank"><img src="https://i.imgur.com/s1u7rju.png"></a>
 </p>
