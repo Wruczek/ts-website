@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../lib/phpfastcache/src/autoload.php";
+require_once __DIR__ . "/../config/config.php";
 
 use phpFastCache\CacheManager;
 use phpFastCache\Util\Languages;
@@ -11,9 +12,13 @@ class CacheUtils {
     private $key;
 
     function __construct($key) {
-
         if(!is_string($key))
             throw new InvalidArgumentException("Key must be a string");
+
+        global $config;
+        if(isset($config["general"]["timezone"])) {
+            date_default_timezone_set($config["general"]["timezone"]);
+        }
 
         $this->cacheInstance = CacheManager::getInstance('Files', ["path" => __DIR__ . '/../cache']);
         Languages::setEncoding();

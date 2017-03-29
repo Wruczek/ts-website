@@ -8,7 +8,7 @@ require_once __DIR__ . "/../include/adminlist.php";
 $htalink = $config["general"]["enablehta"] ? "" : ".php";
 ?>
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 
 <head>
     <meta charset="utf-8">

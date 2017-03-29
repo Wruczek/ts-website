@@ -1,7 +1,9 @@
 config/config.php
 prototypes/
 admin/
-cache/localhost
+
+cache/
+!/cache/.htaccess
 
 # PhpStorm
 .idea/

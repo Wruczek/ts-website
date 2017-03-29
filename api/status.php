@@ -11,7 +11,7 @@ date_default_timezone_set($config["general"]["timezone"]);
 $cacheutils = new CacheUtils('serverstatus');
 
 if($cacheutils->isExpired()) {
-    $cacheutils->setValue(getResult(), 10);
+    $cacheutils->setValue(getResult(), 60);
 }
 
 die ($cacheutils->getValue());
