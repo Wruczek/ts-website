@@ -5,7 +5,7 @@ require_once __DIR__ . "/cacheutils.class.php";
 $cacheutils = new CacheUtils('adminlist');
 
 if($cacheutils->isExpired()) {
-    $cacheutils->setValue([getAdminList(), date('d-m-Y H:i:s')], 30);
+    $cacheutils->setValue([getAdminList(), date('d-m-Y H:i:s')], 120);
 }
 
 $adminlist = $cacheutils->getValue();
