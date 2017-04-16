@@ -16,7 +16,7 @@
                         </p>
 
                         <p>
-                            <?php tl($lang["footer"]["css"]); ?> <a href="https://flamespersecond.de">NothingTV</a>, <?php tl($lang["footer"]["background"]); ?> &copy;
+                            <?php tl($lang["footer"]["css"]); ?> <a href="https://nothingtv.de/">NothingTV</a>, <?php tl($lang["footer"]["background"]); ?> &copy;
                             <span id="background-artist"><a href="https://twitter.com/MrSanman98">NabulsiGraphix</a></span>
                         </p>
                     </li>
