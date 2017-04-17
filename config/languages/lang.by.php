@@ -52,7 +52,7 @@ $lang["viewer"]["title"] = "Агляд сервера";
 $lang["viewer"]["lastupdate"] = "Апошнее абнаўленне: {0}";
 /************* Ban List - bans.php *************/
 $lang["banlist"]["title"] = "Спіс забаненых";
-$lang["banlist"]["datatablesurl"] = "//cdn.datatables.net/plug-ins/1.10.12/i18n/Belarussian.json";
+$lang["banlist"]["datatablesurl"] = "//cdn.datatables.net/plug-ins/1.10.12/i18n/Belarusian.json";
 $lang["banlist"]["emptylist"] = "Спіс забаненых пусты";
 $lang["banlist"]["lastupdate"] = "Апошнее абнаўленне: {0}";
 $lang["banlist"]["table"]["emptyreason"] = "(прычына адсутнічае)";
