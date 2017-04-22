@@ -112,6 +112,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                             <li><a href="?lang=ua"><i class="famfamfam-flags ua" aria-hidden="true"></i> Українська</a></li>
                             <li><a href="?lang=es"><i class="famfamfam-flags es" aria-hidden="true"></i> Español</a></li>
                             <li><a href="?lang=gr"><i class="famfamfam-flags gr" aria-hidden="true"></i> Ελληνικά</a></li>
+                            <li><a href="?lang=se"><i class="famfamfam-flags se" aria-hidden="true"></i> Svenska</a></li>
                         </ul>
                     </li>
                 </ul>
