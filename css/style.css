@@ -1,3 +1,7 @@
+html {
+    min-width: 320px;
+}
+
 .fa {
     margin-right: 5px
 }
@@ -119,19 +123,13 @@ html {
 body {
     position: relative;
     margin: 0;
-    padding-bottom: 12rem;
+    padding-bottom: 120px;
     min-height: 100%;
 }
 
 @media (max-width: 380px) {
     body {
-        padding-bottom: 15rem;
-    }
-}
-
-@media (max-width: 280px) {
-    body {
-        padding-bottom: 20rem;
+        padding-bottom: 150px;
     }
 }
 
@@ -140,7 +138,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 1rem;
+    padding: 10px;
 }
 
 .footer .pull-right p {
