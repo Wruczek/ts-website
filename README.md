@@ -1,5 +1,5 @@
 <p align="center">
-<b>A big update is comming. Click <a href="https://telegram.me/tswebsite">here</a> for more information about ts-website 2.0.</b>
+<b>A big anniversary update is comming.</b> Click <a href="https://github.com/Wruczek/ts-website/issues/36">here</a> for more information about ts-website 2.0.
 </p>
 
 <br>
