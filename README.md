@@ -1,5 +1,5 @@
 <p align="center">
-<b>Need help? <a href="https://telegram.me/tswebsite">Join our telegram group</a></b> for news, announcements, help and general chat about ts-website.
+<b>A big update is comming. Click <a href="https://telegram.me/tswebsite">here</a> for more information about ts-website 2.0.</b>
 </p>
 
 <br>
@@ -7,6 +7,10 @@
 [![Website screenshot](http://i.imgur.com/9UZV6NG.png)](http://imgur.com/a/RUSi2)
 
 <p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
+
+<p align="center">
+<b>Need help? <a href="https://telegram.me/tswebsite">Join our telegram group</a></b> for news, announcements, help and general chat about ts-website.
+</p>
 
 <br>
 
