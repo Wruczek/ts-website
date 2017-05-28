@@ -84,7 +84,7 @@ $lang["viewer"]["lastupdate"] = "Sidst opdateret: {0}";
 
 $lang["banlist"]["title"] = "Ban Liste";
 $lang["banlist"]["datatablesurl"] = "//cdn.datatables.net/plug-ins/1.10.12/i18n/Danish.json";
-$lang["banlist"]["emptylist"] = "BAN LISTEN ER TP;";
+$lang["banlist"]["emptylist"] = "BAN LISTEN ER TOM";
 $lang["banlist"]["lastupdate"] = "Sidst opdateret: {0}";
 
 $lang["banlist"]["table"]["emptyreason"] = "(ingen grund givet)";
