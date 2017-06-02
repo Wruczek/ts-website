@@ -84,7 +84,7 @@ $lang["viewer"]["lastupdate"] = "Ultima Atualização: {0}";
 /************* Lista de Bans - bans.php *************/
 
 $lang["banlist"]["title"] = "Lista de Ban";
-$lang["banlist"]["datatablesurl"] = "//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json";
+$lang["banlist"]["datatablesurl"] = "//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese.json";
 $lang["banlist"]["emptylist"] = "Lista de Ban está vazia";
 $lang["banlist"]["lastupdate"] = "Ultima Atualização: {0}";
 
