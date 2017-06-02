@@ -115,6 +115,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                             <li><a href="?lang=nl"><i class="famfamfam-flags nl" aria-hidden="true"></i> Nederlands</a></li>      <!-- Dutch      : 22      -->
                             <li><a href="?lang=cz"><i class="famfamfam-flags cz" aria-hidden="true"></i> Česky</a></li>           <!-- Czech      : 13,217  -->
                             <li><a href="?lang=gr"><i class="famfamfam-flags gr" aria-hidden="true"></i> Ελληνικά</a></li>        <!-- Greek      : 13,134  -->
+                            <li><a href="?lang=hu"><i class="famfamfam-flags hu" aria-hidden="true"></i> Magyar</a></li>          <!-- Hungarian  : 13      -->
                             <li><a href="?lang=se"><i class="famfamfam-flags se" aria-hidden="true"></i> Svenska</a></li>         <!-- Swedish    : 12      -->
                             <li><a href="?lang=bg"><i class="famfamfam-flags bg" aria-hidden="true"></i> български</a></li>       <!-- Bulgarian  : 8       -->
                             <li><a href="?lang=da"><i class="famfamfam-flags da" aria-hidden="true"></i> Dansk</a></li>           <!-- Danish     : 6       -->
