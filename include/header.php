@@ -66,7 +66,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="."><img style="width: 64px;" src="img/icon/icon-64.png" alt="Logo strony"><?php echo $config["general"]["title"]; ?></a>
+                <a class="navbar-brand" href="."><img style="width: 64px;" src="img/icon/icon-64.png" alt="Site logo"><?php echo $config["general"]["title"]; ?></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,7 +75,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                     <li><a href="viewer<?php echo $htalink ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
                     <li><a href="bans<?php echo $htalink ?>"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["navbar"]["bans"]); ?></a></li>
                     <li><a href="rules<?php echo $htalink ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["navbar"]["rules"]); ?></a></li>
-                    <!-- Nie mam na to czasu
+                    <!-- I don't have time for this.
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-television" aria-hidden="true"></i></i>Ranking <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -118,7 +118,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                             <li><a href="?lang=hu"><i class="famfamfam-flags hu" aria-hidden="true"></i> Magyar</a></li>          <!-- Hungarian  : 13      -->
                             <li><a href="?lang=se"><i class="famfamfam-flags se" aria-hidden="true"></i> Svenska</a></li>         <!-- Swedish    : 12      -->
                             <li><a href="?lang=bg"><i class="famfamfam-flags bg" aria-hidden="true"></i> български</a></li>       <!-- Bulgarian  : 8       -->
-                            <li><a href="?lang=da"><i class="famfamfam-flags da" aria-hidden="true"></i> Dansk</a></li>           <!-- Danish     : 6       -->
+                            <li><a href="?lang=da"><i class="famfamfam-flags dk" aria-hidden="true"></i> Dansk</a></li>           <!-- Danish     : 6       -->
                             <li><a href="?lang=by"><i class="famfamfam-flags by" aria-hidden="true"></i> Беларуская мова</a></li> <!-- Belarusian : 3       -->
                         </ul>
                     </li>
