@@ -1,8 +1,9 @@
 <p align="center">
-<b>A big anniversary update is comming.</b> Click <a href="https://github.com/Wruczek/ts-website/issues/36">here</a> for more information about ts-website 2.0.
+<a href="https://github.com/Wruczek/ts-website/issues/36">
+<img src="https://i.imgur.com/iffB2sa.png">
+</a>
 </p>
-
-<br>
+<br><br><br>
 
 [![Website screenshot](http://i.imgur.com/9UZV6NG.png)](http://imgur.com/a/RUSi2)
 
