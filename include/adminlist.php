@@ -38,10 +38,10 @@ function getAdminList() {
                     $groupicon = getGroupIcon($tsAdmin, $group);
 
                     if ($groupicon) {
-                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" alt="Ikona grupy" /> ';
+                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" alt="Ikona grupy" height="16" width="16"/> ';
                     }
                 } elseif (in_array($group["iconid"], $localIcons)) {
-                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" alt="Ikona grupy" /> ';
+                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" alt="Ikona grupy" height="16" width="16"/> ';
                 }
             }
 
