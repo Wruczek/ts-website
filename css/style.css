@@ -36,6 +36,11 @@ p, a {
     word-wrap: break-word;
 }
 
+/* Force 16px icon size after TeamSpeak update 3.1.5 */
+.ts3_viewer img, .adminlist img {
+    width: 16px;
+}
+
 /* ****** */
 /* STATUS */
 /* ****** */
