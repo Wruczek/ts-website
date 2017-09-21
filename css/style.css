@@ -1,7 +1,3 @@
-html {
-    min-width: 320px;
-}
-
 .fa {
     margin-right: 5px
 }
@@ -11,20 +7,17 @@ html {
 }
 
 a {
-    -webkit-transition: color 500ms ease-out;
-    -moz-transition: color 500ms ease-out;
-    -o-transition: color 500ms ease-out;
-    transition: color 500ms ease-out;
+    transition: color 500ms ease-out
 }
 
 .news-header {
     font-size: 1.4em;
-    text-align: center;
+    text-align: center
 }
 
 .news-author {
     font-size: 0.7em;
-    text-align: right;
+    text-align: right
 }
 
 .pull-right .fa {
@@ -33,12 +26,12 @@ a {
 
 p, a {
     overflow-wrap: break-word;
-    word-wrap: break-word;
+    word-wrap: break-word
 }
 
 /* Force 16px icon size after TeamSpeak update 3.1.5 */
 .ts3_viewer img, .adminlist img {
-    width: 16px;
+    width: 16px
 }
 
 /* ****** */
@@ -49,11 +42,7 @@ p, a {
     margin: 0
 }
 
-.serverstatus a {
-    float: right
-}
-
-.serverstatus span {
+.serverstatus a, .serverstatus span {
     float: right
 }
 
@@ -62,18 +51,18 @@ p, a {
 /* ********* */
 
 .adminlist > .groupname ~ .groupname {
-    margin-top: 15px;
+    margin-top: 15px
 }
 
 .adminlist .groupname {
     text-align: center;
     font-size: 1.2em;
     border-bottom: 1px solid #677481;
-    margin-bottom: 5px;
+    margin-bottom: 5px
 }
 
 .adminlist .label-primary {
-    background-color: #375a7f;
+    background-color: #375a7f
 }
 
 .adminlist p {
@@ -102,19 +91,18 @@ body {
 
 .nav > li > a {
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 10px
 }
 
 .navbar-brand {
     padding: 0 10px 0 0;
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
 .navbar-brand > img {
     height: 100%;
-    padding: 5px 5px 5px 15px;
-    width: auto;
+    padding: 5px 5px 5px 15px
 }
 
 /* ****** */
@@ -125,12 +113,12 @@ body {
     position: relative;
     margin: 0;
     padding-bottom: 120px;
-    min-height: 100%;
+    min-height: 100vh
 }
 
 @media (max-width: 380px) {
     body {
-        padding-bottom: 150px;
+        padding-bottom: 150px
     }
 }
 
@@ -139,11 +127,11 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 10px;
+    padding: 10px
 }
 
 .footer .pull-right p {
     margin: 0 0 0 0;
-    font-size: 80%;
-    text-align: right;
+    font-size: 0.8em;
+    text-align: right
 }

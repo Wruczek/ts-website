@@ -89,7 +89,7 @@ function showError($title, $text) { ?>
             <?php echo $text; ?>
         </div>
         <div class="panel-footer">
-            &copy; <a href="https://wruczek.tech">Wruczek</a> 2016 - 2017 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.4.4.2 | MIT License
+            &copy; <a href="https://wruczek.tech">Wruczek</a> 2016 - 2017 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.4.4.3 | MIT License
         </div>
     </div>
 
