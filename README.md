@@ -20,7 +20,8 @@
 #### Useful links
 - [Demo](https://ts.wruczek.tech/)
 - [Installation instructions](https://github.com/Wruczek/ts-website/wiki/Website-Installation)
-- [Wiki](https://github.com/Wruczek/ts-website/wiki)
+- [Wiki[DE]](https://github.com/Wruczek/ts-website/wiki/%5BDE%5D-Startseite)
+- [Wiki[EN]](https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Home)
 - [Report Issues / Suggestions](https://github.com/Wruczek/ts-website/issues/new)
 - **[ts-website Telegram group](https://telegram.me/tswebsite) - help, announcements, and general chat**
 
