@@ -1,4 +1,8 @@
-### Regulamin serwera
+### Server Rules
+
+In dieser Datei werden die Server Regeln eingetragen welche dann auf der Seite "rules.php" angezeigt werden. Zum Ändern muss einfach die Datei <code>rules.md</code> im Verzeichnis <code>config</code> verändert werden.
+
+<br>
 
 This is a dedicated file to keep your server rules. Its loaded and displayed on "rules.php" page. To change it, go to the <code>config</code> directory and edit file <code>rules.md</code>
 
