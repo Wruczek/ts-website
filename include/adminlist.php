@@ -38,10 +38,10 @@ function getAdminList() {
                     $groupicon = getGroupIcon($tsAdmin, $group);
 
                     if ($groupicon) {
-                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" alt="Ikona grupy" /> ';
+                        $icon = '<img src="data:' . TeamSpeak3_Helper_Convert::imageMimeType($groupicon) . ';base64,' . base64_encode($groupicon) . '" alt="Group icon" /> ';
                     }
                 } elseif (in_array($group["iconid"], $localIcons)) {
-                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" alt="Ikona grupy" /> ';
+                    $icon = '<img src="lib/ts3phpframework/images/viewer/group_icon_' . $group["iconid"] . '.png" alt="Group icon" /> ';
                 }
             }
 
@@ -63,11 +63,11 @@ function getAdminList() {
                 if($user["client_type"]) continue;
 
                 if (!$user) {
-                    $offlineClients[] = '<p><span class="label label-primary iconspacer">' . $userInfo['client_nickname'] . '</span><span class="label label-danger pull-right">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
+                    $offlineClients[] = '<p><span class="label label-primary iconspacer">' . htmlentities($userInfo['client_nickname']) . '</span><span class="label label-danger pull-right">' . translate($lang["adminlist"]["status"]["offline"]) . '</span></p>';
                     continue;
                 }
 
-                $onlineClients[] = '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="User status">' . '<span class="label label-primary">' . $user . '</span>' . ($user['client_away'] ? '<span class="label label-warning pull-right">' . translate($lang["adminlist"]["status"]["away"]) . '</span>' : '<span class="label label-success pull-right">' . translate($lang["adminlist"]["status"]["online"]) . '</span>') . '</p>';
+                $onlineClients[] = '<p><img src="lib/ts3phpframework/images/viewer/' . $user->getIcon() . '.png" alt="User status">' . '<span class="label label-primary">' . htmlentities($user) . '</span>' . ($user['client_away'] ? '<span class="label label-warning pull-right">' . translate($lang["adminlist"]["status"]["away"]) . '</span>' : '<span class="label label-success pull-right">' . translate($lang["adminlist"]["status"]["online"]) . '</span>') . '</p>';
             }
 
             foreach (array_merge($onlineClients, $offlineClients) as $str)

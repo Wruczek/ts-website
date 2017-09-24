@@ -7,11 +7,15 @@ use phpFastCache\Util\Languages;
 
 class CacheUtils {
 
+    private $devMode;
     private $cacheInstance;
     private $cacheItem;
     private $key;
 
-    function __construct($key) {
+    public function __construct($key) {
+        // If devMode is set, the cache will be invalidated immediately
+        $this->devMode = defined("DEV_MODE") || getenv("DEV_MODE") || file_exists(__DIR__ . "/dev_mode");
+
         if(!is_string($key))
             throw new InvalidArgumentException("Key must be a string");
 
@@ -39,12 +43,15 @@ class CacheUtils {
     }
 
     public function setValue($value, $expireTime) {
+        if($this->devMode)
+            $expireTime = 1;
+
         $this->cacheItem = $this->cacheItem->set($value)->expiresAfter($expireTime);
         $this->cacheInstance->save($this->cacheItem);
     }
 
     public function isExpired() {
-        return !$this->cacheItem->isHit();
+        return $this->devMode || !$this->cacheItem->isHit();
     }
 
     public function remove() {

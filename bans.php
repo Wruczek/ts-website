@@ -44,7 +44,7 @@ $banlist = $cacheutils->getValue();
 
     </div>
     <div class="panel-footer">
-        <?php tl($lang["banlist"]["lastupdate"], [$banlist[1]]); ?><!-- <span style="float: right">Podgląd odświeża się co 60 sekund</span> -->
+        <?php tl($lang["banlist"]["lastupdate"], [$banlist[1]]); ?><!-- <span style="float: right">Data is refreshed every X seconds</span> -->
     </div>
 </div>
 
@@ -68,14 +68,14 @@ function getBanlist() {
                 $user = censorIP((string)$ban['ip']);
 
             if (!empty($ban['lastnickname']))
-                $user = (string)$ban['lastnickname'];
+                $user = htmlentities((string)$ban['lastnickname']);
 
             if (empty($user))
                 $user = "<i>Unknown</i>";
 
 
-            $reason = $ban['reason'];
-            $invokername = (string)$ban['invokername'];
+            $reason = htmlentities((string)$ban['reason']);
+            $invokername = htmlentities((string)$ban['invokername']);
             $duration = $ban['duration'];
             $createdepoch = $ban['created'];
             $expiresepoch = $ban['created'] + $duration;
