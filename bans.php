@@ -68,14 +68,14 @@ function getBanlist() {
                 $user = censorIP((string)$ban['ip']);
 
             if (!empty($ban['lastnickname']))
-                $user = htmlentities((string)$ban['lastnickname']);
+                $user = htmlspecialchars((string)$ban['lastnickname']);
 
             if (empty($user))
                 $user = "<i>Unknown</i>";
 
 
-            $reason = htmlentities((string)$ban['reason']);
-            $invokername = htmlentities((string)$ban['invokername']);
+            $reason = htmlspecialchars((string)$ban['reason']);
+            $invokername = htmlspecialchars((string)$ban['invokername']);
             $duration = $ban['duration'];
             $createdepoch = $ban['created'];
             $expiresepoch = $ban['created'] + $duration;
