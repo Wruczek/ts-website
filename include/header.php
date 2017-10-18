@@ -16,7 +16,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="description" content="<?php echo $config["general"]["desc"]; ?>">
-    <meta name="author" content="Wruczek">
+    <meta name="author" content="Wruczek and Contributors">
 
     <title><?php echo $config["general"]["title"] . $config["general"]["subtitle"]; ?></title>
 
