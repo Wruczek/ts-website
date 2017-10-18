@@ -57,7 +57,7 @@ $lang["adminlist"]["lastupdate"] = "Letzte Aktualisierung: {0}";
 /************* Server viewer promo box (under adminlist and contact) *************/
 
 $lang["svpb"]["title"] = "Server Viewer";
-$lang["svpb"]["takealook"] = "Riskier 'n Blick &raquo;";
+$lang["svpb"]["takealook"] = "Riskier einen Blick &raquo;";
 
 
 /************************************/
@@ -101,4 +101,4 @@ $lang["banlist"]["table"]["expires"] = "Läuft ab am";
 
 $lang["rules"]["title"] = "Server Regeln";
 $lang["rules"]["filenotfound"] = "Error: Die Datei <code>config/rules.md</code> wurde nicht gefunden!";
-$lang["rules"]["readerror"] = "Fehler: nicht genügend Rechte um auf <code>config/rules.md</code> zuzugreifen!";
+$lang["rules"]["readerror"] = "Fehler: Nicht genügend Rechte um auf <code>config/rules.md</code> zuzugreifen!";
