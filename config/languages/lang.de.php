@@ -33,7 +33,7 @@ $lang["footer"]["background"] = "Hintergrund";
 /************* Server status *************/
 
 $lang["serverstatus"]["title"] = "Server Status";
-$lang["serverstatus"]["address"] = "Addresse";
+$lang["serverstatus"]["address"] = "Adresse";
 $lang["serverstatus"]["loading"] = "Laden...";
 
 $lang["serverstatus"]["online"] = "Online";
