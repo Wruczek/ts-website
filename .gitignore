@@ -5,6 +5,9 @@ admin/
 cache/
 !/cache/.htaccess
 
+# Heroku specific entries
+vendor/
+.env
 
 # Created by https://www.gitignore.io/api/osx,linux,windows,phpstorm,sublimetext
 
