@@ -100,5 +100,5 @@ $lang["banlist"]["table"]["expires"] = "Läuft ab am";
 /************* Rules - rules.php *************/
 
 $lang["rules"]["title"] = "Server Regeln";
-$lang["rules"]["filenotfound"] = "Error: Die Datei <code>config/rules.md</code> wurde nicht gefunden!";
+$lang["rules"]["filenotfound"] = "Fehler: Die Datei <code>config/rules.md</code> wurde nicht gefunden!";
 $lang["rules"]["readerror"] = "Fehler: Nicht genügend Rechte um auf <code>config/rules.md</code> zuzugreifen!";
