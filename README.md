@@ -11,7 +11,7 @@
 <p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
 
 <p align="center">
-  <b>Brauchst du Hilfe? <a href="https://telegram.me/tswebsite_de">Trete unserer Telegram Gruppe bei</a></b> Für News, Ankündigungen, Hilfe sowie einem Smalltalk Chat über ts-website
+<b>Need help? <a href="https://telegram.me/tswebsite">Join our telegram group</a></b> for news, announcements, help and general chat about ts-website.
 </p>
 
 <br>
@@ -20,7 +20,7 @@
 
 #### Useful links
 - [Demo](https://ts.wruczek.tech/)
-- [Installation instructions](https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation)
+- [Installation instructions](https://github.com/Wruczek/ts-website/wiki/Website-Installation)
 - [Wiki](https://github.com/Wruczek/ts-website/wiki)
 - [Report Issues / Suggestions](https://github.com/Wruczek/ts-website/issues/new)
 - **[ts-website Telegram group](https://telegram.me/tswebsite) - help, announcements, and general chat**
