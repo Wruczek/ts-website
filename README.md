@@ -11,7 +11,6 @@
 <p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
 
 <p align="center">
-<b>Need help? <a href="https://telegram.me/tswebsite">Join our telegram group</a></b> for news, announcements, help and general chat about ts-website.<br>
   <b>Brauchst du Hilfe? <a href="https://telegram.me/tswebsite_de">Trete unserer Telegram Gruppe bei</a></b> Für News, Ankündigungen, Hilfe sowie einem Smalltalk Chat über ts-website
 </p>
 
