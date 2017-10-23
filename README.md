@@ -1,3 +1,4 @@
+<p align="center">Für ein Deutsches Readme klicke<a href="https://github.com/Wruczek/ts-website/wiki/%5BDE%5D-Readme-%7C-Liesmich"> hier</a> </p>
 <p align="center">
 <a href="https://github.com/Wruczek/ts-website/issues/36">
 <img src="https://i.imgur.com/iffB2sa.png">
