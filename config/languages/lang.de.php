@@ -57,7 +57,7 @@ $lang["adminlist"]["lastupdate"] = "Letzte Aktualisierung: {0}";
 /************* Server viewer promo box (under adminlist and contact) *************/
 
 $lang["svpb"]["title"] = "Server Viewer";
-$lang["svpb"]["takealook"] = "Riskier einen Blick &raquo;";
+$lang["svpb"]["takealook"] = "Riskier 'n Blick &raquo;";
 
 
 /************************************/
