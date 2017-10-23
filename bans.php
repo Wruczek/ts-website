@@ -7,7 +7,7 @@ require_once __DIR__ . "/include/cacheutils.class.php";
 $cacheutils = new CacheUtils('banlist');
 
 if($cacheutils->isExpired()) {
-    $cacheutils->setValue([getBanlist(), date('d-m-Y H:i:s')], 300);
+    $cacheutils->setValue([getBanlist(), date('d.m.Y H:i:s')], 300);
 }
 
 $banlist = $cacheutils->getValue();
