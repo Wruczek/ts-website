@@ -7,7 +7,7 @@ require_once __DIR__ . "/include/cacheutils.class.php";
 $cacheutils = new CacheUtils('banlist');
 
 if($cacheutils->isExpired()) {
-    $cacheutils->setValue([getBanlist(), date('d-m-Y H:i:s')], 300);
+    $cacheutils->setValue([getBanlist(), date('d.m.Y H:i:s')], 300);
 }
 
 $banlist = $cacheutils->getValue();
@@ -87,7 +87,7 @@ function getBanlist() {
             if ($duration == 0)
                 $expires = translate($lang["banlist"]["table"]["permaban"]);
             else
-                $expires = date('d-m-Y H:i:s', $expiresepoch);
+                $expires = date('d.m.Y H:i:s', $expiresepoch);
 
             $output .= "<tr><td>$user</td><td>$reason</td><td>$invokername</td><td data-order=\"$createdepoch\">$created</td><td data-order=\"$expiresepoch\">$expires</td></tr>";
         }
