@@ -7,6 +7,7 @@
 <br><br><br>
 
 [![Website screenshot](http://i.imgur.com/9UZV6NG.png)](http://imgur.com/a/RUSi2)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FWruczek%2Fts-website.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FWruczek%2Fts-website?ref=badge_shield)
 
 <p align="center"><a href="http://imgur.com/a/RUSi2">More screenshots</a></p>
 
@@ -42,3 +43,7 @@ For business enquiries only: **wruczekk** at **gmail.com**, for anything else pl
 <p align="center">
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9PL5J7ULZQYJQ" target="_blank"><img src="https://i.imgur.com/s1u7rju.png"></a>
 </p>
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FWruczek%2Fts-website.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FWruczek%2Fts-website?ref=badge_large)
