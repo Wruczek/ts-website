@@ -1,7 +1,7 @@
 <?php
 /*
  * Bulgarian language for ts-website
- * @copy toster234 <contact@csgo-24.pl>
+ * @copy toster234 <contact@ts-24.pro>
  */
 
 $lang = array();
