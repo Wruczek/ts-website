@@ -1,6 +1,7 @@
 config/config.php
 prototypes/
 admin/
+.idea/
 
 cache/
 !/cache/.htaccess

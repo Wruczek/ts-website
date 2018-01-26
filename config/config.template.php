@@ -8,7 +8,7 @@
     For business enquiries only: wruczekk at gmail.com, for anything else please join Telegram chat.
 
 
-    Need help? Join our telegram group for news, announcements, help and general chat about ts-website: https://telegram.me/tswebsite
+    Need help? Join our telegram group for news, announcements, help and general chat about ts-website: https://t.me/tswebsite
 */
 
 
@@ -68,10 +68,10 @@ CONTACT PANEL SYNTAX:
 $config['contact']['items'][] = ["name", "link description", "link"];
 
 FOR EXAMPLE:
-$config['contact']['items'][] = ["Telegram", "@Wruczek", "https://telegram.me/Wruczek"];
+$config['contact']['items'][] = ["Telegram", "@Wruczek", "https://t.me/Wruczek"];
 */
 
 $config['contact']['items'][] = ["TeamSpeak", "Support channel", "ts3server://teamspeakip?cid=30"];
 $config['contact']['items'][] = ["Email", "contact@email.com", "mailto:contact@email.com"];
-$config['contact']['items'][] = ["Telegram", "@Telegram", "https://telegram.me/Telegram"];
+$config['contact']['items'][] = ["Telegram", "@Telegram", "https://t.me/Telegram"];
 $config['contact']['items'][] = ["Twitter", "@Twitter", "https://twitter.com/Twitter"];
