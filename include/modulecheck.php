@@ -1,53 +1,68 @@
 <?php
 
-function isPHPVersionSupported() {
-    if (!defined('PHP_VERSION_ID')) {
-        $version = explode('.', PHP_VERSION);
-        define('PHP_VERSION_ID', ($version[0] * 10000 + $version[1] * 100 + $version[2]));
-    }
-
-    return PHP_VERSION_ID >= 50500;
-}
-
-if (!isPHPVersionSupported()) {
+if (!defined("PHP_VERSION_ID") || PHP_VERSION_ID < 50500) {
     $title = 'Unsupported PHP version';
 
-    $text = '<p>You are using old, unsupported PHP version.</p><p>Your PHP version: <b>' . phpversion() . '</b>, required PHP version: <b>5.5.0</b>.</p><p>Please update your PHP installation and try again.</p>';
+    $text =
+        '<p>You are using old, unsupported PHP version.</p>' .
+        '<p>Your PHP version: <b>' . PHP_VERSION . '</b>, required PHP version: <b>5.5.0</b>.</p>' .
+        '<p>Please update your PHP installation and try again.</p>';
 
     showError($title, $text);
-    die();
+    exit;
 }
 
 if (!function_exists("utf8_encode")) {
-    $title = 'Required function "utf8_encode" is missing';
-
-    $text = '<p>Required PHP extension: <code>mbstring</code> has not been found on the server.</p>
-            <p>For PHP 7.0 (recommended), install this package: <code>sudo apt-get install php-xml php7.0-xml</code> and <u>restart apache</u>. Otherwise, installation instructions can be found <a href="https://www.google.com/?q=Call%20to%20undefined%20function%20utf8_encode()">on Google</a> ;)</p>
-            <p>If you are using Web Hosting service, please contact the Hosting support for instruction on enabling needed packages.</p>';
-
-    showError($title, $text);
-    die();
+    showExtensionMissingError("xml");
+    exit;
 }
 
-if(!is_writable(__DIR__ . '/../cache')) {
+if (!extension_loaded("json")) {
+    showExtensionMissingError("json");
+    exit;
+}
+
+if (!extension_loaded("mbstring")) {
+    showExtensionMissingError("mbstring");
+    exit;
+}
+
+if((fileperms(__DIR__ . '/../cache') & 0777) !== 0777) {
     $title = 'Cache directory is not writable';
-    $text = '<p>Please make sure that the <code>cache</code> directory is fully writable.</p>';
+
+    $text =
+        '<p>Please make sure that the <code>cache</code> directory is fully readable, writable and executable.</p>' .
+        '<p>Running: <code>sudo chmod 777 -R ' . realpath(__DIR__ . '/../cache') . '</code> should fix the problem.</p>';
+
     showError($title, $text);
-    die();
+    exit;
 }
 
 if (!file_exists(__DIR__ . "/../config/config.php")) {
     $title = 'config.php does not exists';
 
-    $text = '<p>Please go into the directory <code>config</code> and rename <code>config.template.php</code> to <code>config.php</code>.</p>
-            <p>Edit the new file and tweak it to suite your needs.</p>';
+    $text =
+        '<p>Please go into the directory <code>config</code> and rename <code>config.template.php</code> to <code>config.php</code>.</p>' .
+        '<p>Edit the new file and tweak it to suite your needs.</p>';
 
     showError($title, $text);
-    die();
+    exit;
 }
 
 
+
 // FUNCTION
+
+function showExtensionMissingError($extension_name) {
+    $title = 'Required extension "' . $extension_name . '" is missing';
+
+    $text = '<p>Required PHP extension <code>' . $extension_name . '</code> is missing or is not loaded.</p>
+            <p>Install it and restart your server. Usually running <code>sudo apt-get install php-' . $extension_name . '</code> should be enough.<br>
+            <p>If you still get this error, try restarting your web server and <code>php-fpm</code> service or just reboot your machine</p>
+            <p>If you are using Web Hosting service, please contact their support for instructions on enabling <code>' . $extension_name . '</code> extension</p>';
+
+    showError($title, $text);
+}
 
 function showError($title, $text) { ?>
 <!DOCTYPE html>
