@@ -56,10 +56,11 @@ if (!file_exists(__DIR__ . "/../config/config.php")) {
 function showExtensionMissingError($extension_name) {
     $title = 'Required extension "' . $extension_name . '" is missing';
 
-    $text = '<p>Required PHP extension <code>' . $extension_name . '</code> is missing or is not loaded.</p>
-            <p>Install it and restart your server. Usually running <code>sudo apt-get install php-' . $extension_name . '</code> should be enough.<br>
-            <p>If you still get this error, try restarting your web server and <code>php-fpm</code> service or just reboot your machine</p>
-            <p>If you are using Web Hosting service, please contact their support for instructions on enabling <code>' . $extension_name . '</code> extension</p>';
+    $text =
+        '<p>Required PHP extension <code>' . $extension_name . '</code> is missing or is not loaded.</p>' .
+        '<p>Install it and restart your server. Usually running <code>sudo apt-get install php-' . $extension_name . '</code> should be enough.</p>' .
+        '<p>If you still get this error, try restarting your web server and <code>php-fpm</code> service or just reboot your machine</p>' .
+        '<p>If you are using Web Hosting service, please contact their support for instructions on enabling <code>' . $extension_name . '</code> extension</p>';
 
     showError($title, $text);
 }
@@ -75,7 +76,7 @@ function showError($title, $text) { ?>
 
     <meta name="author" content="Wruczek">
 
-    <title><?php echo $title; ?></title>
+    <title><?php echo $title ?></title>
 
     <!-- Icon -->
     <link rel="shortcut icon" href="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png">
@@ -98,10 +99,10 @@ function showError($title, $text) { ?>
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><img src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png" width="20px" alt="Error"> <?php echo $title; ?></h3>
+            <h3 class="panel-title"><img src="https://assets-cdn.github.com/images/icons/emoji/unicode/26a0.png" width="20px" alt="Error"> <?php echo $title ?></h3>
         </div>
         <div class="panel-body">
-            <?php echo $text; ?>
+            <?php echo $text ?>
         </div>
         <div class="panel-footer">
             &copy; <a href="https://wruczek.tech">Wruczek</a> 2016 - 2018 | <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.4.5 | MIT License
