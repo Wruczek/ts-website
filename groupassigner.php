@@ -86,20 +86,6 @@ if(isset($_POST["absenden"])){
 <?php
 
 function getServerGroups() {
-    global $lang;
-
-    try {
-        $tsAdmin = getTeamspeakConnection("#no_query_clients");
-
-
-    } catch (TeamSpeak3_Exception $e) {
-        if ($e->getCode() == 1281) {
-            return '';
-        } else {
-            return '<div class="alert alert-danger"><p class="text-center">' . translate($lang["general"]["scripterror"], [$e->getCode(), $e->getMessage()]) . '</p></div>';
-        }
-    }
-
 }
 
 require_once __DIR__ . "/include/footer.php";
