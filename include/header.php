@@ -72,7 +72,18 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="viewer<?php echo $htalink ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
+                    <?php if($config['groupassigner'] == 1){ ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-television" aria-hidden="true"></i></i><?php tl($lang["navbar"]["viewer"]); ?> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="viewer<?php echo $htalink ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
+                                <li><a href="groupassigner<?php echo $htalink ?>"><i class="fa fa-sign-in" aria-hidden="true"></i> <?php tl($lang["navbar"]["groupassigner"]); ?></a></li>
+                            </ul>
+                        </li>
+                    <?php }else{ ?>
+                        <li><a href="viewer<?php echo $htalink ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
+                    <?php } ?>
+
                     <li><a href="bans<?php echo $htalink ?>"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["navbar"]["bans"]); ?></a></li>
                     <li><a href="rules<?php echo $htalink ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["navbar"]["rules"]); ?></a></li>
                     <!-- I don't have time for this.
