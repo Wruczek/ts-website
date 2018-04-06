@@ -1,7 +1,7 @@
 <?php
 /*
  * English language for ts-website
- * @copy Wruczek <wruczekk@gmail.com>
+ * @copy Wruczek <wruczekk@gmail.com> with toster234 <toster@ts-24.pro>
  */
 
 $lang = array();
@@ -101,3 +101,17 @@ $lang["banlist"]["table"]["expires"] = "Expires";
 $lang["rules"]["title"] = "Server Rules";
 $lang["rules"]["filenotfound"] = "Error: file <code>config/rules.md</code> has not been found!";
 $lang["rules"]["readerror"] = "Error: cannot access the file <code>config/rules.md</code>!";
+
+/************** Group assigner - assigner.php **************/
+
+$lang["groupassigner"]["title"] = "Group assigner";
+$lang["groupassigner"]["languageurl"] = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-en_EN.min.js";
+$lang["groupassigner"]["limit"] = "Limit: {0}";
+$lang["groupassigner"]["connectbeforeusing"] = "Please connect to server before using group assigner";
+$lang["groupassigner"]["joints"] = "Join TeamSpeak";
+$lang["groupassigner"]["success"] = "Your groups has been changed";
+$lang["groupassigner"]["save"] = "Save";
+$lang["groupassigner"]["entercode"] = "Please enter your login code";
+$lang["groupassigner"]["codepoke"] = "Your login code is: [B]{0}[/B]. It expires in 2 minutes.";
+$lang["groupassigner"]["logincode"] = "Login code";
+$lang["groupassigner"]["failedlogin"] = "Login failed! Please try again or wait for the code to expire then refresh the page";
