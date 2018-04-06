@@ -1,7 +1,7 @@
 <?php
 /*
  * Polish language for ts-website
- * @copy Wruczek <wruczekk@gmail.com>
+ * @copy Wruczek <wruczekk@gmail.com> with toster234 <toster@ts-24.pro>
  */
 
 $lang = array();
@@ -80,7 +80,6 @@ $lang["index"]["errorsubtitle"] = "Sprawdź, czy lokalizacja ustawiona w pliku <
 $lang["viewer"]["title"] = "Podgląd serwera";
 $lang["viewer"]["lastupdate"] = "Stan na {0}";
 
-
 /************* Ban List - bans.php *************/
 
 $lang["banlist"]["title"] = "Lista banów";
@@ -102,3 +101,17 @@ $lang["banlist"]["table"]["expires"] = "Wygasa";
 $lang["rules"]["title"] = "Regulamin serwera";
 $lang["rules"]["filenotfound"] = "Wystąpił błąd: plik <code>config/rules.md</code> nie został odnaleziony!";
 $lang["rules"]["readerror"] = "Wystąpił błąd: nie można odczytać pliku <code>config/rules.md</code>!";
+
+/************** Group assigner - assigner.php **************/
+
+$lang["groupassigner"]["title"] = "Group assigner";
+$lang["groupassigner"]["languageurl"] = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-pl_PL.min.js";
+$lang["groupassigner"]["limit"] = "Limit: {0}";
+$lang["groupassigner"]["connectbeforeusing"] = "Połącz się z serwerem przed użyciem funkcji przypisania grup";
+$lang["groupassigner"]["joints"] = "Dołącz do serwera TeamSpeak";
+$lang["groupassigner"]["success"] = "Twoje grupy zostały zmienione";
+$lang["groupassigner"]["save"] = "Zapisz";
+$lang["groupassigner"]["entercode"] = "Wprowadź swój kod logowania";
+$lang["groupassigner"]["codepoke"] = "Twój kod logowania: [B]{0}[/B]. Wygasa za 2 minuty.";
+$lang["groupassigner"]["logincode"] = "Kod logowania";
+$lang["groupassigner"]["failedlogin"] = "Logowanie nieudane! Spróbuj ponownie lub poczekaj na wygaśnięcie kodu, a następnie odśwież stronę";
