@@ -101,3 +101,16 @@ $lang["banlist"]["table"]["expires"] = "Expires";
 $lang["rules"]["title"] = "Server Rules";
 $lang["rules"]["filenotfound"] = "Error: file <code>config/rules.md</code> has not been found!";
 $lang["rules"]["readerror"] = "Error: cannot access the file <code>config/rules.md</code>!";
+
+
+/************* Groupassigner - groupassigner.php *************/
+$lang["grouppage"]["title"] = "Groupassigner";
+$lang["grouppage"]["tsuid"] = "Teamspeak-UID";
+$lang["grouppage"]["tsgroup"] = "Teamspeak Group";
+$lang["grouppage"]["send"] = "Send";
+
+$lang["grouppage"]["error"]["offline"] = "You must be online to assign a group";
+$lang["grouppage"]["error"]["notallowed"] = "This server group must not be assigned.";
+$lang["grouppage"]["error"]["duplicate"] = "You already own the server group.";
+
+$lang["grouppage"]["success"]["success"] = "You have been assigned the server group";
