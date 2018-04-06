@@ -43,8 +43,8 @@ if(isset($_POST["absenden"])){
          $error = "notallowed";
     }
 }
-?>
-<?php if($config["groupassigner"] == 1){ ?>
+
+if($config["groupassigner"] == 1){ ?>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["grouppage"]["title"]); ?></h3>
@@ -80,10 +80,7 @@ if(isset($_POST["absenden"])){
 
     </div>
 </div>
-<?php }?>
-
-
-<?php
+<?php }
 
 function getServerGroups() {
 }
