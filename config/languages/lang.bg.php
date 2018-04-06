@@ -80,7 +80,6 @@ $lang["index"]["errorsubtitle"] = "Уверете се, местоположен
 $lang["viewer"]["title"] = "Преглед на сървъра";
 $lang["viewer"]["lastupdate"] = "към {0}";
 
-
 /************* Ban List - bans.php *************/
 
 $lang["banlist"]["title"] = "банове";
@@ -102,3 +101,17 @@ $lang["banlist"]["table"]["expires"] = "изтича";
 $lang["rules"]["title"] = "правила за сървъри";
 $lang["rules"]["filenotfound"] = "Грешка: файл <code>config/rules.md</code> Той не е намерен!";
 $lang["rules"]["readerror"] = "Грешка: не може да чете файл <code>config/rules.md</code>!";
+
+/************** Group assigner - assigner.php **************/
+
+$lang["groupassigner"]["title"] = "Групова задача";
+$lang["groupassigner"]["languageurl"] = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-bg_BG.min.js";
+$lang["groupassigner"]["limit"] = "лимит: {0}";
+$lang["groupassigner"]["connectbeforeusing"] = "Моля, свържете се със сървъра, преди да използвате присвояващия групата";
+$lang["groupassigner"]["joints"] = "Присъединете се към TeamSpeak";
+$lang["groupassigner"]["success"] = "Вашите групи бяха променени";
+$lang["groupassigner"]["save"] = "Запази";
+$lang["groupassigner"]["entercode"] = "Моля, въведете кода за вход";
+$lang["groupassigner"]["codepoke"] = "Кодът за вход е: [B]{0}[/B]. Изтича след 2 минути.";
+$lang["groupassigner"]["logincode"] = "Код за влизане";
+$lang["groupassigner"]["failedlogin"] = "Неуспешно влизане! Моля, опитайте отново или изчакайте изтичането на кода, след което опреснете страницата";
