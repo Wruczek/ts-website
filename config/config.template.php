@@ -75,3 +75,12 @@ $config['contact']['items'][] = ["TeamSpeak", "Support channel", "ts3server://te
 $config['contact']['items'][] = ["Email", "contact@email.com", "mailto:contact@email.com"];
 $config['contact']['items'][] = ["Telegram", "@Telegram", "https://t.me/Telegram"];
 $config['contact']['items'][] = ["Twitter", "@Twitter", "https://twitter.com/Twitter"];
+
+/************* Groupassigner configuration *************/
+
+// Enable / Disable the GroupAssigner
+$config["groupassigner"] = 1;
+
+// Server groups to be assigned
+$config["groups"]["allowgroups"] = array("41","42");
+

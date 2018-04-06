@@ -22,6 +22,8 @@ $lang["navbar"]["rules"] = "Server Regeln";
 $lang["navbar"]["connect"] = "Mit Server verbinden";
 $lang["navbar"]["connecttooltip"] = "Klicken um mit {0} zu verbinden";
 
+$lang["navbar"]["groupassigner"] = "Gruppenzuweiser";
+
 
 /************* Footer *************/
 
@@ -102,3 +104,16 @@ $lang["banlist"]["table"]["expires"] = "Läuft ab am";
 $lang["rules"]["title"] = "Server Regeln";
 $lang["rules"]["filenotfound"] = "Fehler: Die Datei <code>config/rules.md</code> wurde nicht gefunden!";
 $lang["rules"]["readerror"] = "Fehler: Nicht genügend Rechte um auf <code>config/rules.md</code> zuzugreifen!";
+
+/************* Groupassigner - groupassigner.php *************/
+$lang["grouppage"]["title"] = "Gruppenzuweiser";
+$lang["grouppage"]["tsuid"] = "Teamspeak-UID";
+$lang["grouppage"]["tsgroup"] = "Teamspeak Gruppe";
+$lang["grouppage"]["send"] = "Absenden";
+
+$lang["grouppage"]["error"]["offline"] = "Du musst online sein zur Vergabe einer Gruppe";
+$lang["grouppage"]["error"]["notallowed"] = "Diese Servergruppe darf nicht vergeben werden.";
+$lang["grouppage"]["error"]["duplicate"] = "Du besitzt die Servergruppe bereits.";
+
+$lang["grouppage"]["success"]["success"] = "Dir wurde die Servergruppe zugewiesen";
+
