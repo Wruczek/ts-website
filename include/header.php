@@ -35,14 +35,15 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <?php } ?>
 
+    <!-- Flag icons -->
     <link href="css/flags/famfamfam-flags.min.css" rel="stylesheet">
 
+    <!-- Group Assigner CSS -->
+    <link href="css/groupassigner.css" rel="stylesheet">
+    
     <!-- Custom CSS -->
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    
-    <!-- Group Assigner CSS -->
-    <link href="css/groupassigner.css" rel="stylesheet">
 
     <?php if(!empty($config["general"]["christmasmode"])) { ?>
     <script src="js/christmas.js"></script>
