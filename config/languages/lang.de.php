@@ -1,7 +1,7 @@
 <?php
 /*
  * German language for ts-website
- * @copy NothingTV <contact@tactical-gaming.com>
+ * @copy NothingTV <contact@tactical-gaming.com> with derrobin154 <derrobin154@gmail.com>
  */
 
 $lang = array();
@@ -102,3 +102,17 @@ $lang["banlist"]["table"]["expires"] = "Läuft ab am";
 $lang["rules"]["title"] = "Server Regeln";
 $lang["rules"]["filenotfound"] = "Fehler: Die Datei <code>config/rules.md</code> wurde nicht gefunden!";
 $lang["rules"]["readerror"] = "Fehler: Nicht genügend Rechte um auf <code>config/rules.md</code> zuzugreifen!";
+
+/************** Group assigner - assigner.php **************/
+
+$lang["groupassigner"]["title"] = "Gruppenzuweiser";
+$lang["groupassigner"]["languageurl"] = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-de_DE.min.js";
+$lang["groupassigner"]["limit"] = "Limit: {0}";
+$lang["groupassigner"]["connectbeforeusing"] = "Bitte verbinde vorher mit dem Server.";
+$lang["groupassigner"]["joints"] = "Auf den Teamspeak verbinden";
+$lang["groupassigner"]["success"] = "Deine Gruppen haben sich geändert!";
+$lang["groupassigner"]["save"] = "Speichern";
+$lang["groupassigner"]["entercode"] = "Bitte gebe deinen Logincode ein.";
+$lang["groupassigner"]["codepoke"] = "Dein Logincode lautet: [B]{0}[/B]. Er läuft in 2 Minuten aus.";
+$lang["groupassigner"]["logincode"] = "Logincode";
+$lang["groupassigner"]["failedlogin"] = "Login fehlgeschlagen! Bitte versuche es erneut, oder warte bis der Code ausgelaufen ist und lade die Seite dann neu.";
