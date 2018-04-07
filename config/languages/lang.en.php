@@ -2,6 +2,7 @@
 /*
  * English language for ts-website
  * @copy Wruczek <wruczekk@gmail.com> with toster234 <toster@ts-24.pro>
+ * @copy toster234 <toster@ts-24.pro>
  */
 
 $lang = array();
