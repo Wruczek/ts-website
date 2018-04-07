@@ -105,7 +105,7 @@ $lang["rules"]["readerror"] = "Error: cannot access the file <code>config/rules.
 /************** Group assigner - assigner.php **************/
 
 $lang["groupassigner"]["title"] = "Group assigner";
-$lang["groupassigner"]["languageurl"] = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-en_GB.min.js";
+$lang["groupassigner"]["languageurl"] = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-en_US.min.js";
 $lang["groupassigner"]["limit"] = "Limit: {0}";
 $lang["groupassigner"]["connectbeforeusing"] = "Please connect to server before using group assigner";
 $lang["groupassigner"]["joints"] = "Join TeamSpeak";
