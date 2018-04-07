@@ -31,7 +31,7 @@ function getTeamspeakConnection($arguments = '') {
 
         $tsNodeHost = TeamSpeak3::factory("serverquery://$host:$qport/$arguments");
         $code = mt_rand(100000, 999999); // random number with 6 digits
-	    $tsNodeHost->setPredefinedQueryName("Group Assigner $code");
+	$tsNodeHost->setPredefinedQueryName("Group Assigner $code");
         $tsNodeHost->login($login, $passwd);
         return $tsNodeHost->serverGetByPort($sport);
     } catch (Exception $e) {
