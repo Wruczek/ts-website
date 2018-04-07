@@ -88,43 +88,6 @@ try {
 }
 ?>
 
-<style>
-    .bootstrap-select.btn-group .dropdown-menu .notify {
-        color: #ebebeb;
-        text-align: center;
-        background-color: #d9534f;
-        border: none;
-    }
-
-    .bootstrap-select.btn-group .dropdown-menu li a {
-        /*margin: 3px 0;*/
-        font-size: 16px;
-    }
-
-    .ga-icon {
-        max-height: 16px;
-        max-width: 16px;
-        margin-right: 3px;
-    }
-
-    .bootstrap-select > .btn {
-        background-color: #39444e;
-    }
-
-    .group-label {
-        font-size: 24px;
-    }
-
-    .group-label .label {
-        font-size: 14px;
-        margin-top: 7px;
-    }
-
-    .ga-group {
-        margin-bottom: 15px;
-    }
-</style>
-
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-picture-o" aria-hidden="true"></i> <?php tl($lang["groupassigner"]["title"]); ?></h3>
