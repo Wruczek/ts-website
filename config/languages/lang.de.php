@@ -1,7 +1,8 @@
 <?php
 /*
  * German language for ts-website
- * @copy NothingTV <contact@tactical-gaming.com> with derrobin154 <derrobin154@gmail.com>
+ * @copy NothingTV <contact@tactical-gaming.com>
+ * @copy derrobin154 <derrobin154@gmail.com>
  */
 
 $lang = array();
