@@ -26,7 +26,7 @@ function checkStatus() {
                 var averagePacketloss = Math.round(json.averagePacketloss * 100) / 100;
                 var averagePing = Math.round(json.averagePing * 100) / 100;
 
-                var platformIcon = '<i class="fa %s fa-fw" title="' + platform + '" aria-hidden="true"></i>';
+                var platformIcon = '<i class="fab %s fa-fw" title="' + platform + '" aria-hidden="true"></i>';
 
                 switch (platform.toLowerCase()) {
                     case "windows":
@@ -44,19 +44,19 @@ function checkStatus() {
                 }
 
                 result =
-                    '<p><i class="fa fa-power-off fa-fw" aria-hidden="true"></i> ' + statusOnline + ': <span class="label label-success">' + clientsonline + ' / ' + maxclients + ' (' + clientsprecent + '%)</span></p>' +
-                    '<p><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> ' + statusUptime + ': <span class="label label-success">' + uptime + '</span></p>' +
-                    '<p><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> ' + statusVersion + ': <span class="label label-success">' + version + ' on ' + platformIcon + '</span></p>' +
-                    '<p><i class="fa fa-signal fa-fw" aria-hidden="true"></i> ' + statusAvgping + ': <span class="label label-success">' + averagePing + ' ms</span></p>' +
-                    '<p><i class="fa fa-bolt fa-fw" aria-hidden="true"></i> ' + statusAvgpl + ': <span class="label label-success">' + averagePacketloss + '%</span></p>';
+                    '<p><i class="fas fa-power-off fa-fw" aria-hidden="true"></i> ' + statusOnline + ': <span class="label label-success">' + clientsonline + ' / ' + maxclients + ' (' + clientsprecent + '%)</span></p>' +
+                    '<p><i class="far fa-clock fa-fw" aria-hidden="true"></i> ' + statusUptime + ': <span class="label label-success">' + uptime + '</span></p>' +
+                    '<p><i class="fas fa-info-circle fa-fw" aria-hidden="true"></i> ' + statusVersion + ': <span class="label label-success">' + version + ' on ' + platformIcon + '</span></p>' +
+                    '<p><i class="fas fa-signal fa-fw" aria-hidden="true"></i> ' + statusAvgping + ': <span class="label label-success">' + averagePing + ' ms</span></p>' +
+                    '<p><i class="fas fa-bolt fa-fw" aria-hidden="true"></i> ' + statusAvgpl + ': <span class="label label-success">' + averagePacketloss + '%</span></p>';
             } else {
-                result = '<p><i class="fa fa-power-off fa-fw" aria-hidden="true"></i> Online: <span class="label label-danger">' + statusOffline + '</span></p>';
+                result = '<p><i class="fas fa-power-off fa-fw" aria-hidden="true"></i> Online: <span class="label label-danger">' + statusOffline + '</span></p>';
             }
 
             $("#serverstatus").html(result);
         },
         error: function (result) {
-            $("#serverstatus").html('<p><i class="fa fa-power-off fa-fw" aria-hidden="true"></i> ' + statusOnline + ': <span class="label label-danger">ERROR</span></p>');
+            $("#serverstatus").html('<p><i class="fas fa-power-off fa-fw" aria-hidden="true"></i> ' + statusOnline + ': <span class="label label-danger">ERROR</span></p>');
         }
     })
 }

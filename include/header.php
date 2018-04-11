@@ -28,7 +28,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
     <link href="css/theme.css" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
     <?php if(isset($bansPage)) { ?>
     <!-- DataTables for Bootstrap -->
@@ -72,16 +72,16 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="viewer<?php echo $htalink ?>"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
-                    <li><a href="bans<?php echo $htalink ?>"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["navbar"]["bans"]); ?></a></li>
-                    <li><a href="rules<?php echo $htalink ?>"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["navbar"]["rules"]); ?></a></li>
+                    <li><a href="viewer<?php echo $htalink ?>"><i class="fas fa-eye" aria-hidden="true"></i> <?php tl($lang["navbar"]["viewer"]); ?></a></li>
+                    <li><a href="bans<?php echo $htalink ?>"><i class="fas fa-gavel" aria-hidden="true"></i> <?php tl($lang["navbar"]["bans"]); ?></a></li>
+                    <li><a href="rules<?php echo $htalink ?>"><i class="fas fa-book" aria-hidden="true"></i> <?php tl($lang["navbar"]["rules"]); ?></a></li>
                     <!-- I don't have time for this.
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-television" aria-hidden="true"></i></i>Ranking <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tv" aria-hidden="true"></i></i>Ranking <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>Ranking Aktywności</a></li>
-                            <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Ranking Połaczeń</a></li>
-                            <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Ranking Połączenia</a></li>
+                            <li><a href="#"><i class="far fa-clock" aria-hidden="true"></i>Ranking Aktywności</a></li>
+                            <li><a href="#"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Ranking Połaczeń</a></li>
+                            <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>Ranking Połączenia</a></li>
                         </ul>
                     </li>
                     -->
@@ -91,10 +91,10 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                         $icon = $navlink[0];
                         $text = $navlink[1];
                         $link = $navlink[2]; ?>
-                    <li><a href="<?php echo $link; ?>"><i class="fa <?php echo $icon; ?>" aria-hidden="true"></i> <?php echo $text; ?></a></li>
+                    <li><a href="<?php echo $link; ?>"><i class="<?php echo $icon; ?>" aria-hidden="true"></i> <?php echo $text; ?></a></li>
                     <?php } ?>
 
-                    <li data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["navbar"]["connecttooltip"], [$config['teamspeak']['displayip']]); ?>"><a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><i class="fa fa-sign-in" aria-hidden="true"></i><?php tl($lang["navbar"]["connect"]); ?></a></li>
+                    <li data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["navbar"]["connecttooltip"], [$config['teamspeak']['displayip']]); ?>"><a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><i class="fas fa-sign-in-alt" aria-hidden="true"></i><?php tl($lang["navbar"]["connect"]); ?></a></li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="famfamfam-flags <?php echo $langcode == "en" ? "gb" : $langcode; ?>" aria-hidden="true"></i> Language <span class="caret"></span></a>
@@ -135,13 +135,13 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
 
             <div class="col-md-3 col-md-push-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["title"]); ?></div>
+                    <div class="panel-heading"><i class="fas fa-chart-bar" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["title"]); ?></div>
                     <div class="panel-body">
                         <div class="serverstatus">
-                            <p><i class="fa fa-globe fa-fw" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["address"]); ?>: <a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><?php echo $config['teamspeak']['displayip']; ?></a></p>
+                            <p><i class="fas fa-globe fa-fw" aria-hidden="true"></i> <?php tl($lang["serverstatus"]["address"]); ?>: <a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><?php echo $config['teamspeak']['displayip']; ?></a></p>
                             <div id="serverstatus">
                                 <div class="text-center">
-                                    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                                    <i class="fas fa-refresh fa-spin fa-3x fa-fw"></i>
                                     <span class="sr-only"><?php tl($lang["serverstatus"]["loading"]); ?></span>
                                 </div>
                             </div>
@@ -151,7 +151,12 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
 
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-shield" aria-hidden="true"></i> <?php tl($lang["adminlist"]["title"]); ?> <span class="pull-right"><i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["adminlist"]["lastupdate"], [$adminlist[1]]); ?>"></i></span></div>
+                    <div class="panel-heading">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i> <?php tl($lang["adminlist"]["title"]); ?>
+                        <span class="pull-right" data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["adminlist"]["lastupdate"], [$adminlist[1]]); ?>">
+                            <i class="fas fa-question-circle" aria-hidden="true"></i>
+                        </span>
+                    </div>
                     <div class="panel-body adminlist">
                         <?php echo $adminlist[0]; ?>
                     </div>
@@ -159,7 +164,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
 
                 <?php if(!empty($config['contact']['items'])) { ?>
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $config['contact']['title']; ?></div>
+                    <div class="panel-heading"><i class="fas fa-envelope" aria-hidden="true"></i> <?php echo $config['contact']['title']; ?></div>
                     <div class="panel-body">
                         <ul class="list-unstyled">
                             <?php foreach ($config['contact']['items'] as $item) {
@@ -174,9 +179,9 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                 <?php } ?>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["title"]); ?></div>
+                    <div class="panel-heading"><i class="fas fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["title"]); ?></div>
                     <div class="panel-body">
-                        <a href="viewer<?php echo $htalink ?>" class="btn btn-primary btn-lg btn-block"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["takealook"]); ?></a>
+                        <a href="viewer<?php echo $htalink ?>" class="btn btn-primary btn-lg btn-block"><i class="fas fa-eye" aria-hidden="true"></i> <?php tl($lang["svpb"]["takealook"]); ?></a>
                     </div>
                 </div>
             </div>

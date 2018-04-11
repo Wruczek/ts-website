@@ -6,7 +6,7 @@ require_once __DIR__ . "/lib/parsedown/parsedown.php";
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title news-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <?php tl($lang["index"]["title"]); ?></h3>
+        <h3 class="panel-title news-header"><i class="fas fa-newspaper" aria-hidden="true"></i> <?php tl($lang["index"]["title"]); ?></h3>
     </div>
 </div>
 
@@ -50,7 +50,7 @@ function showNews($path) {
 function generateNewsBox($title, $author, $text) { ?>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><div class="row"><div class="col-md-8"><i class="fa fa-info-circle" aria-hidden="true"></i> <?php echo $title; ?></div><div class="col-md-4 news-author"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $author; ?></div></div></h3>
+        <h3 class="panel-title"><div class="row"><div class="col-md-8"><i class="fas fa-info-circle" aria-hidden="true"></i> <?php echo $title; ?></div><div class="col-md-4 news-author"><i class="fas fa-user" aria-hidden="true"></i> <?php echo $author; ?></div></div></h3>
     </div>
     <div class="panel-body news-body">
         <?php echo $text; ?>

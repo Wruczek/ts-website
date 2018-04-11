@@ -44,9 +44,9 @@ $config['teamspeak']['displayip']     = 'ts.server.net';       // IP shown to us
 // TEMPLATE: (ICON is an icon name from: http://fontawesome.io/icons/)
 // $config["navlinks"][] = ["icon", "displayed text", "link"];
 
-$config["navlinks"][] = ["fa-facebook-official", "Facebook", "https://facebook.com/Facebook"];
-$config["navlinks"][] = ["fa-twitter-square", "Twitter", "https://twitter.com/Twitter"];
-$config["navlinks"][] = ["fa-comments", "Forum", "forum"];
+$config["navlinks"][] = ["fab fa-facebook-square", "Facebook", "https://facebook.com/Facebook"];
+$config["navlinks"][] = ["fab fa-twitter-square", "Twitter", "https://twitter.com/Twitter"];
+$config["navlinks"][] = ["fas fa-comments", "Forum", "forum"];
 
 
 

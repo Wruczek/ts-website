@@ -15,7 +15,7 @@ $banlist = $cacheutils->getValue();
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-ban" aria-hidden="true"></i> <?php tl($lang["banlist"]["title"]); ?></h3>
+        <h3 class="panel-title"><i class="fas fa-gavel" aria-hidden="true"></i> <?php tl($lang["banlist"]["title"]); ?></h3>
     </div>
     <div class="panel-body">
 

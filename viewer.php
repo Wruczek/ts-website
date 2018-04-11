@@ -29,7 +29,7 @@ function getViewer() {
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-eye" aria-hidden="true"></i> <?php tl($lang["viewer"]["title"]); ?></h3>
+        <h3 class="panel-title"><i class="fas fa-eye" aria-hidden="true"></i> <?php tl($lang["viewer"]["title"]); ?></h3>
     </div>
     <div class="panel-body">
         <?php echo $tsviewer[0]; ?>

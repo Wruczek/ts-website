@@ -1,4 +1,4 @@
-.fa {
+.svg-inline--fa {
     margin-right: 5px
 }
 
@@ -20,7 +20,7 @@ a {
     text-align: right
 }
 
-.pull-right .fa {
+.pull-right .svg-inline--fa {
     margin-right: 0
 }
 
@@ -39,7 +39,7 @@ p, a {
 /* STATUS */
 /* ****** */
 
-.serverstatus p, .serverstatus .label .fa {
+.serverstatus p, .serverstatus .label .svg-inline--fa {
     margin: 0
 }
 

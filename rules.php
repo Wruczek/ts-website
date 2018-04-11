@@ -17,7 +17,7 @@ if (!file_exists($path)) {
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-book" aria-hidden="true"></i> <?php tl($lang["rules"]["title"]); ?></h3>
+        <h3 class="panel-title"><i class="fas fa-book" aria-hidden="true"></i> <?php tl($lang["rules"]["title"]); ?></h3>
     </div>
     <div class="panel-body">
         <?php echo $parsedown->text($file); ?>
