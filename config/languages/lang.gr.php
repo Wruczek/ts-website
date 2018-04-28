@@ -25,8 +25,8 @@ $lang["navbar"]["connecttooltip"] = "Κάντε κλικ για να συνδε�
 
 /************* Footer *************/
 
-$lang["footer"]["css"] = "CSS by";
-$lang["footer"]["background"] = "background";
+$lang["footer"]["css"] = "CSS από";
+$lang["footer"]["background"] = "εικόνα φόντου";
 
 
 /************* Server status *************/
@@ -47,9 +47,9 @@ $lang["serverstatus"]["avgpl"] = "Μέση Απώλεια Πακ.";
 
 $lang["adminlist"]["title"] = "Λίστα Διαχειριστών";
 $lang["adminlist"]["emptygroup"] = "Αυτό το γκρουπ είναι άδειο.";
-$lang["adminlist"]["status"]["online"] = "Online";
-$lang["adminlist"]["status"]["away"] = "Away";
-$lang["adminlist"]["status"]["offline"] = "Offline";
+$lang["adminlist"]["status"]["online"] = "Συνδεδεμένος";
+$lang["adminlist"]["status"]["away"] = "Αδρανής";
+$lang["adminlist"]["status"]["offline"] = "Αποσυνδεδεμένος";
 $lang["adminlist"]["lastupdate"] = "Τελευταία Ενημέρωση: {0}";
 
 
@@ -84,7 +84,7 @@ $lang["viewer"]["lastupdate"] = "Τελευταία Ενημέρωση: {0}";
 
 $lang["banlist"]["title"] = "Λίστα Αποκλεισμών";
 $lang["banlist"]["datatablesurl"] = "//cdn.datatables.net/plug-ins/1.10.12/i18n/Greek.json";
-$lang["banlist"]["emptylist"] = "Η λίστα αοκλεισμών είναι άδεια!";
+$lang["banlist"]["emptylist"] = "Η λίστα αποκλεισμών είναι άδεια!";
 $lang["banlist"]["lastupdate"] = "Τελευταία Ενημέρωση: {0}";
 
 $lang["banlist"]["table"]["emptyreason"] = "(Χωρίς Λόγο)";
