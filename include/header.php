@@ -120,6 +120,7 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                             <li><a href="?lang=bg"><i class="famfamfam-flags bg" aria-hidden="true"></i> български</a></li>       <!-- Bulgarian  : 8       -->
                             <li><a href="?lang=da"><i class="famfamfam-flags dk" aria-hidden="true"></i> Dansk</a></li>           <!-- Danish     : 6       -->
                             <li><a href="?lang=by"><i class="famfamfam-flags by" aria-hidden="true"></i> Беларуская мова</a></li> <!-- Belarusian : 3       -->
+                            <li><a href="?lang=bs"><i class="famfamfam-flags ba" aria-hidden="true"></i> Босански</a></li>        <!-- Bosnian    : 2,59    -->
                         </ul>
                     </li>
                 </ul>
