@@ -8,7 +8,8 @@ $lang = array();
 
 /************* Generalno *************/
 
-$lang["general"]["langcode"] = "ba";
+$lang["general"]["langcode"] = "bs";
+$lang["general"]["languageflag"] = "ba";
 $lang["general"]["scripterror"] = "Greška se pojavila! {0}: {1}";
 
 /************* Navigacija *************/
