@@ -26,6 +26,7 @@ $lang["navbar"]["connecttooltip"] = "Csatlakozáshoz katt.. {0}";
 /************* Lábrész *************/
 
 $lang["footer"]["css"] = "CSS by ";
+$lang["footer"]["background"] = "background";
 
 
 /************* Server Státusz *************/
