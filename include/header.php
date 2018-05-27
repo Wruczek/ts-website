@@ -97,10 +97,10 @@ $htalink = $config["general"]["enablehta"] ? "" : ".php";
                     <li data-toggle="tooltip" data-placement="bottom" title="<?php tl($lang["navbar"]["connecttooltip"], [$config['teamspeak']['displayip']]); ?>"><a href="ts3server://<?php echo $config['teamspeak']['displayip']; ?>"><i class="fa fa-sign-in" aria-hidden="true"></i><?php tl($lang["navbar"]["connect"]); ?></a></li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="famfamfam-flags <?php echo $langcode == "en" ? "gb" : $langcode; ?>" aria-hidden="true"></i> Language <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="famfamfam-flags <?php tl($lang["general"]["languageflag"]) ?>" aria-hidden="true"></i> Language <span class="caret"></span></a>
                         <ul class="dropdown-menu">
 
-                            <!-- Languages are sorted by number of total users in millions in all countries, based on ethnologue.com and Wikipedia -->
+                            <!-- Languages are sorted by number of total speakers in millions in all countries, based on ethnologue.com and Wikipedia -->
 
                             <li><a href="?lang=en"><i class="famfamfam-flags gb" aria-hidden="true"></i> English</a></li>         <!-- English    : 1010    -->
                             <li><a href="?lang=es"><i class="famfamfam-flags es" aria-hidden="true"></i> Español</a></li>         <!-- Spanish    : 528     -->

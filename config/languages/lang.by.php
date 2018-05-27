@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "be_BY";
+$lang["general"]["languageflag"] = "by";
 $lang["general"]["scripterror"] = "Адбылася памылка! {0}: {1}";
 
 /************* Navbar *************/

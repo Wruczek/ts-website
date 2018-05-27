@@ -9,6 +9,7 @@ $lang = array();
 /************* Általános *************/
 
 $lang["general"]["langcode"] = "hu_HU";
+$lang["general"]["languageflag"] = "hu";
 $lang["general"]["scripterror"] = "Hiba történt! {0}: {1}";
 
 /************* Navbár *************/

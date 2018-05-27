@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "da_DK";
+$lang["general"]["languageflag"] = "dk";
 $lang["general"]["scripterror"] = "En fejl opstod! {0}: {1}";
 
 /************* Navbar *************/

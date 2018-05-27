@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "el_GR";
+$lang["general"]["languageflag"] = "gr";
 $lang["general"]["scripterror"] = "Προέκυψε Σφάλμα! {0}: {1}";
 
 /************* Navbar *************/

@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "cs_CZ";
+$lang["general"]["languageflag"] = "cz";
 $lang["general"]["scripterror"] = "Nastala chyba! {0}: {1}";
 
 /************* Navbar *************/

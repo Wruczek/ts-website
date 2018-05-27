@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "es-ES";
+$lang["general"]["languageflag"] = "es";
 $lang["general"]["scripterror"] = "Ha ocurrido un error {0}: {1}";
 
 /************* Navbar *************/

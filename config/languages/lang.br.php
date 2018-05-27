@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "br_GB";
+$lang["general"]["languageflag"] = "br";
 $lang["general"]["scripterror"] = "Erro Ocorrido! {0}: {1}";
 
 /************* Menu *************/

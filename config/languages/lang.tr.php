@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "tr_TR";
+$lang["general"]["languageflag"] = "tr";
 $lang["general"]["scripterror"] = "Bir hata olmustur! {0}: {1}";
 
 /************* Navbar *************/

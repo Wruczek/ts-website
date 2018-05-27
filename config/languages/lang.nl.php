@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "nl_NL";
+$lang["general"]["languageflag"] = "nl";
 $lang["general"]["scripterror"] = "Er is een fout opgetreden! {0}: {1}";
 
 /************* Navbar *************/

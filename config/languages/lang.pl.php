@@ -9,6 +9,7 @@ $lang = array();
 /************* General *************/
 
 $lang["general"]["langcode"] = "pl_PL";
+$lang["general"]["languageflag"] = "pl";
 $lang["general"]["scripterror"] = "Wystąpił błąd! {0}: {1}";
 
 /************* Navbar *************/
