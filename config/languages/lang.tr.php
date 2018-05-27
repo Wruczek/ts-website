@@ -25,7 +25,6 @@ $lang["navbar"]["connecttooltip"] = "Baglanmak için {0} tiklayin";
 
 /************* Footer *************/
 
-$lang["footer"]["website"] = "Websitesi";
 $lang["footer"]["css"] = "CSS tarafindan saglanan";
 $lang["footer"]["background"] = "Arka plân";
 

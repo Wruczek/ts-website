@@ -25,7 +25,6 @@ $lang["navbar"]["connecttooltip"] = "Нажмите, чтобы подключи
 
 /************* Footer *************/
 
-$lang["footer"]["website"] = "Веб-сайт";
 $lang["footer"]["css"] = "CSS благодаря любезности";
 $lang["footer"]["background"] = "фон";
 
