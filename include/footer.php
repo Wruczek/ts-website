@@ -10,9 +10,17 @@
             <p class="pull-left" id="website-copyright">&copy; <?php tl($config["general"]["title"]); ?></p>
             <div class="pull-right">
                 <ul class="list-inline">
-                    <li> <!-- Please respect the amount of work we've put for free into this project and leave the authors in the footer. Thank you. -->
+                    <li>
                         <p>
-                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.4.6 &mdash; &copy; <a href="https://wruczek.tech">Wruczek</a> and contributors 2016 - 2018
+                            <label class="label label-danger">
+                                <a href="https://github.com/Wruczek/ts-website" style="color: inherit">
+                                    This is the last release of ts-website 1.0. Please upgrade to 2.0 to stay up-to-date
+                                </a>
+                            </label>
+                        </p>
+                        <!-- Please respect the amount of work we've put for free into this project and leave the authors in the footer. Thank you. -->
+                        <p>
+                            <a href="https://github.com/Wruczek/ts-website">ts-website</a> v 1.4.7 &mdash; &copy; <a href="https://wruczek.tech">Wruczek</a> and contributors 2016 - 2018
                         </p>
 
                         <p>

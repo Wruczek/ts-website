@@ -23,7 +23,7 @@ function checkStatus() {
                 var version = json.version;
                 var platform = json.platform;
                 var uptime = json.uptime;
-                var averagePacketloss = Math.round(json.averagePacketloss * 100) / 100;
+                var averagePacketloss = Math.round(json.averagePacketloss * 10000) / 100;
                 var averagePing = Math.round(json.averagePing * 100) / 100;
 
                 var platformIcon = '<i class="fa %s fa-fw" title="' + platform + '" aria-hidden="true"></i>';
