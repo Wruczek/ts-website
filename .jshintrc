@@ -1,0 +1,6 @@
+{
+    "strict": true,
+    "browser": true,
+    "jquery": true,
+    "asi": true
+}

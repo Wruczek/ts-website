@@ -1,0 +1,82 @@
+<!-- Login modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i>Login</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="{_"ARIA_CLOSE"}">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                {* Error loading data alert *}
+                <div class="error-generic alert alert-danger" role="alert" style="display: none">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Error loading login data. Is the server offline?
+                </div>
+
+                {* Error sending code alert *}
+                <div class="error-sendingcode alert alert-danger" role="alert" style="display: none">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Error sending you the code. Are you online? Does the bot have permissions to poke you?
+                </div>
+
+                {* Loader *}
+                <div class="status-loader position-relative p-3">
+                    <div class="loader"></div>
+                </div>
+
+                {* Not connected to the server message *}
+                <div class="not-connected text-center" style="display: none">
+                    <h3>Not connected</h3>
+                    <p>Connect to <a href="ts3server://{$config["query_displayip"]}">{$config["query_displayip"]}</a> and wait ±30 seconds.<br>The website will auto-refresh.</p>
+                    <a href="ts3server://{$config["query_displayip"]}" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>Connect
+                    </a>
+
+                    <p class="mb-3 mt-3 waiting-connect">
+                        <i class="fas fa-sync fa-spin"></i>Waiting for you to connect
+                    </p>
+
+                    <!-- <p class="mb-0">Still not working? Try <a href="#">other login methods</a></p> -->
+                </div>
+
+                {* Account selector, if we have more than 2 accounts on the same IP address *}
+                <div class="select-account text-center" style="display: none">
+                    <h3 class="mb-3">Select your account</h3>
+
+                    <script id="select-account-template" type="text/template">
+                        <button type="button" class="list-group-item list-group-item-action" data-selectaccount="[1]">
+                            [0]<span class="badge badge-secondary badge-pill">ID [1]</span>
+                        </button>
+                    </script>
+
+                    <div class="list-group">
+                        Loading...
+                    </div>
+                </div>
+
+                {* Confirmation code form *}
+                <div class="confirmation-code text-center" style="display: none">
+                    <h3>Enter your code</h3>
+                    <p>We have send a confirmation code to <b class="selected-nickname"></b>.</p>
+
+                    <form id="loginModal-codeconfirm">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Confirmation code">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary">Send</button>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            Invalid confirmation code, try again.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{extends "body.latte"}
+{var title = __get("FAQ_TITLE")}
+{var navActiveIndex = 5}
+
+{block content}
+    <div class="card card-accent">
+        <div class="card-header bigger-title">
+            <i class="far fa-question-circle"></i>{_"FAQ_PANEL_TITLE"}
+        </div>
+        <div class="card-body">
+            {$additionaltext|noescape}
+
+            <div class="accordion" id="faqaccordion">
+                {foreach $qa as $id => $value}
+                    <div class="card">
+                        <div class="card-header" id="faqcollapse-heading-{$id}">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqcollapse-{$id}" aria-expanded="true" aria-controls="faqcollapse-{$id}">
+                                {$id + 1}. {$value["question"]|noescape}
+                            </button>
+                            <i class="fas fa-link copy-faq-url" data-faqid="{$id}" data-toggle="tooltip" title="{_"FAQ_COPY_LINK"}"></i>
+                        </div>
+
+                        <div id="faqcollapse-{$id}" class="collapse" aria-labelledby="faqcollapse-heading-{$id}" data-parent="#faqaccordion">
+                            <div class="card-body">
+                                {$value["answer"]|noescape}
+                            </div>
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+{/block}
+
+{block footerbottom}
+    <script>
+        var FAQ_LANG = {
+            copy_success: {_"FAQ_COPY_LINK_SUCCESS"},
+            copy_error: {_"FAQ_COPY_LINK_ERROR"}
+        }
+    </script>
+    {$tplutils::includeScript("js/faq.js", true)}
+{/block}

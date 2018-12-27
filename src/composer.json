@@ -1,0 +1,24 @@
+{
+    "config": {
+        "vendor-dir": "private/vendor"
+    },
+    "require": {
+        "roave/security-advisories": "dev-master",
+        "php": ">=5.6.0",
+        "ext-mbstring": "*",
+        "ext-json": "*",
+        "ext-tokenizer": "*",
+        "planetteamspeak/ts3-php-framework": "1.1.32",
+        "latte/latte": "^2.4",
+        "wruczek/php-file-cache": "^0",
+        "simplepie/simplepie": "^1.5",
+        "catfan/medoo": "^1.5"
+    },
+    "suggest": {
+        "ext-pdo_mysql": "*",
+        "ext-pdo_sqlite": "*"
+    },
+    "autoload": {
+        "psr-4": {"Wruczek\\TSWebsite\\": "private/php"}
+    }
+}

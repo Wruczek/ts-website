@@ -1,0 +1,400 @@
+/*!
+ * This file is a part of ts-website 2
+ * https://github.com/Wruczek/ts-website
+ * (c) Wruczek 2017 - 2019
+ */
+
+body {
+    position: relative;
+    padding-top: 90px;
+    padding-bottom: 6rem;
+    min-height: 100vh;
+    font-size: 15px;
+}
+
+.connectionproblems {
+    margin-top: 1rem;
+}
+
+.fa, .fas, .fab, .far, .fal {
+    margin-right: 0.5em
+}
+
+.language-switcher .dropdown-item {
+    cursor: pointer;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.accordion .card {
+    margin-bottom: 0;
+}
+
+.accordion .card .card-header {
+    padding: .5rem !important;
+}
+
+.card .card-header * {
+    margin-bottom: 0;
+}
+
+.bottom-error-alert {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 0;
+    text-align: center;
+    z-index: 998;
+}
+
+.card-titleblock {
+    margin-bottom: 1.5rem !important;
+}
+
+.card-titleblock .card-header {
+    text-align: center;
+    border: 0;
+    font-size: 1.2rem;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: #f8f9fa;
+    padding: 0.8rem;
+    font-size: 1rem;
+    line-height: 2em;
+}
+
+.footer .footer-copyright {
+    font-size: 0.75rem;
+}
+
+/* Fixes https://github.com/twbs/bootstrap/issues/23374 */
+@media (max-width: 991px) {
+    .nav-fix-scroll {
+        overflow: auto;
+        max-height: 85vh;
+        align-items: unset;
+    }
+}
+
+/* Reimplement the btn-xs that was removed in Bootstrap 4 */
+/* https://github.com/twbs/bootstrap/issues/21881#issuecomment-341972830 */
+.btn-group-xs > .btn, .btn-xs {
+    padding  : .25rem .4rem;
+    font-size  : .875rem;
+    line-height  : .5;
+    border-radius : .2rem;
+}
+
+/* ACCORDION */
+
+.accordion .card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion .card .card-header .btn-link {
+    text-decoration: none;
+    text-align: inherit;
+    white-space: normal;
+}
+
+.accordion .card .card-header .copy-faq-url {
+    transition: opacity ease 250ms;
+    margin: 0 0.75rem 0 0;
+    cursor: pointer;
+}
+
+.accordion .card:not(:hover) .card-header .copy-faq-url {
+    opacity: 0;
+}
+
+/* Page/element specific */
+
+.badge.error-badge {
+    white-space: normal;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+/* Server status */
+
+.server-status.loaded .status-loader {
+    display: none;
+}
+
+.server-status p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 0.1rem;
+}
+
+.server-status .data span:first-child {
+    white-space: nowrap;
+}
+
+.server-status .data span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#loginModal .select-account .list-group .list-group-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-button {
+    max-width: 150px;
+}
+
+#loginModal-codeconfirm .invalid-feedback {
+    margin-top: 0.5rem;
+    font-size: 100%;
+}
+
+/* Bans page */
+
+.ban-alert {
+    margin-bottom: 2rem;
+}
+
+.ban-alert.banned {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive datatables styles */
+
+table.dataTable>tbody>tr.child ul.dtr-details>li:first-child {
+    padding-top: 0;
+}
+
+table.dataTable > tbody > tr.child span.dtr-title {
+    display: inline-block;
+    min-width: 75px;
+    font-weight: bold;
+}
+
+table.dataTable>tbody>tr.child ul.dtr-details {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+table.dataTable>tbody>tr.child ul.dtr-details>li {
+    padding: 0.5em 0;
+}
+
+table.dataTable > tbody > tr.parent td {
+    background-color: #282840
+}
+
+table.dataTable > tbody > tr.child td.child {
+    background-color: #2d2d4b
+}
+
+.dataTables_info {
+    white-space: normal !important
+}
+
+/* Viewer */
+
+.viewer-container {
+    font-size: 14px;
+}
+
+.viewer-container .channel-container:not(.is-server), .viewer-container .client-container {
+    margin-left: 1.4em;
+}
+
+.viewer-container .channel-container:not(.is-spacer) .channel, .viewer-container .client-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.viewer-container .channel-container:not(.is-spacer) > .channel > .channel-name,
+.viewer-container .channel-container:not(.is-spacer) > .channel > .channel-icons,
+.viewer-container .client-name, .viewer-container .client-icons {
+    display: flex;
+    align-items: center;
+}
+
+.viewer-container .channel-container:not(.is-spacer) > .channel > .channel-name,
+.viewer-container .client-name {
+    word-break: break-all;  /* For all browsers */
+    word-break: break-word; /* For some browsers that support it - unofficial! */
+}
+
+.viewer-container .client-icons {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.viewer-container .client-icons .icon,
+.viewer-container .client-icons .icon-flag,
+.viewer-container .channel-icons .icon {
+    margin-left: 0.5em;
+}
+
+.viewer-container .channel-container:not(.is-spacer) .channel,
+.viewer-container .client-container {
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.viewer-container .channel-container:not(.is-spacer) .channel::after,
+.viewer-container .client-container::after {
+    content: "";
+    z-index: -1;
+
+    position: absolute;
+    top: -3px;
+    left: -10px;
+    bottom: -3px;
+    right: -10px;
+
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .15);
+    opacity: 0;
+    transition: opacity ease 300ms;
+}
+
+.viewer-container .channel-container:not(.is-spacer) .channel:hover::after,
+.viewer-container .client-container:hover::after,
+.viewer-container .channel-container:not(.is-spacer) .channel:focus::after,
+.viewer-container .client-container:focus::after {
+    opacity: 1;
+}
+
+.viewer-container .channel-name .icon, .viewer-container .client-name .icon {
+    margin-right: 0.5em;
+}
+
+.viewer-container .icon {
+    height: 16px;
+    max-width: 16px;
+}
+
+.viewer-container .channel-container.spacer-left > .channel {
+    text-align: left;
+}
+
+.viewer-container .channel-container.spacer-center > .channel {
+    text-align: center;
+}
+
+.viewer-container .channel-container.spacer-right > .channel {
+    text-align: right;
+}
+
+.viewer-container .channel-container.spacer-repeat > .channel {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Admin status sidebar */
+
+.admin-status.admin-status-grouped .group-name {
+    /* Center icon with text (vertical & horizontal) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--font-family-main);
+    font-size: 1.3em;
+}
+
+.admin-status.admin-status-grouped .group-name {
+    margin: 1em 0 0.1em 0;
+}
+
+.admin-status.admin-status-grouped .empty-group {
+    text-align: center;
+    font-style: italic;
+}
+
+/* No top spacing on the first group */
+/* Thats why I've put that extra DIV that wraps all groups */
+.admin-status.admin-status-grouped div:first-child .group-name {
+    margin-top: 0;
+}
+
+.admin-status.admin-status-grouped .group-name img,
+.admin-status.admin-status-list .nickname img {
+    height: 16px;
+    max-width: 16px;
+    margin-right: 0.25em;
+}
+
+.admin-status.admin-status-list .group-separator {
+    margin: 1.25em 0;
+}
+
+.admin-status .status-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.1em;
+}
+
+.admin-status .status-container .nickname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Group assigner */
+
+.group-assigner .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-assigner .list-group-item > div {
+    display: flex;
+    align-items: center;
+}
+
+/* The "icon-margin" is used when there is no icon, */
+/* its used to align it with other groups */
+.group-assigner .assigner-icon, .group-assigner .assigner-icon-margin {
+    width: 16px;
+    max-height: 16px;
+    margin-right: 0.3em;
+}
+
+.group-assigner .list-group-item:not(.assigner-header) {
+    cursor: pointer;
+}
+
+.group-assigner .assigner-category {
+    margin-bottom: 1.5rem;
+}
+
+.group-assigner .assigner-save {
+    width: 200px;
+    max-width: 100%;
+}
+
+.group-assigner .assigner-header .badge.badge-invalid {
+    background-color: red !important
+}

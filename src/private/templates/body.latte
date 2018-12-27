@@ -1,0 +1,219 @@
+{php
+$utils = Wruczek\TSWebsite\Utils\Utils::class;
+$tplutils = Wruczek\TSWebsite\Utils\TemplateUtils::i();
+$auth = Wruczek\TSWebsite\Auth::class;
+$userlangcode = $userLanguage->getLanguageCode();
+$navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
+}<!DOCTYPE html>
+<html n:attr="lang => $userlangcode">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="TS-website {\__TSWEBSITE_VERSION} by Wruczek / https://github.com/Wruczek/ts-website">
+    <meta name="csrf-token" content="{$csrfToken}">
+
+    <!-- TODO make it use the language variable "WEBSITE_TITLE" after the ACP update -->
+    <title>{$title} | {$config["website_title"]}</title>
+
+    <!-- Bootstrap 4.1.3 -->
+    {$tplutils::includeStylesheet("{cdnjs}/twitter-bootstrap/4.1.3/css/bootstrap.min.css", "sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=")}
+
+    <!-- FontAwesome CSS 5.2.0 -->
+    {$tplutils::includeStylesheet("https://use.fontawesome.com/releases/v5.2.0/css/all.css", "sha256-iJGhYPiir7gd5SWfn2jlrzeCNI6iknrZ6Wm8iMfTmYQ=")}
+
+    <!-- DataTables 1.10.19 -->
+    {$tplutils::includeStylesheet("{cdnjs}/datatables/1.10.19/css/dataTables.bootstrap4.min.css", "sha256-F+DaKAClQut87heMIC6oThARMuWne8+WzxIDT7jXuPA=")}
+
+    <!-- Internal scripts -->
+    {$tplutils::includeStylesheet("css/flags/famfamfam-flags.min.css", true)}
+    {$tplutils::includeStylesheet("css/style.css", true)}
+    {$tplutils::includeStylesheet("css/loader.css", true)}
+    {$tplutils::includeStylesheet("css/cookiealert.css", true)}
+    {$tplutils::includeStylesheet("css/themes/dark.css", true)}
+
+    {if __DEV_MODE}
+        <!-- Dev script - added when dev mode is on -->
+        {$tplutils::includeStylesheet("css/dev.css", true)}
+    {/if}
+</head>
+<body n:attr="class => 'lang ' . $userlangcode">
+
+<noscript>
+    <div class="alert alert-danger noscript-alert bottom-error-alert" role="alert">
+        {_"NO_JAVASCRIPT_ENABLED"}
+    </div>
+</noscript>
+
+<div class="alert alert-danger oldbrowser-alert bottom-error-alert" role="alert" style="display: none">
+    {_"UNSUPPORTED_BROWSER"}
+</div>
+
+{if !$auth::isLoggedIn()}
+    {include "utils/modal-login.latte"}
+{/if}
+
+<nav id="main-navbar" class="navbar navbar-expand-lg fixed-top nav-fix-scroll navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href=".">
+            <img src="img/icon/defaulticon-64.png" width="32" height="32" class="d-inline-block align-top mr-1" alt="Brand image">
+            {$config["nav_brand"]}
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbarNavDropdown"
+                aria-controls="mainNavbarNavDropdown" aria-expanded="false" aria-label="{_"NAV_TOGGLE"}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item{if $navActiveIndex === 1} active{/if}">
+                    <a class="nav-link" href="viewer.php"><i class="fas fa-eye"></i>{_"NAV_VIEWER"}</a>
+                </li>
+                <li class="nav-item{if $navActiveIndex === 2} active{/if}">
+                    <a class="nav-link" href="assigner.php"><i class="fas fa-gamepad"></i>{_"NAV_ASSIGNER"}</a>
+                </li>
+                <li class="nav-item{if $navActiveIndex === 3} active{/if}">
+                    <a class="nav-link" href="bans.php"><i class="fas fa-ban"></i>{_"NAV_BANS"}</a>
+                </li>
+                <li class="nav-item{if $navActiveIndex === 4} active{/if}">
+                    <a class="nav-link" href="rules.php"><i class="fas fa-book"></i>{_"NAV_RULES"}</a>
+                </li>
+                <li class="nav-item{if $navActiveIndex === 5} active{/if}">
+                    <a class="nav-link" href="faq.php"><i class="far fa-question-circle"></i>{_"NAV_FAQ"}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item">
+                    {if $auth::isLoggedIn()}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link login-button text-truncate dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i>{$auth::getNickname()}
+                            </a>
+                            <div class="dropdown-menu language-switcher" aria-labelledby="navbarDropdownUser">
+                                <button class="dropdown-item logoutUser"><i class="fas fa-sign-out-alt"></i>{_"NAV_ACCOUNT_LOGOUT"}</button>
+                            </div>
+                        </li>
+                    {else}
+                        <a class="nav-link" href="#" data-openLoginModal><i class="fas fa-sign-in-alt"></i>{_"NAV_ACCOUNT_LOGIN"}</a>
+                    {/if}
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguageChooser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-language"></i>{$userLanguage->getLanguageNameNative()}
+                    </a>
+                    <form method="post" action="api/setlang.php">
+                        {$csrfField}
+                        <input type="hidden" name="return-to" value="{$_SERVER['PHP_SELF']}">
+
+                        <div class="dropdown-menu language-switcher" aria-labelledby="navbarDropdownLanguageChooser">
+                            <button name="lang" class="dropdown-item{if $lang->getLanguageCode() === $userlangcode} active{/if}"
+                                n:foreach="$languageList as $lang"
+                                n:attr="value => $lang->getLanguageCode()">{$lang->getLanguageNameNative()}</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {ifset $oldestTimestamp}
+        {include "utils/data-problem.latte", message => ("OUTDATED_DATA"|translate,($oldestTimestamp|fuzzyDateAbbr))}
+    {/ifset}
+
+    {if $tsExceptions}
+        {include "utils/data-problem.latte", message => "We are having trouble communicating with the server. Some parts of the website might not be working as expected."}
+    {/if}
+
+    <div class="row">
+        <!-- 1st column -->
+        <div class="col-lg-9">
+            {block content}{/block}
+        </div>
+
+        <!-- 2nd column -->
+        <div class="col-lg-3">
+            {include "sidebar.latte"}
+        </div>
+    </div>
+</div>
+
+<!-- COOKIES -->
+{include "utils/cookiealert.latte"}
+<!-- /COOKIES -->
+
+<footer class="footer d-md-flex">
+    <div>
+        &copy; WebsiteTitle.tech {date("Y")}
+
+        {if $config["imprint_enabled"]}3
+            &mdash; <a href="{$config["imprint_url"]}">imprint</a>
+        {/if}
+    </div>
+    <div class="ml-auto footer-copyright">
+        <!-- Please respect the amount of work we've put for free into this project and leave the authors in the footer. Thanks! -->
+        <a href="https://github.com/Wruczek/ts-website" target="_blank">ts-website</a> v {\__TSWEBSITE_VERSION} &mdash;
+        &copy; <a href="https://wruczek.tech/?source=tsw" target="_blank">Wruczek</a> 2017 - 2019
+    </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+    // Simple error handler
+    window.onerror = function (msg, url, linenumber) {
+        // TODO: log to acp and deal with it, also better display (notification?)
+        alert('Javascript error occurred: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+        return false // still run the default handler
+    }
+</script>
+
+<!-- jQuery 3.3.1 -->
+{$tplutils::includeScript("{cdnjs}/jquery/3.3.1/jquery.min.js", "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=")}
+
+<!-- Popper.js UMD 1.14.4 -->
+{$tplutils::includeScript("{cdnjs}/popper.js/1.14.4/umd/popper.min.js", "sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=")}
+
+<!-- Bootstrap 4.1.3 -->
+{$tplutils::includeScript("{cdnjs}/twitter-bootstrap/4.1.3/js/bootstrap.min.js", "sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=")}
+
+<!-- JS-Cookie 2.2.0 -->
+{$tplutils::includeScript("{cdnjs}/js-cookie/2.2.0/js.cookie.min.js", "sha256-9Nt2r+tJnSd2A2CRUvnjgsD+ES1ExvjbjBNqidm9doI=")}
+
+<!-- TODO: as soon as day.js matures with more languages, replace this obese library with it -->
+<!-- Moment.js 2.22.2 -->
+{$tplutils::includeScript("{cdnjs}/moment.js/2.22.2/moment.min.js", "sha256-CutOzxCRucUsn6C6TcEYsauvvYilEniTXldPa6/wu0k=")}
+
+{var momentjslang = Wruczek\TSWebsite\Utils\Language\LanguageUtils::tl("MOMENTJS_LANG")}
+{if $momentjslang !== "en-us"}
+    {$tplutils::includeScript("{cdnjs}/moment.js/2.22.2/locale/$momentjslang.js")}
+    <script>
+        moment.locale({$momentjslang} || navigator.languages || navigator.language)
+    </script>
+{/if}
+
+<!-- DataTables 1.10.19 + Support for Bootstrap 4 -->
+{$tplutils::includeScript("{cdnjs}/datatables/1.10.19/js/jquery.dataTables.min.js", "sha256-t5ZQTZsbQi8NxszC10CseKjJ5QeMw5NINtOXQrESGSU=")}
+{$tplutils::includeScript("{cdnjs}/datatables/1.10.19/js/dataTables.bootstrap4.min.js", "sha256-hJ44ymhBmRPJKIaKRf3DSX5uiFEZ9xB/qx8cNbJvIMU=")}
+
+<!-- DataTables responsive plugin + Bootstrap 4 support -->
+{$tplutils::includeScript("https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js", "sha256-7Tbik5KSODuGiOLIOFfhP47p5UK6h1wzw8CFSI/TKhc=")}
+{$tplutils::includeScript("https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js", "sha256-aXVO47Rb7s58FhMTCwbM39en/1XcmzGkClRzBe5txKs=")}
+
+<!-- script.js -->
+{$tplutils::includeScript("js/script.js", true)}
+{$tplutils::includeScript("js/status.js", true)}
+{$tplutils::includeScript("js/login.js", true)}
+
+{block footerbottom}{/block}
+
+<!--
+    TS-website {\__TSWEBSITE_VERSION} by Wruczek
+    Generated in {@$tplutils::getRenderTime()} s
+    MySQL queries: {$sqlCount}
+-->
+
+</body>
+</html>

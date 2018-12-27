@@ -1,0 +1,103 @@
+body {
+    margin-bottom: 40px;
+}
+
+h4 {
+    margin-bottom: 2rem !important;
+}
+
+.nav-wizard {
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.nav-wizard > li {
+    display: block;
+}
+
+.nav-wizard > li > a {
+    display: block;
+    padding: 10px 15px;
+    cursor: default;
+    text-decoration: none !important;
+}
+
+.btn {
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 12px;
+}
+
+p, label {
+    font-size: 115%;
+}
+
+.license {
+    margin: 1rem auto;
+    display: inline-block;
+    max-height: 400px;
+    text-align: initial;
+}
+
+.license-container {
+    text-align: center;
+}
+
+.fa-larger {
+    font-size: 1.5em;
+}
+
+.fa-chevron-left {
+    margin-right: 3px;
+}
+
+.fa-chevron-right, .fa-sync {
+    margin-left: 3px;
+}
+
+.requirements-check-table {
+    display: inline-block;
+    width: auto;
+    text-align: initial
+}
+
+.color-success {
+    color: #28B62C;
+}
+
+.color-warning {
+    color: #FF851B;
+}
+
+.color-danger {
+    color: #FF4136;
+}
+
+.whatnow-row {
+    margin-bottom: 30px;
+}
+
+.whatnow-row h1, .whatnow-row h3 {
+    margin: 0;
+}
+
+.whatnow-icon {
+    font-size: 5rem;
+}
+
+.tooltip-inner {
+    max-width: 300px;
+}
+
+@media (max-width: 1200px) {
+    .nav-wizard > li:not(:first-child) > a:before {
+        border: 0;
+    }
+
+    .nav-wizard {
+        width: 100%;
+    }
+
+    .nav-wizard > li {
+        float: none;
+    }
+}

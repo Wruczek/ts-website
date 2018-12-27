@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="TS-website {\__TSWEBSITE_VERSION} by Wruczek / https://github.com/Wruczek/ts-website">
+
+    <title>{$errorname}</title>
+
+    <!-- FontAwesome CSS 5.2.0 -->
+    <!-- Used for the warning triangle in the background. Probably overkill, svg would be enough... -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha256-iJGhYPiir7gd5SWfn2jlrzeCNI6iknrZ6Wm8iMfTmYQ=" crossorigin="anonymous">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #2c3e50;
+            color: #ecf0f1;
+
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.42857143;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        .flex {
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            margin: auto;
+            text-align: center;
+            max-width: 450px;
+        }
+
+        .errorcode {
+            font-size: 96px;
+        }
+
+        .errorname {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .errordescription {
+            font-family: monospace, sans-serif;
+        }
+
+        .dark-color {
+            color: #9E9E9E;
+        }
+
+        .actions-container {
+            margin-top: 20px;
+        }
+
+        .actions-container > a {
+            text-decoration: none;
+            color: #42a5f5;
+        }
+
+        .actions-container > a:hover {
+            text-decoration: underline;
+        }
+
+        .horizontal-links-margin {
+            margin: 0 0.55rem;
+        }
+
+        .horizontal-links-margin:before {
+            content: "|";
+        }
+
+        /* Icon */
+
+        .warning-icon-container {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .warning-icon {
+            position: absolute;
+            left: -20vh;
+            opacity: .1;
+            font-size: 70vh;
+            z-index: -10;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flex">
+
+    <div class="warning-icon-container">
+        <i class="fas fa-exclamation-triangle warning-icon"></i>
+    </div>
+
+    <div class="container">
+        <div class="errorcode" n:ifcontent>
+            {$errorcode}
+        </div>
+
+        {* Add dark-color when description is not set *}
+        <div n:class="errorname, !$description ? dark-color" n:ifcontent>
+            {$errorname}
+        </div>
+
+        <div class="errordescription dark-color" n:ifcontent>
+            {$description}
+        </div>
+
+        <div class="actions-container">
+            <a href="#" onclick="location.reload()">Try again</a>
+            <span class="horizontal-links-margin"></span>
+            <a href="#" onclick="history.back()">Go back</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

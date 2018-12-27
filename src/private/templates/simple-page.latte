@@ -1,0 +1,13 @@
+{extends "body.latte"}
+{var title = $pagetitle}
+
+{block content}
+<div class="card card-accent">
+    <div class="card-header bigger-title">
+        {$paneltitle|noescape}
+    </div>
+    <div class="card-body">
+        {$panelcontent|noescape}
+    </div>
+</div>
+{/block}

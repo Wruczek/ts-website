@@ -1,0 +1,72 @@
+{extends "body.latte"}
+{var title = __get("BANS_TITLE")}
+{var navActiveIndex = 3}
+
+{block content}
+
+    <div class="card card-accent">
+        <div class="card-header bigger-title">
+            <i class="fas fa-ban"></i>{_"BANS_PANEL_TITLE"}
+        </div>
+        <div class="card-body">
+            {if $banlist === null || $banlist === false}
+                {include "utils/data-problem.latte", message => __get("CANNOT_GET_DATA", "banlist")}
+            {elseif empty($banlist)}
+                <div class="alert alert-info text-center" role="alert">
+                    {_"BANS_EMPTY"}
+                </div>
+            {else}
+                <div id="responsive-table-details-tip" class="alert alert-info alert-dismissible fade show" style="display: none" role="alert">
+                    <i class="fas fa-info-circle"></i>{_"BANS_VIEW_MORE_TIP"}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="{_"ARIA_CLOSE"}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                {if $ipbanned !== false}
+                    <div class="alert alert-danger ban-alert banned" role="alert">
+                        <i class="fas fa-exclamation-circle fa-2x"></i>
+                        <div>
+                            <p><b>{_"BANS_BANNED_ALERT_TITLE", $ipbanned["invoker"]}</b></p>
+                            {if $ipbanned["reason"]}
+                                {_"BANS_BANNED_ALERT_REASON", $ipbanned["reason"]}
+                            {/if}
+                        </div>
+                    </div>
+                {/if}
+
+                <table id="banlist" class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th data-priority="1">{_"BANS_HEADER_NAME"}</th>
+                        <th data-priority="3">{_"BANS_HEADER_REASON"}</th>
+                        <th>{_"BANS_HEADER_INVOKER"}</th>
+                        <th>{_"BANS_HEADER_BANDATE"}</th>
+                        <th data-priority="2">{_"BANS_HEADER_EXPIRES"}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach $banlist as $ban}
+                        {var $expiretime = $ban["created"] + $ban["duration"]}
+                        <tr>
+                            <td>{$ban["name"]}</td>
+                            <td>{$ban["reason"]}</td>
+                            <td>{$ban["invoker"]}</td>
+                            <td data-order="{$ban["created"]}">{$ban["created"]|fullDate}</td>
+                            <td data-order="{$ban["duration"]}">{$ban["duration"] ? ($expiretime|fuzzyDateAbbr) : ("BANS_NEVEREXPIRES"|translate)}</td>
+                        </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            {/if}
+        </div>
+    </div>
+{/block}
+
+{block footerbottom}
+    <script>
+        var DATATABLES_LANGUAGE_NAME = {_"DATATABLES_LANGUAGE_NAME"}
+    </script>
+
+    {$tplutils::includeScript("js/bans.js", true)}
+{/block}

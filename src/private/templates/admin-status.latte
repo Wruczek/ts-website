@@ -1,0 +1,126 @@
+{* This file is a little hard to read... sorry! :( *}
+
+{define admin-status-template}
+    {var $isOnline = isset($client["clid"])}
+    <div n:class="status-container, !$isOnline ? status-offline">
+        <span class="nickname">
+            {if $iconBeforeName}
+                {if $group["iconid"]}
+                    <img src="api/geticon.php?iconid={$group["iconid"]}" alt="{$group["name"]}" data-toggle="tooltip" title="{$group["name"]}">
+                {else}
+                    {$group["name"]}
+                {/if}
+            {/if}
+            {$client["client_nickname"]}
+        </span>
+        <span class="status">
+            {if $isOnline}
+                {if $client["client_away"]}
+                    {ifset $client["client_away_message"]}
+                        <span class="badge badge-info" data-toggle="tooltip" title="{$client["client_away_message"]}">
+                            {_"ADMIN_STATUS_AWAY"}
+                            <i class="far fa-comment-dots mr-0"></i>
+                        </span>
+                    {else}
+                        <span class="badge badge-info">{_"ADMIN_STATUS_AWAY"}</span>
+                    {/ifset}
+                {else}
+                    <span class="badge badge-success">{_"ADMIN_STATUS_ONLINE"}</span>
+                {/if}
+            {else}
+                <span class="badge badge-secondary">{_"ADMIN_STATUS_OFFLINE"}</span>
+            {/if}
+        </span>
+    </div>
+{/define}
+
+{* STATUS_STYLE_GROUPED or STATUS_STYLE_GROUPED_HIDE_EMPTY_GROUPS *}
+{if $format === 1 || $format === 2}
+    <div class="admin-status admin-status-grouped" n:attr="data-hidebydefault => $defaultHide ? 'true' : 'false'">
+        {if !$data}
+            <div class="text-center">
+                <span class="badge badge-info error-badge">
+                    <i class="fas fa-info-circle"></i>{_"ADMIN_STATUS_EMPTY_STATUS"}
+                </span>
+            </div>
+        {/if}
+
+        {foreach $data as $sgid => $group}
+            {* additional div, mainly used for additional *}
+            {* styling with css for the first group *}
+            <div n:ifcontent>
+                {* Only show group header when there are clients *}
+                {* in the group OR if the format allows us *}
+                {* to show empty groups *}
+                {if $format !== 2 || $group["clients"]}
+                    <div class="group-name">
+                        {if $group["iconid"]}
+                            <img src="api/geticon.php?iconid={$group["iconid"]}" alt="{$group["name"]}">
+                        {/if}
+                        {$group["name"]}
+                    </div>
+
+                    {if !$group["clients"]}
+                        <div class="empty-group">{_"ADMIN_STATUS_EMPTY_GROUP"}</div>
+                    {/if}
+                {/if}
+
+                {foreach $group["clients"] as $client}
+                    {include admin-status-template, iconBeforeName => false, client => $client, group => $group}
+                {/foreach}
+            </div>
+        {/foreach}
+    </div>
+{/if}
+
+{* STATUS_STYLE_LIST *}
+{if $format === 3}
+    <div class="admin-status admin-status-list">
+        {if !$data}
+            <div class="text-center">
+                <span class="badge badge-info error-badge">
+                    <i class="fas fa-info-circle"></i>{_"ADMIN_STATUS_EMPTY_STATUS"}
+                </span>
+            </div>
+        {/if}
+
+        {var $lastGroup = null}
+
+        {foreach $data as $sgid => $group}
+            {foreach $group["clients"] as $client}
+
+                {* This thing detects when we are looping though a new group *}
+                {* and before we start printing clients from it, it inserts a *}
+                {* group separator that creates a little space between different groups *}
+                {if $lastGroup !== $group}
+                    {* here we check if $lastGroup is not NULL *}
+                    {* this way we dont put a spacer before the first group *}
+                    {if $lastGroup}
+                        <div class="group-separator"></div>
+                    {/if}
+
+                    {var $lastGroup = $group}
+                {/if}
+
+                {include admin-status-template, iconBeforeName => true, client => $client, group => $group}
+            {/foreach}
+        {/foreach}
+    </div>
+{/if}
+
+{* STATUS_STYLE_LIST_ONLINE_FIRST *}
+{if $format === 4}
+    <div class="admin-status admin-status-list">
+        {if !$data}
+            <div class="text-center">
+                <span class="badge badge-info error-badge">
+                    <i class="fas fa-info-circle"></i>{_"ADMIN_STATUS_EMPTY_STATUS"}
+                </span>
+            </div>
+        {/if}
+
+        {foreach $data as $entry}
+            {include admin-status-template, iconBeforeName => true, client => $entry["client"], group => $entry["group"]}
+        {/foreach}
+    </div>
+{/if}

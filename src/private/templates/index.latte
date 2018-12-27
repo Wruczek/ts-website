@@ -1,0 +1,82 @@
+{extends "body.latte"}
+{var title = __get("HOME_TITLE")}
+
+{block content}
+    <div class="card card-titleblock card-accent">
+        <div class="card-header">
+            <i class="far fa-newspaper"></i>{_"HOME_PANEL_TITLE"}
+        </div>
+    </div>
+
+    {if $newsList === null || $newsList === false}
+        {include "utils/data-problem.latte", message => __get("CANNOT_GET_DATA", "news")}
+    {elseif $newsCount === 0}
+        <div class="alert alert-info text-center" role="alert">
+            {_"HOME_EMPTY"}
+        </div>
+    {elseif !$newsList}
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-circle"></i>{_"HOME_INVALID_PAGE"}
+        </div>
+    {else}
+        {foreach $newsList as $news}
+            <div class="card">
+                <div class="card-header">
+                    <h5>
+                        {ifset $news["link"]}
+                            <a href="{$news["link"]}" n:attr="target => $news['external'] ? '_blank'">
+                                {$news["title"]}
+                            </a>
+                        {else}
+                            {$news["title"]}
+                        {/ifset}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{$news["description"]|noescape}</p>
+                </div>
+            </div>
+        {/foreach}
+
+        {* Pagination logic *}
+        {* show the pagination only if we have more than 1 page *}
+        <div n:if="$pageCount > 1" class="text-center mt-4">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    {* If we are not on the first page, show the "previous page" button *}
+                    {if $currentPage !== 1}
+                        {* If the previous page is page #1, link directly to the index, otherwise to "index?page=id" *}
+                        <li class="page-item">
+                            <a class="page-link light-hover" href="{if $currentPage -1 !== 1}?page={$currentPage - 1}{else}.{/if}" aria-label="{_"HOME_PREVIOUS_NEWS"}">
+                                <span aria-hidden="true"><i class="fas fa-chevron-left mr-0"></i></span>
+                                <span class="sr-only">{_"HOME_PREVIOUS_NEWS"}</span>
+                            </a>
+                        </li>
+                    {/if}
+
+                    {* Loop through the pages to be displayed. Display 5 buttons: *}
+                    {* page -2, page -1, current page, page + 1, page + 2 *}
+                    {* using max / min, limit the range to the minimum: 1, and maximum: total number of pages *}
+                    {* so that we never show page 0 or -1, and also never show more pages that we actually have *}
+                    {* Shot out from Wruczek to anyone reading this xD *}
+                    {foreach range(max($currentPage - 2, 1), min($currentPage + 2, $pageCount)) as $page}
+                        {* If the previous page is page #1, link directly to "/news", otherwise to "/news/PageNum" *}
+                        <li class="page-item{if $page === $currentPage} active{/if}">
+                            <a class="page-link light-hover" href="{if $page !== 1}?page={$page}{else}.{/if}">{$page}</a>
+                        </li>
+                    {/foreach}
+
+                    {* If we are not on the last page, show the "next page" button *}
+                    {if $currentPage !== $pageCount}
+                        <li class="page-item">
+                            <a class="page-link light-hover" href="?page={$currentPage + 1}" aria-label="{_"HOME_NEXT_NEWS"}">
+                                <span aria-hidden="true"><i class="fas fa-chevron-right mr-0"></i></span>
+                                <span class="sr-only">{_"HOME_NEXT_NEWS"}</span>
+                            </a>
+                        </li>
+                    {/if}
+                </ul>
+            </nav>
+        </div>
+    {/if}
+{/block}

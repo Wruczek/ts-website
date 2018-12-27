@@ -1,0 +1,122 @@
+{extends "body.latte"}
+{var title = __get("ASSIGNER_TITLE")}
+{var navActiveIndex = 2}
+
+{block content}
+
+    <div class="card card-accent">
+        <div class="card-header bigger-title">
+            <i class="fas fa-gamepad"></i>{_"ASSIGNER_PANEL_TITLE"}
+        </div>
+        <div class="card-body group-assigner">
+            {if !$isLoggedIn}
+                <div class="text-center">
+                    <h4 class="mb-4">{_"ASSIGNER_NOT_LOGGED_IN"}</h4>
+
+                    <button type="button" class="btn btn-primary btn-lg" data-openLoginModal>
+                        <i class="fas fa-sign-in-alt"></i>{_"ASSIGNER_LOGIN_BUTTON"}
+                    </button>
+                </div>
+            {elseif $assignerConfig === null}
+                {include "utils/data-problem.latte", message => __get("CANNOT_GET_DATA", "assigner")}
+            {elseif empty($assignerConfig)}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>{_"ASSIGNER_NOT_CONFIGURED"}
+                </div>
+            {else}
+                {ifset $groupChangeStatus}
+                    {if $groupChangeStatus === 0} {* saved *}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="far fa-check-circle"></i>{_"ASSIGNER_SAVE_SUCCESS"}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="{_"ARIA_CLOSE"}">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {elseif $groupChangeStatus === 1} {* no change *}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="fas fa-info-circle"></i>{_"ASSIGNER_SAVE_NO_CHANGE"}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="{_"ARIA_CLOSE"}">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {else} {* something went wrong *}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle"></i>{_"ASSIGNER_SAVE_ERROR"}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="{_"ARIA_CLOSE"}">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {/if}
+                {/ifset}
+
+                <form id="assigner-form" method="post">
+                    {foreach $assignerConfig as $row}
+                        <div class="row justify-content-md-center">
+                            {foreach $row as $assignerCategory}
+                                <div class="col-md-6">
+                                    <ul class="list-group assigner-category" data-maxgroups="{$assignerCategory["max"]}">
+                                        <li class="list-group-item assigner-header">
+                                            <div>
+                                                <i class="{$assignerCategory["icon"]}"></i>{$assignerCategory["name"]}
+                                            </div>
+                                            <div>
+                                                <span class="badge badge-primary badge-pill"></span>
+                                            </div>
+                                        </li>
+
+                                        {foreach $assignerCategory["groups"] as $group}
+                                            <button type="button" class="list-group-item list-group-item-action">
+                                                <div>
+                                                    {if $group["iconid"]}
+                                                        <img src="api/geticon.php?iconid={$group["iconid"]}" alt="{$group["name"]} icon" class="assigner-icon">
+                                                    {else}
+                                                        <span class="assigner-icon-margin"></span>
+                                                    {/if}
+                                                    {$group["name"]}
+                                                </div>
+                                                <div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                               id="assignerCheck{$group["sgid"]}"
+                                                               name="assigner[{$group["sgid"]}]"
+                                                            n:attr="checked => $group['assigned']">
+                                                        <label class="custom-control-label" for="assignerCheck{$group["sgid"]}">&nbsp;</label>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                            {/foreach}
+                        </div>
+                    {/foreach}
+
+                    {$csrfField}
+
+                    <!-- Pass this field so even when someone un-checks all of the groups -->
+                    <!-- there will still be something send to the server, and script will remove -->
+                    <!-- all of the user's groups. the "dummy" will get filtered out with array_filter -->
+                    <input type="hidden" name="assigner[dummy]">
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg assigner-save">
+                            <i class="far fa-save"></i>{_"ASSIGNER_SAVE_BUTTON"}
+                        </button>
+
+                        <div>
+                            <div class="alert alert-danger mt-3 invalid-groups-alert" style="display: none">
+                                <i class="fa fa-exclamation-circle"></i>{_"ASSIGNER_INVALID_GROUPS"}
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            {/if}
+        </div>
+    </div>
+
+{/block}
+
+{block footerbottom}
+    {$tplutils::includeScript("js/assigner.js", true)}
+{/block}

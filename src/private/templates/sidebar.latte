@@ -1,0 +1,91 @@
+<div class="card card-accent">
+    <div class="card-header">
+        <i class="fas fa-signal"></i>{_"STATUS_PANEL_TITLE"}
+    </div>
+    <div class="card-body server-status">
+        <div class="status-loader position-relative p-3">
+            <div class="loader"></div>
+        </div>
+
+        <div class="data" style="display: none">
+            <!-- The NBSP is here to preserve a space when the text gets truncated -->
+            <p>
+                <span><i class="fas fa-globe fa-fw"></i>{_"STATUS_ADDRESS"}&nbsp;</span>
+                <span><a href="ts3server://{$config["query_displayip"]}">{$config["query_displayip"]}</a></span>
+            </p>
+            <p>
+                <span><i class="fas fa-power-off fa-fw"></i>{_"STATUS_CLIENTS_ONLINE"}&nbsp;</span>
+                <span class="badge badge-secondary" data-toggle="tooltip" data-translation="{_"STATUS_RESERVED_SLOTS"}"></span>
+            </p>
+            <p>
+                <span><i class="fas fa-medal fa-fw"></i>{_"STATUS_TOP_ONLINE"}&nbsp;</span>
+                <span class="badge badge-secondary" data-toggle="tooltip" data-translation="{_"STATUS_TOP_ONLINE_DESC"}"></span>
+            </p>
+            <p>
+                <span><i class="far fa-clock fa-fw"></i>{_"STATUS_UPTIME"}&nbsp;</span>
+                <span class="badge badge-secondary"></span></p>
+            <p>
+                <span><i class="fas fa-info-circle fa-fw"></i>{_"STATUS_VERSION"}&nbsp;</span>
+                <span class="badge badge-secondary" data-toggle="tooltip" data-translation="{_"STATUS_VERSION_DESC"}"></span>
+            </p>
+            <p>
+                <span><i class="fas fa-signal fa-fw"></i>{_"STATUS_PING"}&nbsp;</span>
+                <span class="badge badge-secondary"></span>
+            </p>
+            <p>
+                <span><i class="fas fa-bolt fa-fw"></i>{_"STATUS_PACKETLOSS"}&nbsp;</span>
+                <span class="badge badge-secondary"></span>
+            </p>
+        </div>
+
+        <div class="error text-center" style="display: none">
+            <span class="badge badge-danger error-badge"><i class="fas fa-exclamation-circle"></i>{_"STATUS_ERROR"}</span>
+        </div>
+    </div>
+</div>
+
+{ifset $adminStatus}
+    {var offlineHiddenByDefault = $config["adminstatus_offlinehiddenbydefault"]}
+    <div class="card card-accent">
+        <div class="card-header d-flex justify-content-between align-items-center">
+        <span>
+            <i class="fas fa-user-shield"></i>{_"ADMIN_STATUS_PANEL_TITLE"}
+        </span>
+            <span>
+            <button type="button"
+                    class="btn btn-primary btn-xs"
+                    data-adminstatusoffline="hide"
+                    data-toggle="tooltip"
+                    title="{_"ADMIN_STATUS_HIDE_OFFLINE_TIP"}"
+                    n:attr="style => $offlineHiddenByDefault ? 'display: none'"
+            >
+                <i class="far fa-eye mr-0"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-primary btn-xs"
+                    data-adminstatusoffline="show"
+                    data-toggle="tooltip"
+                    title="{_"ADMIN_STATUS_SHOW_OFFLINE_TIP"}"
+                    n:attr="style => !$offlineHiddenByDefault ? 'display: none'"
+            >
+                <i class="far fa-eye-slash mr-0"></i>
+            </button>
+        </span>
+        </div>
+        <div class="card-body">
+            {if $adminStatus !== false}
+                {include "admin-status.latte",
+                    data => $adminStatus["data"],
+                    format => $adminStatus["format"],
+                    defaultHide => $offlineHiddenByDefault
+                }
+            {else}
+                <div class="text-center">
+                <span class="badge badge-danger error-badge">
+                    <i class="fas fa-exclamation-circle"></i>{_"ADMIN_STATUS_ERROR"}
+                </span>
+                </div>
+            {/if}
+        </div>
+    </div>
+{/ifset}

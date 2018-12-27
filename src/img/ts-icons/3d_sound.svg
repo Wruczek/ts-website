@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,0,-321)">
+        <g id="_3d_sound" transform="matrix(1,0,0,1.37634,0,135.194)">
+            <rect x="0" y="135" width="128" height="93" style="fill:none;"/>
+            <g transform="matrix(1,0,0,0.726562,0,135)">
+                <path d="M11.976,40.933L11.976,94.158L59.467,121.987L59.467,68.721L11.976,40.933Z" style="fill:rgb(26,145,208);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(1,0,0,0.726562,0,135)">
+                <path d="M116.024,40.969L68.53,68.779L68.53,122L116.024,94.274L116.024,40.969Z" style="fill:rgb(2,47,93);fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(1,0,0,0.726562,0,135)">
+                <path d="M111.505,32.807L63.998,6L16.522,32.789L64.042,60.595L111.505,32.807Z" style="fill:rgb(129,156,189);fill-rule:nonzero;"/>
+            </g>
+        </g>
+    </g>
+</svg>

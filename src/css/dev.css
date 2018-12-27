@@ -1,0 +1,10 @@
+/* FOR DEVELOPMENT */
+
+.xdebug-var-dump {
+    background: #fff;
+    padding: 15px;
+}
+
+debug-step {
+    display: none;
+}
