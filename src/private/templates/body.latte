@@ -146,7 +146,7 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
 
 <footer class="footer d-md-flex">
     <div>
-        &copy; WebsiteTitle.tech {date("Y")}
+        &copy; {$config["website_title"]} {date("Y")}
 
         {if $config["imprint_enabled"]}3
             &mdash; <a href="{$config["imprint_url"]}">imprint</a>
