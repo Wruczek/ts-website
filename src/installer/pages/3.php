@@ -51,10 +51,10 @@ if (!empty($_POST)) {
                 $errormessage = "Cannot read $sqlfile.sql file!";
             } else {
                 $sqlquery = str_replace("DBPREFIX", $dbprefix, $sqlquery);
-                $sqlresult = $db->query($sqlquery);
+                $sqlresult = $db->pdo->exec($sqlquery);
 
-                if($sqlresult === false || !empty($db->error()[1])) {
-                    throw new Exception($db->error()[2], $db->error()[1]);
+                if($sqlresult === false) {
+                    throw new Exception("EXEC returned false");
                 }
 
                 $phpcode = <<<EOT
@@ -159,7 +159,7 @@ EOT;
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
                     </div>
-                    <input class="form-control" name="dbpassword" placeholder="Password" autocomplete="off">
+                    <input type="password" class="form-control" name="dbpassword" placeholder="Password" autocomplete="off">
                 </div>
 
                 <div class="input-group mb-2">

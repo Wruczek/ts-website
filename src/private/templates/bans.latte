@@ -13,7 +13,7 @@
                 {include "utils/data-problem.latte", message => __get("CANNOT_GET_DATA", "banlist")}
             {elseif empty($banlist)}
                 <div class="alert alert-info text-center" role="alert">
-                    {_"BANS_EMPTY"}
+                    <i class="fas fa-info-circle"></i>{_"BANS_EMPTY"}
                 </div>
             {else}
                 <div id="responsive-table-details-tip" class="alert alert-info alert-dismissible fade show" style="display: none" role="alert">

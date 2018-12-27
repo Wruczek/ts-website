@@ -3,9 +3,9 @@ if(!defined("__TSWEBSITE_VERSION")) die("Direct access not allowed");
 
 use Wruczek\TSWebsite\Utils\TeamSpeakUtils;
 
-//if(file_put_contents(__INSTALLER_LOCK_FILE, "WEBSITE_INSTALLED") === false) {
-//    die("Cannot write to <code>private/INSTALLER_LOCK</code>! Please check the file/directory permissions");
-//}
+if(file_put_contents(__INSTALLER_LOCK_FILE, "WEBSITE_INSTALLED") === false) {
+    die("Cannot write to <code>private/INSTALLER_LOCK</code>! Please check the file/directory permissions");
+}
 
 // If we are allowed to collect metrics
 if(!empty($_COOKIE["tsw_allow_metrics"])) {
@@ -64,20 +64,6 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
         $response = curl_exec($ch);
         curl_close($ch);
 
-        //echo $response;
-    } else { // else try file_get_contents
-        $context = stream_context_create([
-            "http" => [
-                "method" => "POST",
-                "header" => "Content-type: application/json\r\n" .
-                    "Accept: application/json\r\n" .
-                    "Connection: close\r\n" .
-                    "Content-length: " . strlen($data) . "\r\n",
-                "content" => $data
-            ]
-        ]);
-
-        $response = file_get_contents($url, false, $context);
         //echo $response;
     }
 }

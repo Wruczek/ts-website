@@ -2,7 +2,8 @@
 if(!defined("__TSWEBSITE_VERSION")) die("Direct access not allowed");
 
 if(!empty($_POST["allow-metrics-checkbox"])) {
-    setcookie("tsw_allow_metrics", "true", PHP_INT_MAX);
+    // set a 7 day cookie that tells us later to send the metrics
+    setcookie("tsw_allow_metrics", "true", time() + (86400 * 7));
 }
 ?>
 

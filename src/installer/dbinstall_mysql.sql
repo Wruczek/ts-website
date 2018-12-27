@@ -3,15 +3,15 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-DROP TABLE IF EXISTS `tsw_config`;
-CREATE TABLE `tsw_config` (
+DROP TABLE IF EXISTS `DBPREFIXconfig`;
+CREATE TABLE `DBPREFIXconfig` (
   `identifier` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'STRING' COMMENT 'STRING, INT, FLOAT, BOOL, JSON',
   `value` text COLLATE utf8mb4_unicode_ci,
   `user_editable` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `tsw_config` (`identifier`, `type`, `value`, `user_editable`) VALUES
+INSERT INTO `DBPREFIXconfig` (`identifier`, `type`, `value`, `user_editable`) VALUES
 ('cache_servericons', 'INT', '600', 1),
 ('onlinerecord_value', 'INT', '0', 0),
 ('onlinerecord_date', 'INT', '0', 0),
@@ -36,8 +36,8 @@ INSERT INTO `tsw_config` (`identifier`, `type`, `value`, `user_editable`) VALUES
 ('imprint_enabled', 'BOOL', 'false', 1),
 ('imprint_url', 'STRING', 'imprint.php', 1);
 
-DROP TABLE IF EXISTS `tsw_faq`;
-CREATE TABLE `tsw_faq` (
+DROP TABLE IF EXISTS `DBPREFIXfaq`;
+CREATE TABLE `DBPREFIXfaq` (
   `faqid` int(11) NOT NULL,
   `langid` int(11) NOT NULL DEFAULT '1',
   `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE `tsw_faq` (
   `lastmodify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `tsw_faq` (`faqid`, `langid`, `question`, `answer`, `lastmodify`) VALUES
+INSERT INTO `DBPREFIXfaq` (`faqid`, `langid`, `question`, `answer`, `lastmodify`) VALUES
 (1, 1, 'What is the FAQ?', '<b>FAQ</b> section allows you to show frequently asked questions and answers to them.', '2018-12-26 13:10:32'),
 (2, 1, 'How can I configure the FAQ?', 'An administrator can add, edit and remove questions in <a href=\"admin\">admin panel</a>.', '2018-12-26 12:33:18'),
 (3, 1, 'Question 3', 'Answer 3 in <b>HTML</b>', '2018-12-26 13:10:32');
 
-DROP TABLE IF EXISTS `tsw_languages`;
-CREATE TABLE `tsw_languages` (
+DROP TABLE IF EXISTS `DBPREFIXlanguages`;
+CREATE TABLE `DBPREFIXlanguages` (
   `langid` int(11) NOT NULL,
   `englishname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nativename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -59,13 +59,13 @@ CREATE TABLE `tsw_languages` (
   `isdefault` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `tsw_languages` (`langid`, `englishname`, `nativename`, `langcode`, `isdefault`) VALUES
+INSERT INTO `DBPREFIXlanguages` (`langid`, `englishname`, `nativename`, `langcode`, `isdefault`) VALUES
 (1, 'English', 'English', 'en', 1),
 (2, 'English (US)', 'English (US)', 'en-us', 0),
 (3, 'Polish', 'Polski', 'pl', 0);
 
-DROP TABLE IF EXISTS `tsw_news`;
-CREATE TABLE `tsw_news` (
+DROP TABLE IF EXISTS `DBPREFIXnews`;
+CREATE TABLE `DBPREFIXnews` (
   `newsid` int(11) NOT NULL,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `langid` int(11) NOT NULL DEFAULT '1',
@@ -74,11 +74,11 @@ CREATE TABLE `tsw_news` (
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `tsw_news` (`newsid`, `title`, `langid`, `added`, `edited`, `content`) VALUES
+INSERT INTO `DBPREFIXnews` (`newsid`, `title`, `langid`, `added`, `edited`, `content`) VALUES
 (1, 'Welcome to ts-website!', 1, '2018-12-26 13:10:32', NULL, '<b>Hi there!</b> If you are reading this, it means that TS-website has been installed successfully.<br>\r\nYou can login to your <a href=\"admin\">ACP</a> to configure many parts of it.<br>\r\nNeed help? Join our <a href=\"https://t.me/tswebsite\" target=\"_blank\">Telegram group</a> for support.\r\nHave a good day!');
 
-DROP TABLE IF EXISTS `tsw_translations`;
-CREATE TABLE `tsw_translations` (
+DROP TABLE IF EXISTS `DBPREFIXtranslations`;
+CREATE TABLE `DBPREFIXtranslations` (
   `id` int(10) NOT NULL,
   `langid` int(10) NOT NULL,
   `identifier` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `tsw_translations` (
   `comment` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `tsw_translations` (`id`, `langid`, `identifier`, `value`, `comment`) VALUES
+INSERT INTO `DBPREFIXtranslations` (`id`, `langid`, `identifier`, `value`, `comment`) VALUES
 (1, 1, 'AUTHORS', 'Wruczek <wruczekk@gmail.com>', 'Language authors'),
 (2, 3, 'AUTHORS', 'Wruczek <wruczekk@gmail.com>', NULL),
 (3, 1, 'COOKIEALERT_MESSAGE', '<b>Do you like cookies?</b> &#x1F36A; We use cookies to ensure you get the best experience on our website. <a href=\"http://cookiesandyou.com/\" target=\"_blank\">Learn more</a>', 'Remember to change link to a website in your language'),
@@ -310,31 +310,31 @@ INSERT INTO `tsw_translations` (`id`, `langid`, `identifier`, `value`, `comment`
 (227, 3, 'ASSIGNER_SAVE_NO_CHANGE', 'Nie wprowadzono żadnych zmian', NULL);
 
 
-ALTER TABLE `tsw_config`
+ALTER TABLE `DBPREFIXconfig`
   ADD UNIQUE KEY `param` (`identifier`);
 
-ALTER TABLE `tsw_faq`
+ALTER TABLE `DBPREFIXfaq`
   ADD PRIMARY KEY (`faqid`);
 
-ALTER TABLE `tsw_languages`
+ALTER TABLE `DBPREFIXlanguages`
   ADD PRIMARY KEY (`langid`);
 
-ALTER TABLE `tsw_news`
+ALTER TABLE `DBPREFIXnews`
   ADD PRIMARY KEY (`newsid`);
 
-ALTER TABLE `tsw_translations`
+ALTER TABLE `DBPREFIXtranslations`
   ADD PRIMARY KEY (`id`);
 
 
-ALTER TABLE `tsw_faq`
+ALTER TABLE `DBPREFIXfaq`
   MODIFY `faqid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
-ALTER TABLE `tsw_languages`
+ALTER TABLE `DBPREFIXlanguages`
   MODIFY `langid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
-ALTER TABLE `tsw_news`
+ALTER TABLE `DBPREFIXnews`
   MODIFY `newsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
-ALTER TABLE `tsw_translations`
+ALTER TABLE `DBPREFIXtranslations`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 COMMIT;
