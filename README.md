@@ -5,7 +5,8 @@
 [![Website screenshot](https://i.imgur.com/FuDJyGU.png?2)](https://imgur.com/a/3vfIPJQ)
 
 <p align="center">
-<b><a href="https://imgur.com/a/3vfIPJQ" target="_blank">View more screenshots</a>
+    <a href="https://imgur.com/a/3vfIPJQ" target="_blank">View more screenshots</a> |
+    <a href="https://github.com/Wruczek/ts-website/wiki/%5BDE%5D-Readme-%7C-Liesmich-%5B2.x%5D" target="_blank">🇩🇪 Deutsches Readme</a>
 </p>
 
 <p align="center">
