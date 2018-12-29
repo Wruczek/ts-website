@@ -1,5 +1,6 @@
 .idea
 PROTOTYPING
+tools
 src/installer/cache
 src/private/cache
 src/private/vendor

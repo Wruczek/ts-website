@@ -22,6 +22,10 @@ error_reporting(E_ALL);
 set_time_limit(0);
 
 $stepNumber = empty($_GET["step"]) || !file_exists(__DIR__ . "/pages/" . (int)$_GET["step"] . ".php") ? 1 : (int) $_GET["step"];
+
+ob_start();
+require __DIR__ . "/pages/$stepNumber.php";
+$pageContent = ob_get_clean();
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +84,7 @@ $stepNumber = empty($_GET["step"]) || !file_exists(__DIR__ . "/pages/" . (int)$_
         </ul>
     </div>
 
-    <?php require_once __DIR__ . "/pages/$stepNumber.php" ?>
+    <?= $pageContent ?>
 </div>
 
 <script>
