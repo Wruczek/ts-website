@@ -24,6 +24,7 @@
 - [Installation instructions](https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation)
 - [Wiki](https://github.com/Wruczek/ts-website/wiki)
 - [Report Issues / Suggestions](https://github.com/Wruczek/ts-website/issues/new)
+- [Translate ts-website](https://wruczek.oneskyapp.com/collaboration/project/325562)
 - **[ts-website Telegram group](https://t.me/tswebsite) - support, announcements, and general chat**
 
 #### Main Features
