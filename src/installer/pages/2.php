@@ -11,6 +11,11 @@ if(!empty($_POST["allow-metrics-checkbox"])) {
     <div class="card-body">
         <h4 class="card-title text-center">Requirements check</h4>
 
+        <div class="alert alert-dark text-center mb-3" id="filePermError" style="display: none">
+            Looks like you have failed file permission checks. Try running:<br>
+            <code>sudo chown -R www-data:www-data "<?= realpath(__BASE_DIR) ?>"</code>
+        </div>
+
         <div class="text-center mb-2">
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#requirementsTableCollapse">
                 Show details
@@ -38,6 +43,11 @@ if(!empty($_POST["allow-metrics-checkbox"])) {
             <script>
                 // Show requirements table on error
                 $("#requirementsTableCollapse").collapse("show")
+
+                <?php if(defined("FILE_PERM_ERROR")) { ?>
+                    // Show file permission fix tip
+                    $("#filePermError").show()
+                <?php } ?>
             </script>
         <?php } else { ?>
             <div class="text-center">
@@ -131,13 +141,13 @@ function checkRequirements() {
     // file / directory writable checks
     {
         // path => true if file, false if directory
-        $paths = [
+        $paths = array(
             __CONFIG_FILE => true,
             __INSTALLER_LOCK_FILE => true,
             __CACHE_DIR => false,
             __CACHE_DIR . "/templates" => false,
             __CACHE_DIR . "/servericons" => false,
-        ];
+        );
 
         foreach ($paths as $path => $isFile) {
             $exists = file_exists($path);
@@ -161,7 +171,13 @@ function checkRequirements() {
             if(!$exists)
                 $msg = ($isFile ? "File" : "Directory") . " <code>$realpath</code> does not exists, please create it";
 
-            showCheckResult("Is <code>$basename</code> writable?", $exists && $writable ? 0 : 2, $msg);
+            $success = $exists && $writable;
+
+            if (!$success && !defined("FILE_PERM_ERROR")) {
+                define("FILE_PERM_ERROR", true);
+            }
+
+            showCheckResult("Is <code>$basename</code> writable?", $success ? 0 : 2, $msg);
         }
     }
 
@@ -232,8 +248,9 @@ function showCheckResult($name, $state, $resulttext) {
     } else {
         $attr = "fa-times-circle color-danger";
 
-        if(!defined("CANNOT_INSTALL"))
+        if(!defined("CANNOT_INSTALL")) {
             define("CANNOT_INSTALL", true);
+        }
     }
 
     ?>
