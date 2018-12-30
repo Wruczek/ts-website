@@ -13,6 +13,7 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
 
     $data = [
         "tswVersion" => __TSWEBSITE_VERSION,
+        "tswCommit" => __TSWEBSITE_COMMIT,
         "phpVersion" => PHP_VERSION,
         "os" => sprintf("%s %s %s %s", php_uname("s"), php_uname("r"), php_uname("v"), php_uname("m")), // no hostname
         "webServer" => $_SERVER["SERVER_SOFTWARE"],
