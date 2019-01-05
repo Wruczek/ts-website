@@ -64,6 +64,7 @@ function buildInfoArray($clientData) {
         "client_idle_time",
         "client_created",
         "client_lastconnected",
+        "client_totalconnections",
         "client_icon_id",
         "client_country",
         "client_badges"
