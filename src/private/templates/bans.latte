@@ -50,7 +50,13 @@
                         {var $expiretime = $ban["created"] + $ban["duration"]}
                         <tr>
                             <td>{$ban["name"]}</td>
-                            <td>{$ban["reason"]}</td>
+                            <td>
+                                {if $ban["reason"]}
+                                    {$ban["reason"]}
+                                {else}
+                                    {_"NO_REASON_SET"|noescape}
+                                {/if}
+                            </td>
                             <td>{$ban["invoker"]}</td>
                             <td data-order="{$ban["created"]}">{$ban["created"]|fullDate}</td>
                             <td data-order="{$ban["duration"]}">{$ban["duration"] ? ($expiretime|fuzzyDateAbbr) : ("BANS_NEVEREXPIRES"|translate)}</td>
