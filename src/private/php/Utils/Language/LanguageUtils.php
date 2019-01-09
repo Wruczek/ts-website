@@ -2,7 +2,6 @@
 
 namespace Wruczek\TSWebsite\Utils\Language;
 
-use function htmlspecialchars;
 use Wruczek\PhpFileCache\PhpFileCache;
 use Wruczek\TSWebsite\Utils\DatabaseUtils;
 use Wruczek\TSWebsite\Utils\SingletonTait;

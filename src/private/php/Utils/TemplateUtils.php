@@ -165,13 +165,13 @@ class TemplateUtils {
             }
         } else if (is_string($parameter)) {
             // NEEDS to start with a space!
-            $attributes = ' integrity="' . htmlspecialchars($parameter) . '" crossorigin="anonymous"';
+            $attributes = ' integrity="' . Utils::escape($parameter) . '" crossorigin="anonymous"';
         }
 
         if ($resourceType === "stylesheet") {
-            echo '<link rel="stylesheet" href="' . htmlspecialchars($url) . '"' . $attributes . '>';
+            echo '<link rel="stylesheet" href="' . Utils::escape($url) . '"' . $attributes . '>';
         } else if ($resourceType === "script") {
-            echo '<script src="' . htmlspecialchars($url) . '"' . $attributes . '></script>';
+            echo '<script src="' . Utils::escape($url) . '"' . $attributes . '></script>';
         } else {
             throw new \InvalidArgumentException("$resourceType is not a valid resource type");
         }

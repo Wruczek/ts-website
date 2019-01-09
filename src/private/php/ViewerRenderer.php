@@ -4,6 +4,7 @@ namespace Wruczek\TSWebsite;
 
 use function __get;
 use TeamSpeak3;
+use Wruczek\TSWebsite\Utils\Utils;
 
 class ViewerRenderer {
 
@@ -77,7 +78,7 @@ EOD;
         $this->add(
             $html,
             $this->getIcon("server_green.svg"),
-            htmlspecialchars($this->serverInfo["virtualserver_name"]),
+            Utils::escape($this->serverInfo["virtualserver_name"]),
             $suffixIcons
         );
 
@@ -99,8 +100,8 @@ EOD;
             $path = "api/geticon.php?iconid=" . (int) $name;
         }
 
-        $ttip = $tooltip ? ' data-toggle="tooltip" title="' . htmlspecialchars($tooltip) . '"' : "";
-        return '<img class="icon" src="' . $path . '" alt="' . htmlspecialchars($alt) . '"' . $ttip . '>';
+        $ttip = $tooltip ? ' data-toggle="tooltip" title="' . Utils::escape($tooltip) . '"' : "";
+        return '<img class="icon" src="' . $path . '" alt="' . Utils::escape($alt) . '"' . $ttip . '>';
     }
 
     /**
@@ -162,7 +163,7 @@ EOD;
             $channel->getId(),
             $channel->isSpacer() ? "" : ' tabindex="0"',
             $channelIcon,
-            htmlspecialchars($channelDisplayName),
+            Utils::escape($channelDisplayName),
             $suffixIcons
         );
 
@@ -222,7 +223,7 @@ EOD;
         $clientName = implode(" ", $beforeName);           // prefix groups
         $clientName .= " {$client["client_nickname"]} ";   // nickname
         $clientName .= implode(" ", $afterName);           // suffix groups
-        $clientName = htmlspecialchars(trim($clientName)); // trim and sanitize
+        $clientName = Utils::escape(trim($clientName)); // trim and sanitize
 
         $this->add(
             $html,
@@ -286,7 +287,7 @@ EOD;
         }
 
         if($client["client_away"]) {
-            return $this->getIcon("away.svg", htmlspecialchars($client["client_away_message"]) ?: __get("VIEWER_CLIENT_AWAY"));
+            return $this->getIcon("away.svg", Utils::escape($client["client_away_message"]) ?: __get("VIEWER_CLIENT_AWAY"));
         }
 
         if(!$client["client_output_hardware"]) {
@@ -340,7 +341,7 @@ EOD;
                 // to show the group with a "broken-image" icons.
             }
 
-            $html .= $this->getIcon($icon, htmlspecialchars($group["name"]));
+            $html .= $this->getIcon($icon, Utils::escape($group["name"]));
         }
 
         if($client["client_icon_id"]) {
