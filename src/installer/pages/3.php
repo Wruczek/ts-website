@@ -88,7 +88,7 @@ EOT;
 
             // Add all variables to the config
             foreach ($dbconfig as $key => $value) {
-                $confarray .= sprintf('    "%s" => "%s",' . PHP_EOL, addcslashes($key, '"'), addcslashes($value, '"'));
+                $confarray .= sprintf("    '%s' => '%s'," . PHP_EOL, addcslashes($key, '"'), addcslashes($value, '"'));
             }
 
             // Remove semicolon and new line from the end
