@@ -178,6 +178,11 @@ body {
     align-items: center;
 }
 
+.bans-highlight {
+    color: #e83e8c;
+    font-family: var(--font-family-monospace);
+}
+
 /* Responsive datatables styles */
 
 table.dataTable>tbody>tr.child ul.dtr-details>li:first-child {
