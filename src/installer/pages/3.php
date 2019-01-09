@@ -44,24 +44,39 @@ if (!empty($_POST)) {
     if (isset($dbconfig)) {
         try {
             $db = new Medoo($dbconfig);
-            $sqlfile = $usingMysql ? "dbinstall_mysql" : "dbinstall_sqlite";
-            $sqlquery = file_get_contents(__DIR__ . "/../$sqlfile.sql");
 
-            if($sqlquery === false) {
-                $errormessage = "Cannot read $sqlfile.sql file!";
+            $sqlfiles = [];
+
+            if ($usingMysql) {
+                $sqlfiles = [
+                    "dbinstall_mysql",
+                    "dbinstall_mysql_lang"
+                ];
             } else {
+                // no other option yet
+            }
+
+            foreach ($sqlfiles as $file) {
+                $sqlquery = file_get_contents(__DIR__ . "/../$file.sql");
+
+                if($sqlquery === false) {
+                    throw new Exception("Cannot read SQL file: $file.sql");
+                }
+
                 $sqlquery = str_replace("DBPREFIX", $dbprefix, $sqlquery);
                 $sqlresult = $db->pdo->exec($sqlquery);
 
-                if($sqlresult === false) {
+                if ($sqlresult === false) {
                     throw new Exception("EXEC returned false");
                 }
+            }
 
-                $phpcode = <<<EOT
+            // if all queries succeeded, create a config file and save connection info there
+            $phpcode = <<<EOT
 <?php
 /*
  * TS-website database config file
- * Generated at %s with TS-website %s
+ * Generated at %s with TS-website %s (%s)
  */
 
 return [
@@ -69,24 +84,24 @@ return [
 ];
 
 EOT;
-                $confarray = "";
+            $confarray = "";
 
-                // Add all variables to the config
-                foreach ($dbconfig as $key => $value) {
-                    $confarray .= sprintf('    "%s" => "%s",' . PHP_EOL, addcslashes($key, '"'), addcslashes($value, '"'));
-                }
+            // Add all variables to the config
+            foreach ($dbconfig as $key => $value) {
+                $confarray .= sprintf('    "%s" => "%s",' . PHP_EOL, addcslashes($key, '"'), addcslashes($value, '"'));
+            }
 
-                // Remove semicolon and new line from the end
-                $confarray = rtrim($confarray, "," . PHP_EOL);
+            // Remove semicolon and new line from the end
+            $confarray = rtrim($confarray, "," . PHP_EOL);
 
-                // Replace all variables with sprintf
-                $phpcode = sprintf($phpcode, date("d-m-Y H:i:s"), __TSWEBSITE_VERSION, $confarray);
+            // Replace all variables with sprintf
+            $phpcode = sprintf($phpcode, date("d-m-Y H:i:s"), __TSWEBSITE_VERSION, __TSWEBSITE_COMMIT, $confarray);
 
-                if(file_put_contents(__CONFIG_FILE, $phpcode) === false) {
-                    $errormessage = "Cannot write to <code>" . __CONFIG_FILE . "</code>! Please check the file/directory permissions";
-                } else {
-                    header("Location: ?step=" . ($stepNumber + 1));
-                }
+            if(file_put_contents(__CONFIG_FILE, $phpcode) === false) {
+                $errormessage = "Cannot write to <code>" . __CONFIG_FILE . "</code>! Please check the file/directory permissions";
+            } else {
+                // redirect to next step on success
+                header("Location: ?step=" . ($stepNumber + 1));
             }
         } catch (Exception $e) {
             $errormessage = htmlspecialchars("Error " . $e->getCode() . ": " . $e->getMessage());
