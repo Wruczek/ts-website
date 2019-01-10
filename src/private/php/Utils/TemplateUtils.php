@@ -27,11 +27,13 @@ class TemplateUtils {
         // Add custom filters...
 
         $this->getLatte()->addFilter("fuzzyDateAbbr", function ($s) {
-            return new Html('<span data-relativetime="fuzzydate" data-timestamp="' . $s . '">{cannot convert ' . $s . '}</span>');
+            $default = DateUtils::formatDatetime($s);
+            return new Html('<span data-relativetime="fuzzydate" data-timestamp="' . $s . '">' . $default . '</span>');
         });
 
         $this->getLatte()->addFilter("fullDate", function ($s) {
-            return new Html('<span data-relativetime="fulldate" data-timestamp="' . $s . '">{cannot convert ' . $s . '}</span>');
+            $default = DateUtils::formatDatetime($s);
+            return new Html('<span data-relativetime="fulldate" data-timestamp="' . $s . '">' . $default . '</span>');
         });
 
         $this->getLatte()->addFilter("translate", function ($s, ...$args) {
