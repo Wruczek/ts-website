@@ -3,6 +3,7 @@
 namespace Wruczek\TSWebsite\Utils\Language;
 
 use Wruczek\PhpFileCache\PhpFileCache;
+use Wruczek\TSWebsite\Config;
 use Wruczek\TSWebsite\Utils\DatabaseUtils;
 use Wruczek\TSWebsite\Utils\SingletonTait;
 
@@ -147,10 +148,18 @@ class LanguageUtils {
             $langs[] = new Language($langid, $englishname, $nativename, $langcode, $isdefault, $languageItems);
         }
 
+        uasort($langs, function ($a, $b) {
+            if ($a->getLanguageId() === $b->getLanguageId()) {
+                return 0;
+            }
+
+            return strnatcmp($a->getLanguageNameNative(), $b->getLanguageNameNative());
+        });
+
         $this->languages = $langs;
 
         if($updateCache)
-            $this->cache->store("languages", $langs, 300);
+            $this->cache->store("languages", $langs, Config::get("cache_languages", 300));
 
         return $langs;
     }

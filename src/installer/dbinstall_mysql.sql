@@ -19,6 +19,7 @@ INSERT INTO `DBPREFIXconfig` (`identifier`, `type`, `value`, `user_editable`) VA
 ('loginpokeclient', 'BOOL', 'true', 1),
 ('cache_logincode', 'INT', '120', 1),
 ('cache_adminstatus', 'INT', '60', 1),
+('cache_languages', 'INT', '300', 1),
 ('adminstatus_groups', 'JSON', '[]', 1),
 ('adminstatus_mode', 'INT', '2', 1),
 ('adminstatus_enabled', 'BOOL', 'true', 1),
