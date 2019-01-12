@@ -4,6 +4,7 @@ use Wruczek\TSWebsite\Config;
 use Wruczek\TSWebsite\ServerIconCache;
 use Wruczek\TSWebsite\Utils\CsrfUtils;
 use Wruczek\TSWebsite\Utils\Language\LanguageUtils;
+use Wruczek\TSWebsite\Utils\Utils;
 
 session_name("tswebsite_sessionid");
 
@@ -71,7 +72,7 @@ if(!isset($_SESSION["userlanguageid"])) {
         try {
             return LanguageUtils::i()->translate($identifier, $args);
         } catch (\Exception $e) {
-            return "(unknown translation for " . htmlspecialchars($identifier) . ")";
+            return "(unknown translation for " . Utils::escape($identifier) . ")";
         }
     }
 }

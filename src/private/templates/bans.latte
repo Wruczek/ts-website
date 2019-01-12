@@ -35,10 +35,10 @@
                     </div>
                 {/if}
 
-                <table id="banlist" class="table table-responsive">
+                <table id="banlist" class="table display dt-responsive no-wrap" width="100%">
                     <thead>
                     <tr>
-                        <th data-priority="1">{_"BANS_HEADER_NAME"}</th>
+                        <th data-priority="1">{_"BANS_HEADER_TARGET"}</th>
                         <th data-priority="3">{_"BANS_HEADER_REASON"}</th>
                         <th>{_"BANS_HEADER_INVOKER"}</th>
                         <th>{_"BANS_HEADER_BANDATE"}</th>
@@ -49,8 +49,14 @@
                     {foreach $banlist as $ban}
                         {var $expiretime = $ban["created"] + $ban["duration"]}
                         <tr>
-                            <td>{$ban["name"]}</td>
-                            <td>{$ban["reason"]}</td>
+                            <td data-filter="{$ban["filter"]}">{$ban["target"]}</td>
+                            <td>
+                                {if $ban["reason"]}
+                                    {$ban["reason"]}
+                                {else}
+                                    {_"NO_REASON_SET"|noescape}
+                                {/if}
+                            </td>
                             <td>{$ban["invoker"]}</td>
                             <td data-order="{$ban["created"]}">{$ban["created"]|fullDate}</td>
                             <td data-order="{$ban["duration"]}">{$ban["duration"] ? ($expiretime|fuzzyDateAbbr) : ("BANS_NEVEREXPIRES"|translate)}</td>

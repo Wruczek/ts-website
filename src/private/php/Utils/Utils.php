@@ -9,11 +9,20 @@ use Wruczek\TSWebsite\News\INewsStore;
 /**
  * Class Utils
  * @package Wruczek\TSWebsite\Utils
- * @author Wruczek 2017
+ * @author Wruczek 2017 - 2019
  */
 class Utils {
 
     private function __construct() {}
+
+    /**
+     * Escapes HTML characters with htmlspecialchars
+     * @param $string string String to be escaped
+     * @return string escaped string
+     */
+    public static function escape($string) {
+        return htmlspecialchars((string) $string, ENT_QUOTES, "UTF-8");
+    }
 
     /**
      * Strips the first line from string
@@ -100,7 +109,7 @@ class Utils {
      */
     public static function getClientIp($useCfip = null) {
         if ($useCfip === null) {
-            $useCfip = (bool) Config::get("usingcloudflare");
+            $useCfip = Config::get("usingcloudflare");
         }
 
         // If IPv6 localhost, return IPv4 localhost
@@ -108,7 +117,7 @@ class Utils {
             return "127.0.0.1";
         }
 
-        if (!empty($_SERVER["HTTP_CF_CONNECTING_IP"]) && $useCfip) {
+        if ($useCfip && !empty($_SERVER["HTTP_CF_CONNECTING_IP"])) {
             return $_SERVER["HTTP_CF_CONNECTING_IP"];
         }
 

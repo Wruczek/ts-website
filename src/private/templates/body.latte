@@ -12,6 +12,7 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="TS-website {\__TSWEBSITE_VERSION} by Wruczek / https://github.com/Wruczek/ts-website">
     <meta name="csrf-token" content="{$csrfToken}">
+    <link rel="shortcut icon" href="img/icons/defaulticon-16.png">
 
     <!-- TODO make it use the language variable "WEBSITE_TITLE" after the ACP update -->
     <title>{$title} | {$config["website_title"]}</title>
@@ -210,7 +211,7 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
 {block footerbottom}{/block}
 
 <!--
-    TS-website {\__TSWEBSITE_VERSION} by Wruczek
+    TS-website {\__TSWEBSITE_VERSION} ({\__TSWEBSITE_COMMIT}) by Wruczek
     Generated in {@$tplutils::getRenderTime()} s
     MySQL queries: {$sqlCount}
 -->

@@ -9,8 +9,8 @@ if (!file_exists(__PRIVATE_DIR . "/vendor/autoload.php")) {
     die(
         '<h2>Oops! We cannot find Composer\'s autoload file.</h2>' .
         '<h3>In 2.0, the installation procedure is a little different. Go to the ' .
-        '<a href="https://github.com/Wruczek/ts-website/releases" target="_blank">releases</a> on GitHub, ' .
-        'download the latest version and upload in on your server.</h3>' .
+        '<a href="https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation" target="_blank">wiki</a> ' .
+        'and follow the installation tutorial.</h3>' .
         'Or, if you know what you are doing, run <code>composer update</code> in the ' .
         '<code>' . realpath(__BASE_DIR) . '</code> directory'
     );
@@ -22,6 +22,10 @@ error_reporting(E_ALL);
 set_time_limit(0);
 
 $stepNumber = empty($_GET["step"]) || !file_exists(__DIR__ . "/pages/" . (int)$_GET["step"] . ".php") ? 1 : (int) $_GET["step"];
+
+ob_start();
+require __DIR__ . "/pages/$stepNumber.php";
+$pageContent = ob_get_clean();
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +84,7 @@ $stepNumber = empty($_GET["step"]) || !file_exists(__DIR__ . "/pages/" . (int)$_
         </ul>
     </div>
 
-    <?php require_once __DIR__ . "/pages/$stepNumber.php" ?>
+    <?= $pageContent ?>
 </div>
 
 <script>

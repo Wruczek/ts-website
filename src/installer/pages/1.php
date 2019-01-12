@@ -117,7 +117,12 @@
 
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title text-center">Welcome to TS-website <?= __TSWEBSITE_VERSION ?> Installer!</h4>
+        <h4 class="card-title text-center mb-0">Welcome to TS-website Installer!</h4>
+
+        <p class="card-text text-center text-muted font-italic mb-5">
+            Version <?= __TSWEBSITE_VERSION ?> (<?= __TSWEBSITE_COMMIT ?>)
+        </p>
+
         <p class="card-text">This wizard will guide you through the installation process of TS-website.</p>
         <p class="card-text text-danger" id="hidejs">Please enable Javascript before continuing!</p>
         <p class="card-text">
