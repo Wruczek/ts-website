@@ -317,7 +317,7 @@ EOD;
         $html = "";
 
         if($client["client_is_priority_speaker"]) {
-            $html .= $this->getIcon("microphone.svg", __get("VIEWER_CLIENT_PRIORITY_SPEAKER"));
+            $html .= $this->getIcon("capture.svg", __get("VIEWER_CLIENT_PRIORITY_SPEAKER"));
         }
 
         if($client["client_is_channel_commander"]) {
