@@ -12,6 +12,11 @@ $(document).ready(function() {
         language: {
             url: "https://cdn.datatables.net/plug-ins/1.10.19/i18n/" + DATATABLES_LANGUAGE_NAME + ".json"
         },
+        initComplete: function(settings, json) {
+            console.log("DataTables Loaded")
+            $("#banlist-loader").hide()
+            $("#banlist").show()
+        }
         /*
         TODO:
         It looks better with the "search" text as an placeholder instead of the label
