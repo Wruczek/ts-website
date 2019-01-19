@@ -23,7 +23,7 @@ class ServerIconCache {
     }
 
     public static function syncIcons() {
-        if (!file_exists(self::$iconsCacheDir) && !mkdir(self::$iconsCacheDir, true)) {
+        if (!file_exists(self::$iconsCacheDir) && !mkdir(self::$iconsCacheDir)) {
             throw new \Exception("Cannot create icons cache directory at " . self::$iconsCacheDir);
         }
 
