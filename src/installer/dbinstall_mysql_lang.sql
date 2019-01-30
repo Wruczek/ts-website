@@ -9,6 +9,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 
+DROP TABLE IF EXISTS `DBPREFIXlanguages`;
 CREATE TABLE `DBPREFIXlanguages` (
   `langid` int(11) NOT NULL,
   `englishname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -36,6 +37,7 @@ INSERT INTO `DBPREFIXlanguages` (`langid`, `englishname`, `nativename`, `langcod
 (16, 'Fench', 'Français', 'fr', 0),
 (17, 'Turkish', 'Türkçe', 'tr', 0);
 
+DROP TABLE IF EXISTS `DBPREFIXtranslations`;
 CREATE TABLE `DBPREFIXtranslations` (
   `id` int(10) NOT NULL,
   `langid` int(10) NOT NULL,
