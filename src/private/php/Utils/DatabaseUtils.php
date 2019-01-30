@@ -2,6 +2,7 @@
 
 namespace Wruczek\TSWebsite\Utils;
 use Medoo\Medoo;
+use PDO;
 use Wruczek\TSWebsite\Config;
 
 /**
@@ -28,7 +29,16 @@ class DatabaseUtils {
     public function getDb() {
         if($this->db === null) {
             try {
-                $db = new Medoo($this->configUtils->getDatabaseConfig());
+                $config = $this->configUtils->getDatabaseConfig();
+
+                // Enable DB exceptions instead of silent fails
+                $config += [
+                    "option" => [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    ]
+                ];
+
+                $db = new Medoo($config);
             } catch (\Exception $e) {
                 TemplateUtils::i()->renderErrorTemplate("DB error", "Connection to database failed", $e->getMessage());
                 exit;
