@@ -32,7 +32,7 @@ class DatabaseUtils {
                 $config = $this->configUtils->getDatabaseConfig();
 
                 // Enable DB exceptions instead of silent fails
-                $config["config"] = [
+                $config["option"] = [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ];
 
