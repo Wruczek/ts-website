@@ -82,7 +82,7 @@ body {
     .nav-fix-scroll {
         overflow: auto;
         max-height: 85vh;
-        align-items: unset;
+        align-items: flex-start;
     }
 }
 
