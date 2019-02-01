@@ -32,10 +32,8 @@ class DatabaseUtils {
                 $config = $this->configUtils->getDatabaseConfig();
 
                 // Enable DB exceptions instead of silent fails
-                $config += [
-                    "option" => [
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    ]
+                $config["config"] = [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ];
 
                 $db = new Medoo($config);

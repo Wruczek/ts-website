@@ -43,14 +43,15 @@ if (!empty($_POST)) {
     // try to connect only if dbconfig is defined
     if (isset($dbconfig)) {
         try {
-            // Enable DB exceptions instead of silent fails
-            $dbconfig += [
+            $errmodeException = [
                 "option" => [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ]
             ];
 
-            $db = new Medoo($dbconfig);
+            // Enable DB exceptions instead of silent fails, only for the Medoo
+            // object and not for the dbConfig, we dont want to get it saved
+            $db = new Medoo($dbconfig + $errmodeException);
 
             $sqlfiles = [];
 
