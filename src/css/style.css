@@ -151,6 +151,8 @@ body {
     white-space: nowrap;
 }
 
+/* Login modal */
+
 #loginModal .select-account .list-group .list-group-item {
     cursor: pointer;
     display: flex;
@@ -165,6 +167,13 @@ body {
 #loginModal-codeconfirm .invalid-feedback {
     margin-top: 0.5rem;
     font-size: 100%;
+}
+
+#loginModal .loginDebugInfo {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    line-height: 1em;
 }
 
 /* Bans page */
@@ -183,7 +192,7 @@ body {
     font-family: var(--font-family-monospace);
 }
 
-/* Responsive datatables styles */
+/* Responsive DataTables styles */
 
 table.dataTable>tbody>tr.child ul.dtr-details>li:first-child {
     padding-top: 0;
@@ -337,7 +346,7 @@ table.dataTable > tbody > tr.child td.child {
 }
 
 /* No top spacing on the first group */
-/* Thats why I've put that extra DIV that wraps all groups */
+/* That's why I've put that extra DIV that wraps all groups */
 .admin-status.admin-status-grouped div:first-child .group-name {
     margin-top: 0;
 }
