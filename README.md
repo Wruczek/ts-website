@@ -37,6 +37,6 @@
 - Free and Open source, under GPL-3.0
 
 ### Other stuff
-I am happy to take any programming-related requests, add additional features or modify the code to suit your needs for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations ect.
+I am happy to take any programming-related requests, add additional features or modify the code to suit your needs for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations etc.
 
 For business enquiries only: **wruczekk** at **gmail.com**, for anything else please join our [Telegram group](https://t.me/ts-website).
