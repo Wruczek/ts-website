@@ -34,7 +34,7 @@ INSERT INTO `DBPREFIXlanguages` (`langid`, `englishname`, `nativename`, `langcod
 (13, 'Portuguese', 'Português', 'pt', 0),
 (14, 'Greek', 'Ελληνικά', 'el', 0),
 (15, 'Danish', 'Dansk', 'da', 0),
-(16, 'Fench', 'Français', 'fr', 0),
+(16, 'French', 'Français', 'fr', 0),
 (17, 'Turkish', 'Türkçe', 'tr', 0),
 (18, 'Italian', 'Italiano', 'it', 0),
 (19, 'Ukrainian', 'Українська', 'uk', 0);
