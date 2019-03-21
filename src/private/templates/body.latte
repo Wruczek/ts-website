@@ -110,7 +110,9 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
                         <div class="dropdown-menu language-switcher" aria-labelledby="navbarDropdownLanguageChooser">
                             <button name="lang" class="dropdown-item{if $lang->getLanguageCode() === $userlangcode} active{/if}"
                                 n:foreach="$languageList as $lang"
-                                n:attr="value => $lang->getLanguageCode()">{$lang->getLanguageNameNative()}</button>
+                                n:attr="value => $lang->getLanguageCode(), title => $lang->getLanguageNameEnglish()">
+                                {$lang->getLanguageNameNative()}
+                            </button>
                         </div>
                     </form>
                 </li>
