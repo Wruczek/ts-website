@@ -9,7 +9,7 @@
         "ext-json": "*",
         "ext-tokenizer": "*",
         "planetteamspeak/ts3-php-framework": "1.1.32",
-        "latte/latte": "^2.4",
+        "latte/latte": "~2.4.8",
         "wruczek/php-file-cache": "^0",
         "simplepie/simplepie": "^1.5",
         "catfan/medoo": "^1.5"
