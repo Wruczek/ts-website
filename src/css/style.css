@@ -20,7 +20,7 @@ body {
     margin-right: 0.5em
 }
 
-.language-switcher .dropdown-item {
+.dropdown-menu .dropdown-item {
     cursor: pointer;
 }
 

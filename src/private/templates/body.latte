@@ -85,20 +85,22 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
                 </li>
             </ul>
             <ul class="navbar-nav ml-md-auto">
-                <li class="nav-item">
-                    {if $auth::isLoggedIn()}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link login-button text-truncate dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i>{$auth::getNickname()}
-                            </a>
-                            <div class="dropdown-menu language-switcher" aria-labelledby="navbarDropdownUser">
-                                <button class="dropdown-item logoutUser"><i class="fas fa-sign-out-alt"></i>{_"NAV_ACCOUNT_LOGOUT"}</button>
-                            </div>
-                        </li>
-                    {else}
+
+                {if $auth::isLoggedIn()}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link login-button text-truncate dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i>{$auth::getNickname()}
+                        </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                            <button class="dropdown-item logoutUser"><i class="fas fa-sign-out-alt"></i>{_"NAV_ACCOUNT_LOGOUT"}</button>
+                        </div>
+                    </li>
+                {else}
+                    <li class="nav-item">
                         <a class="nav-link" href="#" data-openLoginModal><i class="fas fa-sign-in-alt"></i>{_"NAV_ACCOUNT_LOGIN"}</a>
-                    {/if}
-                </li>
+                    </li>
+                {/if}
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguageChooser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-language"></i>{$userLanguage->getLanguageNameNative()}
@@ -107,7 +109,7 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
                         {$csrfField}
                         <input type="hidden" name="return-to" value="{$_SERVER['PHP_SELF']}">
 
-                        <div class="dropdown-menu language-switcher" aria-labelledby="navbarDropdownLanguageChooser">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguageChooser">
                             <button name="lang" class="dropdown-item{if $lang->getLanguageCode() === $userlangcode} active{/if}"
                                 n:foreach="$languageList as $lang"
                                 n:attr="value => $lang->getLanguageCode(), title => $lang->getLanguageNameEnglish()">
