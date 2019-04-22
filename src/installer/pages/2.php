@@ -63,7 +63,7 @@ if(!empty($_POST["allow-metrics-checkbox"])) {
         </a>
 
         <?php if(defined("CANNOT_INSTALL")) { ?>
-            <a href="#" onclick="location.reload(); this.className += ' disabled'; return false" class="btn btn-warning float-right">
+            <a href="#" onclick="location = location; this.className += ' disabled'; return false" class="btn btn-warning float-right">
                 Re-check <i class="fas fa-sync"></i>
             </a>
         <?php } else { ?>

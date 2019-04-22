@@ -17,7 +17,7 @@ $(function () {
             if (json.success) {
                 hideAll()
                 lm.find(".status-loader").show()
-                location.reload()
+                location = location
             } else {
                 codeInput.addClass("is-invalid")
             }
@@ -31,7 +31,7 @@ $(function () {
 
     $(".logoutUser").click(function (e) {
         callLoginApi("logout", {}, function () {
-            location.reload()
+            location = location
         })
     })
 
