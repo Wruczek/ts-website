@@ -18,7 +18,7 @@ class CacheManager {
     private $serverGroupList;
     private $channelGroupList;
 
-    public function __construct() {
+    private function __construct() {
         $this->cache = new PhpFileCache(__CACHE_DIR, "cachemanager");
     }
 
@@ -53,6 +53,10 @@ class CacheManager {
         }, Config::get("cache_serverinfo"), $meta);
     }
 
+    public function clearServerInfo() {
+        $this->cache->eraseKey("serverinfo");
+    }
+
     public function getBanList($meta = false) {
         if ($this->banList) {
             return $this->banList;
@@ -74,6 +78,10 @@ class CacheManager {
         }, Config::get("cache_banlist"), $meta);
     }
 
+    public function clearBanList() {
+        $this->cache->eraseKey("banlist");
+    }
+
     public function getClientList($meta = false) {
         if ($this->clientList) {
             return $this->clientList;
@@ -90,7 +98,11 @@ class CacheManager {
             return null;
         }, Config::get("cache_clientlist"), $meta); // Lower cache time because of login system
     }
-    
+
+    public function clearClientList() {
+        $this->cache->eraseKey("clientlist");
+    }
+
     public function getClient($cldbid) {
         $clients = $this->getClientList();
 
@@ -124,6 +136,10 @@ class CacheManager {
         }, Config::get("cache_channelist"), $meta);
     }
 
+    public function clearChannelList() {
+        $this->cache->eraseKey("channellist");
+    }
+
     public function getServerGroupList($meta = false) {
         if ($this->serverGroupList) {
             return $this->serverGroupList;
@@ -141,6 +157,10 @@ class CacheManager {
         }, Config::get("cache_servergroups"), $meta);
     }
 
+    public function clearServerGroupList() {
+        $this->cache->eraseKey("servergrouplist");
+    }
+
     public function getChannelGroupList($meta = false) {
         if ($this->channelGroupList) {
             return $this->channelGroupList;
@@ -156,5 +176,9 @@ class CacheManager {
             }
             return null;
         }, Config::get("cache_channelgroups"), $meta);
+    }
+
+    public function clearChannelGroupList() {
+        $this->cache->eraseKey("channelgrouplist");
     }
 }

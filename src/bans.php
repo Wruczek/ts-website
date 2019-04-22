@@ -1,14 +1,11 @@
 <?php
 
 use Latte\Runtime\Html;
-use Wruczek\PhpFileCache\PhpFileCache;
 use Wruczek\TSWebsite\CacheManager;
 use Wruczek\TSWebsite\Utils\TemplateUtils;
 use Wruczek\TSWebsite\Utils\Utils;
 
 require_once __DIR__ . "/private/php/load.php";
-
-$cache = new PhpFileCache(__CACHE_DIR, "banspage");
 
 $banlist = CacheManager::i()->getBanList();
 $data = null;
