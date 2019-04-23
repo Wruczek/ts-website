@@ -3,7 +3,7 @@
 <?php if(file_exists(__CONFIG_FILE)) { ?>
     <div class="alert alert-danger text-center" role="alert">
         dbconfig.php file found! TS-website might have already been installed.
-        If you proceed, you will loose data!
+        If you proceed, you will lose data!
     </div>
 <?php } ?>
 
@@ -84,7 +84,7 @@
 
                 <p>
                     You can check all of the data send yourself by looking at the source code:
-                    <code>installer/pages/2.php</code>
+                    <code>installer/pages/7.php</code>
                 </p>
 
                 <p><b>Data send by TS-website:</b></p>
@@ -94,13 +94,13 @@
                         Version of TS-website and PHP
                     </li>
                     <li class="mb-1">
-                        List of loaded PHP extensions names
+                        List of loaded PHP extension names
                     </li>
                     <li class="mb-1">
                         Server identification string (contains mainly web server name and version)
                     </li>
                     <li class="mb-1">
-                        Basic OS info (type, version, architecture, hostname)
+                        Basic OS info (type, version, architecture)
                     </li>
                     <li class="mb-1">
                         TeamSpeak server info (version, build number, host OS name, slot count,
