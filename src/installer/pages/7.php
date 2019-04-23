@@ -55,17 +55,19 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
     $data = json_encode($data);
     $url = "https://wruczek.tech/tsw-metrics/";
 
-    // If cURL is available, use it
-    if (function_exists("curl_version")) {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        curl_close($ch);
+    $options = [
+        "http" => [
+            "header"  => "Content-Type: application/json",
+            "method"  => "POST",
+            "content" => $data
+        ]
+    ];
 
-        //echo $response;
+    $context  = stream_context_create($options);
+    $response = file_get_contents($url, false, $context);
+
+    if ($response !== "ok") {
+        echo "Error sending metrics :(";
     }
 }
 ?>
