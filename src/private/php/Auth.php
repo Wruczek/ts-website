@@ -2,12 +2,6 @@
 
 namespace Wruczek\TSWebsite;
 
-use function array_filter;
-use function array_keys;
-use Exception;
-use function in_array;
-use function time;
-use function var_dump;
 use Wruczek\PhpFileCache\PhpFileCache;
 use Wruczek\TSWebsite\Utils\Language\LanguageUtils;
 use Wruczek\TSWebsite\Utils\TeamSpeakUtils;
@@ -52,7 +46,16 @@ class Auth {
             // Skip query clients
             if ($client["client_type"]) continue;
 
-            if ((string) $client["connection_client_ip"] === $ip) {
+            $clientIp = (string) $client["connection_client_ip"];
+
+            // IPv6 support - remove brackets from the beginning and the end of clientIp if there are any
+            // because we will be comparing it to Utils::getClientIp() that does not have them.
+            //
+            // Brackets in IPv6 addresses are no longer returned starting from TeamSpeak server version 3.8.0,
+            // but we want to maintain backwards compatibility
+            $clientIp = trim($clientIp, "[]");
+
+            if ($clientIp === $ip) {
                 $ret[$client["client_database_id"]] = (string) $client["client_nickname"];
             }
         }
