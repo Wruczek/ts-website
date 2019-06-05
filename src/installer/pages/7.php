@@ -93,7 +93,7 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
                     <i class="fab fa-paypal whatnow-icon fa-fw" style="color: #003087"></i>
                 </div>
                 <div class="col-lg-10">
-                    <h1><a href="https://wruczek.tech/donate/paypal?from=tsw" target="_blank">Donate</a></h1>
+                    <h1><a href="#" onclick="alert('If you\'d like to donate, send me a message via Telegram or email. Thanks!')" target="_blank">Donate</a></h1>
                     <h3>to keep this project alive</h3>
                 </div>
             </div>
