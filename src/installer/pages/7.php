@@ -3,7 +3,11 @@ if(!defined("__TSWEBSITE_VERSION")) die("Direct access not allowed");
 
 use Wruczek\TSWebsite\Utils\TeamSpeakUtils;
 
-if(file_put_contents(__INSTALLER_LOCK_FILE, "WEBSITE_INSTALLED") === false) {
+$installerLockMessage =
+    "After initial installation, this file prevents someone from running it again. " .
+    "Deleting it will allow you to re-install TS-website.";
+
+if(file_put_contents(__INSTALLER_LOCK_FILE, $installerLockMessage) === false) {
     die("Cannot write to <code>private/INSTALLER_LOCK</code>! Please check the file/directory permissions");
 }
 
@@ -89,7 +93,7 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
                     <i class="fab fa-paypal whatnow-icon fa-fw" style="color: #003087"></i>
                 </div>
                 <div class="col-lg-10">
-                    <h1><a href="https://paypal.me/#" target="_blank">Donate</a></h1>
+                    <h1><a href="https://wruczek.tech/donate/paypal?from=tsw" target="_blank">Donate</a></h1>
                     <h3>to keep this project alive</h3>
                 </div>
             </div>

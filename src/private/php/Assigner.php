@@ -103,7 +103,7 @@ class Assigner {
                     $groupsToAdd[] = $group;
                 }
 
-                // REMOVE GROUP if the group is currently assigned, but the user does not want to be inside it
+                // REMOVE GROUP if the group is currently assigned, but the user does not want to have it
                 if ($isAssigned && !$wantToAssign) {
                     $groupsToRemove[] = $group;
                 }

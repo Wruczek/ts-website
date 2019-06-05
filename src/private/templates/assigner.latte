@@ -54,7 +54,7 @@
                         <div class="row justify-content-md-center">
                             {foreach $row as $assignerCategory}
                                 <div class="col-md-6">
-                                    <ul class="list-group assigner-category" data-maxgroups="{$assignerCategory["max"]}">
+                                    <div class="list-group assigner-category" data-maxgroups="{$assignerCategory["max"]}">
                                         <li class="list-group-item assigner-header">
                                             <div>
                                                 <i class="{$assignerCategory["icon"]}"></i>{$assignerCategory["name"]}
@@ -65,7 +65,7 @@
                                         </li>
 
                                         {foreach $assignerCategory["groups"] as $group}
-                                            <button type="button" class="list-group-item list-group-item-action">
+                                            <div class="list-group-item list-group-item-action">
                                                 <div>
                                                     {if $group["iconid"]}
                                                         <img src="api/geticon.php?iconid={$group["iconid"]}" alt="{$group["name"]} icon" class="assigner-icon">
@@ -83,9 +83,9 @@
                                                         <label class="custom-control-label" for="assignerCheck{$group["sgid"]}">&nbsp;</label>
                                                     </div>
                                                 </div>
-                                            </button>
+                                            </div>
                                         {/foreach}
-                                    </ul>
+                                    </div>
                                 </div>
                             {/foreach}
                         </div>
