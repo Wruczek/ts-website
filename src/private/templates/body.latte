@@ -17,11 +17,11 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
     <!-- TODO make it use the language variable "WEBSITE_TITLE" after the ACP update -->
     <title>{$title} | {$config["website_title"]}</title>
 
-    <!-- Bootstrap 4.1.3 -->
-    {$tplutils::includeStylesheet("{cdnjs}/twitter-bootstrap/4.1.3/css/bootstrap.min.css", "sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=")}
+    <!-- Bootstrap 4.3.1 -->
+    {$tplutils::includeStylesheet("{cdnjs}/twitter-bootstrap/4.3.1/css/bootstrap.min.css", "sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=")}
 
-    <!-- FontAwesome CSS 5.2.0 -->
-    {$tplutils::includeStylesheet("https://use.fontawesome.com/releases/v5.2.0/css/all.css", "sha256-iJGhYPiir7gd5SWfn2jlrzeCNI6iknrZ6Wm8iMfTmYQ=")}
+    <!-- FontAwesome CSS 5.8.2 -->
+    {$tplutils::includeStylesheet("{cdnjs}/font-awesome/5.8.2/css/all.min.css", "sha256-BtbhCIbtfeVWGsqxk1vOHEYXS6qcvQvLMZqjtpWUEx8=")}
 
     <!-- DataTables 1.10.19 -->
     {$tplutils::includeStylesheet("{cdnjs}/datatables/1.10.19/css/dataTables.bootstrap4.min.css", "sha256-F+DaKAClQut87heMIC6oThARMuWne8+WzxIDT7jXuPA=")}
@@ -175,25 +175,25 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
     }
 </script>
 
-<!-- jQuery 3.3.1 -->
-{$tplutils::includeScript("{cdnjs}/jquery/3.3.1/jquery.min.js", "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=")}
+<!-- jQuery 3.4.1 -->
+{$tplutils::includeScript("{cdnjs}/jquery/3.4.1/jquery.min.js", "sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=")}
 
-<!-- Popper.js UMD 1.14.4 -->
-{$tplutils::includeScript("{cdnjs}/popper.js/1.14.4/umd/popper.min.js", "sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=")}
+<!-- Popper.js UMD 1.15.0 -->
+{$tplutils::includeScript("{cdnjs}/popper.js/1.15.0/umd/popper.min.js", "sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=")}
 
-<!-- Bootstrap 4.1.3 -->
-{$tplutils::includeScript("{cdnjs}/twitter-bootstrap/4.1.3/js/bootstrap.min.js", "sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=")}
+<!-- Bootstrap 4.3.1 -->
+{$tplutils::includeScript("{cdnjs}/twitter-bootstrap/4.3.1/js/bootstrap.min.js", "sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=")}
 
 <!-- JS-Cookie 2.2.0 -->
 {$tplutils::includeScript("{cdnjs}/js-cookie/2.2.0/js.cookie.min.js", "sha256-9Nt2r+tJnSd2A2CRUvnjgsD+ES1ExvjbjBNqidm9doI=")}
 
 <!-- TODO: as soon as day.js matures with more languages, replace this obese library with it -->
 <!-- Moment.js 2.22.2 -->
-{$tplutils::includeScript("{cdnjs}/moment.js/2.22.2/moment.min.js", "sha256-CutOzxCRucUsn6C6TcEYsauvvYilEniTXldPa6/wu0k=")}
+{$tplutils::includeScript("{cdnjs}/moment.js/2.24.0/moment.min.js", "sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=")}
 
 {var momentjslang = Wruczek\TSWebsite\Utils\Language\LanguageUtils::tl("MOMENTJS_LANG")}
 {if $momentjslang !== "en-us"}
-    {$tplutils::includeScript("{cdnjs}/moment.js/2.22.2/locale/$momentjslang.js")}
+    {$tplutils::includeScript("{cdnjs}/moment.js/2.24.0/locale/$momentjslang.js")}
     <script>
         moment.locale({$momentjslang} || navigator.languages || navigator.language)
     </script>
