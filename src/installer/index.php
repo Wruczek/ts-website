@@ -8,7 +8,7 @@ if(file_exists(__INSTALLER_LOCK_FILE)) {
 if (!file_exists(__PRIVATE_DIR . "/vendor/autoload.php")) {
     die(
         '<h2>Oops! We cannot find Composer\'s autoload file.</h2>' .
-        '<h2>Download TS-website from <a href="https://github.com/Wruczek/ts-website/releases">releases page</a>, and not directly from GitHub.</h2>' .
+        '<h2>Download TS-website from <a href="https://github.com/Wruczek/ts-website/releases">releases page</a>, not directly from GitHub.</h2>' .
         'Or, if you know what you are doing, run <code>composer update</code> in the ' .
         '<code>' . realpath(__BASE_DIR) . '</code> directory'
     );
