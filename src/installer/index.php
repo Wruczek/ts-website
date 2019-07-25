@@ -8,10 +8,7 @@ if(file_exists(__INSTALLER_LOCK_FILE)) {
 if (!file_exists(__PRIVATE_DIR . "/vendor/autoload.php")) {
     die(
         '<h2>Oops! We cannot find Composer\'s autoload file.</h2>' .
-        '<h3>In 2.0, the installation procedure is a little different. Go to the ' .
-        '<a href="https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation" target="_blank">wiki</a> ' .
-        'and follow the installation tutorial.</h3>' .
-        '<h2 style="color: red">Please do not contact us for help with that error. Read the wiki.</h2>' .
+        '<h2>Download TS-website from <a href="https://github.com/Wruczek/ts-website/releases">releases page</a>, and not directly from GitHub.</h2>' .
         'Or, if you know what you are doing, run <code>composer update</code> in the ' .
         '<code>' . realpath(__BASE_DIR) . '</code> directory'
     );
