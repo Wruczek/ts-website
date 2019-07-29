@@ -1,7 +1,10 @@
 <?php
 require_once __DIR__ . "/../private/php/constants.php";
 
-if(file_exists(__INSTALLER_LOCK_FILE)) {
+// we need to check if the file has something in it, because its gonna be touched in
+// the requirements check step to make sure we have write permissions.
+// we only care about it after its filled with content in the last step of the installation process
+if(file_exists(__INSTALLER_LOCK_FILE) && filesize(__INSTALLER_LOCK_FILE) > 1) {
     die('File "private/INSTALLER_LOCK" exists. Please remove it if you wish to run the installer again.');
 }
 
