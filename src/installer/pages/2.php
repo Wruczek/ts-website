@@ -50,6 +50,15 @@ if(!empty($_POST["allow-metrics-checkbox"])) {
                 <?php } ?>
             </script>
         <?php } else { ?>
+
+            <?php if (PHP_VERSION_ID < 70000) { ?>
+            <div class="text-center">
+                <div class="alert alert-danger" style="display: inline-block">
+                    You are using PHP 5.6 which will not be supported in the future. Please upgrade.
+                </div>
+            </div>
+            <?php } ?>
+
             <div class="text-center">
                 <div class="alert alert-success" style="display: inline-block">
                     <strong>Success!</strong> Looks like you can run TS-website 2.0!
@@ -84,8 +93,9 @@ function checkRequirements() {
     // PHP version - 5.6.0 minimum, < 7 warning, > 7 ok
     {
         $result = PHP_VERSION_ID < 50600 ? 2 : (PHP_VERSION_ID < 70000 ? 1 : 0);
+
         showCheckResult(
-                "PHP 5.6.0+ (7.0+ recommended)",
+                "PHP 5.6.0+ (7.0+ required soon)",
                 $result,
                 "Current PHP version: " . phpversion()
         );
