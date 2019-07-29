@@ -33,7 +33,7 @@ $defaultTimezone = date_default_timezone_get();
 $defaultBase = (@$_SERVER["HTTPS"] === "on" ? "https" : "http") . "://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 $defaultBase = dirname(dirname($defaultBase)); // get the path for the previous directory, not the installer
 
-$displayip = Config::get("query_displayip"); // default website name to the display IP
+$displayip = Config::get("query_displayip"); // set initial website name to the TS3 IP
 ?>
 
 <?php if(!empty($errormessage)) { ?>
