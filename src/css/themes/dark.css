@@ -274,7 +274,8 @@ fieldset[disabled] select,
 }
 
 .custom-control-input:checked~.custom-control-label::before {
-    background-color: var(--site-secondary-color) !important;
+    background-color: var(--site-secondary-color);
+    border-color: var(--site-secondary-color);
 }
 
 /* Lighter on a list group item */
