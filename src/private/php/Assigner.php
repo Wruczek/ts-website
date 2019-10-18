@@ -133,4 +133,34 @@ class Assigner {
         return 0;
     }
 
+    public static function getRequiredSgids() {
+        return Config::get("assigner_required_sgids");
+    }
+
+    public static function canUseAssigner() {
+        // if there are no required sgids, the user can use assigner and
+        // we can skip the other, more expensive checks that will require
+        // fetching user groups from TS3
+        if (empty(self::getRequiredSgids())) {
+            return true;
+        }
+
+        $userGroups = Auth::getUserServerGroupIds();
+        return self::canUseAssignerSgArray($userGroups);
+    }
+
+    public static function canUseAssignerSgArray(array $serverGroups) {
+        // user needs to be in at least one of those groups to be able
+        // to use group assigner
+        $requiredSgid = self::getRequiredSgids();
+
+        foreach ($requiredSgid as $sgid) {
+            if (in_array($sgid, $serverGroups, false)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -35,7 +35,8 @@ INSERT INTO `DBPREFIXconfig` (`identifier`, `type`, `value`, `user_editable`) VA
 ('cache_channelgroups', 'INT', '60', 1),
 ('adminstatus_offlinehiddenbydefault', 'BOOL', 'false', 1),
 ('imprint_enabled', 'BOOL', 'false', 1),
-('imprint_url', 'STRING', 'imprint.php', 1);
+('imprint_url', 'STRING', 'imprint.php', 1),
+('assigner_required_sgids', 'JSON', '[]', 1);
 
 DROP TABLE IF EXISTS `DBPREFIXfaq`;
 CREATE TABLE `DBPREFIXfaq` (

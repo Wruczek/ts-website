@@ -6,10 +6,15 @@ use Wruczek\TSWebsite\Utils\TemplateUtils;
 
 require_once __DIR__ . "/private/php/load.php";
 
-$data = ["isLoggedIn" => Auth::isLoggedIn()];
+$data = [
+    "isLoggedIn" => Auth::isLoggedIn()
+];
 
 if (Auth::isLoggedIn()) {
-    if (isset($_POST["assigner"])) {
+    $canUseAssigner = Assigner::canUseAssigner();
+    $data["canUseAssigner"] = $canUseAssigner;
+
+    if (isset($_POST["assigner"]) && $canUseAssigner) {
         $groups = array_keys($_POST["assigner"]); // get all group ids
         $groups = array_filter($groups, "is_int"); // only keep integers
 

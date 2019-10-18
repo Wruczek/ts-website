@@ -23,6 +23,10 @@
                 <div class="alert alert-info">
                     <i class="fas fa-info-circle"></i>{_"ASSIGNER_NOT_CONFIGURED"}
                 </div>
+            {elseif !$canUseAssigner}
+                <div class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle"></i>{_"ASSIGNER_NO_REQUIRED_GROUPS"}
+                </div>
             {else}
                 {ifset $groupChangeStatus}
                     {if $groupChangeStatus === 0} {* saved *}
