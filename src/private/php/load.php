@@ -8,6 +8,10 @@ use Wruczek\TSWebsite\Utils\Utils;
 
 session_name("tswebsite_sessionid");
 
+// make session last 90 days
+ini_set("session.gc_maxlifetime", 60 * 60 * 24 * 90);
+ini_set("session.cookie_lifetime", 60 * 60 * 24 * 90);
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
