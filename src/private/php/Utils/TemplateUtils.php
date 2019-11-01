@@ -39,6 +39,10 @@ class TemplateUtils {
         $this->getLatte()->addFilter("translate", function ($s, ...$args) {
             return new Html(__get($s, $args));
         });
+
+        $this->getLatte()->addFilter("nocheck", function ($s, ...$args) {
+            return $s;
+        });
     }
 
     /**
