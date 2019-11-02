@@ -11,7 +11,7 @@
             <!-- The NBSP is here to preserve a space when the text gets truncated -->
             <p>
                 <span><i class="fas fa-globe fa-fw"></i>{_"STATUS_ADDRESS"}&nbsp;</span>
-                <span><a href="ts3server://{$config["query_displayip"]}">{$config["query_displayip"]}</a></span>
+                <span><a href="ts3server://{$config["query_displayip"]|escapeurl}">{$config["query_displayip"]}</a></span>
             </p>
             <p>
                 <span><i class="fas fa-power-off fa-fw"></i>{_"STATUS_CLIENTS_ONLINE"}&nbsp;</span>
