@@ -14,7 +14,7 @@
                 {foreach $qa as $id => $value}
                     <div class="card">
                         <div class="card-header" id="faqcollapse-heading-{$id}">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqcollapse-{$id}" aria-expanded="true" aria-controls="faqcollapse-{$id}">
+                            <button class="btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#faqcollapse-{$id}" aria-expanded="true" aria-controls="faqcollapse-{$id}">
                                 {$id + 1}. {$value["question"]|noescape}
                             </button>
                             <i class="fas fa-link copy-faq-url" data-faqid="{$id}" data-toggle="tooltip" title="{_"FAQ_COPY_LINK"}"></i>
