@@ -29,7 +29,7 @@ if ($sinfo !== null) {
     $returnJson["data"] = [
         "uid" => (string) $sinfo["virtualserver_unique_identifier"],
         "name" => (string) $sinfo["virtualserver_name"],
-        "nicknames" => (string) $sinfo["virtualserver_nickname"],
+        "nicknames" => (string) @$sinfo["virtualserver_nickname"],
         "channelCount" => $sinfo["virtualserver_channelsonline"],
         "serverIconId" => $sinfo["virtualserver_icon_id"],
         "clientsOnline" => $onlineNow,
