@@ -61,7 +61,11 @@
                                     <div class="list-group assigner-category" data-maxgroups="{$assignerCategory["max"]}">
                                         <li class="list-group-item assigner-header">
                                             <div>
-                                                <i class="{$assignerCategory["icon"]}"></i>{$assignerCategory["name"]}
+                                                {ifset $assignerCategory["icon"]}
+                                                    <i class="{$assignerCategory["icon"]}"></i>
+                                                {/ifset}
+
+                                                {$assignerCategory["name"]}
                                             </div>
                                             <div>
                                                 <span class="badge badge-primary badge-pill"></span>
