@@ -19,7 +19,7 @@ class Language {
      * @param $isDefault
      * @param $languageItems
      */
-    public function __construct($languageId, $languageNameEnglish, $languageNameNative, $languageCode, $isDefault, $languageItems) {
+    public function __construct(int $languageId, string $languageNameEnglish, string $languageNameNative, string $languageCode, bool $isDefault, array $languageItems) {
         $this->languageId = $languageId;
         $this->languageNameEnglish = $languageNameEnglish;
         $this->languageNameNative = $languageNameNative;
@@ -32,7 +32,7 @@ class Language {
      * Returns language ID
      * @return int language ID
      */
-    public function getLanguageId() {
+    public function getLanguageId(): int {
         return $this->languageId;
     }
 
@@ -40,7 +40,7 @@ class Language {
      * Returns language name in English
      * @return string language name in English
      */
-    public function getLanguageNameEnglish() {
+    public function getLanguageNameEnglish(): string {
         return $this->languageNameEnglish;
     }
 
@@ -48,7 +48,7 @@ class Language {
      * Returns language name in its native form
      * @return string language name in its native form
      */
-    public function getLanguageNameNative() {
+    public function getLanguageNameNative(): string {
         return $this->languageNameNative;
     }
 
@@ -56,7 +56,7 @@ class Language {
      * Returns language code
      * @return string language code
      */
-    public function getLanguageCode() {
+    public function getLanguageCode(): string {
         return $this->languageCode;
     }
 
@@ -64,7 +64,7 @@ class Language {
      * Returns true when this language is set as default site language
      * @return boolean true when default, false otherwise
      */
-    public function isDefault() {
+    public function isDefault(): bool {
         return $this->isDefault;
     }
 
@@ -72,7 +72,7 @@ class Language {
      * Sets this language as default language of the site
      * @return boolean true on success, false otherwise
      */
-    public function setAsDefaultLanguage() {
+    public function setAsDefaultLanguage(): bool {
         return LanguageUtils::i()->setDefaultLanguage($this);
     }
 
@@ -80,7 +80,7 @@ class Language {
      * Returns simple array with identifier -> value mapping, created from getLanguageItems()
      * @return array
      */
-    public function getSimpleItemsArray() {
+    public function getSimpleItemsArray(): array {
         $ret = [];
 
         foreach ($this->getLanguageItems() as $item) {
@@ -93,13 +93,15 @@ class Language {
     /**
      * Returns language item
      * @param $identifier string identifier
-     * @return LanguageItem LanguageItem if found, null otherwise
+     * @return LanguageItem|null LanguageItem if found, null otherwise
      */
-    public function getLanguageItem($identifier) {
+    public function getLanguageItem($identifier): ?LanguageItem {
         foreach ($this->getLanguageItems() as $item) {
-            if(strcasecmp($item->getIdentifier(), $identifier) === 0)
+            if(strcasecmp($item->getIdentifier(), $identifier) === 0) {
                 return $item;
+            }
         }
+
         return null;
     }
 
@@ -107,7 +109,7 @@ class Language {
      * Returns language strings
      * @return array array filled with LanguageItem
      */
-    public function getLanguageItems() {
+    public function getLanguageItems(): array {
         return $this->languageItems;
     }
 

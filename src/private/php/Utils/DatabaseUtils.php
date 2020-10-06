@@ -1,6 +1,7 @@
 <?php
 
 namespace Wruczek\TSWebsite\Utils;
+
 use Medoo\Medoo;
 use PDO;
 use Wruczek\TSWebsite\Config;

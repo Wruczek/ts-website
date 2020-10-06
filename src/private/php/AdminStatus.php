@@ -15,16 +15,16 @@ class AdminStatus {
 
     private $cache;
 
-    const STATUS_STYLE_GROUPED = 1;
-    const STATUS_STYLE_GROUPED_HIDE_EMPTY_GROUPS = 2;
-    const STATUS_STYLE_LIST = 3;
-    const STATUS_STYLE_LIST_ONLINE_FIRST = 4;
+    public const STATUS_STYLE_GROUPED = 1;
+    public const STATUS_STYLE_GROUPED_HIDE_EMPTY_GROUPS = 2;
+    public const STATUS_STYLE_LIST = 3;
+    public const STATUS_STYLE_LIST_ONLINE_FIRST = 4;
 
     public function __construct() {
         $this->cache = new PhpFileCache(__CACHE_DIR, "adminstatus");
     }
 
-    public function getCachedAdminClients(array $adminGroups) {
+    public function getCachedAdminClients(array $adminGroups): ?array {
         return $this->cache->refreshIfExpired("adminstatus", function () use ($adminGroups) {
             if(TeamSpeakUtils::i()->checkTSConnection()) {
                 try {
@@ -44,7 +44,7 @@ class AdminStatus {
         }, Config::get("cache_adminstatus"));
     }
 
-    public function getStatus(array $adminGroups, $format, $hideOffline = false, array $ignoredUsersDbids = []) {
+    public function getStatus(array $adminGroups, $format, bool $hideOffline = false, array $ignoredUsersDbids = []) {
         if ($format !== self::STATUS_STYLE_GROUPED
             && $format !== self::STATUS_STYLE_GROUPED_HIDE_EMPTY_GROUPS
             && $format !== self::STATUS_STYLE_LIST

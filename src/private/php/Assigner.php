@@ -6,11 +6,11 @@ use Wruczek\TSWebsite\Utils\TeamSpeakUtils;
 
 class Assigner {
 
-    public static function getAssignerConfig() {
+    public static function getAssignerConfig(): array {
         return Config::get("assignerconfig");
     }
 
-    public static function getAssignerArray() {
+    public static function getAssignerArray(): array {
         $assignerConfig = self::getAssignerConfig();
 
         if (empty($assignerConfig)) {
@@ -46,7 +46,7 @@ class Assigner {
         return $assignerConfig;
     }
 
-    public static function isAssignable($sgid) {
+    public static function isAssignable(int $sgid): bool {
         foreach (self::getAssignerConfig() as $category) {
             if (in_array($sgid, $category["groups"], true)) {
                 return true;
@@ -69,7 +69,7 @@ class Assigner {
      * @throws UserNotAuthenticatedException
      * @throws \TeamSpeak3_Exception
      */
-    public static function changeGroups($newGroups) {
+    public static function changeGroups(array $newGroups): int {
         $assignerConfig = self::getAssignerConfig();
 
         if (empty($assignerConfig)) {
@@ -85,9 +85,9 @@ class Assigner {
 
             foreach ($config["groups"] as $group) {
                 // true if the $group is currently assigned to the user
-                $isAssigned = in_array($group, $userGroups);
+                $isAssigned = in_array($group, $userGroups, true);
                 // true if the user wants to be added to $group
-                $wantToAssign = in_array($group, $newGroups);
+                $wantToAssign = in_array($group, $newGroups, true);
 
                 // if the group is already assigned, or is to be assigned,
                 // check for the max group limit in this category:
@@ -133,11 +133,11 @@ class Assigner {
         return 0;
     }
 
-    public static function getRequiredSgids() {
+    public static function getRequiredSgids(): array {
         return Config::get("assigner_required_sgids");
     }
 
-    public static function canUseAssigner() {
+    public static function canUseAssigner(): bool {
         // if there are no required sgids, the user can use assigner and
         // we can skip the other, more expensive checks that will require
         // fetching user groups from TS3
@@ -149,7 +149,7 @@ class Assigner {
         return self::canUseAssignerSgArray($userGroups);
     }
 
-    public static function canUseAssignerSgArray(array $serverGroups) {
+    public static function canUseAssignerSgArray(array $serverGroups): bool {
         // user needs to be in at least one of those groups to be able
         // to use group assigner
         $requiredSgid = self::getRequiredSgids();

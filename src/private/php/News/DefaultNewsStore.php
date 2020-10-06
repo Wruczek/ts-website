@@ -2,8 +2,6 @@
 
 namespace Wruczek\TSWebsite\News;
 
-use function mb_substr;
-use function time;
 use Wruczek\TSWebsite\Utils\DatabaseUtils;
 
 /**
@@ -20,15 +18,7 @@ class DefaultNewsStore implements INewsStore {
         $this->db = DatabaseUtils::i()->getDb();
     }
 
-    public function getNewsList($limit, $offset = null) {
-        if ($limit !== null && !\is_int($limit)) {
-            throw new \InvalidArgumentException("limit must be an integer");
-        }
-
-        if ($offset !== null && !\is_int($offset)) {
-            throw new \InvalidArgumentException("offset must be an integer");
-        }
-
+    public function getNewsList(int $limit, int $offset = null): array {
         $options = []; // Medoo: [$offset, $limit]
 
         // If we have both limit and offset
@@ -64,17 +54,17 @@ class DefaultNewsStore implements INewsStore {
         return $newsList;
     }
 
-    public function getNews($newsId) {
+    public function getNews(int $newsId): ?array {
         return $this->db->get($this->newsTable, "*", [
             "newsId" => $newsId,
         ]);
     }
 
-    public function getNewsCount() {
+    public function getNewsCount(): int {
         return $this->db->count($this->newsTable);
     }
 
-    public function addNews($title, $content, $addDate = null, $editDate = null) {
+    public function addNews(string $title, string $content, ?int $addDate = null, ?int $editDate = null): int {
         if ($addDate === null) {
             $addDate = time();
         }
@@ -89,7 +79,7 @@ class DefaultNewsStore implements INewsStore {
         return $this->db->id();
     }
 
-    public function editNews($newsId, $title = null, $content = null, $addDate = null, $editDate = null) {
+    public function editNews(int $newsId, string $title = null, string $content = null, ?int $addDate = null, ?int $editDate = null): bool {
         $data = [];
 
         if ($title !== null) $data["title"] = $title;

@@ -9,11 +9,12 @@ trait SingletonTait {
      * Call this method to get singleton
      * @return self
      */
-    public static function Instance() {
+    public static function Instance(): self {
         static $inst = null;
 
-        if ($inst === null)
+        if ($inst === null) {
             $inst = new self();
+        }
 
         return $inst;
     }
@@ -22,7 +23,7 @@ trait SingletonTait {
      * A shorthand to get the singleton
      * @return self
      */
-    public static function i() {
+    public static function i(): self {
         return self::Instance();
     }
 

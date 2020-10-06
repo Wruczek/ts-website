@@ -45,15 +45,16 @@ class TemplateUtils {
      * Returns latte object
      * @return \Latte\Engine Latte object
      */
-    public function getLatte() {
+    public function getLatte(): Engine {
         return $this->latte;
     }
 
     /**
      * Echoes rendered template
+     * @throws \Exception
      * @see renderTemplateToString
      */
-    public function renderTemplate($templateName, $data = [], $loadLangs = true) {
+    public function renderTemplate(string $templateName, array $data = [], bool $loadLangs = true): void {
         echo $this->renderTemplateToString($templateName, $data, $loadLangs);
     }
 
@@ -63,8 +64,13 @@ class TemplateUtils {
      * @param string $errorname Error title
      * @param string $description Error description
      */
-    public function renderErrorTemplate($errorcode = "", $errorname = "", $description = "") {
-        $data = ["errorcode" => $errorcode, "errorname" => $errorname, "description" => $description];
+    public function renderErrorTemplate(string $errorcode = null, string $errorname = "Error", string $description = null): void {
+        $data = [
+            "errorcode" => $errorcode,
+            "errorname" => $errorname,
+            "description" => $description
+        ];
+
         $this->renderTemplate("errorpage", $data, false);
     }
 
@@ -75,11 +81,16 @@ class TemplateUtils {
      * @return string Rendered template
      * @throws \Exception when we cannot get the CSRF token
      */
-    public function renderTemplateToString($templateName, $data = [], $loadLangs = true) {
+    public function renderTemplateToString($templateName, $data = [], $loadLangs = true): string {
         $dbutils = DatabaseUtils::i();
 
         if($loadLangs) {
-            $userlang = LanguageUtils::i()->getLanguageById($_SESSION["userlanguageid"]);
+            $langUtils = LanguageUtils::i();
+            $userlang = $langUtils->getLanguageById($_SESSION["userlanguageid"]);
+
+            if ($userlang === null) {
+                $userlang = $langUtils->getDefaultLanguage();
+            }
 
             $data["languageList"] = LanguageUtils::i()->getLanguages();
             $data["userLanguage"] = $userlang;
@@ -120,9 +131,9 @@ class TemplateUtils {
      * Returns time elapsed from website load start until now
      * @param bool $raw If true, returns elapsed time in
      * milliseconds. Defaults to false.
-     * @return string
+     * @return string|float
      */
-    public static function getRenderTime($raw = false) {
+    public static function getRenderTime(bool $raw = false) {
         if($raw) {
             return microtime(true) - __RENDER_START;
         } else {
@@ -136,16 +147,17 @@ class TemplateUtils {
      * @see getOldestCacheTimestamp
      * @param $data
      */
-    public function storeOldestCache($data) {
-        if ($data["expired"] && (!$this->oldestCache || $this->oldestCache > $data["time"]))
+    public function storeOldestCache($data): void {
+        if ($data["expired"] && (!$this->oldestCache || $this->oldestCache > $data["time"])) {
             $this->oldestCache = $data["time"];
+        }
     }
 
     /**
      * @see storeOldestCache
-     * @return int Oldest cache timestamp, null if not set
+     * @return int|null Oldest cache timestamp, null if not set
      */
-    public function getOldestCacheTimestamp() {
+    public function getOldestCacheTimestamp(): ?int {
         return $this->oldestCache;
     }
 
@@ -158,7 +170,7 @@ class TemplateUtils {
      *        resource and add a version timestamp. If string, its gonna treat it as a
      *        integrity hash and add it along with crossorigin="anonymous" tag.
      */
-    public static function includeResource($resourceType, $url, $parameter = null) {
+    public static function includeResource(string $resourceType, string $url, $parameter = null): void {
         $url = str_replace('{cdnjs}', 'https://cdnjs.cloudflare.com/ajax/libs', $url);
         $attributes = "";
 
@@ -185,14 +197,14 @@ class TemplateUtils {
     /**
      * @see includeResource
      */
-    public static function includeStylesheet($url, $parameter = null) {
+    public static function includeStylesheet(string $url, $parameter = null): void {
         self::includeResource("stylesheet", $url, $parameter);
     }
 
     /**
      * @see includeResource
      */
-    public static function includeScript($url, $parameter = null) {
+    public static function includeScript(string $url, $parameter = null): void {
         self::includeResource("script", $url, $parameter);
     }
 }

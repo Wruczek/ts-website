@@ -10,26 +10,26 @@ use Wruczek\TSWebsite\Utils\Utils;
 class Auth {
 
     public static function isLoggedIn() {
-        return !empty(self::getCldbid()) && !empty(self::getUid());
+        return self::getCldbid() !== null && self::getUid() !== null;
     }
 
-    public static function getUid() {
+    public static function getUid(): ?string {
         return @$_SESSION["tsuser"]["uid"];
     }
 
-    public static function getCldbid() {
+    public static function getCldbid(): ?int {
         return @$_SESSION["tsuser"]["cldbid"];
     }
 
-    public static function getNickname() {
+    public static function getNickname(): ?string {
         return @$_SESSION["tsuser"]["nickname"];
     }
 
-    public static function logout() {
+    public static function logout(): void {
         unset($_SESSION["tsuser"]);
     }
 
-    public static function getTsUsersByIp($ip = null) {
+    public static function getTsUsersByIp(string $ip = null): ?array {
         if ($ip === null) {
             $ip = Utils::getClientIp();
         }
@@ -62,7 +62,7 @@ class Auth {
      * @param $ip string optional, defaults to Utils::getClientIp
      * @return bool true if the cldbid have the same IP address as $ip
      */
-    public static function checkClientIp($cldbid, $ip = null) {
+    public static function checkClientIp(int $cldbid, string $ip = null): bool {
         if ($ip === null) {
             $ip = Utils::getClientIp();
         }
@@ -84,7 +84,7 @@ class Auth {
      *         client cannot be found and false when other error occurs.
      * @throws \TeamSpeak3_Adapter_ServerQuery_Exception
      */
-    public static function generateConfirmationCode($cldbid, $poke = null) {
+    public static function generateConfirmationCode(int $cldbid, ?bool $poke = null) {
         if ($poke === null) {
             $poke = (bool) Config::get("loginpokeclient");
         }
@@ -123,7 +123,7 @@ class Auth {
      * @param $cldbid int
      * @return string|null Confirmation code, null if not found
      */
-    public static function getConfirmationCode($cldbid) {
+    public static function getConfirmationCode(int $cldbid): ?string {
         return (new PhpFileCache(__CACHE_DIR, "confirmationcodes"))->retrieve("c_$cldbid");
     }
 
@@ -132,7 +132,7 @@ class Auth {
      * @param $cldbid int
      * @param $code string
      */
-    public static function saveConfirmationCode($cldbid, $code) {
+    public static function saveConfirmationCode(int $cldbid, string $code): void {
         (new PhpFileCache(__CACHE_DIR, "confirmationcodes"))->store("c_$cldbid", $code, (int) Config::get("cache_logincode"));
     }
 
@@ -140,7 +140,7 @@ class Auth {
      * Deletes confirmation code for the user
      * @param $cldbid int
      */
-    public static function deleteConfirmationCode($cldbid) {
+    public static function deleteConfirmationCode(int $cldbid): void {
         (new PhpFileCache(__CACHE_DIR, "confirmationcodes"))->eraseKey("c_$cldbid");
     }
 
@@ -150,7 +150,7 @@ class Auth {
      * @param $userCode
      * @return bool true if authentication was successful
      */
-    public static function checkCodeAndLogin($cldbid, $userCode) {
+    public static function checkCodeAndLogin(int $cldbid, string $userCode): bool {
         if (!is_int($cldbid)) {
             throw new \InvalidArgumentException("cldbid must be an int");
         }
@@ -176,7 +176,7 @@ class Auth {
      * @param $userCode string
      * @return bool
      */
-    public static function checkConfirmationCode($cldbid, $userCode) {
+    public static function checkConfirmationCode(int $cldbid, string $userCode): bool {
         $knownCode = self::getConfirmationCode($cldbid);
 
         if ($knownCode === null) {
@@ -191,7 +191,7 @@ class Auth {
      * @param $cldbid int
      * @return bool true on success, false otherwise
      */
-    public static function loginUser($cldbid) {
+    public static function loginUser(int $cldbid): bool {
         $clientList = CacheManager::i()->getClientList();
 
         foreach ($clientList as $client) {
@@ -206,18 +206,18 @@ class Auth {
         return false;
     }
 
-    public static function invalidateUserGroupCache() {
+    public static function invalidateUserGroupCache(): void {
         unset($_SESSION["tsuser"]["servergroups"]);
     }
 
     /**
      * Returns an array containing cached array with group IDs of the user
      * @param $cacheTime int for how long we should cache the IDs?
-     * @return array array with server group IDs of the user
+     * @return array array with server group IDs of the user as ints
      * @throws UserNotAuthenticatedException if user is not logged in
      * @throws \TeamSpeak3_Exception when we cannot get data from the TS server
      */
-    public static function getUserServerGroupIds($cacheTime = 60) {
+    public static function getUserServerGroupIds(int $cacheTime = 60): array {
         if (!self::isLoggedIn()) {
             throw new UserNotAuthenticatedException("User is not authenticated");
         }
@@ -273,17 +273,15 @@ class Auth {
      * @throws UserNotAuthenticatedException if user is not logged in
      * @throws \TeamSpeak3_Exception when we cannot get data from the TS server
      */
-    public static function getUserServerGroups($cacheTime = 60) {
+    public static function getUserServerGroups(int $cacheTime = 60): array {
         $serverGroupIds = self::getUserServerGroupIds($cacheTime);
         $serverGroups = CacheManager::i()->getServerGroupList();
 
-        $resut = array_filter($serverGroups, function ($serverGroup) use ($serverGroupIds) {
+        return array_filter($serverGroups, function (array $serverGroup) use ($serverGroupIds) {
             // If the group id is inside $serverGroupIds,
             // keep that group. Otherwise filter it out.
-            return in_array($serverGroup["sgid"], $serverGroupIds);
+            return in_array($serverGroup["sgid"], $serverGroupIds, true);
         });
-
-        return $resut;
     }
 }
 

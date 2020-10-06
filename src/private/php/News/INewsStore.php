@@ -24,20 +24,20 @@ interface INewsStore {
      * @return array array with the news
      * @throws \Exception when we cannot get the news
      */
-    public function getNewsList($limit, $offset = null);
+    public function getNewsList(int $limit, int $offset = null): array;
 
     /**
      * Returns full information about this particular news
      * @param int $newsId
      * @return array|null array with the news details or null if news was not found
      */
-    public function getNews($newsId);
+    public function getNews(int $newsId): ?array;
 
     /**
      * Returns a number of news in the database
      * @return int
      */
-    public function getNewsCount();
+    public function getNewsCount(): int;
 
     /**
      * Adds a new news and return its new id
@@ -47,7 +47,7 @@ interface INewsStore {
      * @param null|int $editDate
      * @return int newsId of the inserted news
      */
-    public function addNews($title, $content, $addDate = null, $editDate = null);
+    public function addNews(string $title, string $content, ?int $addDate = null, ?int $editDate = null): int;
 
     /**
      * Edit the news selected by $newsId. All parameters are optional, and only the provided ones will be changed
@@ -56,7 +56,8 @@ interface INewsStore {
      * @param string|null $content
      * @param int|null $addDate
      * @param int|null $editDate
+     * @return bool true on success
      */
-    public function editNews($newsId, $title = null, $content = null, $addDate = null, $editDate = null);
+    public function editNews(int $newsId, string $title = null, string $content = null, ?int $addDate = null, ?int $editDate = null): bool;
 
 }

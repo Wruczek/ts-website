@@ -13,7 +13,7 @@ class LanguageItem {
      * @param $value
      * @param $comment
      */
-    public function __construct($identifier, $value, $comment) {
+    public function __construct(string $identifier, string $value, ?string $comment) {
         $this->identifier = $identifier;
         $this->value = $value;
         $this->comment = $comment;
@@ -23,7 +23,7 @@ class LanguageItem {
      * Returns item identifier
      * @return string
      */
-    public function getIdentifier() {
+    public function getIdentifier(): string {
         return $this->identifier;
     }
 
@@ -31,19 +31,19 @@ class LanguageItem {
      * Returns item value
      * @return string
      */
-    public function getValue() {
+    public function getValue(): string {
         return $this->value;
     }
 
     /**
      * Returns item comment, can be null
-     * @return string
+     * @return string|null
      */
-    public function getComment() {
+    public function getComment(): ?string {
         return $this->comment;
     }
 
-    public function __toString() {
+    public function __toString(): string {
         return $this->getValue();
     }
 

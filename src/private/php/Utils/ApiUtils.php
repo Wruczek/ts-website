@@ -2,7 +2,6 @@
 
 namespace Wruczek\TSWebsite\Utils;
 
-use function is_array;
 use Wruczek\TSWebsite\Auth;
 
 class ApiUtils {
@@ -10,7 +9,7 @@ class ApiUtils {
     /**
      * Checks if the user is logged in, and if not outputs a JSON error and terminates the script
      */
-    public static function checkAuth() {
+    public static function checkAuth(): void {
         if (!Auth::isLoggedIn()) {
             self::jsonError("You must be logged in to perform this action", "NOT_AUTHENTICATED", 401);
             exit;
@@ -20,14 +19,14 @@ class ApiUtils {
     /**
      * Calls jsonResponse with true as success parameter
      */
-    public static function jsonSuccess($data = null, $code = null, $statusCode = null) {
+    public static function jsonSuccess($data = null, $code = null, ?int $statusCode = null): void {
         self::jsonResponse(true, $data, $code, $statusCode);
     }
 
     /**
      * Calls jsonResponse with false as success parameter
      */
-    public static function jsonError($data = null, $code = null, $statusCode = null) {
+    public static function jsonError($data = null, $code = null, ?int $statusCode = null): void {
         self::jsonResponse(false, $data, $code, $statusCode);
     }
 
@@ -42,11 +41,7 @@ class ApiUtils {
      * @param $code int|string error code
      * @param $statusCode int Status code to return. null to not change
      */
-    public static function jsonResponse($success, $data = null, $code = null, $statusCode = null) {
-        if (!is_bool($success)) {
-            throw new \InvalidArgumentException("success must be a boolean");
-        }
-
+    public static function jsonResponse(bool $success, $data = null, $code = null, ?int $statusCode = null): void {
         $json = ["success" => $success];
 
         if ($code !== null) {
@@ -68,16 +63,16 @@ class ApiUtils {
         self::outputJson($json);
     }
 
-    public static function outputJson($array) {
+    public static function outputJson(array $array): void {
         @header("Content-Type: application/json");
         echo json_encode($array);
     }
 
-    public static function getPostParam($key) {
+    public static function getPostParam(string $key) {
         return self::getParam($_POST, $key);
     }
 
-    public static function getGetParam($key) {
+    public static function getGetParam(string $key) {
         return self::getParam($_GET, $key);
     }
 
@@ -87,9 +82,9 @@ class ApiUtils {
      * @param $array array
      * @param $key string
      * @param $canBeArray bool whenever the data can be an array
-     * @return mixed
+     * @return string|array
      */
-    public static function getParam($array, $key, $canBeArray = false) {
+    public static function getParam(array $array, string $key, bool $canBeArray = false) {
         if (!isset($array[$key])) {
             self::jsonError("Parameter $key is not provided", 400);
             exit;
@@ -97,7 +92,7 @@ class ApiUtils {
 
         $data = $array[$key];
 
-        if (is_array($data) && !$canBeArray) {
+        if (!$canBeArray && is_array($data)) {
             self::jsonError("Parameter $key cannot be an array", 400);
             exit;
         }

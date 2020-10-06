@@ -21,8 +21,12 @@ class LanguageUtils {
 
     /**
      * Short function for translate
+     * @param string $identifier
+     * @param array|string $args
+     * @return string
+     * @throws \Exception
      */
-    public static function tl($identifier, $args = []) {
+    public static function tl(string $identifier, $args = []): string {
         return self::i()->translate($identifier, $args);
     }
 
@@ -37,47 +41,50 @@ class LanguageUtils {
     /**
      * Returns language by its ID
      * @param $languageId int Language ID
-     * @return Language|boolean returns Language when found, false otherwise
+     * @return Language|null returns Language when found, null otherwise
      */
-    public function getLanguageById($languageId) {
+    public function getLanguageById(int $languageId): ?Language {
         foreach ($this->getLanguages() as $lang) {
-            if($lang->getLanguageId() === $languageId)
+            if($lang->getLanguageId() === $languageId) {
                 return $lang;
+            }
         }
 
-        return false;
+        return null;
     }
 
     /**
      * Returns language by its Language Code
      * @param $languageCode string Language Code
-     * @return Language|boolean returns Language when found, false otherwise
+     * @return Language|null returns Language when found, null otherwise
      */
-    public function getLanguageByCode($languageCode) {
+    public function getLanguageByCode(string $languageCode): ?Language {
         foreach ($this->getLanguages() as $lang) {
-            if(strcasecmp($lang->getLanguageCode(), $languageCode) === 0)
+            if(strcasecmp($lang->getLanguageCode(), $languageCode) === 0) {
                 return $lang;
+            }
         }
 
-        return false;
+        return null;
     }
 
     /**
      * Returns all available languages
-     * @return array|mixed
+     * @return array
      */
-    public function getLanguages() {
+    public function getLanguages(): array {
         return $this->languages;
     }
 
     /**
      * Returns default language
-     * @return Language default language
+     * @return Language|null default language, null if not defined
      */
-    public function getDefaultLanguage() {
+    public function getDefaultLanguage(): ?Language {
         foreach ($this->getLanguages() as $lang) {
-            if($lang->isDefault())
+            if($lang->isDefault()) {
                 return $lang;
+            }
         }
 
         return null;
@@ -88,7 +95,7 @@ class LanguageUtils {
      * @param $language Language
      * @return boolean true on success, false otherwise
      */
-    public function setDefaultLanguage($language) {
+    public function setDefaultLanguage(Language $language): bool {
         $db = DatabaseUtils::i()->getDb();
 
         // set all languages as non-default, if this succeeds...
@@ -104,9 +111,9 @@ class LanguageUtils {
 
     /**
      * Tried to determine user language and returns it
-     * @return Language user language if determined, null otherwise
+     * @return Language|null user language if determined, null otherwise
      */
-    public function detectUserLanguage() {
+    public function detectUserLanguage(): ?Language {
         if (isset($_COOKIE["tswebsite_language"])) { // check cookie
             $langcode = $_COOKIE["tswebsite_language"];
         } else if (isset($_SERVER["HTTP_ACCEPT_LANGUAGE"])) { // check http headers
@@ -114,8 +121,9 @@ class LanguageUtils {
         }
 
         // if language with that code exists, return it
-        if(!empty($langcode) && ($lang = $this->getLanguageByCode($langcode)))
+        if(!empty($langcode) && ($lang = $this->getLanguageByCode($langcode))) {
             return $lang;
+        }
 
         return null;
     }
@@ -125,30 +133,49 @@ class LanguageUtils {
      * @param bool $updateCache true if the file cache should also be updated
      * @return array
      */
-    public function refreshLanguageCache($updateCache = true) {
+    public function refreshLanguageCache(bool $updateCache = true): array {
         $db = DatabaseUtils::i()->getDb();
-        $data = $db->select("languages", ["langid", "englishname", "nativename", "langcode", "isdefault"]);
+        $data = $db->select("languages", [
+            "langid",
+            "englishname",
+            "nativename",
+            "langcode",
+            "isdefault"
+        ]);
 
         $langs = [];
 
         foreach ($data as $lang) {
-            $langid = $lang["langid"];
+            $langid = (int) $lang["langid"];
             $englishname = $lang["englishname"];
             $nativename = $lang["nativename"];
             $langcode = $lang["langcode"];
-            $isdefault = $lang["isdefault"];
+            $isdefault = $lang["isdefault"] === "1";
 
-            $strings = $db->select("translations", ["identifier", "value", "comment"], ["langid" => $langid]);
+            $strings = $db->select("translations", [
+                "identifier",
+                "value",
+                "comment"
+            ], [
+                "langid" => $langid
+            ]);
 
             $languageItems = [];
 
-            foreach ($strings as $str)
-                $languageItems[] = new LanguageItem($str["identifier"], $str["value"], $str["comment"]);
+            foreach ($strings as $str) {
+                $comment = null;
+
+                if (isset($str["comment"]) && $str["comment"] !== "") {
+                    $comment = $str["comment"];
+                }
+
+                $languageItems[] = new LanguageItem($str["identifier"], $str["value"], $comment);
+            }
 
             $langs[] = new Language($langid, $englishname, $nativename, $langcode, $isdefault, $languageItems);
         }
 
-        uasort($langs, function ($a, $b) {
+        uasort($langs, function (Language $a, Language $b) {
             if ($a->getLanguageId() === $b->getLanguageId()) {
                 return 0;
             }
@@ -158,8 +185,9 @@ class LanguageUtils {
 
         $this->languages = $langs;
 
-        if($updateCache)
+        if($updateCache) {
             $this->cache->store("languages", $langs, Config::get("cache_languages", 300));
+        }
 
         return $langs;
     }
@@ -169,12 +197,12 @@ class LanguageUtils {
      * language, it tries to get it from the default language.
      * User language is determined with getDefaultLanguage() function.
      * @param $identifier string Translation identifier
-     * @param array $args Arguments that will replace placeholders
+     * @param array|string $args Arguments that will replace placeholders
      * @return string Translated text
      * @throws \Exception When default site or user language cannot
      * be found, and/or if $identifier is not found
      */
-    public function translate($identifier, $args = []) {
+    public function translate(string $identifier, $args = []): string {
         if (!is_array($args)) {
             $args = [$args];
         }
@@ -182,16 +210,19 @@ class LanguageUtils {
         $defaultlang = $this->getDefaultLanguage();
         $lang = $this->getLanguageById(@$_SESSION["userlanguageid"]);
 
-        if(!$lang && !$defaultlang)
+        if(!$lang && !$defaultlang) {
             throw new \Exception("Cannot get user or default language");
+        }
 
         $item = $lang->getLanguageItem($identifier);
 
-        if(!$item)
+        if(!$item) {
             $item = $defaultlang->getLanguageItem($identifier);
+        }
 
-        if(!$item)
+        if(!$item) {
             throw new \Exception("Cannot get translation for $identifier");
+        }
 
         $val = $item->getValue();
 

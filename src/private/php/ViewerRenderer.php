@@ -20,7 +20,7 @@ class ViewerRenderer {
 
     private $hiddenChannelIds;
 
-    public function __construct($imgPath, array $hiddenChannelIds = []) {
+    public function __construct(string $imgPath, array $hiddenChannelIds = []) {
         $this->imgPath = $imgPath;
         $this->hiddenChannelIds = $hiddenChannelIds;
 
