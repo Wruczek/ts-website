@@ -33,18 +33,22 @@ if ($banlist !== null) {
         // will just show the UID, IP or MyTSID
 
         $target = "(unknown)";
-        $lastNickname = Utils::escape($ban["lastnickname"]);
+        $lastNickname = null;
         $filter = "";
         $abbreviation = null;
 
+        if ($ban["lastnickname"] !== null) {
+            $lastNickname = Utils::escape($ban["lastnickname"]);
+        }
+
         if ($ban["ip"]) {
-            $ip = str_replace("\\", "", (string)$ban["ip"]);
+            $ip = str_replace("\\", "", (string) $ban["ip"]);
 
             try {
                 $ip = Utils::censorIpAddress($ip);
             } catch (\Exception $e) {}
 
-            if ($lastNickname) {
+            if ($lastNickname !== null) {
                 $abbreviation = [$ip, "IP"];
             } else {
                 $target = $ip;
@@ -52,12 +56,12 @@ if ($banlist !== null) {
 
             if ($ip === Utils::getClientIp()) {
                 $ipbanned = [
-                    "invoker" => (string)$ban["invokername"],
-                    "reason" => (string)$ban["reason"]
+                    "invoker" => (string) $ban["invokername"],
+                    "reason" => (string) $ban["reason"]
                 ];
             }
         } else if ($ban["uid"]) {
-            if ($lastNickname) {
+            if ($lastNickname !== null) {
                 $abbreviation = [$ban["uid"], "UID"];
             } else {
                 $target = new Html("<code>" . $ban["uid"] . "</code>");
@@ -65,7 +69,7 @@ if ($banlist !== null) {
         } else if ($ban["name"]) {
             $target = $ban["name"];
         } else if (!empty($ban["mytsid"])) { // empty, older TS servers dont have MYTS bans, so the key might not exist
-            if ($lastNickname) {
+            if ($lastNickname !== null) {
                 $abbreviation = [$ban["mytsid"], "MyTSID"];
             } else {
                 $target = new Html("<code>" . $ban["mytsid"] . "</code>");
@@ -83,8 +87,8 @@ if ($banlist !== null) {
         $data[] = [
             "filter" => $filter,
             "target" => $target,
-            "reason" => (string)$ban["reason"],
-            "invoker" => (string)$ban["invokername"],
+            "reason" => (string) $ban["reason"],
+            "invoker" => (string) $ban["invokername"],
             "created" => $ban["created"],
             "duration" => $ban["duration"]
         ];
