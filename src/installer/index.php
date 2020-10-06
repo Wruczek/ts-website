@@ -36,9 +36,10 @@ $pageContent = ob_get_clean();
 
     <title>Step <?= $stepNumber ?> | TS-website 2.0 Installer</title>
 
-    <!-- Bootswatch Lumen 4.1.3 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/lumen/bootstrap.min.css"
-          integrity="sha256-S3sZnj5Uxoan2Z6rfF8V+lCFpdDl06yG+3aem63aLmE=" crossorigin="anonymous">
+    <!-- Bootswatch Lumen 4.5.2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/lumen/bootstrap.min.css"
+          integrity="sha512-dp4Bf44EU9Q91+7N3SgcqZXhScQ+4T1vHwE1Uz5nPsr7Kl63wDa84/mN3LjwKthmK8GAw6rcJjeLq1Sp8dM3cg=="
+          crossorigin="anonymous">
 
     <!-- Bootstrap nav wizard -->
     <link rel="stylesheet"
@@ -57,13 +58,10 @@ $pageContent = ob_get_clean();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <!-- Popper UMD 1.13.0 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"
-            integrity="sha256-pS96pU17yq+gVu4KBQJi38VpSuKN7otMrDQprzf/DWY=" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap 4.1.3 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+    <!-- Bootstrap 4.5.2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.js"
+            integrity="sha512-VgXiNYfIwR3cDfXZNpuFfYfFGQG5x2kbcxemIWrNcRo/Z4zv1H1O+vBWuaG2cGLH9L66SRz7a/aHnwlpIlvUuQ=="
+            crossorigin="anonymous"></script>
 </head>
 <body>
 
