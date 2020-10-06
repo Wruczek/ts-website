@@ -4,15 +4,15 @@
     },
     "require": {
         "roave/security-advisories": "dev-master",
-        "php": ">=5.6.0",
+        "php": "^7.2.0",
         "ext-mbstring": "*",
         "ext-json": "*",
         "ext-tokenizer": "*",
-        "planetteamspeak/ts3-php-framework": "1.1.33",
+        "ext-ctype": "*",
+        "planetteamspeak/ts3-php-framework": "1.1.34",
         "latte/latte": "~2.4.8",
         "wruczek/php-file-cache": "^0",
-        "simplepie/simplepie": "^1.5",
-        "catfan/medoo": "^1.5"
+        "catfan/medoo": "~1.7.10"
     },
     "suggest": {
         "ext-pdo_mysql": "*",
