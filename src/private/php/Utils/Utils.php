@@ -20,8 +20,8 @@ class Utils {
      * @param $string string String to be escaped
      * @return string escaped string
      */
-    public static function escape($string) {
-        return htmlspecialchars((string) $string, ENT_QUOTES, "UTF-8");
+    public static function escape(string $string): string {
+        return htmlspecialchars($string, ENT_QUOTES, "UTF-8");
     }
 
     /**
@@ -30,7 +30,7 @@ class Utils {
      * @param $str
      * @return bool|string stripped text without the first line or false on failure
      */
-    public static function stripFirstLine($str) {
+    public static function stripFirstLine(string $str) {
         $position = strpos($str, "\n");
 
         if($position === false)
@@ -47,7 +47,7 @@ class Utils {
      * @param bool $case set to false for case-insensitivity (default true)
      * @return bool true if $haystack starts with $needle, false otherwise
      */
-    public static function startsWith($haystack, $needle, $case = true) {
+    public static function startsWith(string $haystack, string $needle, bool $case = true): bool {
         if ($case)
             return strpos($haystack, $needle, 0) === 0;
 
@@ -62,7 +62,7 @@ class Utils {
      * @param bool $case set to false for case-insensitivity (default true)
      * @return bool true if $haystack ends with $needle, false otherwise
      */
-    public static function endsWith($haystack, $needle, $case = true) {
+    public static function endsWith(string $haystack, string $needle, bool $case = true): bool {
         $expectedPosition = strlen($haystack) - strlen($needle);
 
         if ($case)
@@ -77,7 +77,7 @@ class Utils {
      * @return bool|string Censored IP on success, false on failure
      * @throws \Exception When the IP address is invalid
      */
-    public static function censorIpAddress($ip) {
+    public static function censorIpAddress(string $ip): string {
         if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $ip = explode(".", $ip);
 
@@ -107,7 +107,7 @@ class Utils {
      *             Falls back to REMOTE_ADDR if empty
      * @return string IP address
      */
-    public static function getClientIp($useCfip = null) {
+    public static function getClientIp(bool $useCfip = null): string {
         if ($useCfip === null) {
             $useCfip = Config::get("usingcloudflare");
         }
@@ -128,7 +128,7 @@ class Utils {
      * Returns currently used news store
      * @return INewsStore|null
      */
-    public static function getNewsStore() {
+    public static function getNewsStore(): ?INewsStore {
         $newsStore = null;
 
         // if the current implementation is default
@@ -137,5 +137,29 @@ class Utils {
         }
 
         return $newsStore;
+    }
+
+    /**
+     * Generate secure random int in specified bounds
+     * @see \random_int()
+     * @param int $min
+     * @param int $max
+     * @return int
+     * @throws \Exception
+     */
+    public static function getSecureRandomInt(int $min, int $max): int {
+        return \random_int($min, $max);
+    }
+
+    /**
+     * Generate secure random bytes and convert them into hex
+     * @see \random_bytes()
+     * @see \bin2hex()
+     * @param int $bytes
+     * @return string
+     * @throws \Exception
+     */
+    public static function getSecureRandomString(int $bytes): string {
+        return \bin2hex(\random_bytes($bytes));
     }
 }

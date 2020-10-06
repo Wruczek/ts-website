@@ -2,29 +2,18 @@
 
 namespace Wruczek\TSWebsite\Utils;
 
-
 class CsrfUtils {
+
+    public const CSRF_TOKEN_BYTES_LENGTH = 32;
 
     /**
      * Generates and returns a new CSRF token
-     * @param $length int length in bytes
+     * @param $bytes int length in bytes
      * @return string generated CSRF token
      * @throws \Exception when unable to generate a new token
      */
-    public static function generateToken($length) {
-        if (function_exists("random_bytes")) {
-            $token = bin2hex(random_bytes($length));
-        } else if (function_exists("mcrypt_create_iv")) {
-            $token = bin2hex(mcrypt_create_iv($length, MCRYPT_DEV_URANDOM));
-        } else {
-            $token = bin2hex(openssl_random_pseudo_bytes($length));
-        }
-
-        if (!is_string($token) || empty($token)) {
-            throw new \Exception("Cannot generate new CSRF token");
-        }
-
-        return $token;
+    public static function generateToken(int $bytes): string {
+        return Utils::getSecureRandomString($bytes);
     }
 
     /**
@@ -32,13 +21,12 @@ class CsrfUtils {
      * @return string CSRF token
      * @throws \Exception When we cannot generate a new CSRF token
      */
-    public static function getToken() {
+    public static function getToken(): string {
         if (isset($_SESSION["csrfToken"])) {
             return $_SESSION["csrfToken"];
         }
 
-        $length = 16; // in bytes
-        $token = self::generateToken($length);
+        $token = self::generateToken(self::CSRF_TOKEN_BYTES_LENGTH);
 
         $_SESSION["csrfToken"] = $token;
         return $token;
@@ -49,7 +37,7 @@ class CsrfUtils {
      * @param $toCheck string token to be checked
      * @return bool true if tokens match, false otherwise.
      */
-    public static function validateToken($toCheck) {
+    public static function validateToken(string $toCheck): bool {
         $knownToken = @$_SESSION["csrfToken"];
 
         if ($knownToken === null) {
@@ -63,7 +51,7 @@ class CsrfUtils {
      * Tries to get CSRF token from the request and then compares it.
      * If it fails, it returns the error page with message and exits the script.
      */
-    public static function validateRequest() {
+    public static function validateRequest(): void {
         if (isset($_POST["csrf-token"])) {
             $csrfToken = $_POST["csrf-token"];
         } else if (isset($_SERVER["HTTP_X_CSRF_TOKEN"])) {

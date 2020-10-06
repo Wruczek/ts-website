@@ -89,6 +89,7 @@ class Auth {
      * @param $poke bool|null true = poke user, false = send a message, null = default value from config
      * @return string|null|false Returns code as string on success, null when
      *         client cannot be found and false when other error occurs.
+     * @throws \TeamSpeak3_Adapter_ServerQuery_Exception
      */
     public static function generateConfirmationCode($cldbid, $poke = null) {
         if ($poke === null) {
@@ -98,7 +99,7 @@ class Auth {
         if (TeamSpeakUtils::i()->checkTSConnection()) {
             try {
                 $client = TeamSpeakUtils::i()->getTSNodeServer()->clientGetByDbid($cldbid);
-                $code = (string) mt_rand(100000, 999999); // TODO: replace it with a CSPRNG
+                $code = (string) Utils::getSecureRandomInt(100000, 999999);
                 $msg = LanguageUtils::tl("LOGIN_CONFIRMATION_CODE", $code);
 
                 if ($poke) {
@@ -113,6 +114,10 @@ class Auth {
                 if ($e->getCode() === 512) {
                     return null;
                 }
+
+                throw $e;
+            } catch (\Exception $e) {
+                // ignore exceptions from Utils::getSecureRandomInt
             }
         }
 
@@ -225,7 +230,8 @@ class Auth {
         }
 
         // Check if we data is already cached and if we can use it
-        if (isset($_SESSION["tsuser"]["servergroups"])) {
+        // no caching in dev mode
+        if (isset($_SESSION["tsuser"]["servergroups"]) && !__DEV_MODE) {
             $cached = $_SESSION["tsuser"]["servergroups"];
 
             // Calculate how old is the cached data (in seconds)
@@ -253,7 +259,7 @@ class Auth {
         }
 
         // Since the array in indexed with server group ID's, we can just separate the keys
-        // That gives us an array with ID's if user groups
+        // That gives us an array with ID's of user groups
         $serverGroupIds = array_keys($serverGroups);
 
         // Cache it in session with current time for later cachebusting

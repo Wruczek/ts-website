@@ -2,8 +2,6 @@
 
 namespace Wruczek\TSWebsite\Utils;
 
-use function mt_rand;
-use function var_dump;
 use Wruczek\TSWebsite\Config;
 
 /**
