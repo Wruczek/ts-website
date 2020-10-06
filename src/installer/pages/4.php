@@ -25,28 +25,36 @@ if (!empty($_POST)) {
             $tsServer = $tsNodeHost->serverGetByPort($queryserverport);
 
             if(is_array($tsServer->getInfo())) {
-                $utils = Config::i();
+                $tsVersion = $tsServer->getInfo()["virtualserver_version"];
+                $tsBuildNo = $tsVersion->section("[", 1)->filterDigits()->toInt();
 
-                $configdata = [
-                    "query_hostname" => $queryhostname,
-                    "query_port" => $queryport,
-                    "tsserver_port" => $queryserverport,
-                    "query_username" => $queryusername,
-                    "query_password" => $querypassword,
-                    "query_displayip" => $querydisplayip,
-                ];
+                if ($tsBuildNo < 1564054246) {
+                    $errormessage =
+                        'Your TeamSpeak server version is not supported.<br>' .
+                        'Current version: ' . TeamSpeak3_Helper_Convert::versionShort($tsVersion) . ' (build ' . $tsBuildNo . ')' . '<br>' .
+                        'Supported versions: 3.10.0 (build 1564054246) and newer';
+                } else {
+                    $configdata = [
+                        "query_hostname" => $queryhostname,
+                        "query_port" => $queryport,
+                        "tsserver_port" => $queryserverport,
+                        "query_username" => $queryusername,
+                        "query_password" => $querypassword,
+                        "query_displayip" => $querydisplayip,
+                    ];
 
-                foreach ($configdata as $key => $value) {
-                    try {
-                        $utils->setValue($key, $value);
-                    } catch (\Exception $e) {
-                        die("Error while updating config in database, at " . htmlspecialchars($key) . " => " . htmlspecialchars($value));
+                    foreach ($configdata as $key => $value) {
+                        try {
+                            Config::i()->setValue($key, $value);
+                        } catch (\Exception $e) {
+                            die("Error while updating config in database, at " . htmlspecialchars($key) . " => " . htmlspecialchars($value));
+                        }
                     }
-                }
 
-                $cacheIcons = true;
+                    $cacheIcons = true;
+                }
             } else {
-                $errormessage .= '<br>Cannot retrieve server information';
+                $errormessage = 'Cannot retrieve server information';
             }
         } catch (Exception $e) {
             $errormessage = htmlspecialchars("Error " . $e->getCode() . ": " . $e->getMessage());

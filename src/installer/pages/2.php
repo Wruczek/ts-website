@@ -51,14 +51,6 @@ if(!empty($_POST["allow-metrics-checkbox"])) {
             </script>
         <?php } else { ?>
 
-            <?php if (PHP_VERSION_ID < 70000) { ?>
-            <div class="text-center">
-                <div class="alert alert-danger" style="display: inline-block">
-                    You are using PHP 5.6 which will not be supported in the future. Please upgrade.
-                </div>
-            </div>
-            <?php } ?>
-
             <div class="text-center">
                 <div class="alert alert-success" style="display: inline-block">
                     <strong>Success!</strong> Looks like you can run TS-website 2.0!
@@ -92,10 +84,10 @@ function checkRequirements() {
 
     // PHP version - 5.6.0 minimum, < 7 warning, > 7 ok
     {
-        $result = PHP_VERSION_ID < 50600 ? 2 : (PHP_VERSION_ID < 70000 ? 1 : 0);
+        $result = PHP_VERSION_ID < 70200 ? 2 : 0;
 
         showCheckResult(
-                "PHP 5.6.0+ (7.0+ required soon)",
+                "PHP 7.2.0+",
                 $result,
                 "Current PHP version: " . phpversion()
         );
@@ -111,21 +103,6 @@ function checkRequirements() {
             $result ?
                 "Function not found, using polyfill" :
                 "Function exists"
-        );
-    }
-
-    // password_hash and password_verify
-    {
-        $result = PHP_VERSION_ID >= 50500 && password_verify(
-                "ayy-lmao-m88", password_hash("ayy-lmao-m88", PASSWORD_DEFAULT)
-            );
-
-        showCheckResult(
-            "password_hash & password_verify",
-            $result ? 0 : 2,
-            $result ?
-                "Functions exists and work" :
-                "Please make sure your PHP version supports BCRYPT and BLOWFISH"
         );
     }
 
