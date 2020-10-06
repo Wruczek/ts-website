@@ -2,7 +2,6 @@
 
 namespace Wruczek\TSWebsite;
 
-use function __get;
 use TeamSpeak3;
 use Wruczek\TSWebsite\Utils\Utils;
 
@@ -19,10 +18,11 @@ class ViewerRenderer {
 
     private $renderQueryClients = false;
 
-    private $hiddenChannels = [];
+    private $hiddenChannelIds;
 
-    public function __construct($imgPath) {
+    public function __construct($imgPath, array $hiddenChannelIds = []) {
         $this->imgPath = $imgPath;
+        $this->hiddenChannelIds = $hiddenChannelIds;
 
         $cm = CacheManager::i();
         $this->serverInfo = $cm->getServerInfo();
@@ -38,11 +38,11 @@ class ViewerRenderer {
      * or when we dont have required permissions to check for a specific item.
      * @return bool true on success, false otherwise
      */
-    public function checkRequiredData() {
+    public function checkRequiredData(): bool {
         return isset($this->channelList, $this->clientList, $this->serverGroupList, $this->channelGroupList);
     }
 
-    private function add($html, ...$args) {
+    private function add(string $html, string ...$args): void {
         foreach ($args as $i => $iValue) {
             // Prevent argument placeholder injection
             $iValue = str_replace(["{", "}"], ["&#123;", "&#125;"], $iValue);
@@ -53,7 +53,7 @@ class ViewerRenderer {
         $this->resultHtml .= $html;
     }
 
-    public function renderViewer() {
+    public function renderViewer(): string {
         if (!$this->checkRequiredData()) {
             throw new \Exception("Failed to load required data from the cache. " .
                 "Is the server online? Do we have enough permissions?");
@@ -84,7 +84,7 @@ EOD;
 
         foreach ($this->channelList as $channel) {
             // Start rendering the top channels, they are gonna
-            // render all the childrens recursively
+            // render all the children recursively
             if ($channel["pid"] === 0) {
                 $this->renderChannel(new TeamSpeakChannel($channel));
             }
@@ -93,7 +93,7 @@ EOD;
         return $this->resultHtml;
     }
 
-    public function getIcon($name, $tooltip = null, $alt = "Icon") {
+    public function getIcon($name, string $tooltip = null, $alt = "Icon"): string {
         if (is_string($name)) {
             $path = "{$this->imgPath}/$name";
         } else {
@@ -104,22 +104,19 @@ EOD;
         return '<img class="icon" src="' . $path . '" alt="' . Utils::escape($alt) . '"' . $ttip . '>';
     }
 
-    /**
-     * @param $channel TeamSpeakChannel
-     */
-    public function renderChannel($channel) {
+    public function renderChannel(TeamSpeakChannel $channel): void {
         $hasParent = $channel->getParentId();
 
-        $isHidden = in_array($channel->getId(), $this->hiddenChannels);
+        $isHidden = in_array($channel->getId(), $this->hiddenChannelIds, true);
         $channelDisplayName = $channel->getDisplayName();
         $channelClasses = $hasParent ? "has-parent" : "no-parent";
         $channelIcon = "";
         $suffixIcons = "";
 
         // If this channel is occupied
-        if ($channel->isOccupied(false, $this->renderQueryClients) && !$isHidden) {
+        if (!$isHidden && $channel->isOccupied(false, $this->renderQueryClients)) {
             $channelClasses .= " is-occupied";
-        } else if ($channel->isOccupied(true, $this->renderQueryClients) && !$isHidden) {
+        } else if (!$isHidden && $channel->isOccupied(true, $this->renderQueryClients)) {
             $channelClasses .= " occupied-childs";
         } else {
             $channelClasses .= " not-occupied";
@@ -180,7 +177,7 @@ EOD;
         $this->add('</div>' . PHP_EOL . PHP_EOL);
     }
 
-    public function renderClient($client) {
+    public function renderClient(array $client): void {
         $isQuery = (bool) $client["client_type"];
 
         $clientSGIDs = explode(",", $client["client_servergroups"]);
@@ -234,7 +231,7 @@ EOD;
         );
     }
 
-    private function getChannelIcon(TeamSpeakChannel $channel, $isHidden) {
+    private function getChannelIcon(TeamSpeakChannel $channel, bool $isHidden): string {
         $subscribed = $isHidden ? "" : "_subscribed";
         $unsub = $isHidden ? __get("VIEWER_CHANNEL_UNSUB1") : "";
 
@@ -253,7 +250,7 @@ EOD;
         return $this->getIcon("channel_green{$subscribed}.svg", $isHidden ? __get("VIEWER_CHANNEL_UNSUB2") : null);
     }
 
-    private function getChannelSuffixIcons(TeamSpeakChannel $channel) {
+    private function getChannelSuffixIcons(TeamSpeakChannel $channel): string {
         $info = $channel->getInfo();
         $html = "";
 
@@ -281,7 +278,7 @@ EOD;
         return $html;
     }
 
-    public function getClientIcon($client) {
+    public function getClientIcon(array $client): string {
         if($client["client_type"]) {
             return $this->getIcon("server_query.svg");
         }
@@ -313,7 +310,7 @@ EOD;
         return $this->getIcon("player_off.svg");
     }
 
-    public function getClientSuffixIcons($client, $groups, $cntp) {
+    public function getClientSuffixIcons(array $client, array $groups, int $neededTalkPower): string {
         $html = "";
 
         if($client["client_is_priority_speaker"]) {
@@ -326,7 +323,7 @@ EOD;
 
         if($client["client_is_talker"]) {
             $html .= $this->getIcon("talk_power_grant.svg", __get("VIEWER_CLIENT_TALK_POWER_GRANTED"));
-        }  else if($cntp && $cntp > $client["client_talk_power"]) {
+        }  else if($neededTalkPower && $neededTalkPower > $client["client_talk_power"]) {
             $html .= $this->getIcon("input_muted.svg", __get("VIEWER_CLIENT_TALK_POWER_INSUFFICIENT"));
         }
 

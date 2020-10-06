@@ -34,11 +34,11 @@ class TeamSpeakChannel {
         $this->info = $this->channelList[$cid];
     }
 
-    private function getChannelList() {
+    private function getChannelList(): ?array {
         return $this->channelList;
     }
 
-    private function getClientList() {
+    private function getClientList(): ?array {
         if ($this->clientList === null) {
             $this->clientList = CacheManager::i()->getClientList();
         }
@@ -46,19 +46,19 @@ class TeamSpeakChannel {
         return $this->clientList;
     }
 
-    public function getInfo() {
+    public function getInfo(): ?array {
         return $this->info;
     }
 
-    public function getId() {
+    public function getId(): int {
         return (int) $this->info["cid"];
     }
 
-    public function getName() {
+    public function getName(): string {
         return (string) $this->info["channel_name"];
     }
 
-    public function getDisplayName() {
+    public function getDisplayName(): string {
         if ($this->isSpacer()) {
             // If its a spacer, remove everything before the
             // first "]", and then the "]" itself.
@@ -68,15 +68,15 @@ class TeamSpeakChannel {
         return $this->getName();
     }
 
-    public function isPermanent() {
+    public function isPermanent(): bool {
         return (bool) $this->info["channel_flag_permanent"];
     }
 
-    public function getParentId() {
+    public function getParentId(): int {
         return (int) $this->info["pid"];
     }
 
-    public function isOccupied($checkChildrens = false, $includeQuery = false) {
+    public function isOccupied(bool $checkChildrens = false, bool $includeQuery = false): bool {
         if ($checkChildrens) {
             // Loop through all the children channels, and check if they are occupied
             foreach ($this->getChildChannels(true) as $channel) {
@@ -101,28 +101,28 @@ class TeamSpeakChannel {
         return false;
     }
 
-    public function hasPassword() {
+    public function hasPassword(): bool {
         return $this->info["channel_flag_password"] === 1;
     }
 
-    public function getTotalClients() {
+    public function getTotalClients(): int {
         return (int) $this->info["total_clients"];
     }
 
-    public function isFullyOccupied() {
+    public function isFullyOccupied(): bool {
         return $this->info["channel_maxclients"] !== -1 &&
                 $this->info["channel_maxclients"] <= $this->info["total_clients"];
     }
 
-    public function isDefaultChannel() {
+    public function isDefaultChannel(): bool {
         return $this->info["channel_flag_default"] === 1;
     }
 
-    public function isTopChannel() {
+    public function isTopChannel(): bool {
         return $this->getParentId() === 0;
     }
 
-    public function getParentChannels($max = -1) {
+    public function getParentChannels(int $max = -1): array {
         $pid = (int) $this->info["pid"];
         $parents = [];
 
@@ -135,21 +135,21 @@ class TeamSpeakChannel {
         return $parents;
     }
 
-    public function getClosestParentChannel() {
+    public function getClosestParentChannel(): ?TeamSpeakChannel {
         $parentChannels = $this->getParentChannels(1);
-        return isset($parentChannels[0]) ? $parentChannels[0] : null;
+        return $parentChannels[0] ?? null;
     }
 
-    public function getChildChannels($resursive = false) {
+    public function getChildChannels(bool $resursive = false): array {
         $childList = [];
 
-        foreach ($this->getChannelList() as $child) {
-            if ($child["pid"] === $this->getId()) {
-                $childTSC = new TeamSpeakChannel($child);
-                $childList[$childTSC->getId()] = $childTSC;
+        foreach ($this->getChannelList() as $channel) {
+            if ($channel["pid"] === $this->getId()) {
+                $childChannel = new TeamSpeakChannel($channel);
+                $childList[$childChannel->getId()] = $childChannel;
 
                 if ($resursive) {
-                    $childList += $childTSC->getChildChannels(true);
+                    $childList += $childChannel->getChildChannels(true);
                 }
             }
         }
@@ -157,17 +157,16 @@ class TeamSpeakChannel {
         return $childList;
     }
 
-    public function getClosestChildChannel() {
+    public function getClosestChildChannel(): ?TeamSpeakChannel {
         $childChannels = $this->getChildChannels(1);
-        return isset($childChannels[0]) ? $childChannels[0] : null;
+        return $childChannels[0] ?? null;
     }
 
-    public function getChannelMembers($includeQuery = false) {
+    public function getChannelMembers(bool $includeQuery = false): array {
         $clientList = [];
 
         foreach ($this->getClientList() as $client) {
             if ($client["cid"] === $this->getId() && ($includeQuery || !$client["client_type"])) {
-//                $childTSC = new TeamSpeakClient($child["clid"]);
                 $clientList[$client["clid"]] = $client;
             }
         }
@@ -175,7 +174,7 @@ class TeamSpeakChannel {
         return $clientList;
     }
 
-    public function isSpacer() {
+    public function isSpacer(): bool {
         return preg_match("/\[[^\]]*spacer[^\]]*\]/", $this->getName()) && $this->isPermanent() && !$this->getParentId();
     }
 
@@ -224,7 +223,6 @@ class TeamSpeakChannel {
                 return TeamSpeak3::SPACER_CUSTOM;
         }
     }
-
 
     public function __toString() {
         return $this->getName();
