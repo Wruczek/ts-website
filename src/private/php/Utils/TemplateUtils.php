@@ -85,30 +85,33 @@ class TemplateUtils {
             $data["userLanguage"] = $userlang;
         }
 
-        if ($timestamp = $this->getOldestCacheTimestamp())
+        if ($timestamp = $this->getOldestCacheTimestamp()) {
             $data["oldestTimestamp"] = $timestamp;
+        }
 
         $data["tsExceptions"] = TeamSpeakUtils::i()->getExceptionsList();
 
-        if(@$dbutils->isInitialised())
-            $data["sqlCount"] = @$dbutils->getDb()->query("SHOW SESSION STATUS LIKE 'Questions'")->fetch()["Value"];
-        else
-            $data["sqlCount"] = "none";
+        $data["config"] = [];
+        $data["sqlCount"] = "none";
 
-        $data["config"] = Config::i()->getConfig();
+        // only fetch those when DB connection is established
+        if($dbutils->isInitialised()) {
+            $data["config"] = Config::i()->getConfig();
+            $data["sqlCount"] = @$dbutils->getDb()->query("SHOW SESSION STATUS LIKE 'Questions'")->fetchColumn(1);
+
+            if (Config::get("adminstatus_enabled")) {
+                $data["adminStatus"] = AdminStatus::i()->getStatus(
+                    Config::get("adminstatus_groups"),
+                    Config::get("adminstatus_mode"),
+                    Config::get("adminstatus_hideoffline"),
+                    Config::get("adminstatus_ignoredusers")
+                );
+            }
+        }
 
         $csrfToken = CsrfUtils::getToken();
         $data["csrfToken"] = $csrfToken;
         $data["csrfField"] = new Html('<input type="hidden" name="csrf-token" value="' . $csrfToken . '">');
-
-        if (Config::get("adminstatus_enabled")) {
-            $data["adminStatus"] = AdminStatus::i()->getStatus(
-                Config::get("adminstatus_groups"),
-                Config::get("adminstatus_mode"),
-                Config::get("adminstatus_hideoffline"),
-                Config::get("adminstatus_ignoredusers")
-            );
-        }
 
         return $this->getLatte()->renderToString(__TEMPLATES_DIR . "/$templateName.latte", $data);
     }

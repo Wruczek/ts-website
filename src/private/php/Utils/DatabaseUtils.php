@@ -26,7 +26,7 @@ class DatabaseUtils {
      * database config. Stores connection for reuse.
      * @return \Medoo\Medoo database object
      */
-    public function getDb() {
+    public function getDb(): Medoo {
         if($this->db === null) {
             try {
                 $config = $this->configUtils->getDatabaseConfig();
@@ -53,7 +53,7 @@ class DatabaseUtils {
      * for checking if there was a database connection attempt.
      * @return bool
      */
-    public function isInitialised() {
-        return !empty($this->db);
+    public function isInitialised(): bool {
+        return $this->db !== null;
     }
 }

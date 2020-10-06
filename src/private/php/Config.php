@@ -17,9 +17,8 @@ class Config {
 
     protected $databaseConfig;
     protected $config;
-    protected $cache;
 
-    public static function get($key, $default = null) {
+    public static function get(string $key, $default = null) {
         return self::i()->getValue($key, $default);
     }
 
@@ -36,14 +35,13 @@ class Config {
         }
 
         $this->databaseConfig = $config;
-        $this->cache = new PhpFileCache(__CACHE_DIR, "config");
     }
 
     /**
      * Returns config used to connect to the database
      * @return array Config as an array
      */
-    public function getDatabaseConfig() {
+    public function getDatabaseConfig(): array {
         return $this->databaseConfig;
     }
 
@@ -51,59 +49,53 @@ class Config {
      * Returns configuration saved in database
      * @return array Config file as an key => value array
      */
-    public function getConfig() {
+    public function getConfig(): array {
         if($this->config === null) {
-            $this->config = $this->cache->refreshIfExpired("config", function () {
-                try {
-                    $db = DatabaseUtils::i()->getDb();
-                    $data = $db->select("config", ["identifier", "type", "value"]);
-                } catch (\Exception $e) {
-                    TemplateUtils::i()->renderErrorTemplate("DB error", "Cannot get config data from database", $e->getMessage());
-                    exit;
+            try {
+                $db = DatabaseUtils::i()->getDb();
+                $data = $db->select("config", ["identifier", "type", "value"]);
+            } catch (\Exception $e) {
+                TemplateUtils::i()->renderErrorTemplate("DB error", "Cannot get config data from database", $e->getMessage());
+                exit;
+            }
+
+            $cfg = [];
+
+            foreach ($data as $item) {
+                $key = $item["identifier"];
+                $type = $item["type"];
+                $val = $item["value"];
+
+                switch ($type) {
+                    case "STRING":
+                        $val = (string) $val;
+                        break;
+                    case "INT":
+                        $val = (int) $val;
+                        break;
+                    case "FLOAT":
+                        $val = (float) $val;
+                        break;
+                    case "BOOL":
+                        $val = strtolower($val) === "true";
+                        break;
+                    case "JSON":
+                        $json = json_decode((string) $val, true);
+
+                        if (json_last_error() !== JSON_ERROR_NONE) {
+                            throw new \Exception("Error loading config from db: cannot parse JSON from $key");
+                        }
+
+                        $val = $json;
+                        break;
+                    default:
+                        throw new \Exception("Error loading config from db: unrecognised data type $type");
                 }
 
-                if(!empty($db->error()[1])) {
-                    return null;
-                }
+                $cfg[$key] = $val;
+            }
 
-                $cfg = [];
-
-                foreach ($data as $item) {
-                    $key = $item["identifier"];
-                    $type = $item["type"];
-                    $val = $item["value"];
-
-                    switch ($type) {
-                        case "STRING":
-                            $val = (string) $val;
-                            break;
-                        case "INT":
-                            $val = (int) $val;
-                            break;
-                        case "FLOAT":
-                            $val = (float) $val;
-                            break;
-                        case "BOOL":
-                            $val = strtolower($val) === "true";
-                            break;
-                        case "JSON":
-                            $json = json_decode((string) $val, true);
-
-                            if ($json === false) {
-                                throw new \Exception("Error loading config from db: cannot parse JSON from $key");
-                            }
-
-                            $val = $json;
-                            break;
-                        default:
-                            throw new \Exception("Error loading config from db: unrecognised data type $type");
-                    }
-
-                    $cfg[$key] = $val;
-                }
-
-                return $cfg;
-            }, 60);
+            $this->config = $cfg;
         }
 
         return $this->config;
@@ -112,9 +104,8 @@ class Config {
     /**
      * Resets current config cache
      */
-    public function clearConfigCache() {
+    public function clearConfigCache(): void {
         $this->config = null;
-        $this->cache->eraseKey("config");
     }
 
     /**
@@ -123,19 +114,19 @@ class Config {
      * @param null $default
      * @return mixed value Returns string with
      * the value if key exists, null otherwise
+     * @throws \Exception
      */
-    public function getValue($key, $default = null) {
-        return isset($this->getConfig()[$key]) ? $this->getConfig()[$key] : $default;
+    public function getValue(string $key, $default = null) {
+        return $this->getConfig()[$key] ?? $default;
     }
 
     /**
      * Saves key => value combo in config table
      * @param string $key
      * @param string|int|float|bool|array|object $value
-     * @return bool true on success, false otherwise
      * @throws \Exception
      */
-    public function setValue($key, $value) {
+    public function setValue(string $key, $value): void {
         $db = DatabaseUtils::i()->getDb();
 
         switch (gettype($value)) {
@@ -168,12 +159,11 @@ class Config {
         ];
 
         if($db->has("config", ["identifier" => $key])) {
-            $ret = $db->update("config", $data, ["identifier" => $key]);
+            $db->update("config", $data, ["identifier" => $key]);
         } else {
-            $ret = $db->insert("config", $data);
+            $db->insert("config", $data);
         }
 
         $this->clearConfigCache();
-        return $ret;
     }
 }
