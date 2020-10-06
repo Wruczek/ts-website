@@ -48,13 +48,6 @@ class Auth {
 
             $clientIp = (string) $client["connection_client_ip"];
 
-            // IPv6 support - remove brackets from the beginning and the end of clientIp if there are any
-            // because we will be comparing it to Utils::getClientIp() that does not have them.
-            //
-            // Brackets in IPv6 addresses are no longer returned starting from TeamSpeak server version 3.8.0,
-            // but we want to maintain backwards compatibility
-            $clientIp = trim($clientIp, "[]");
-
             if ($clientIp === $ip) {
                 $ret[$client["client_database_id"]] = (string) $client["client_nickname"];
             }
