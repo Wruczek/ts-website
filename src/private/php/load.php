@@ -65,14 +65,14 @@ if(!isset($_SESSION["userlanguageid"])) {
     /**
      * Shortcut to translate and output the result
      */
-    function __(string $identifier, array $args = []) {
-        echo __get($identifier, $args);
+    function __(string $identifier, $args = [], bool $nullOnError = false) {
+        echo __get($identifier, $args, $nullOnError);
     }
 
     /**
      * Shortcut to translate and return the result
      */
-    function __get(string $identifier, array $args = []) {
+    function __get(string $identifier, $args = [], bool $nullOnError = false) {
         try {
             return LanguageUtils::i()->translate($identifier, $args);
         } catch (\Exception $e) {
