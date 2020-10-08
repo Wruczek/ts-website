@@ -76,7 +76,11 @@ if(!isset($_SESSION["userlanguageid"])) {
         try {
             return LanguageUtils::i()->translate($identifier, $args);
         } catch (\Exception $e) {
-            return "(unknown translation for " . Utils::escape($identifier) . ")";
+            if ($nullOnError) {
+                return null;
+            } else {
+                return "(unknown translation for " . Utils::escape($identifier) . ")";
+            }
         }
     }
 }

@@ -93,7 +93,7 @@ class Auth {
             try {
                 $client = TeamSpeakUtils::i()->getTSNodeServer()->clientGetByDbid($cldbid);
                 $code = (string) Utils::getSecureRandomInt(100000, 999999);
-                $msg = LanguageUtils::tl("LOGIN_CONFIRMATION_CODE", $code);
+                $msg = __get("LOGIN_CONFIRMATION_CODE", $code);
 
                 if ($poke) {
                     $client->poke(mb_substr($msg, 0, 100)); // Max 100 characters for pokes

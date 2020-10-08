@@ -19,17 +19,6 @@ class LanguageUtils {
     private $cache;
     private $languages;
 
-    /**
-     * Short function for translate
-     * @param string $identifier
-     * @param array|string $args
-     * @return string
-     * @throws \Exception
-     */
-    public static function tl(string $identifier, $args = []): string {
-        return self::i()->translate($identifier, $args);
-    }
-
     private function __construct() {
         $this->cache = new PhpFileCache(__CACHE_DIR, "translations");
 

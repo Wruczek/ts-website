@@ -191,8 +191,8 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
 <!-- Moment.js 2.22.2 -->
 {$tplutils::includeScript("{cdnjs}/moment.js/2.24.0/moment.min.js", "sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=")}
 
-{var momentjslang = Wruczek\TSWebsite\Utils\Language\LanguageUtils::tl("MOMENTJS_LANG")}
-{if $momentjslang !== "en-us"}
+{var momentjslang = __get("MOMENTJS_LANG", [], true)}
+{if $momentjslang !== null && $momentjslang !== "en-us"}
     {$tplutils::includeScript("{cdnjs}/moment.js/2.24.0/locale/$momentjslang.js")}
     <script>
         moment.locale({$momentjslang} || navigator.languages || navigator.language)
