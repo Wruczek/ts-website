@@ -15,7 +15,10 @@ $(function () {
     // END string.format
 
     // START Time functions
-    console.log("Moment.js locale set to " + moment.locale());
+    dayjs.extend(window.dayjs_plugin_localizedFormat)
+    dayjs.extend(window.dayjs_plugin_relativeTime)
+
+    console.log("Day.js locale set to " + dayjs.locale());
 
     updateRelativeTime();
 
@@ -107,9 +110,8 @@ $(function () {
 function timestampToDate(timestamp, full) {
     "use strict"
 
-    var ld = moment.localeData()
-    var fuzzydate = moment.unix(timestamp).fromNow()
-    var fulldate = moment.unix(timestamp).format(ld.longDateFormat("LLL"))
+    var fuzzydate = dayjs.unix(timestamp).fromNow()
+    var fulldate = dayjs.unix(timestamp).format("LLL")
     return full ? fulldate : fuzzydate
 }
 

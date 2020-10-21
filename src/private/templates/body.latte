@@ -187,15 +187,16 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
 <!-- JS-Cookie 2.2.0 -->
 {$tplutils::includeScript("{cdnjs}/js-cookie/2.2.0/js.cookie.min.js", "sha256-9Nt2r+tJnSd2A2CRUvnjgsD+ES1ExvjbjBNqidm9doI=")}
 
-<!-- TODO: as soon as day.js matures with more languages, replace this obese library with it -->
-<!-- Moment.js 2.22.2 -->
-{$tplutils::includeScript("{cdnjs}/moment.js/2.24.0/moment.min.js", "sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=")}
+<!-- day.js 1.9.3 -->
+{$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/dayjs.min.js", "sha256-ty2mPrBF/8jcJe1+JfGM5l2HsYs7zEbs+f6X0norebo=")}
+{$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/plugin/localizedFormat.min.js", "sha256-kP2eKuLMKEa/YcMNj0kW8qRpNtjAE4rJrS8PPL3vxCc=")}
+{$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/plugin/relativeTime.min.js", "sha256-K66CFTJDYaJ07agFxxju12e79nVEG+OuRN+hl9ivxYI=")}
 
-{var $momentjslang = __get("MOMENTJS_LANG", [], true)}
-{if $momentjslang !== null && $momentjslang !== "en-us"}
-    {$tplutils::includeScript("{cdnjs}/moment.js/2.24.0/locale/$momentjslang.js")}
+{var $dayjslang = __get("DAYJS_LANG", [], true) ?? __get("MOMENTJS_LANG", [], true)}
+{if $dayjslang !== null && $dayjslang !== "en"}
+    {$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/locale/$dayjslang.js")}
     <script>
-        moment.locale({$momentjslang} || navigator.languages || navigator.language)
+        dayjs.locale({$dayjslang} || navigator.languages || navigator.language)
     </script>
 {/if}
 

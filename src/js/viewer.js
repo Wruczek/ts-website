@@ -141,14 +141,14 @@ function showPopover(el) {
                 }
 
                 var describeSeconds = function (seconds) {
-                    return moment().seconds(-seconds).fromNow()
+                    return dayjs().subtract(seconds, 'second').fromNow()
                 }
 
                 var describeTimestamp = function (timestamp, skipSuffix) {
                     if (skipSuffix === undefined)
                         skipSuffix = true
 
-                    return moment.unix(timestamp).fromNow(skipSuffix)
+                    return dayjs.unix(timestamp).fromNow(skipSuffix)
                 }
 
                 var time = result.timenow
