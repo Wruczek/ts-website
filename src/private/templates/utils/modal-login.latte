@@ -43,7 +43,7 @@
                     <!-- <p class="mb-0">Still not working? Try <a href="#">other login methods</a></p> -->
 
                     <!-- Show a small IP debug -->
-                    {var utils = Wruczek\TSWebsite\Utils\Utils::class}
+                    {var $utils = Wruczek\TSWebsite\Utils\Utils::class}
                     <span class="loginDebugInfo"
                           data-toggle="tooltip"
                           data-html="true" title="Debug info: Your IP<br>Raw: {$utils::getClientIp(false)}<br>CF: {$utils::getClientIp(true)}">
