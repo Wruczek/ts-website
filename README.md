@@ -19,7 +19,7 @@
 
 <hr>
 
-#### Useful links
+#### USEFUL LINKS
 - [Demo](https://ts.wruczek.tech/)
 - [Installation instructions](https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation)
 - [Wiki](https://github.com/Wruczek/ts-website/wiki)
@@ -27,16 +27,16 @@
 - [Translate ts-website](https://wruczek.oneskyapp.com/collaboration/project/325562)
 - **[ts-website Telegram group](https://t.me/tswebsite) - support, announcements, and general chat**
 
-#### Main Features
-- News page, dynamic server status, customizable admin status, server viewer, group assigner, ban list, rules, FAQ, impressum
-- Ability for users to login with their TeamSpeak identity
-- Multiple languages with auto-detection for default language
-- Supports for PHP 5 and 7, Apache 2 and nginx
-- Modern and responsive design
-- Caching
+#### MAIN FEATURES
+- News page, dynamic server status, customizable admin status, server viewer, group assigner, ban list, rules, FAQ, impressum.
+- Ability for users to login with their TeamSpeak identity.
+- Multiple languages with auto-detection for default language.
+- Supports for PHP 5 and 7, Apache 2 and nginx.
+- Modern and responsive design.
+- Caching.
 - Free and Open source, under GPL-3.0
 
-### Other stuff
+### OTHER STUFF
 I am happy to take any programming-related requests, add additional features or modify the code to suit your needs for a small donation :) I am experienced at Java, PHP, HTML, CSS, Javascript, SQL, server configurations etc.
 
 For business enquiries only: **wruczekk** at **gmail.com**, for anything else please join our [Telegram group](https://t.me/ts-website).
