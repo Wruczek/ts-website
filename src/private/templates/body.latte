@@ -192,7 +192,7 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
 {$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/plugin/localizedFormat.min.js", "sha256-kP2eKuLMKEa/YcMNj0kW8qRpNtjAE4rJrS8PPL3vxCc=")}
 {$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/plugin/relativeTime.min.js", "sha256-K66CFTJDYaJ07agFxxju12e79nVEG+OuRN+hl9ivxYI=")}
 
-{var $dayjslang = __get("DAYJS_LANG", [], true) ?? __get("MOMENTJS_LANG", [], true)}
+{var $dayjslang = __get("DAYJS_LANG", [], true)}
 {if $dayjslang !== null && $dayjslang !== "en"}
     {$tplutils::includeScript("{cdnjs}/dayjs/1.9.3/locale/$dayjslang.js")}
     <script>
