@@ -46,7 +46,6 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
             $tsInfo = $tsAdmin->getInfo();
 
             $data["ts"] = [
-                "uid" => (string) $tsInfo["virtualserver_unique_identifier"],
                 "version" => (string) $tsInfo["virtualserver_version"],
                 "platform" => (string) $tsInfo["virtualserver_platform"],
                 "slotCount" => $tsInfo["virtualserver_maxclients"],

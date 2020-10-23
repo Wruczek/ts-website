@@ -104,7 +104,7 @@
                     </li>
                     <li class="mb-1">
                         TeamSpeak server info (version, build number, host OS name, slot count,
-                        are you using serveradmin for query, server's unique ID)
+                        are you using serveradmin for query)
                     </li>
                 </ul>
             </div>
