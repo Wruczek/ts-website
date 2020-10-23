@@ -1,6 +1,12 @@
 <?php
 if(!defined("__TSWEBSITE_VERSION")) die("Direct access not allowed");
 
+// if version ID constant is not defined, then it's probably PHP < 5.2.7
+// don't even bother checking anything, just throw an error and die
+if (!defined("PHP_VERSION_ID")) {
+    die('Looks like you are using an ancient version of PHP (' . PHP_VERSION . '). Please update to something modern.');
+}
+
 if(!empty($_POST["allow-metrics-checkbox"])) {
     // set a 7 day cookie that tells us later to send the metrics
     setcookie("tsw_allow_metrics", "true", time() + (86400 * 7));
@@ -77,11 +83,6 @@ if(!empty($_POST["allow-metrics-checkbox"])) {
 
 <?php
 function checkRequirements() {
-    if (!defined("PHP_VERSION_ID")) {
-        $version = explode(".", PHP_VERSION);
-        define("PHP_VERSION_ID", $version[0] * 10000 + $version[1] * 100 + $version[2]);
-    }
-
     // PHP version - 7.2.0 minimum
     {
         $result = PHP_VERSION_ID < 70200 ? 2 : 0;
@@ -89,7 +90,7 @@ function checkRequirements() {
         showCheckResult(
                 "PHP 7.2.0+",
                 $result,
-                "Current PHP version: " . phpversion()
+                "Current PHP version: " . PHP_VERSION
         );
     }
 
