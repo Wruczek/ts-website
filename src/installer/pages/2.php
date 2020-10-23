@@ -82,7 +82,7 @@ function checkRequirements() {
         define("PHP_VERSION_ID", $version[0] * 10000 + $version[1] * 100 + $version[2]);
     }
 
-    // PHP version - 5.6.0 minimum, < 7 warning, > 7 ok
+    // PHP version - 7.2.0 minimum
     {
         $result = PHP_VERSION_ID < 70200 ? 2 : 0;
 
