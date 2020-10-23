@@ -220,11 +220,12 @@ EOD;
         $clientName = implode(" ", $beforeName);           // prefix groups
         $clientName .= " {$client["client_nickname"]} ";   // nickname
         $clientName .= implode(" ", $afterName);           // suffix groups
-        $clientName = Utils::escape(trim($clientName)); // trim and sanitize
+        $clientName = Utils::escape(trim($clientName));    // trim and sanitize
 
         $this->add(
             $html,
-            $isQuery ? " is-query" : "", $client["client_database_id"],
+            $isQuery ? " is-query" : "",
+            $client["client_database_id"],
             $clientIcon,
             $clientName,
             $suffixIcons
@@ -284,7 +285,13 @@ EOD;
         }
 
         if($client["client_away"]) {
-            return $this->getIcon("away.svg", Utils::escape($client["client_away_message"]) ?: __get("VIEWER_CLIENT_AWAY"));
+            if ($client["client_away_message"] !== null) {
+                $awayTooltip = Utils::escape($client["client_away_message"]);
+            } else {
+                $awayTooltip = __get("VIEWER_CLIENT_AWAY");
+            }
+
+            return $this->getIcon("away.svg", $awayTooltip);
         }
 
         if(!$client["client_output_hardware"]) {
