@@ -64,7 +64,7 @@ CREATE TABLE `DBPREFIXnews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `DBPREFIXnews` (`newsid`, `title`, `langid`, `added`, `edited`, `content`) VALUES
-(1, 'Welcome to ts-website!', 1, '2018-12-26 03:10:32', NULL, '<b>Hi there!</b> If you are reading this, it means that TS-website has been installed successfully.<br>\r\nYou can login to your <a href=\"admin\">ACP</a> to configure many parts of it.<br>\r\nNeed help? Join our <a href=\"https://t.me/tswebsite\" target=\"_blank\">Telegram group</a> for support.\r\nHave a good day!');
+(1, 'Welcome to ts-website!', 1, '2018-12-26 03:10:32', NULL, '<b>Hi there!</b> If you are reading this, it means that TS-website has been installed successfully.<br>\r\n<!-- You can login to your <a href=\"admin\">ACP</a> to configure many parts of it.<br> -->\r\nNeed help? Join our <a href=\"https://t.me/tswebsite\" target=\"_blank\">Telegram group</a> for support.\r\nHave a good day!');
 
 
 ALTER TABLE `DBPREFIXconfig`

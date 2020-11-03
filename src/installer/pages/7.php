@@ -111,7 +111,7 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
                 </div>
                 <div class="col-lg-10">
                     <h1><a href="../">Visit</a> <small>your new website</small></h1>
-                    <h3>or login to your <a href="../admin">Admin Panel</a></h3>
+<!--                    <h3>or login to your <a href="../admin">Admin Panel</a></h3>-->
                 </div>
             </div>
             <div class="row whatnow-row">
