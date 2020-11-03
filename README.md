@@ -21,7 +21,7 @@
 
 #### Useful links
 - [Demo](https://ts.wruczek.tech/)
-- [Installation instructions](https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation)
+- [Installation](https://github.com/Wruczek/ts-website/wiki/%5BEN%5D-Website-Installation)
 - [Wiki](https://github.com/Wruczek/ts-website/wiki)
 - [Report Issues / Suggestions](https://github.com/Wruczek/ts-website/issues/new)
 - [Translate ts-website](https://wruczek.oneskyapp.com/collaboration/project/325562)
@@ -29,9 +29,8 @@
 
 #### Main Features
 - News page, dynamic server status, customizable admin status, server viewer, group assigner, ban list, rules, FAQ, impressum
-- Ability for users to login with their TeamSpeak identity
+- Ability for users to login via TeamSpeak
 - Multiple languages with auto-detection for default language
-- Supports for PHP 5 and 7, Apache 2 and nginx
 - Modern and responsive design
 - Caching
 - Free and Open source, under GPL-3.0
