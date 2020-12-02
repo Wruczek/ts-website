@@ -107,7 +107,9 @@ EOD;
     public function renderChannel(TeamSpeakChannel $channel): void {
         $hasParent = $channel->getParentId();
 
-        $isHidden = in_array($channel->getId(), $this->hiddenChannelIds, true);
+        $isHidden = in_array($channel->getId(), $this->hiddenChannelIds, true) ||
+                    $channel->getInfo()["channel_needed_subscribe_power"] >= 75;
+
         $channelDisplayName = $channel->getDisplayName();
         $channelClasses = $hasParent ? "has-parent" : "no-parent";
         $channelIcon = "";
