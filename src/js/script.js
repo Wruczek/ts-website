@@ -33,7 +33,7 @@ $(function () {
     }
 
     $(".acceptcookies").click(function () {
-        Cookies.set("tswebsite_cookie_consent", true, {expires: 365});
+        Cookies.set("tswebsite_cookie_consent", true, {expires: 365, secure: true, sameSite: 'Lax'});
         $(".cookiealert").removeClass("show");
     });
     // END Cookies

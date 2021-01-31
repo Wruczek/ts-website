@@ -43,6 +43,6 @@ $(document).ready(function() {
     // preserve alert dismiss with a cookie
     responsiveTip.find(".close").click(function (e) {
         e.preventDefault()
-        Cookies.set("tswebsite_banrowtip_hide", true, {expires: 365});
+        Cookies.set("tswebsite_banrowtip_hide", true, {expires: 365, secure: true, sameSite: 'Lax'});
     })
 });

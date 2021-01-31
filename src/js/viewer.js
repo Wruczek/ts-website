@@ -41,7 +41,7 @@ if (!Cookies.get("tswebsite_viewertip_hide")) {
     // preserve alert dismiss with a cookie
     alert.find(".close").click(function (e) {
         e.preventDefault()
-        Cookies.set("tswebsite_viewertip_hide", true, {expires: 365});
+        Cookies.set("tswebsite_viewertip_hide", true, {expires: 365, secure: true, sameSite: 'Lax'});
     })
 }
 
