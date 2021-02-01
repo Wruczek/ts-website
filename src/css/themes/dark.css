@@ -4,7 +4,7 @@
  * (c) Wruczek 2017 - 2019
  */
 
-@import url('https://fonts.googleapis.com/css?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Exo+2&display=fallback');
 
 :root {
     --site-background: #1e202f;
