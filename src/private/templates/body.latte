@@ -191,7 +191,7 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
 
 {var $dayjslang = __get("DAYJS_LANG", [], true)}
 {if $dayjslang !== null && $dayjslang !== "en"}
-    {$tplutils::includeScript("{cdnjs}/dayjs/1.10.4/locale/$dayjslang.js")}
+    {$tplutils::includeScript("{cdnjs}/dayjs/1.10.4/locale/$dayjslang.min.js")}
     <script>
         dayjs.locale({$dayjslang} || navigator.languages || navigator.language)
     </script>
