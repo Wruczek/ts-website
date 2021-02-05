@@ -19,8 +19,8 @@ CREATE TABLE `DBPREFIXlanguages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `DBPREFIXlanguages` (`langid`, `englishname`, `nativename`, `langcode`, `isdefault`) VALUES
-(1, 'English', 'English', 'en', 1),
-(2, 'English (US)', 'English (US)', 'en-us', 0),
+(1, 'English', 'English', 'en-gb', 1),
+(2, 'English (US)', 'English (US)', 'en', 0),
 (3, 'Polish', 'Polski', 'pl', 0),
 (4, 'German', 'Deutsch', 'de', 0),
 (5, 'Bulgarian', 'български', 'bg', 0),
