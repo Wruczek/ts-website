@@ -124,7 +124,7 @@ function escapeHtml(text) {
         "'": '&#039;'
     };
 
-    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    return text.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
 }
 
 function updateTooltip(el, text) {
