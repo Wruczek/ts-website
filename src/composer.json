@@ -10,7 +10,7 @@
         "ext-tokenizer": "*",
         "ext-ctype": "*",
         "planetteamspeak/ts3-php-framework": "1.1.34",
-        "latte/latte": "~2.4.8",
+        "latte/latte": "^2.10",
         "wruczek/php-file-cache": "^0",
         "catfan/medoo": "~1.7.10"
     },
