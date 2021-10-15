@@ -94,19 +94,6 @@ function checkRequirements() {
         );
     }
 
-    // Check if we are using polyfill for utf8_encode
-    {
-        $result = defined("__USING_U8ENC_POLYFILL");
-
-        showCheckResult(
-            "Function <code>utf8_encode</code> exists",
-            $result ? 1 : 0,
-            $result ?
-                "Function not found, using polyfill" :
-                "Function exists"
-        );
-    }
-
     displayCategory("Extension checks");
 
     // Extensions check
