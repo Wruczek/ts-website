@@ -1,6 +1,5 @@
-<p align="center">
-<b><a href="https://imgur.com/a/3vfIPJQ" target="_blank">View more screenshots</a>
-</p>
+<h3 align="center">TS-website - free website for your TeamSpeak 3 server</h3>
+<br>
 
 [![Website screenshot](https://i.imgur.com/FuDJyGU.png?2)](https://imgur.com/a/3vfIPJQ)
 
@@ -12,10 +11,6 @@
 <p align="center">
 <b>Need help? <a href="https://t.me/tswebsite">Join our telegram group</a></b> for news, announcements, help and general chat about ts-website.
 </p>
-
-<hr>
-
-**ts-website** - free website for your TeamSpeak 3 server<br>
 
 <hr>
 
