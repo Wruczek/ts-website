@@ -72,22 +72,22 @@
             <div class="modal-body">
                 <p>
                     You might allow TS-website to send one-time metrics during the installation process.
-                    The data send contains only publicly known information, no private info is send.
+                    The data sent contains only publicly known information, no private info is send.
                     The collected data will be used only to learn more about our users and improve TS-website.
                     We will never sell or share it to 3rd-parties. We might, however, publish some statistics
                     collected via the metrics. The published data will always be fully anonymous.
                 </p>
 
                 <p>
-                    The data send will be indexed with the sending server's IP address, to prevent abuse.
+                    The data sent will be indexed with the sending server's IP address, to prevent abuse.
                 </p>
 
                 <p>
-                    You can check all of the data send yourself by looking at the source code:
+                    You can check all of the data sent by looking at the source code:
                     <code>installer/pages/7.php</code>
                 </p>
 
-                <p><b>Data send by TS-website:</b></p>
+                <p><b>Data sent by TS-website:</b></p>
 
                 <ul>
                     <li class="mb-1">
