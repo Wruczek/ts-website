@@ -1,5 +1,5 @@
 <?php
-define("__TSWEBSITE_VERSION",   "dev-2.0.5.2");
+define("__TSWEBSITE_VERSION",   "dev-2.0.6");
 define("__TSWEBSITE_COMMIT",    "no-commit");
 define("__BASE_DIR",            __DIR__ . "/../..");
 define("__PRIVATE_DIR",         __BASE_DIR . "/private");
