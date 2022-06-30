@@ -197,7 +197,7 @@ class LanguageUtils {
         }
 
         $defaultlang = $this->getDefaultLanguage();
-        $lang = $this->getLanguageById(@$_SESSION["userlanguageid"]);
+        $lang = $this->getLanguageById(USER_LANGUAGE_ID);
 
         if(!$lang && !$defaultlang) {
             throw new \Exception("Cannot get user or default language");

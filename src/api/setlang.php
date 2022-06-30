@@ -19,7 +19,6 @@ if ($lang === null) {
 }
 
 setcookie("tswebsite_language", $lang->getLanguageCode(), time() + (60 * 60 * 24) * 60, "/"); // 60 days
-$_SESSION["userlanguageid"] = $lang->getLanguageId();
 
 $returnTo = "../";
 

@@ -50,14 +50,14 @@ if (!defined("DISABLE_CSRF_CHECK") &&
 
 // Try to guess user language and store it
 // If the current language is not defined, or is invalid then return to default
-if(!isset($_SESSION["userlanguageid"])) {
+{
     $lang = LanguageUtils::i()->detectUserLanguage();
 
     if(!$lang) {
         $lang = LanguageUtils::i()->getDefaultLanguage();
     }
 
-    $_SESSION["userlanguageid"] = $lang->getLanguageId();
+    define("USER_LANGUAGE_ID", $lang->getLanguageId());
 }
 
 // Shortcut to language functions

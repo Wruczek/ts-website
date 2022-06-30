@@ -86,7 +86,7 @@ class TemplateUtils {
 
         if($loadLangs) {
             $langUtils = LanguageUtils::i();
-            $userlang = $langUtils->getLanguageById($_SESSION["userlanguageid"]);
+            $userlang = $langUtils->getLanguageById(USER_LANGUAGE_ID);
 
             if ($userlang === null) {
                 $userlang = $langUtils->getDefaultLanguage();
