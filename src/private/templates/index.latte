@@ -21,7 +21,7 @@
     {else}
         {foreach $newsList as $news}
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h5>
                         {ifset $news["link"]}
                             <a href="{$news["link"]}" n:attr="target => $news['external'] ? '_blank'">
@@ -31,6 +31,7 @@
                             {$news["title"]}
                         {/ifset}
                     </h5>
+                    <div>{strtotime($news["added"])|fullDate}</div>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{$news["description"]|noescape}</p>
