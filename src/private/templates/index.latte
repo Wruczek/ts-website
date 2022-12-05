@@ -31,7 +31,7 @@
                             {$news["title"]}
                         {/ifset}
                     </h5>
-                    <div>{strtotime($news["added"])|fullDate}</div>
+                    <div>{strtotime($news["added"])|fuzzyDateAbbr}</div>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{$news["description"]|noescape}</p>
