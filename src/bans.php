@@ -45,13 +45,15 @@ if ($banlist !== null) {
             $ip = str_replace("\\", "", (string) $ban["ip"]);
 
             try {
-                $ip = Utils::censorIpAddress($ip);
-            } catch (\Exception $e) {}
+                $ipCensored = Utils::censorIpAddress($ip);
+            } catch (\Exception $e) {
+                $ipCensored = "error"; // if not an IP - should not happen
+            }
 
             if ($lastNickname !== null) {
-                $abbreviation = [$ip, "IP"];
+                $abbreviation = [$ipCensored, "IP"];
             } else {
-                $target = $ip;
+                $target = $ipCensored;
             }
 
             if ($ip === Utils::getClientIp()) {
