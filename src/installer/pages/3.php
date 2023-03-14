@@ -1,8 +1,7 @@
 <?php
+if(!defined("__TSWEBSITE_VERSION")) die("Direct access not allowed");
 
 use Medoo\Medoo;
-
-if(!defined("__TSWEBSITE_VERSION")) die("Direct access not allowed");
 
 if (!empty($_POST)) {
     $dbhostname = trim($_POST["dbhostname"]);
