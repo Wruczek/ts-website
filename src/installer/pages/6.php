@@ -98,9 +98,10 @@ $displayip = Config::get("query_displayip"); // set initial website name to the 
 
                 <div class="form-group mb-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="using-cloudflare" name="using-cloudflare">
+                        <input type="checkbox" class="custom-control-input" id="using-cloudflare" name="using-cloudflare"
+                            <?= isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? "checked" : "" ?>>
                         <label class="custom-control-label" for="using-cloudflare">
-                            I am using CloudFlare
+                            I am using Cloudflare
                         </label>
                     </div>
                     <p><small>This will change the way ts-website detects user IP address</small></p>
