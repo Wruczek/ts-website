@@ -103,15 +103,31 @@ class LanguageUtils {
      * @return Language|null user language if determined, null otherwise
      */
     public function detectUserLanguage(): ?Language {
-        if (isset($_COOKIE["tswebsite_language"])) { // check cookie
-            $langcode = $_COOKIE["tswebsite_language"];
-        } else if (isset($_SERVER["HTTP_ACCEPT_LANGUAGE"])) { // check http headers
-            $langcode = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
+        // check cookie
+        if (isset($_COOKIE["tswebsite_language"])) {
+            $lang = $this->getLanguageByCode($_COOKIE["tswebsite_language"]);
+
+            if ($lang !== null) {
+                return $lang;
+            }
         }
 
-        // if language with that code exists, return it
-        if(!empty($langcode) && ($lang = $this->getLanguageByCode($langcode))) {
-            return $lang;
+        // check Accept-Language HTTP header
+        if (isset($_SERVER["HTTP_ACCEPT_LANGUAGE"])) {
+            $langs = explode(",", $_SERVER["HTTP_ACCEPT_LANGUAGE"]);
+
+            // find and return first language that our website supports
+            // TODO would be best to sort the list by their weights, but modern
+            //      browsers seem to send the list that is already sorted
+            foreach ($langs as $lang) {
+                // IE adds an extra space - trim to remove it
+                $langcode = trim(explode(";", $lang)[0]);
+                $lang = $this->getLanguageByCode($langcode);
+
+                if ($lang !== null) {
+                    return $lang;
+                }
+            }
         }
 
         return null;
