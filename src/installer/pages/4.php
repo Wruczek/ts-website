@@ -144,6 +144,13 @@ if (isset($_GET["syncicons"])) {
             <div class="row justify-content-md-center">
                 <form id="tsform" class="col-md-4" method="post" action="<?= "?step=$stepNumber" ?>">
 
+                    <div class="alert alert-info">
+                        If the TS3 server is not hosted locally, and you have access to the TS3
+                        server files, then make sure to edit the <code>query_ip_whitelist.txt</code> file and
+                        add the IP of the machine/VPS hosting TS&#8209;website to it, then restart the TS3 server.
+                        Otherwise, TS&#8209;website might get rate-limited by the TS3 server and periodically stop working.
+                    </div>
+
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-link fa-fw"></i></span>
@@ -155,6 +162,11 @@ if (isset($_GET["syncicons"])) {
                             </span>
                         </div>
                     </div>
+
+                    <p class="text-muted text-center" style="font-size: 100%">
+                        Use <code>127.0.0.1</code> as the hostname if TS-website and the
+                        TS3 server are on the same machine/VPS.
+                    </p>
 
                     <div class="row">
                         <div class="col input-group mb-2">
