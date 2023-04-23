@@ -35,6 +35,13 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">{$news["description"]|noescape}</p>
+                    {if empty(!$news["edited"])}
+					    <p class="text-right">Edited: {strtotime($news["edited"])|fuzzyDateAbbr}</p>
+				    {/if}
+                    {* or you can use with translation and a CSS class for example, creating your css obviously *}
+                    {* <p class="card-edited">{_"NEW_EDITED"}{strtotime($news["edited"])|fuzzyDateAbbr}</p> *}
+                    {* option without fuzzyDate *}
+                    {* <p class="card-edited">{_"NEW_EDITED"}{strtotime($news["edited"])|date:'d/m/Y - H:i'}</p> *}
                 </div>
             </div>
         {/foreach}
