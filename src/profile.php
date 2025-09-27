@@ -27,7 +27,11 @@ if (!isset($cldbid) || !is_numeric($cldbid)) {
 
 $cldbid = (int) $cldbid;
 
-$clientOnline = CacheManager::i()->getClient($cldbid);
+try {
+    $clientOnline = CacheManager::i()->getClient($cldbid);
+} catch (\Throwable $e) {
+    $clientOnline = null;
+}
 try {
     $profile = ProfileStore::getByCldbid($cldbid);
 } catch (\Throwable $e) {
@@ -65,7 +69,11 @@ if ($clientOnline !== null) {
         }
         $online[$f] = $val;
     }
-    $online["client_version_short"] = (string) \TeamSpeak3_Helper_Convert::versionShort($online["client_version"] ?? "");
+    try {
+        $online["client_version_short"] = (string) \TeamSpeak3_Helper_Convert::versionShort($online["client_version"] ?? "");
+    } catch (\Throwable $e) {
+        $online["client_version_short"] = null;
+    }
     $online["client_servergroups_list"] = array_map("intval", explode(",", (string) ($online["client_servergroups"] ?? "")));
     // Determine admin status: any server group with a typical admin icon id/name
     $online["is_admin"] = false;
@@ -81,7 +89,11 @@ if ($clientOnline !== null) {
         }
     }
     // Offline statistics from DB info (works regardless of online)
-    $dbInfo = CacheManager::i()->getClientDbInfo($cldbid);
+    try {
+        $dbInfo = CacheManager::i()->getClientDbInfo($cldbid);
+    } catch (\Throwable $e) {
+        $dbInfo = null;
+    }
     if ($dbInfo) {
         $online["client_totalconnections"] = (int) $dbInfo["client_totalconnections"];
         $online["client_created"] = (int) $dbInfo["client_created"]; // first connection
@@ -93,7 +105,11 @@ if ($clientOnline !== null) {
 
 // Ensure we still provide minimal client structure from DB info when offline
 if ($data["client"] === null) {
-    $dbInfo = CacheManager::i()->getClientDbInfo($cldbid);
+    try {
+        $dbInfo = CacheManager::i()->getClientDbInfo($cldbid);
+    } catch (\Throwable $e) {
+        $dbInfo = null;
+    }
     if ($dbInfo) {
         $data["client"] = [
             "client_database_id" => $cldbid,
