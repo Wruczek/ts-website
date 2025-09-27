@@ -4,7 +4,6 @@ use Wruczek\TSWebsite\CacheManager;
 use Wruczek\TSWebsite\Utils\TemplateUtils;
 use Wruczek\TSWebsite\Utils\Utils;
 use Wruczek\TSWebsite\ProfileStore;
-use Wruczek\TSWebsite\CacheManager;
 
 require_once __DIR__ . "/private/php/load.php";
 
@@ -18,7 +17,11 @@ if (!isset($cldbid) || !is_numeric($cldbid)) {
 $cldbid = (int) $cldbid;
 
 $clientOnline = CacheManager::i()->getClient($cldbid);
-$profile = ProfileStore::getByCldbid($cldbid);
+try {
+    $profile = ProfileStore::getByCldbid($cldbid);
+} catch (\Throwable $e) {
+    $profile = [];
+}
 
 // Prepare base data for template
 $data = [
@@ -75,6 +78,26 @@ if ($clientOnline !== null) {
     }
 
     $data["client"] = $online;
+}
+
+// Ensure we still provide minimal client structure from DB info when offline
+if ($data["client"] === null) {
+    $dbInfo = CacheManager::i()->getClientDbInfo($cldbid);
+    if ($dbInfo) {
+        $data["client"] = [
+            "client_database_id" => $cldbid,
+            "client_nickname" => (string) ($dbInfo["client_nickname"] ?? "User #$cldbid"),
+            "client_created" => (int) ($dbInfo["client_created"] ?? 0),
+            "client_lastconnected" => (int) ($dbInfo["client_lastconnected"] ?? 0),
+            "client_totalconnections" => (int) ($dbInfo["client_totalconnections"] ?? 0),
+            "client_version_short" => null,
+            "client_platform" => null,
+            "client_country" => null,
+            "client_servergroups_list" => [],
+            "client_badges" => null,
+            "client_idle_time" => 0,
+        ];
+    }
 }
 
 TemplateUtils::i()->renderTemplate("profile", $data);
