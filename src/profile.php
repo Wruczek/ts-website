@@ -7,6 +7,17 @@ use Wruczek\TSWebsite\ProfileStore;
 
 require_once __DIR__ . "/private/php/load.php";
 
+// Avoid fatal 500 on unexpected errors, surface a friendly page instead
+set_exception_handler(function ($e) {
+    try {
+        \Wruczek\TSWebsite\Utils\TemplateUtils::i()->renderErrorTemplate("500", "Profile error", $e->getMessage());
+    } catch (\Throwable $t) {
+        http_response_code(500);
+        echo "Profile error";
+    }
+    exit;
+});
+
 $cldbid = @$_GET["cldbid"];
 
 if (!isset($cldbid) || !is_numeric($cldbid)) {

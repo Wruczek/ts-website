@@ -58,13 +58,20 @@
                 url: form.attr("action"),
                 data: form.serialize(),
                 success: function (res) {
+                    try {
+                        if (typeof res === 'string') res = JSON.parse(res)
+                    } catch (_) {}
                     if (res && res.success) {
                         window.location = "profile.php?cldbid={$auth::getCldbid()}"
                     } else {
-                        alert("Failed to save profile")
+                        alert((res && (res.message || res.error || res.detail)) || "Failed to save profile")
                     }
                 },
-                error: function () { alert("Request failed") }
+                error: function (xhr) {
+                    var msg = "Request failed"
+                    try { var r = JSON.parse(xhr.responseText); if (r && (r.message || r.detail)) msg = r.message || r.detail } catch (_) {}
+                    alert(msg)
+                }
             })
         })
     </script>
