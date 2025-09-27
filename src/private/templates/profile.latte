@@ -86,6 +86,22 @@
                             </table>
                         </div>
                     </div>
+
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Statistics and information
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><b>{$client["client_totalconnections"] ?? 0}</b> connections</li>
+                                <li>{$client["client_created"]|fuzzyDateAbbr} first connection</li>
+                                <li><b>{(int) round(($client["client_idle_time"] ?? 0) / 60000)}</b> minutes activity time:</li>
+                                <li>a few seconds in the last 30 days</li>
+                                <li>a few seconds in the last 7 days</li>
+                                <li>AFK for 0% in the last 7 days</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card mb-3">
@@ -143,6 +159,12 @@
                                     <a class="btn btn-outline-secondary btn-sm" href="edit-profile.php"><i class="fas fa-edit"></i> Edit</a>
                                 {/if}
                             </div>
+                            {ifset $profile && $profile['discordid']}
+                                <div class="mt-3">
+                                    <div class="small text-muted mb-1">Discord</div>
+                                    <iframe src="https://lanyard.cnrad.dev/api/{$profile['discordid']}?theme=dark" style="border:0; width:100%; height:130px;"></iframe>
+                                </div>
+                            {/ifset}
                         </div>
                     </div>
                 </div>

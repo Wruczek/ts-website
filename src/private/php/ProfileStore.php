@@ -22,6 +22,7 @@ class ProfileStore {
                 tiktok VARCHAR(255) NULL,
                 spotify VARCHAR(255) NULL,
                 twitch VARCHAR(255) NULL,
+                discordid VARCHAR(64) NULL,
                 updated_at INT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
         );

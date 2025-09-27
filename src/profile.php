@@ -66,6 +66,14 @@ if ($clientOnline !== null) {
             }
         }
     }
+    // Offline statistics from DB info (works regardless of online)
+    $dbInfo = CacheManager::i()->getClientDbInfo($cldbid);
+    if ($dbInfo) {
+        $online["client_totalconnections"] = (int) $dbInfo["client_totalconnections"];
+        $online["client_created"] = (int) $dbInfo["client_created"]; // first connection
+        $online["client_lastconnected"] = (int) $dbInfo["client_lastconnected"]; // last seen
+    }
+
     $data["client"] = $online;
 }
 

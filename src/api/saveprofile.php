@@ -14,7 +14,8 @@ $cldbid = Auth::getCldbid();
 
 $allowedKeys = [
     "steamid", "facebook", "twitter", "instagram", "telegram",
-    "youtube", "steam", "github", "tiktok", "spotify", "twitch"
+    "youtube", "steam", "github", "tiktok", "spotify", "twitch",
+    "discordid"
 ];
 
 $data = [];
