@@ -92,6 +92,8 @@ $navActiveIndex = isset($navActiveIndex) ? (int) $navActiveIndex : 0;
                             <i class="fas fa-user"></i>{$auth::getNickname()}
                         </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                            <a class="dropdown-item" href="profile.php?cldbid={$auth::getCldbid()}"><i class="fas fa-id-badge"></i>My Profile</a>
+                            <a class="dropdown-item" href="edit-profile.php"><i class="fas fa-user-cog"></i>Edit Profile</a>
                             <button class="dropdown-item logoutUser"><i class="fas fa-sign-out-alt"></i>{_"NAV_ACCOUNT_LOGOUT"}</button>
                         </div>
                     </li>

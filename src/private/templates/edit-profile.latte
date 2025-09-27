@@ -1,0 +1,68 @@
+{extends "body.latte"}
+{var $title = "Edit Profile"}
+
+{block content}
+<div class="card card-accent">
+    <div class="card-header bigger-title d-flex justify-content-between align-items-center">
+        <span>
+            <i class="fas fa-user-cog"></i>Edit Profile
+        </span>
+    </div>
+    <div class="card-body">
+        <form id="edit-profile-form" method="post" action="api/saveprofile.php">
+            {$csrfField}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Steam ID</label>
+                    <input type="text" class="form-control" name="steamid" value="{$profile['steamid'] ?? ''}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6"><label>Facebook</label><input class="form-control" name="facebook" value="{$profile['facebook'] ?? ''}"></div>
+                <div class="form-group col-md-6"><label>Twitter</label><input class="form-control" name="twitter" value="{$profile['twitter'] ?? ''}"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6"><label>Instagram</label><input class="form-control" name="instagram" value="{$profile['instagram'] ?? ''}"></div>
+                <div class="form-group col-md-6"><label>Telegram</label><input class="form-control" name="telegram" value="{$profile['telegram'] ?? ''}"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6"><label>YouTube</label><input class="form-control" name="youtube" value="{$profile['youtube'] ?? ''}"></div>
+                <div class="form-group col-md-6"><label>Steam (custom url)</label><input class="form-control" name="steam" value="{$profile['steam'] ?? ''}"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6"><label>GitHub</label><input class="form-control" name="github" value="{$profile['github'] ?? ''}"></div>
+                <div class="form-group col-md-6"><label>TikTok</label><input class="form-control" name="tiktok" value="{$profile['tiktok'] ?? ''}"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6"><label>Spotify</label><input class="form-control" name="spotify" value="{$profile['spotify'] ?? ''}"></div>
+                <div class="form-group col-md-6"><label>Twitch</label><input class="form-control" name="twitch" value="{$profile['twitch'] ?? ''}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> Save</button>
+            <a class="btn btn-secondary" href="profile.php?cldbid={$auth::getCldbid()}">Cancel</a>
+        </form>
+    </div>
+</div>
+{/block}
+
+{block footerbottom}
+    <script>
+        $("#edit-profile-form").submit(function (e) {
+            e.preventDefault()
+            var form = $(this)
+            $.ajax({
+                method: "POST",
+                url: form.attr("action"),
+                data: form.serialize(),
+                success: function (res) {
+                    if (res && res.success) {
+                        window.location = "profile.php?cldbid={$auth::getCldbid()}"
+                    } else {
+                        alert("Failed to save profile")
+                    }
+                },
+                error: function () { alert("Request failed") }
+            })
+        })
+    </script>
+{/block}
+

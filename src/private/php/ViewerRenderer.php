@@ -213,7 +213,7 @@ EOD;
 
         $html = <<<EOD
 <div class="client-container{0}" data-clientdbid="{1}" tabindex="0">
-    <span class="client-name">{2}{3}</span>
+    <span class="client-name">{2}<a href="profile.php?cldbid={1}" class="client-profile-link">{3}</a></span>
     <span class="client-icons">{4}</span>
 </div>
 
