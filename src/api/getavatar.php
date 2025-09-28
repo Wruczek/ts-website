@@ -14,26 +14,31 @@ if (!isset($_GET["cldbid"]) || !is_numeric($_GET["cldbid"])) {
 
 $cldbid = (int) $_GET["cldbid"];
 
-// 1) Prefer Steam avatar if steamid set
-$profile = ProfileStore::getByCldbid($cldbid);
-$steamId = $profile["steamid"] ?? null;
-
-if ($steamId) {
-    $steamApi = "https://steamcommunity.com/openid/id/$steamId"; // not direct JSON; we will try profile avatar via steamcommunity public
-    // Try Steam Web API vanity? Without API key, fallback to Steam community public avatar via profile JSON endpoint
-    $avatarUrl = null;
-    $summaryUrl = "https://steamcommunity.com/profiles/$steamId/?xml=1";
-    $xml = @simplexml_load_string(@file_get_contents($summaryUrl));
-    if ($xml && isset($xml->avatarFull)) {
-        $avatarUrl = (string) $xml->avatarFull;
-    }
-    if ($avatarUrl) {
-        header("Location: $avatarUrl");
+// 1) Try uploaded avatar file
+$uploadDir = __DIR__ . "/../private/uploads/avatars";
+$uploaded = null;
+foreach (["png","jpg","jpeg","gif","webp"] as $ext) {
+    $p = $uploadDir . "/" . $cldbid . "." . $ext;
+    if (file_exists($p)) { $uploaded = $p; break; }
+}
+if ($uploaded) {
+    $bytes = @file_get_contents($uploaded);
+    if ($bytes !== false) {
+        header("Content-Type: " . TeamSpeak3_Helper_Convert::imageMimeType($bytes));
+        echo $bytes;
         exit;
     }
 }
 
-// 2) Try TeamSpeak avatar via filetransfer: avatars/uid
+// 2) Try avatar URL saved in profile
+try { $profile = ProfileStore::getByCldbid($cldbid); } catch (\Throwable $e) { $profile = []; }
+$avatarUrl = $profile["avatar_url"] ?? null;
+if ($avatarUrl) {
+    header("Location: " . $avatarUrl);
+    exit;
+}
+
+// 3) Try TeamSpeak avatar via filetransfer: avatars/uid
 $client = CacheManager::i()->getClient($cldbid);
 if ($client) {
     try {
@@ -50,6 +55,6 @@ if ($client) {
     }
 }
 
-// 3) Fallback to default icon
+// 4) Fallback to default icon
 header("Location: ../img/icons/defaulticon-64.png");
 

@@ -11,6 +11,11 @@
     <div class="card-body">
         <form id="edit-profile-form" method="post" action="api/saveprofile.php">
             {$csrfField}
+            <div class="form-group">
+                <label>Avatar URL</label>
+                <input type="url" class="form-control" name="avatar_url" value="{$profile['avatar_url'] ?? ''}" placeholder="https://...">
+                <small class="form-text text-muted">Alternatively upload below.</small>
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Steam ID</label>
@@ -44,6 +49,16 @@
             <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> Save</button>
             <a class="btn btn-secondary" href="profile.php?cldbid={$auth::getCldbid()}">Cancel</a>
         </form>
+
+        <hr>
+        <form id="upload-avatar-form" method="post" action="api/uploadavatar.php" enctype="multipart/form-data">
+            {$csrfField}
+            <div class="form-group">
+                <label>Upload Avatar</label>
+                <input type="file" class="form-control-file" name="avatar" accept="image/*">
+            </div>
+            <button class="btn btn-outline-primary" type="submit"><i class="fas fa-upload"></i> Upload</button>
+        </form>
     </div>
 </div>
 {/block}
@@ -69,6 +84,32 @@
                 },
                 error: function (xhr) {
                     var msg = "Request failed"
+                    try { var r = JSON.parse(xhr.responseText); if (r && (r.message || r.detail)) msg = r.message || r.detail } catch (_) {}
+                    alert(msg)
+                }
+            })
+        })
+
+        $("#upload-avatar-form").submit(function (e) {
+            e.preventDefault()
+            var form = $(this)[0]
+            var data = new FormData(form)
+            $.ajax({
+                method: "POST",
+                url: form.action,
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    try { if (typeof res === 'string') res = JSON.parse(res) } catch (_) {}
+                    if (res && res.success) {
+                        alert('Avatar uploaded. It may take a moment to refresh.')
+                    } else {
+                        alert((res && (res.message || res.error || res.detail)) || 'Upload failed')
+                    }
+                },
+                error: function (xhr) {
+                    var msg = 'Upload failed'
                     try { var r = JSON.parse(xhr.responseText); if (r && (r.message || r.detail)) msg = r.message || r.detail } catch (_) {}
                     alert(msg)
                 }

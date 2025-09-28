@@ -16,7 +16,7 @@ try {
     $allowedKeys = [
         "steamid", "facebook", "twitter", "instagram", "telegram",
         "youtube", "steam", "github", "tiktok", "spotify", "twitch",
-        "discordid"
+        "discordid", "avatar_url"
     ];
 
     $data = [];

@@ -24,6 +24,7 @@ class ProfileStore {
                     spotify VARCHAR(255) NULL,
                     twitch VARCHAR(255) NULL,
                     discordid VARCHAR(64) NULL,
+                    avatar_url VARCHAR(1024) NULL,
                     updated_at INT NULL
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
             );
