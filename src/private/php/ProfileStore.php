@@ -60,5 +60,20 @@ class ProfileStore {
             // Ignore write errors; API layer can signal failure if needed
         }
     }
+
+    /**
+     * Ensures a profile row exists for a user (no-op if already present)
+     */
+    public static function ensureExists(int $cldbid): void {
+        try {
+            self::ensureTable();
+            $db = DatabaseUtils::i()->getDb();
+            if (!$db->has("tsw_user_profiles", ["cldbid" => $cldbid])) {
+                $db->insert("tsw_user_profiles", ["cldbid" => $cldbid, "updated_at" => time()]);
+            }
+        } catch (\Throwable $e) {
+            // ignore
+        }
+    }
 }
 

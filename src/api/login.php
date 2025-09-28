@@ -1,6 +1,7 @@
 <?php
 
 use Wruczek\TSWebsite\Auth;
+use Wruczek\TSWebsite\ProfileStore;
 use Wruczek\TSWebsite\Utils\ApiUtils;
 
 require_once __DIR__ . "/../private/php/load.php";
@@ -50,6 +51,8 @@ if ($method === "logout") {
     $cldbid = (int) ApiUtils::getPostParam("cldbid");
 
     if (Auth::checkCodeAndLogin($cldbid, $code)) {
+        // Create an empty profile row if missing
+        try { ProfileStore::ensureExists($cldbid); } catch (\Throwable $e) {}
         ApiUtils::jsonSuccess();
     } else {
         ApiUtils::jsonError("Invalid or expired code", "INVALID_CODE");
