@@ -18,6 +18,7 @@ class CacheManager {
     private $channelList;
     private $serverGroupList;
     private $channelGroupList;
+    private $clientDbInfoCache = [];
 
     private function __construct() {
         $this->cache = new PhpFileCache(__CACHE_DIR, "cachemanager");
@@ -183,5 +184,30 @@ class CacheManager {
 
     public function clearChannelGroupList(): void {
         $this->cache->eraseKey("channelgrouplist");
+    }
+
+    /**
+     * Returns client database info (works for offline users) cached for a short period.
+     * Exposes fields like client_totalconnections, client_created, client_lastconnected, etc.
+     */
+    public function getClientDbInfo(int $cldbid, bool $meta = false) {
+        if (isset($this->clientDbInfoCache[$cldbid])) {
+            return $this->clientDbInfoCache[$cldbid];
+        }
+
+        $cacheKey = "clientdbinfo_" . $cldbid;
+        $this->clientDbInfoCache[$cldbid] = $this->cache->refreshIfExpired($cacheKey, function () use ($cldbid) {
+            if(TeamSpeakUtils::i()->checkTSConnection()) {
+                try {
+                    return TeamSpeakUtils::i()->getTSNodeServer()->clientDbInfo($cldbid);
+                } catch (\TeamSpeak3_Exception $e) {
+                    TeamSpeakUtils::i()->addExceptionToExceptionsList($e);
+                }
+            }
+
+            return null;
+        }, 300, $meta); // cache for 5 minutes
+
+        return $this->clientDbInfoCache[$cldbid];
     }
 }

@@ -43,15 +43,22 @@ if(!empty($_COOKIE["tsw_allow_metrics"])) {
             $tsNode = TeamSpeakUtils::i()->getTSNodeHost();
             $tsAdmin = TeamSpeakUtils::i()->getTSNodeServer();
 
-            $tsInfo = $tsAdmin->getInfo();
+            if ($tsAdmin) {
+                $tsInfo = $tsAdmin->getInfo();
 
-            $data["ts"] = [
-                "version" => (string) $tsInfo["virtualserver_version"],
-                "platform" => (string) $tsInfo["virtualserver_platform"],
-                "slotCount" => $tsInfo["virtualserver_maxclients"],
-                "usingServeradmin" => $tsNode->whoami()["client_unique_identifier"] == "serveradmin"
-            ];
-        } catch (\Exception $e) {}
+                $usingServeradmin = false;
+                if ($tsNode) {
+                    try { $usingServeradmin = ($tsNode->whoami()["client_unique_identifier"] == "serveradmin"); } catch (\Throwable $t) {}
+                }
+
+                $data["ts"] = [
+                    "version" => (string) $tsInfo["virtualserver_version"],
+                    "platform" => (string) $tsInfo["virtualserver_platform"],
+                    "slotCount" => $tsInfo["virtualserver_maxclients"],
+                    "usingServeradmin" => $usingServeradmin
+                ];
+            }
+        } catch (\Throwable $e) {}
     }
 
     // Send it

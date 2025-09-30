@@ -1,15 +1,18 @@
 {
     "config": {
-        "vendor-dir": "private/vendor"
+        "vendor-dir": "private/vendor",
+        "platform": {
+            "php": "8.1.0"
+        }
     },
     "require": {
-        "php": "^7.2.0",
+        "php": "^7.2.0 || ^8.0",
         "ext-mbstring": "*",
         "ext-json": "*",
         "ext-tokenizer": "*",
         "ext-ctype": "*",
         "planetteamspeak/ts3-php-framework": "1.1.35",
-        "latte/latte": "^2.11",
+        "latte/latte": "^3.0",
         "wruczek/php-file-cache": "^0",
         "catfan/medoo": "~1.7.10"
     },

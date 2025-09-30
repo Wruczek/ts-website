@@ -1,0 +1,180 @@
+{extends "body.latte"}
+{var $title = "Profile"}
+
+{block content}
+<div class="card card-accent">
+    <div class="card-header bigger-title d-flex justify-content-between align-items-center">
+        <span>
+            <i class="fas fa-user"></i>Profile
+        </span>
+    </div>
+    <div class="card-body">
+        {if !$clientOnline}
+            <div class="alert alert-warning mb-3">
+                This user is currently offline or was not found in the cache.
+            </div>
+        {/if}
+
+        {if $client}
+            <div class="profile-header d-flex align-items-center mb-3">
+                <div class="mr-3">
+                    <img src="api/getavatar.php?cldbid={$client["client_database_id"]}" width="64" height="64" alt="avatar" class="rounded">
+                </div>
+                <div>
+                    <h3 class="mb-1 d-flex align-items-center">
+                        <span class="mr-2">{$client["client_nickname"]}</span>
+                        {ifset $client["is_admin"] && $client["is_admin"]}
+                            <span class="badge badge-danger"><i class="fas fa-shield-alt"></i> Admin</span>
+                        {/ifset}
+                    </h3>
+                    <div class="small">
+                        {if $clientOnline}
+                            <span class="text-success"><i class="fas fa-circle"></i> Online</span>
+                        {else}
+                            <span class="text-muted"><i class="far fa-circle"></i> Offline</span>
+                            &bull; last seen {$client["client_lastconnected"]|fuzzyDateAbbr}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Overview
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm mb-0">
+                                <tr>
+                                    <td class="font-weight-bold">Status</td>
+                                    <td>
+                                        {if $clientOnline}
+                                            <span class="badge badge-success">Online</span>
+                                        {else}
+                                            <span class="badge badge-secondary">Offline</span>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Version</td>
+                                    <td>{$client["client_version_short"]} ({$client["client_platform"]})</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Country</td>
+                                    <td>
+                                        {if $client["client_country"]}
+                                            <i class="icon-flag famfamfam-flags {strtolower($client["client_country"]) }" title="{$client["client_country"]}"></i>
+                                            {$client["client_country"]}
+                                        {else}
+                                            <span class="text-muted">Unknown</span>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">First joined</td>
+                                    <td>{$client["client_created"]|fullDate}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Last connected</td>
+                                    <td>{$client["client_lastconnected"]|fuzzyDateAbbr}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Idle</td>
+                                    <td>{(int) round(($client["client_idle_time"] ?? 0) / 1000)} s</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Statistics and information
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><b>{$client["client_totalconnections"] ?? 0}</b> connections</li>
+                                <li>{$client["client_created"]|fuzzyDateAbbr} first connection</li>
+                                <li><b>{(int) round(($client["client_idle_time"] ?? 0) / 60000)}</b> minutes activity time:</li>
+                                <li>a few seconds in the last 30 days</li>
+                                <li>a few seconds in the last 7 days</li>
+                                <li>AFK for 0% in the last 7 days</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Badges & Groups
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-2">
+                                {if $client["client_badges"]}
+                                    <code>{$client["client_badges"]}</code>
+                                {else}
+                                    <span class="text-muted">No badges</span>
+                                {/if}
+                            </div>
+                            <div>
+                                {ifset $client["client_servergroups_list"]}
+                                    {foreach $client["client_servergroups_list"] as $sgid}
+                                        <img class="icon" src="api/geticon.php?iconid={$sgid}" alt="group {$sgid}" title="Group {$sgid}">
+                                    {/foreach}
+                                {else}
+                                    <span class="text-muted">No groups</span>
+                                {/ifset}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Socials
+                        </div>
+                        <div class="card-body">
+                            {var $links = [
+                                ["facebook","fab fa-facebook","#3b5998"],
+                                ["twitter","fab fa-twitter","#1da1f2"],
+                                ["instagram","fab fa-instagram","#e1306c"],
+                                ["telegram","fab fa-telegram","#229ED9"],
+                                ["youtube","fab fa-youtube","#ff0000"],
+                                ["steam","fab fa-steam","#171a21"],
+                                ["github","fab fa-github","#333"],
+                                ["tiktok","fab fa-tiktok","#000"],
+                                ["spotify","fab fa-spotify","#1db954"],
+                                ["twitch","fab fa-twitch","#9146ff"]
+                            ]}
+                            <div class="d-flex flex-wrap">
+                                {foreach $links as $ln}
+                                    {var $key = $ln[0]}
+                                    {var $icon = $ln[1]}
+                                    {var $color = $ln[2]}
+                                    {ifset $profile && $profile[$key]}
+                                        <a class="btn btn-light btn-sm mr-2 mb-2 social-link" href="{$profile[$key]}" target="_blank" title="{$key}" style="border-color: {$color}; color: {$color}">
+                                            <i class="{$icon}"></i>
+                                        </a>
+                                    {/ifset}
+                                {/foreach}
+                                {if $auth::isLoggedIn() && $auth::getCldbid() === $client["client_database_id"]}
+                                    <a class="btn btn-outline-secondary btn-sm" href="edit-profile.php"><i class="fas fa-edit"></i> Edit</a>
+                                {/if}
+                            </div>
+                            {ifset $profile && $profile['discordid']}
+                                <div class="mt-3">
+                                    <div class="small text-muted mb-1">Discord</div>
+                                    <iframe src="https://lanyard.cnrad.dev/api/{$profile['discordid']}?theme=dark" style="border:0; width:100%; height:130px;"></iframe>
+                                </div>
+                            {/ifset}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {else}
+            <div class="alert alert-danger">
+                Unable to load profile data for this user right now.
+            </div>
+        {/if}
+    </div>
+</div>
+{/block}
+
